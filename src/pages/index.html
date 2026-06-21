@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JHT Transport - La Calidez de la Confianza</title>
+    <!-- Tailwind CSS Compilado -->
+    <link href="../css/style.css" rel="stylesheet">
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    
+    <style>
+        /* Estilos adicionales que no estén en Tailwind para inicialización */
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-jht-gray text-jht-dark font-sans flex flex-col min-h-screen">
+    <!-- 4.0 NAV (Menú de Navegación) -->
+    <header 
+        x-data="{ scrolled: false, mobileMenuOpen: false }" 
+        @scroll.window="scrolled = (window.pageYOffset > 20) ? true : false"
+        :class="{ 'bg-transparent py-6': !scrolled, 'bg-jht-dark shadow-lg py-3': scrolled }"
+        class="fixed w-full top-0 z-50 transition-all duration-300"
+    >
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center">
+                <img src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Transport Logo" class="h-10 md:h-12 w-auto transition-all duration-300">
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#servicios" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide">Servicios</a>
+                <a href="#flota" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide">Flota</a>
+                <a href="#nosotros" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide">Nosotros</a>
+                <a href="#contacto" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide">Contacto</a>
+                <a href="#area-cliente" class="btn-primary text-sm shadow-md">Área Cliente</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-white focus:outline-none">
+                <svg x-show="!mobileMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <svg x-show="mobileMenuOpen" x-cloak class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div 
+            x-show="mobileMenuOpen" 
+            x-collapse
+            x-cloak
+            class="md:hidden bg-jht-dark shadow-lg absolute w-full left-0 top-full flex flex-col border-t border-jht-blue-support/20"
+        >
+            <a href="#servicios" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Servicios</a>
+            <a href="#flota" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Flota</a>
+            <a href="#nosotros" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Nosotros</a>
+            <a href="#contacto" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Contacto</a>
+            <div class="px-6 py-6 bg-jht-dark/90">
+                <a href="#area-cliente" class="btn-primary w-full shadow-md">Área Cliente</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content (Showcasing Reusable Components for Phase 1) -->
+    <main class="flex-grow pt-32 pb-20">
+        <!-- Hero background simulator to test transparent header -->
+        <div class="absolute top-0 left-0 w-full h-80 bg-jht-blue-support -z-10 bg-gradient-to-b from-[#1A3B6B] to-[#E3E4E5]"></div>
+        
+        <div class="container mx-auto px-6">
+            <h1 class="font-title text-4xl font-bold text-white mb-2">Componentes Compartidos</h1>
+            <p class="text-white/80 mb-12">Fase 1: Demostración de botones, tarjetas y formulario</p>
+
+            <div class="bg-white p-8 rounded-xl shadow-sm mb-12 border border-jht-gray-dark/20">
+                <h2 class="font-title text-2xl font-bold text-jht-dark mb-6">Botones (Microinteracciones)</h2>
+                <div class="flex flex-wrap gap-6 items-center">
+                    <!-- CTA Principal -->
+                    <button class="btn-primary">
+                        Rastrear mi envío
+                    </button>
+                    <!-- Botón Secundario (Ejemplo de utilidad) -->
+                    <button class="inline-flex items-center justify-center border-2 border-jht-dark text-jht-dark font-title font-semibold py-3 px-6 rounded transition-all duration-300 hover:bg-jht-dark hover:text-white hover:scale-[1.02]">
+                        Contáctanos
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl shadow-sm mb-12 border border-jht-gray-dark/20">
+                <h2 class="font-title text-2xl font-bold text-jht-dark mb-6">Tarjetas de Servicios (4.3)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Tarjeta 1 -->
+                    <div class="jht-card overflow-hidden">
+                        <div class="h-48 bg-jht-gray relative overflow-hidden group">
+                            <!-- Placeholder para el video 1:1 -->
+                            <div class="absolute inset-0 bg-jht-blue-support/20 flex items-center justify-center text-jht-dark/50">
+                                Video 1:1
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-title text-xl font-bold text-jht-dark mb-2">Carga Refrigerada</h3>
+                            <p class="text-jht-text-secondary text-sm mb-4">Mantenemos la cadena de frío con la mayor precisión, asegurando la calidad de sus productos.</p>
+                            <a href="#" class="text-jht-dark font-bold text-sm hover:text-jht-gold transition-colors inline-flex items-center">
+                                Saber más <span class="ml-1">→</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Tarjeta 2 -->
+                    <div class="jht-card overflow-hidden">
+                        <div class="h-48 bg-jht-gray relative overflow-hidden">
+                            <!-- Placeholder para el video 1:1 -->
+                            <div class="absolute inset-0 bg-jht-blue-support/20 flex items-center justify-center text-jht-dark/50">
+                                Video 1:1
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-title text-xl font-bold text-jht-dark mb-2">Distribución Nacional</h3>
+                            <p class="text-jht-text-secondary text-sm mb-4">Llegamos a cada rincón del país con nuestra flota moderna y monitoreo en tiempo real.</p>
+                            <a href="#" class="text-jht-dark font-bold text-sm hover:text-jht-gold transition-colors inline-flex items-center">
+                                Saber más <span class="ml-1">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-jht-gray-dark/20">
+                <h2 class="font-title text-2xl font-bold text-jht-dark mb-6">Formularios (4.4 Widget de Seguimiento)</h2>
+                <div class="bg-jht-gray rounded-2xl p-6 md:p-8 relative">
+                    <h3 class="font-title text-xl font-bold text-jht-dark mb-2">Rastrea tu envío</h3>
+                    <p class="text-sm text-jht-blue-support mb-6 italic">¡Estamos al pendiente de tu envío!</p>
+                    
+                    <form class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-grow">
+                            <input type="text" placeholder="Ingresa tu número de guía..." class="jht-input w-full">
+                        </div>
+                        <button type="submit" class="inline-flex items-center justify-center bg-jht-gold text-jht-dark font-title font-semibold py-3 px-8 rounded transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#FFD400]/40">
+                            Buscar Envío
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-jht-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="col-span-1 md:col-span-1">
+                <img src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Transport" class="h-12 w-auto mb-6 opacity-90">
+                <p class="text-jht-gray font-sans text-sm leading-relaxed">
+                    La Calidez de la Confianza. Cuidamos tu carga como si fuera nuestra.
+                </p>
+            </div>
+            <div>
+                <h3 class="font-title font-semibold text-lg mb-6 text-jht-gold">Enlaces Rápidos</h3>
+                <ul class="space-y-3 font-sans text-sm text-jht-gray/90">
+                    <li><a href="#servicios" class="hover:text-jht-gold transition-colors">Servicios</a></li>
+                    <li><a href="#flota" class="hover:text-jht-gold transition-colors">Nuestra Flota</a></li>
+                    <li><a href="#nosotros" class="hover:text-jht-gold transition-colors">Sobre Nosotros</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-title font-semibold text-lg mb-6 text-jht-gold">Soporte</h3>
+                <ul class="space-y-3 font-sans text-sm text-jht-gray/90">
+                    <li><a href="#rastreo" class="hover:text-jht-gold transition-colors">Rastrear Envío</a></li>
+                    <li><a href="#contacto" class="hover:text-jht-gold transition-colors">Contacto</a></li>
+                    <li><a href="#faq" class="hover:text-jht-gold transition-colors">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-title font-semibold text-lg mb-6 text-jht-gold">Contacto</h3>
+                <ul class="space-y-3 font-sans text-sm text-jht-gray/90">
+                    <li class="flex items-start">
+                        <span class="text-jht-gold mr-3">📍</span> 
+                        <span>Lima, Perú</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-jht-gold mr-3">📞</span> 
+                        <span>+51 123 456 789</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-jht-gold mr-3">✉️</span> 
+                        <span>info@jht.com.pe</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 pt-8 border-t border-jht-blue-support/30 flex flex-col md:flex-row justify-between items-center text-sm font-sans text-jht-gray/60">
+            <p class="mb-4 md:mb-0">&copy; 2026 JHT Transport. Todos los derechos reservados.</p>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-jht-gold transition-colors">Política de Privacidad</a>
+                <a href="#" class="hover:text-jht-gold transition-colors">Términos de Servicio</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

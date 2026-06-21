@@ -1,3 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #1A3B6B;
+    --color-accent: #FFD400;
+    --color-bg: #E3E4E5;
+    --color-border: #909AB3;
+    --color-text-secondary: #57678E;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-bg);
+  }
+}
+
+@layer components {
+  /* Reusable button styles based on guidelines */
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-jht-gold text-jht-dark font-title font-semibold py-3 px-6 rounded transition-all duration-300;
+  }
+  .btn-primary:hover {
+    @apply scale-[1.02] shadow-lg shadow-[#FFD400]/40;
+  }
+  
+  /* Reusable card styles */
+  .jht-card {
+    @apply bg-white rounded shadow-lg border-t-4 border-jht-gold transition-transform duration-300;
+  }
+  .jht-card:hover {
+    @apply -translate-y-2 shadow-xl;
+  }
+  
+  /* Form input styles */
+  .jht-input {
+    @apply w-full border border-jht-gray-dark rounded py-2 px-4 focus:outline-none focus:border-jht-dark focus:ring-1 focus:ring-jht-dark transition-all duration-300;
+  }
+}

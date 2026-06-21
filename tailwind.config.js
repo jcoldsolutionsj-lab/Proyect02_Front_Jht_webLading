@@ -9,6 +9,10 @@ module.exports = {
         'jht-gray': '#E3E4E5',
         'jht-gray-dark': '#909AB3',
         'jht-blue-support': '#57678E',
+      },
+      fontFamily: {
+        title: ['Montserrat', 'sans-serif'],
+        sans: ['Open Sans', 'sans-serif'],
       }
     },
   },
