@@ -70,15 +70,22 @@
         <!-- Hero / Banner Secundario -->
         <section class="relative h-screen flex items-center justify-center overflow-hidden bg-jht-dark">
             <!-- Video Background -->
-            <video autoplay loop muted playsinline class="absolute z-0 min-w-full min-h-full object-cover opacity-60">
-                <source src="../assets/videos/landing/banner_landingPage.mp4" type="video/mp4">
+            <video id="hero-bg-video" autoplay loop muted playsinline class="absolute z-0 min-w-full min-h-full object-cover opacity-60">
+                <source src="../assets/videos/landing/home/jhtOriginal.mp4" type="video/mp4">
             </video>
             
             <!-- Degradado para legibilidad -->
             <div class="absolute inset-0 bg-gradient-to-b from-jht-dark/70 via-jht-dark/40 to-jht-dark/80 z-10"></div>
+            
+            <!-- Video superpuesto (4:3) -->
+            <div class="absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl opacity-40 mix-blend-screen pointer-events-none">
+                <video autoplay loop muted playsinline class="w-full h-auto rounded-[3rem] shadow-2xl">
+                    <source src="../assets/videos/landing/Coordenadas_Continentes.mp4" type="video/mp4">
+                </video>
+            </div>
 
             <!-- Contenido del Hero -->
-            <div class="relative z-20 container mx-auto px-10 text-center mt-16 animate-fade-in-up">
+            <div class="relative z-20 container mx-auto px-6 text-center mt-16 scroll-anim">
                 <!-- Círculos decorativos -->
                 <div class="absolute top-10 left-1/4 w-12 h-12 rounded-full border-4 border-jht-gold/30 animate-pulse"></div>
                 <div class="absolute bottom-10 right-1/4 w-24 h-24 rounded-full border-2 border-jht-blue-support/40"></div>
@@ -89,18 +96,36 @@
                 <p id="hero-subtitulo" class="text-lg md:text-xl lg:text-2xl text-jht-gray mb-12 max-w-3xl mx-auto drop-shadow-md">
                     Soluciones integrales de transporte para empresas que exigen precisión, seguridad y velocidad en su cadena de suministro.
                 </p>
-                <div class="max-w-2xl mx-auto bg-[#E3E4E5] p-2 md:p-3 rounded-2xl shadow-xl flex flex-col md:flex-row gap-2">
-                    <div class="flex-grow relative">
-                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-jht-blue-support">search</span>
-                        <input 
-                            type="text" 
-                            placeholder="Ingresa tu número de guía..." 
-                            class="w-full pl-12 pr-4 py-4 md:py-5 rounded-xl border-none focus:ring-2 focus:ring-jht-dark text-jht-dark text-lg focus:outline-none"
-                        >
+                
+                <!-- Widget de Seguimiento de Carga -->
+                <div class="max-w-2xl mx-auto bg-[#E3E4E5] p-6 md:p-8 rounded-2xl shadow-xl flex flex-col gap-6 text-left relative overflow-hidden">
+                    <div class="flex justify-between items-center border-b border-jht-blue-support/20 pb-4">
+                        <h3 id="widget-titulo" class="font-title font-bold text-xl text-jht-dark">Seguimiento de Carga</h3>
+                        <div class="flex items-center space-x-2 bg-green-100 px-3 py-1.5 rounded-full">
+                            <span class="material-symbols-outlined text-green-600 text-sm">check_circle</span>
+                            <span id="widget-estado" class="text-green-700 font-semibold text-sm">En Tránsito</span>
+                        </div>
                     </div>
-                    <button onclick="window.location.href='rastreo.html'" class="bg-jht-gold text-jht-dark font-title font-semibold text-lg py-4 md:py-5 px-8 rounded-xl hover:shadow-lg hover:shadow-[#FFD400]/40 transition-all active:scale-95 whitespace-nowrap">
-                        Rastrear
-                    </button>
+                    
+                    <div class="flex items-center text-jht-text-secondary">
+                        <span class="material-symbols-outlined mr-2">schedule</span>
+                        <p>Llegada estimada: <span id="widget-llegada" class="font-semibold text-jht-dark">14:30 hrs</span></p>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-3">
+                        <div class="flex-grow relative">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-jht-blue-support">search</span>
+                            <input 
+                                id="widget-input"
+                                type="text" 
+                                placeholder="Ingresa tu código de seguimiento..." 
+                                class="w-full pl-12 pr-4 py-4 md:py-5 rounded-xl border-none focus:ring-2 focus:ring-jht-dark text-jht-dark text-lg focus:outline-none transition-all"
+                            >
+                        </div>
+                        <button id="widget-boton" onclick="window.location.href='rastreo.html'" class="bg-[#FFD400] text-jht-dark font-title font-bold text-lg py-4 md:py-5 px-8 rounded-xl hover:shadow-lg hover:-translate-y-1 transition-all whitespace-nowrap">
+                            Consultar
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -242,6 +267,97 @@
         </section>
 
         <!-- Sección Flota -->
+        <section id="clientes" class="py-20 bg-jht-gray relative">
+            <div class="container mx-auto px-10">
+                <div class="text-center mb-16">
+                    <h2 id="clientes-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Nuestros Clientes Opinan</h2>
+                </div>
+
+                <!-- Grid de Logos (gris → color al hover) -->
+                <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6 items-center mb-20">
+                    <div id="cliente-1" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/Alicorp.png" alt="Alicorp" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-2" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/inkafarma.jpg" alt="Inkafarma" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-3" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/sewEurodrive.jpg" alt="SEW Eurodrive" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-4" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/linde.png" alt="Linde" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-5" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/Movitecnica.jpg" alt="Movitécnica" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-6" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/ibermatica.jpg" alt="Ibermática" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-7" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/inkacrops.jpg" alt="Inka Crops" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-8" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/quimicaBrisas.gif" alt="Química Brisas" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-9" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/lubtec.jpg" alt="Lubtec" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                </div>
+
+                <!-- Testimonios -->
+                <div class="text-center mb-12">
+                    <h3 id="testimonios-titulo" class="font-title text-2xl md:text-3xl font-bold text-jht-dark mb-4">Lo que dicen de nosotros</h3>
+                </div>
+
+                <div x-data="{ activeTestimonio: 1 }" class="max-w-4xl mx-auto">
+                    <div class="relative bg-white rounded-2xl shadow-xl p-8 md:p-12 border-t-4 border-jht-gold">
+                        <!-- Testimonio 1 -->
+                        <div id="testimonio-1" x-show="activeTestimonio === 1" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-6 bg-jht-gold/20 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl">format_quote</span>
+                            </div>
+                            <p class="text-jht-text-secondary text-lg leading-relaxed mb-6 italic">
+                                "JHT Transport ha sido un aliado estratégico para nuestra cadena de suministro. Su puntualidad y compromiso son excepcionales."
+                            </p>
+                            <p class="font-title font-bold text-jht-dark">Carlos Mendoza</p>
+                            <p class="text-sm text-jht-text-secondary">Gerente de Logística — Alicorp</p>
+                        </div>
+
+                        <!-- Testimonio 2 -->
+                        <div id="testimonio-2" x-show="activeTestimonio === 2" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="text-center" x-cloak>
+                            <div class="w-16 h-16 mx-auto mb-6 bg-jht-gold/20 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl">format_quote</span>
+                            </div>
+                            <p class="text-jht-text-secondary text-lg leading-relaxed mb-6 italic">
+                                "La tecnología de rastreo en tiempo real nos da total visibilidad de nuestras cargas. Un servicio de primer nivel."
+                            </p>
+                            <p class="font-title font-bold text-jht-dark">María Elena Ríos</p>
+                            <p class="text-sm text-jht-text-secondary">Directora de Operaciones — Inkafarma</p>
+                        </div>
+
+                        <!-- Testimonio 3 -->
+                        <div id="testimonio-3" x-show="activeTestimonio === 3" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="text-center" x-cloak>
+                            <div class="w-16 h-16 mx-auto mb-6 bg-jht-gold/20 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl">format_quote</span>
+                            </div>
+                            <p class="text-jht-text-secondary text-lg leading-relaxed mb-6 italic">
+                                "Confiamos en JHT para nuestras cargas sobredimensionadas. Su equipo siempre encuentra la mejor solución."
+                            </p>
+                            <p class="font-title font-bold text-jht-dark">Roberto Guzmán</p>
+                            <p class="text-sm text-jht-text-secondary">Jefe de Compras — SEW Eurodrive</p>
+                        </div>
+
+                        <!-- Indicadores de testimonio -->
+                        <div class="flex justify-center space-x-3 mt-8">
+                            <button @click="activeTestimonio = 1" :class="{'bg-jht-gold w-8': activeTestimonio === 1, 'bg-jht-gray-dark/30 w-3 hover:bg-jht-gray-dark/50': activeTestimonio !== 1}" class="h-3 rounded-full transition-all duration-300"></button>
+                            <button @click="activeTestimonio = 2" :class="{'bg-jht-gold w-8': activeTestimonio === 2, 'bg-jht-gray-dark/30 w-3 hover:bg-jht-gray-dark/50': activeTestimonio !== 2}" class="h-3 rounded-full transition-all duration-300"></button>
+                            <button @click="activeTestimonio = 3" :class="{'bg-jht-gold w-8': activeTestimonio === 3, 'bg-jht-gray-dark/30 w-3 hover:bg-jht-gray-dark/50': activeTestimonio !== 3}" class="h-3 rounded-full transition-all duration-300"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="flota" class="py-20 bg-jht-gray relative">
             <div class="container mx-auto px-10">
                 <div class="text-center mb-16">
@@ -491,96 +607,7 @@
         </section>
 
         <!-- Nuestros Clientes Opinan -->
-        <section id="clientes" class="py-20 bg-jht-gray relative">
-            <div class="container mx-auto px-10">
-                <div class="text-center mb-16">
-                    <h2 id="clientes-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Nuestros Clientes Opinan</h2>
-                </div>
-
-                <!-- Grid de Logos (gris → color al hover) -->
-                <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6 items-center mb-20">
-                    <div id="cliente-1" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
-                        <img src="../assets/images/clientes/logos_1_1/Alicorp.png" alt="Alicorp" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
-                    </div>
-                    <div id="cliente-2" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
-                        <img src="../assets/images/clientes/logos_1_1/inkafarma.jpg" alt="Inkafarma" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
-                    </div>
-                    <div id="cliente-3" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
-                        <img src="../assets/images/clientes/logos_1_1/sewEurodrive.jpg" alt="SEW Eurodrive" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
-                    </div>
-                    <div id="cliente-4" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
-                        <img src="../assets/images/clientes/logos_1_1/linde.png" alt="Linde" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
-                    </div>
-                    <div id="cliente-5" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
-                        <img src="../assets/images/clientes/logos_1_1/Movitecnica.jpg" alt="Movitécnica" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
-                    </div>
-                    <div id="cliente-6" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
-                        <img src="../assets/images/clientes/logos_1_1/ibermatica.jpg" alt="Ibermática" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
-                    </div>
-                    <div id="cliente-7" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
-                        <img src="../assets/images/clientes/logos_1_1/inkacrops.jpg" alt="Inka Crops" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
-                    </div>
-                    <div id="cliente-8" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
-                        <img src="../assets/images/clientes/logos_1_1/quimicaBrisas.gif" alt="Química Brisas" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
-                    </div>
-                    <div id="cliente-9" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
-                        <img src="../assets/images/clientes/logos_1_1/lubtec.jpg" alt="Lubtec" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
-                    </div>
-                </div>
-
-                <!-- Testimonios -->
-                <div class="text-center mb-12">
-                    <h3 id="testimonios-titulo" class="font-title text-2xl md:text-3xl font-bold text-jht-dark mb-4">Lo que dicen de nosotros</h3>
-                </div>
-
-                <div x-data="{ activeTestimonio: 1 }" class="max-w-4xl mx-auto">
-                    <div class="relative bg-white rounded-2xl shadow-xl p-8 md:p-12 border-t-4 border-jht-gold">
-                        <!-- Testimonio 1 -->
-                        <div id="testimonio-1" x-show="activeTestimonio === 1" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="text-center">
-                            <div class="w-16 h-16 mx-auto mb-6 bg-jht-gold/20 rounded-full flex items-center justify-center">
-                                <span class="material-symbols-outlined text-jht-gold text-3xl">format_quote</span>
-                            </div>
-                            <p class="text-jht-text-secondary text-lg leading-relaxed mb-6 italic">
-                                "JHT Transport ha sido un aliado estratégico para nuestra cadena de suministro. Su puntualidad y compromiso son excepcionales."
-                            </p>
-                            <p class="font-title font-bold text-jht-dark">Carlos Mendoza</p>
-                            <p class="text-sm text-jht-text-secondary">Gerente de Logística — Alicorp</p>
-                        </div>
-
-                        <!-- Testimonio 2 -->
-                        <div id="testimonio-2" x-show="activeTestimonio === 2" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="text-center" x-cloak>
-                            <div class="w-16 h-16 mx-auto mb-6 bg-jht-gold/20 rounded-full flex items-center justify-center">
-                                <span class="material-symbols-outlined text-jht-gold text-3xl">format_quote</span>
-                            </div>
-                            <p class="text-jht-text-secondary text-lg leading-relaxed mb-6 italic">
-                                "La tecnología de rastreo en tiempo real nos da total visibilidad de nuestras cargas. Un servicio de primer nivel."
-                            </p>
-                            <p class="font-title font-bold text-jht-dark">María Elena Ríos</p>
-                            <p class="text-sm text-jht-text-secondary">Directora de Operaciones — Inkafarma</p>
-                        </div>
-
-                        <!-- Testimonio 3 -->
-                        <div id="testimonio-3" x-show="activeTestimonio === 3" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="text-center" x-cloak>
-                            <div class="w-16 h-16 mx-auto mb-6 bg-jht-gold/20 rounded-full flex items-center justify-center">
-                                <span class="material-symbols-outlined text-jht-gold text-3xl">format_quote</span>
-                            </div>
-                            <p class="text-jht-text-secondary text-lg leading-relaxed mb-6 italic">
-                                "Confiamos en JHT para nuestras cargas sobredimensionadas. Su equipo siempre encuentra la mejor solución."
-                            </p>
-                            <p class="font-title font-bold text-jht-dark">Roberto Guzmán</p>
-                            <p class="text-sm text-jht-text-secondary">Jefe de Compras — SEW Eurodrive</p>
-                        </div>
-
-                        <!-- Indicadores de testimonio -->
-                        <div class="flex justify-center space-x-3 mt-8">
-                            <button @click="activeTestimonio = 1" :class="{'bg-jht-gold w-8': activeTestimonio === 1, 'bg-jht-gray-dark/30 w-3 hover:bg-jht-gray-dark/50': activeTestimonio !== 1}" class="h-3 rounded-full transition-all duration-300"></button>
-                            <button @click="activeTestimonio = 2" :class="{'bg-jht-gold w-8': activeTestimonio === 2, 'bg-jht-gray-dark/30 w-3 hover:bg-jht-gray-dark/50': activeTestimonio !== 2}" class="h-3 rounded-full transition-all duration-300"></button>
-                            <button @click="activeTestimonio = 3" :class="{'bg-jht-gold w-8': activeTestimonio === 3, 'bg-jht-gray-dark/30 w-3 hover:bg-jht-gray-dark/50': activeTestimonio !== 3}" class="h-3 rounded-full transition-all duration-300"></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
 
         <!-- Sección Contacto -->
         <section id="contacto" class="py-20 bg-white relative overflow-hidden">
@@ -663,7 +690,7 @@
                             </div>
                         </form>
                         <!-- Mensaje de éxito (oculto por defecto) -->
-                        <div id="contacto-exito" class="hidden text-center py-12 animate-fade-in-up">
+                        <div id="contacto-exito" class="hidden text-center py-12 scroll-anim">
                             <div class="w-20 h-20 mx-auto mb-6 bg-green-100 rounded-full flex items-center justify-center">
                                 <span class="material-symbols-outlined text-green-500 text-5xl">check_circle</span>
                             </div>
@@ -920,5 +947,31 @@
             </div>
         </div>
     </footer>
+<script>
+    // Intersection Observer para animaciones de scroll
+    document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-anim').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Parallax effect on Hero Background Video
+        const heroBg = document.getElementById('hero-bg-video');
+        if(heroBg) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                heroBg.style.transform = 	ranslateY( + (scrolled * 0.15) + px);
+            });
+        }
+    });
+</script>
 </body>
 </html>
+
