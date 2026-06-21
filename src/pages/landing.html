@@ -230,6 +230,160 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sección Flota -->
+        <section id="flota" class="py-24 bg-jht-gray relative">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="flota-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Nuestra Flota</h2>
+                    <p id="flota-subtitulo" class="text-lg text-jht-text-secondary max-w-2xl mx-auto">
+                        Vehículos modernos equipados con tecnología de rastreo satelital.
+                    </p>
+                </div>
+
+                <!-- Tabs Container Alpine -->
+                <div x-data="{ activeTab: 'liviana' }" class="mb-20">
+                    <!-- Tab Headers -->
+                    <div class="flex justify-center space-x-2 md:space-x-8 mb-12 border-b border-jht-gray-dark/30">
+                        <button @click="activeTab = 'liviana'" 
+                                :class="{'border-b-4 border-jht-gold text-jht-dark font-bold': activeTab === 'liviana', 'border-b-4 border-transparent text-jht-text-secondary hover:text-jht-dark': activeTab !== 'liviana'}"
+                                class="pb-4 px-4 font-title text-lg transition-all duration-300">
+                            Liviana
+                        </button>
+                        <button @click="activeTab = 'mediana'" 
+                                :class="{'border-b-4 border-jht-gold text-jht-dark font-bold': activeTab === 'mediana', 'border-b-4 border-transparent text-jht-text-secondary hover:text-jht-dark': activeTab !== 'mediana'}"
+                                class="pb-4 px-4 font-title text-lg transition-all duration-300">
+                            Mediana
+                        </button>
+                        <button @click="activeTab = 'pesada'" 
+                                :class="{'border-b-4 border-jht-gold text-jht-dark font-bold': activeTab === 'pesada', 'border-b-4 border-transparent text-jht-text-secondary hover:text-jht-dark': activeTab !== 'pesada'}"
+                                class="pb-4 px-4 font-title text-lg transition-all duration-300">
+                            Pesada
+                        </button>
+                    </div>
+
+                    <!-- Tab Contents -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden p-8 border-t-4 border-jht-gold">
+                        <!-- Liviana -->
+                        <div x-show="activeTab === 'liviana'" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div class="order-2 md:order-1">
+                                <h3 class="font-title text-2xl font-bold text-jht-dark mb-4">Flota Liviana</h3>
+                                <p id="flota-liviana-desc" class="text-jht-text-secondary mb-6 leading-relaxed">Vehículo multiusos diseñado para operaciones logísticas urbanas y regionales.</p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center text-jht-dark">
+                                        <span class="material-symbols-outlined text-jht-gold mr-3">weight</span>
+                                        <strong>Capacidad:</strong> <span id="flota-liviana-capacidad" class="ml-2">1-5 Toneladas</span>
+                                    </li>
+                                    <li class="flex items-center text-jht-dark">
+                                        <span class="material-symbols-outlined text-jht-gold mr-3">straighten</span>
+                                        <strong>Medidas:</strong> <span id="flota-liviana-medidas" class="ml-2">Largo 6m | Ancho 2m | Altura 2m</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="order-1 md:order-2 h-64 md:h-80 relative rounded-xl overflow-hidden shadow-lg">
+                                <video id="flota-liviana-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                                    <source src="../assets/videos/flota/FlotaLiviana.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+
+                        <!-- Mediana -->
+                        <div x-show="activeTab === 'mediana'" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" x-cloak>
+                            <div class="order-2 md:order-1">
+                                <h3 class="font-title text-2xl font-bold text-jht-dark mb-4">Flota Mediana</h3>
+                                <p id="flota-mediana-desc" class="text-jht-text-secondary mb-6 leading-relaxed">Flota profesional diseñada para operaciones logísticas de alto tonelaje.</p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center text-jht-dark">
+                                        <span class="material-symbols-outlined text-jht-gold mr-3">weight</span>
+                                        <strong>Capacidad:</strong> <span id="flota-mediana-capacidad" class="ml-2">10-15 Toneladas</span>
+                                    </li>
+                                    <li class="flex items-center text-jht-dark">
+                                        <span class="material-symbols-outlined text-jht-gold mr-3">straighten</span>
+                                        <strong>Medidas:</strong> <span id="flota-mediana-medidas" class="ml-2">Largo 8m | Ancho 2.5m | Altura 2.5m</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="order-1 md:order-2 h-64 md:h-80 relative rounded-xl overflow-hidden shadow-lg">
+                                <video id="flota-mediana-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                                    <source src="../assets/videos/flota/FlotaMedia.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+
+                        <!-- Pesada -->
+                        <div x-show="activeTab === 'pesada'" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" x-cloak>
+                            <div class="order-2 md:order-1">
+                                <h3 class="font-title text-2xl font-bold text-jht-dark mb-4">Flota Pesada</h3>
+                                <p id="flota-pesada-desc" class="text-jht-text-secondary mb-6 leading-relaxed">Diseñado para el transporte eficiente de cargas medianas a pesadas.</p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center text-jht-dark">
+                                        <span class="material-symbols-outlined text-jht-gold mr-3">weight</span>
+                                        <strong>Capacidad:</strong> <span id="flota-pesada-capacidad" class="ml-2">25-28 Toneladas</span>
+                                    </li>
+                                    <li class="flex items-center text-jht-dark">
+                                        <span class="material-symbols-outlined text-jht-gold mr-3">straighten</span>
+                                        <strong>Medidas:</strong> <span id="flota-pesada-medidas" class="ml-2">Largo 12.5m | Ancho 2.5m | Altura 2.7m</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="order-1 md:order-2 h-64 md:h-80 relative rounded-xl overflow-hidden shadow-lg">
+                                <video id="flota-pesada-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                                    <source src="../assets/videos/flota/FlotaPesada.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carrusel Alpine Flota -->
+                <div x-data="{ 
+                        activeSlide: 1, 
+                        slides: [
+                            { id: 'flota-carrusel-1', src: '../assets/images/flota/banner_1.webp', alt: 'Flota Moderna' },
+                            { id: 'flota-carrusel-2', src: '../assets/images/flota/banner_dia_2.webp', alt: 'Transporte Diurno' },
+                            { id: 'flota-carrusel-3', src: '../assets/images/flota/banner_noche_3.webp', alt: 'Operaciones Nocturnas' }
+                        ],
+                        next() { this.activeSlide = this.activeSlide === this.slides.length ? 1 : this.activeSlide + 1 },
+                        prev() { this.activeSlide = this.activeSlide === 1 ? this.slides.length : this.activeSlide - 1 }
+                    }" 
+                    x-init="setInterval(() => next(), 5000)"
+                    class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-2xl group border-t-4 border-jht-dark">
+                    
+                    <!-- Contenedor de imágenes -->
+                    <div class="relative h-64 md:h-[400px]">
+                        <template x-for="slide in slides" :key="slide.id">
+                            <div x-show="activeSlide === slides.indexOf(slide) + 1" 
+                                 x-transition:enter="transition ease-out duration-700"
+                                 x-transition:enter-start="opacity-0 translate-x-12 scale-105"
+                                 x-transition:enter-end="opacity-100 translate-x-0 scale-100"
+                                 x-transition:leave="transition ease-in duration-500 absolute top-0 left-0 w-full h-full"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 class="absolute inset-0">
+                                <img :id="slide.id" :src="slide.src" :alt="slide.alt" class="w-full h-full object-cover">
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Botones de Control -->
+                    <button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+
+                    <!-- Indicadores Puntos -->
+                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+                        <template x-for="slide in slides">
+                            <button @click="activeSlide = slides.indexOf(slide) + 1" 
+                                    :class="{'w-8 bg-jht-gold': activeSlide === slides.indexOf(slide) + 1, 'w-3 bg-white/60 hover:bg-white': activeSlide !== slides.indexOf(slide) + 1}"
+                                    class="h-3 rounded-full shadow-md transition-all duration-300"></button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
