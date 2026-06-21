@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #1A3B6B;
+    --color-accent: #FFD400;
+    --color-bg: #E3E4E5;
+    --color-border: #909AB3;
+    --color-text-secondary: #57678E;
+  }
+}
