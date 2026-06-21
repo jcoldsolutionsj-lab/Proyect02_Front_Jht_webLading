@@ -5,25 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JHT Transport Company</title>
     <!-- Configuración de Tailwind -->
-    <link href="../css/tailwind.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
     <!-- Iconos Material Symbols -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <!-- Alpine.js -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <!-- Custom JS -->
+    <script src="../js/main.js" defer></script>
 </head>
 <body class="bg-jht-gray text-jht-dark font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
 
-    <!-- 1. HEADER (Se integrará luego) -->
-    <!-- <!-- REVISAR: El header se inyectará aquí desde los componentes --> -->
+    <!-- Header / Nav Component -->
+    <header x-data="{ scrolled: false, mobileMenuOpen: false }" 
+            @scroll.window="scrolled = (window.pageYOffset > 20)"
+            :class="scrolled ? 'nav-solid py-2' : 'nav-transparent py-4'"
+            class="fixed top-0 w-full z-50 transition-all duration-300">
+        
+        <div class="max-w-7xl mx-auto px-4 md:px-10 flex justify-between items-center w-full">
+            <!-- Logo -->
+            <a href="/" class="flex items-center">
+                <img alt="JHT Transport Logo" class="h-12 w-auto object-contain transition-all duration-300" src="../assets/images/branding/JHTmarca-transparente.png"/>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#servicios" class="font-title font-semibold text-white hover:text-jht-gold transition-colors">Servicios</a>
+                <a href="#flota" class="font-title font-semibold text-white hover:text-jht-gold transition-colors">Flota</a>
+                <a href="#nosotros" class="font-title font-semibold text-white hover:text-jht-gold transition-colors">Nosotros</a>
+                <a href="#contacto" class="font-title font-semibold text-white hover:text-jht-gold transition-colors">Contacto</a>
+                <a href="#area-cliente" class="btn-primary py-2 px-5 text-sm">Área Cliente</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-white p-2 focus:outline-none">
+                <svg x-show="!mobileMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <svg x-show="mobileMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div x-show="mobileMenuOpen" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-2"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-2"
+             @click.away="mobileMenuOpen = false"
+             class="md:hidden absolute top-full left-0 w-full bg-jht-dark border-t border-jht-blue-support/20 shadow-xl"
+             style="display: none;">
+            <nav class="flex flex-col p-4 gap-4">
+                <a href="#servicios" @click="mobileMenuOpen = false" class="font-title font-semibold text-white hover:text-jht-gold transition-colors">Servicios</a>
+                <a href="#flota" @click="mobileMenuOpen = false" class="font-title font-semibold text-white hover:text-jht-gold transition-colors">Flota</a>
+                <a href="#nosotros" @click="mobileMenuOpen = false" class="font-title font-semibold text-white hover:text-jht-gold transition-colors">Nosotros</a>
+                <a href="#contacto" @click="mobileMenuOpen = false" class="font-title font-semibold text-white hover:text-jht-gold transition-colors">Contacto</a>
+                <a href="#area-cliente" @click="mobileMenuOpen = false" class="btn-primary w-full text-center mt-2">Área Cliente</a>
+            </nav>
+        </div>
+    </header>
 
     <!-- CONTENEDOR PRINCIPAL -->
     <main id="app-container" class="flex-grow flex flex-col w-full">
 
         <!-- 2. HERO -->
-        <section id="home" class="w-full min-h-screen relative overflow-hidden">
-            <div class="max-w-7xl mx-auto w-full px-4 md:px-10 py-20">
-                <!-- <!-- REVISAR: Aquí irá el video de fondo y el widget de seguimiento --> -->
-                <h1 class="text-center font-title text-4xl text-jht-blue-support border border-dashed border-jht-blue-support p-10">Hero (Vacío)</h1>
+        <section id="home" class="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+            <!-- Background Video (Parallax) -->
+            <video class="absolute inset-0 w-full h-full object-cover z-0 parallax-bg" autoplay loop muted playsinline>
+                <source src="../assets/videos/home/jhtOriginal.mp4" type="video/mp4">
+            </video>
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-jht-dark/80 z-10"></div>
+            
+            <!-- Hero Content -->
+            <div class="relative z-20 max-w-7xl mx-auto px-4 md:px-10 w-full flex flex-col md:flex-row items-center justify-between gap-12 mt-16 md:mt-0">
+                
+                <!-- Text Content -->
+                <div class="w-full md:w-1/2 text-left scroll-trigger">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6">
+                        <span class="w-1.5 h-1.5 rounded-full bg-jht-gold"></span>
+                        SOLUCIONES INTEGRALES
+                    </div>
+                    <h1 class="font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
+                        Logística y Trazabilidad <br/>
+                        <span class="text-jht-gold">en Tiempo Real</span>
+                    </h1>
+                    <p class="text-lg text-gray-200 mb-8 font-light max-w-lg">Soluciones integrales de transporte para empresas que exigen precisión, seguridad y velocidad en su cadena de suministro.</p>
+                </div>
+                
+                <!-- Tracking Widget -->
+                <div class="w-full md:w-1/2 flex justify-center md:justify-end scroll-trigger" style="transition-delay: 0.2s;">
+                    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-w-md flex flex-col border border-gray-100">
+                        <div class="bg-jht-dark text-white py-4 px-6 flex justify-between items-center">
+                            <span class="font-bold tracking-wide text-sm font-title">Seguimiento de Carga</span>
+                            <span class="material-symbols-outlined fill text-jht-gold">local_shipping</span>
+                        </div>
+                        <div class="relative w-full h-48 bg-jht-gray flex items-center justify-center overflow-hidden">
+                            <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
+                                <source src="../assets/videos/home/RutasEstados_jht.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="p-6 bg-white">
+                            <p class="font-title text-xl font-bold text-jht-dark text-center mb-1">Rastrea tu envío</p>
+                            <p class="text-center text-xs text-jht-blue-support mb-4">¡Estamos al pendiente de tu envío!</p>
+                            <div class="flex flex-col gap-3">
+                                <input type="text" placeholder="Ej. V001-20000" class="jht-input text-sm">
+                                <button class="btn-primary w-full">
+                                    RASTREAR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         </section>
 
@@ -31,7 +124,7 @@
         <section id="servicios" class="w-full bg-white">
             <div class="max-w-7xl mx-auto w-full px-4 md:px-10 py-20">
                 <!-- <!-- REVISAR: Aquí irá el Grid de 4 tarjetas --> -->
-                <h2 class="text-center font-title text-4xl text-jht-blue-support border border-dashed border-jht-blue-support p-10">Nuestros Servicios (Vacío)</h2>
+                <h2 class="text-center font-title text-4xl text-jht-blue-support border border-dashed border-jht-blue-support p-10 scroll-trigger">Nuestros Servicios (Vacío)</h2>
             </div>
         </section>
 
@@ -39,7 +132,7 @@
         <section id="clientes" class="w-full bg-jht-gray">
             <div class="max-w-7xl mx-auto w-full px-4 md:px-10 py-20">
                 <!-- <!-- REVISAR: Aquí irá el Grid/Marquesina de Logos en escala de grises --> -->
-                <h2 class="text-center font-title text-4xl text-jht-blue-support border border-dashed border-jht-blue-support p-10">Nuestros Clientes Opinan (Vacío)</h2>
+                <h2 class="text-center font-title text-4xl text-jht-blue-support border border-dashed border-jht-blue-support p-10 scroll-trigger">Nuestros Clientes Opinan (Vacío)</h2>
             </div>
         </section>
 
@@ -47,7 +140,7 @@
         <section id="flota" class="w-full bg-white">
             <div class="max-w-7xl mx-auto w-full px-4 md:px-10 py-20">
                 <!-- <!-- REVISAR: Aquí irán los Tabs con Alpine.js --> -->
-                <h2 class="text-center font-title text-4xl text-jht-blue-support border border-dashed border-jht-blue-support p-10">Nuestra Flota (Vacío)</h2>
+                <h2 class="text-center font-title text-4xl text-jht-blue-support border border-dashed border-jht-blue-support p-10 scroll-trigger">Nuestra Flota (Vacío)</h2>
             </div>
         </section>
 
@@ -55,7 +148,7 @@
         <section id="nosotros" class="w-full bg-jht-gray">
             <div class="max-w-7xl mx-auto w-full px-4 md:px-10 py-20">
                 <!-- <!-- REVISAR: Aquí irá la sección sobre nosotros y el carrusel de imágenes --> -->
-                <h2 class="text-center font-title text-4xl text-jht-blue-support border border-dashed border-jht-blue-support p-10">Sobre Nosotros (Vacío)</h2>
+                <h2 class="text-center font-title text-4xl text-jht-blue-support border border-dashed border-jht-blue-support p-10 scroll-trigger">Sobre Nosotros (Vacío)</h2>
             </div>
         </section>
 
@@ -63,14 +156,97 @@
         <section id="contacto" class="w-full bg-white">
             <div class="max-w-7xl mx-auto w-full px-4 md:px-10 py-20">
                 <!-- <!-- REVISAR: Aquí irá el Formulario de contacto y el mapa --> -->
-                <h2 class="text-center font-title text-4xl text-jht-blue-support border border-dashed border-jht-blue-support p-10">Contacto (Vacío)</h2>
+                <h2 class="text-center font-title text-4xl text-jht-blue-support border border-dashed border-jht-blue-support p-10 scroll-trigger">Contacto (Vacío)</h2>
             </div>
         </section>
 
     </main>
 
-    <!-- 8. FOOTER (Se integrará luego) -->
-    <!-- <!-- REVISAR: El footer se inyectará aquí desde los componentes --> -->
+    <!-- Footer Component -->
+    <footer class="bg-jht-dark pt-16 pb-8 border-t-4 border-jht-gold mt-auto">
+        <div class="max-w-7xl mx-auto px-4 md:px-10 w-full">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Marca y Misión -->
+                <div class="flex flex-col scroll-trigger">
+                    <img src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Transport" class="h-14 w-auto object-contain mb-6 self-start filter brightness-0 invert">
+                    <p class="text-jht-blue-support text-sm leading-relaxed mb-6">
+                        Brindamos soluciones integrales de transporte y logística, asegurando que cada envío llegue a su destino con la máxima seguridad, precisión y velocidad.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-jht-blue-support/20 flex items-center justify-center text-white hover:bg-jht-gold hover:text-jht-dark transition-colors">
+                            <span class="material-symbols-outlined">share</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-jht-blue-support/20 flex items-center justify-center text-white hover:bg-jht-gold hover:text-jht-dark transition-colors">
+                            <span class="material-symbols-outlined">language</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Enlaces Rápidos -->
+                <div class="scroll-trigger" style="transition-delay: 0.1s;">
+                    <h4 class="font-title text-white font-bold text-lg mb-6 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-jht-gold"></span>
+                        Enlaces Rápidos
+                    </h4>
+                    <ul class="flex flex-col gap-3">
+                        <li><a href="#home" class="text-jht-blue-support hover:text-jht-gold transition-colors text-sm">Inicio</a></li>
+                        <li><a href="#servicios" class="text-jht-blue-support hover:text-jht-gold transition-colors text-sm">Nuestros Servicios</a></li>
+                        <li><a href="#flota" class="text-jht-blue-support hover:text-jht-gold transition-colors text-sm">Nuestra Flota</a></li>
+                        <li><a href="#nosotros" class="text-jht-blue-support hover:text-jht-gold transition-colors text-sm">Quiénes Somos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Servicios -->
+                <div class="scroll-trigger" style="transition-delay: 0.2s;">
+                    <h4 class="font-title text-white font-bold text-lg mb-6 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-jht-gold"></span>
+                        Servicios
+                    </h4>
+                    <ul class="flex flex-col gap-3">
+                        <li><a href="#" class="text-jht-blue-support hover:text-white transition-colors text-sm">Transporte de Carga</a></li>
+                        <li><a href="#" class="text-jht-blue-support hover:text-white transition-colors text-sm">Distribución Regional</a></li>
+                        <li><a href="#" class="text-jht-blue-support hover:text-white transition-colors text-sm">Servicio Courier</a></li>
+                        <li><a href="#" class="text-jht-blue-support hover:text-white transition-colors text-sm">Mudanzas Corporativas</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div class="scroll-trigger" style="transition-delay: 0.3s;">
+                    <h4 class="font-title text-white font-bold text-lg mb-6 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-jht-gold"></span>
+                        Contáctanos
+                    </h4>
+                    <ul class="flex flex-col gap-4">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-jht-gold text-xl">location_on</span>
+                            <span class="text-jht-blue-support text-sm">Av. Principal 123, Distrito Logístico, Ciudad.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-jht-gold text-xl">call</span>
+                            <span class="text-jht-blue-support text-sm">+51 987 654 321</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-jht-gold text-xl">mail</span>
+                            <span class="text-jht-blue-support text-sm">contacto@jht.com.pe</span>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+            <!-- Copyright -->
+            <div class="pt-8 border-t border-jht-blue-support/20 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-jht-blue-support text-xs">
+                    &copy; 2026 JHT Transport. Todos los derechos reservados.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-jht-blue-support hover:text-white text-xs transition-colors">Políticas de Privacidad</a>
+                    <a href="#" class="text-jht-blue-support hover:text-white text-xs transition-colors">Términos de Servicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
