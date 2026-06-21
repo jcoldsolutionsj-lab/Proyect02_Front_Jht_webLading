@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JHT Transport - La Calidez de la Confianza</title>
+    <title>Landing Page - JHT Transport</title>
     <!-- Tailwind CSS Compilado -->
     <link href="../css/style.css" rel="stylesheet">
+    <!-- Google Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
     
     <style>
-        /* Estilos adicionales que no estén en Tailwind para inicialización */
         [x-cloak] { display: none !important; }
     </style>
 </head>
 <body class="bg-jht-gray text-jht-dark font-sans flex flex-col min-h-screen">
-    <!-- 4.0 NAV (Menú de Navegación) -->
+    <!-- NAV (Menú de Navegación) -->
     <header 
         x-data="{ scrolled: false, mobileMenuOpen: false }" 
         @scroll.window="scrolled = (window.pageYOffset > 20) ? true : false"
@@ -65,93 +66,804 @@
         </div>
     </header>
 
-    <!-- Main Content (Showcasing Reusable Components for Phase 1) -->
-    <main class="flex-grow pt-32 pb-20">
-        <!-- Hero background simulator to test transparent header -->
-        <div class="absolute top-0 left-0 w-full h-80 bg-jht-blue-support -z-10 bg-gradient-to-b from-[#1A3B6B] to-[#E3E4E5]"></div>
-        
-        <div class="container mx-auto px-6">
-            <h1 class="font-title text-4xl font-bold text-white mb-2">Componentes Compartidos</h1>
-            <p class="text-white/80 mb-12">Fase 1: Demostración de botones, tarjetas y formulario</p>
+    <main class="flex-grow">
+        <!-- Hero / Banner Secundario -->
+        <section class="relative h-screen flex items-center justify-center overflow-hidden bg-jht-dark">
+            <!-- Video Background -->
+            <video autoplay loop muted playsinline class="absolute z-0 min-w-full min-h-full object-cover opacity-60">
+                <source src="../assets/videos/landing/banner_landingPage.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Degradado para legibilidad -->
+            <div class="absolute inset-0 bg-gradient-to-b from-jht-dark/70 via-jht-dark/40 to-jht-dark/80 z-10"></div>
 
-            <div class="bg-white p-8 rounded-xl shadow-sm mb-12 border border-jht-gray-dark/20">
-                <h2 class="font-title text-2xl font-bold text-jht-dark mb-6">Botones (Microinteracciones)</h2>
-                <div class="flex flex-wrap gap-6 items-center">
-                    <!-- CTA Principal -->
-                    <button class="btn-primary">
-                        Rastrear mi envío
-                    </button>
-                    <!-- Botón Secundario (Ejemplo de utilidad) -->
-                    <button class="inline-flex items-center justify-center border-2 border-jht-dark text-jht-dark font-title font-semibold py-3 px-6 rounded transition-all duration-300 hover:bg-jht-dark hover:text-white hover:scale-[1.02]">
-                        Contáctanos
-                    </button>
-                </div>
+            <!-- Contenido del Hero -->
+            <div class="relative z-20 container mx-auto px-6 text-center mt-16 animate-fade-in-up">
+                <!-- Círculos decorativos -->
+                <div class="absolute top-10 left-1/4 w-12 h-12 rounded-full border-4 border-jht-gold/30 animate-pulse"></div>
+                <div class="absolute bottom-10 right-1/4 w-24 h-24 rounded-full border-2 border-jht-blue-support/40"></div>
+
+                <h1 id="hero-titulo" class="font-title text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 drop-shadow-lg leading-tight">
+                    Logística y Trazabilidad <br/><span class="text-jht-gold">en Tiempo Real</span>
+                </h1>
+                <p id="hero-subtitulo" class="text-lg md:text-xl lg:text-2xl text-jht-gray mb-12 max-w-3xl mx-auto drop-shadow-md">
+                    Soluciones integrales de transporte para empresas que exigen precisión, seguridad y velocidad en su cadena de suministro.
+                </p>
+                <a id="hero-cta" href="rastreo.html" class="btn-primary text-lg px-8 py-4 shadow-xl hover:-translate-y-1">
+                    Conoce el estado de tu servicio
+                </a>
             </div>
+        </section>
 
-            <div class="bg-white p-8 rounded-xl shadow-sm mb-12 border border-jht-gray-dark/20">
-                <h2 class="font-title text-2xl font-bold text-jht-dark mb-6">Tarjetas de Servicios (4.3)</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Tarjeta 1 -->
-                    <div class="jht-card overflow-hidden">
-                        <div class="h-48 bg-jht-gray relative overflow-hidden group">
-                            <!-- Placeholder para el video 1:1 -->
-                            <div class="absolute inset-0 bg-jht-blue-support/20 flex items-center justify-center text-jht-dark/50">
-                                Video 1:1
+        <!-- Sección Carrusel (Ejemplo: Nuestros Servicios) -->
+        <section id="servicios" class="py-24 bg-white relative">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="servicios-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Nuestros Servicios</h2>
+                    <p id="servicios-subtitulo" class="text-lg text-jht-text-secondary max-w-2xl mx-auto">
+                        Soluciones logísticas adaptadas a las necesidades específicas de tu negocio.
+                    </p>
+                </div>
+
+                <!-- Grid de Tarjetas -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                    <!-- Card 1 -->
+                    <div class="jht-card overflow-hidden group">
+                        <div class="h-48 relative overflow-hidden bg-jht-gray">
+                            <video id="servicio-1-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <source src="../assets/videos/flota/FlotaLiviana.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute inset-0 bg-jht-dark/20 group-hover:bg-transparent transition-colors"></div>
+                            <div class="absolute top-4 right-4 bg-jht-gold text-jht-dark p-2 rounded shadow-md z-10">
+                                <span class="material-symbols-outlined">local_shipping</span>
                             </div>
                         </div>
                         <div class="p-6">
-                            <h3 class="font-title text-xl font-bold text-jht-dark mb-2">Carga Refrigerada</h3>
-                            <p class="text-jht-text-secondary text-sm mb-4">Mantenemos la cadena de frío con la mayor precisión, asegurando la calidad de sus productos.</p>
-                            <a href="#" class="text-jht-dark font-bold text-sm hover:text-jht-gold transition-colors inline-flex items-center">
-                                Saber más <span class="ml-1">→</span>
-                            </a>
+                            <h3 id="servicio-1-titulo" class="font-title text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors">Transporte de Carga</h3>
+                            <p id="servicio-1-desc" class="text-jht-text-secondary text-sm leading-relaxed">Movimiento seguro y eficiente de mercancías a nivel nacional.</p>
                         </div>
                     </div>
-                    
-                    <!-- Tarjeta 2 -->
-                    <div class="jht-card overflow-hidden">
-                        <div class="h-48 bg-jht-gray relative overflow-hidden">
-                            <!-- Placeholder para el video 1:1 -->
-                            <div class="absolute inset-0 bg-jht-blue-support/20 flex items-center justify-center text-jht-dark/50">
-                                Video 1:1
+
+                    <!-- Card 2 -->
+                    <div class="jht-card overflow-hidden group">
+                        <div class="h-48 relative overflow-hidden bg-jht-gray">
+                            <video id="servicio-2-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <source src="../assets/videos/flota/FlotaMedia.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute inset-0 bg-jht-dark/20 group-hover:bg-transparent transition-colors"></div>
+                            <div class="absolute top-4 right-4 bg-jht-gold text-jht-dark p-2 rounded shadow-md z-10">
+                                <span class="material-symbols-outlined">route</span>
                             </div>
                         </div>
                         <div class="p-6">
-                            <h3 class="font-title text-xl font-bold text-jht-dark mb-2">Distribución Nacional</h3>
-                            <p class="text-jht-text-secondary text-sm mb-4">Llegamos a cada rincón del país con nuestra flota moderna y monitoreo en tiempo real.</p>
-                            <a href="#" class="text-jht-dark font-bold text-sm hover:text-jht-gold transition-colors inline-flex items-center">
-                                Saber más <span class="ml-1">→</span>
-                            </a>
+                            <h3 id="servicio-2-titulo" class="font-title text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors">Distribución</h3>
+                            <p id="servicio-2-desc" class="text-jht-text-secondary text-sm leading-relaxed">Optimización de rutas para entregas capilares oportunas.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="jht-card overflow-hidden group">
+                        <div class="h-48 relative overflow-hidden bg-jht-gray">
+                            <video id="servicio-3-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                <source src="../assets/videos/flota/FlotaPesada.mp4" type="video/mp4">
+                            </video>
+                            <div class="absolute inset-0 bg-jht-dark/20 group-hover:bg-transparent transition-colors"></div>
+                            <div class="absolute top-4 right-4 bg-jht-gold text-jht-dark p-2 rounded shadow-md z-10">
+                                <span class="material-symbols-outlined">markunread_mailbox</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 id="servicio-3-titulo" class="font-title text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors">Courier</h3>
+                            <p id="servicio-3-desc" class="text-jht-text-secondary text-sm leading-relaxed">Servicio de mensajería rápida para documentos y paquetes pequeños.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="jht-card overflow-hidden group">
+                        <div class="h-48 relative overflow-hidden bg-jht-gray">
+                            <img id="servicio-4-imagen" src="../assets/images/servicios/Banner_Mudanza.webp" alt="Mudanzas" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-jht-dark/20 group-hover:bg-transparent transition-colors"></div>
+                            <div class="absolute top-4 right-4 bg-jht-gold text-jht-dark p-2 rounded shadow-md z-10">
+                                <span class="material-symbols-outlined">home_work</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 id="servicio-4-titulo" class="font-title text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors">Mudanzas</h3>
+                            <p id="servicio-4-desc" class="text-jht-text-secondary text-sm leading-relaxed">Traslados corporativos y residenciales con embalaje especializado.</p>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="bg-white p-8 rounded-xl shadow-sm border border-jht-gray-dark/20">
-                <h2 class="font-title text-2xl font-bold text-jht-dark mb-6">Formularios (4.4 Widget de Seguimiento)</h2>
-                <div class="bg-jht-gray rounded-2xl p-6 md:p-8 relative">
-                    <h3 class="font-title text-xl font-bold text-jht-dark mb-2">Rastrea tu envío</h3>
-                    <p class="text-sm text-jht-blue-support mb-6 italic">¡Estamos al pendiente de tu envío!</p>
+                <!-- Carrusel Alpine -->
+                <div x-data="{ 
+                        activeSlide: 1, 
+                        slides: [
+                            { id: 'servicios-carrusel-1', src: '../assets/images/servicios/Banner_Almacenaje.webp', alt: 'Almacenaje Seguro' },
+                            { id: 'servicios-carrusel-2', src: '../assets/images/servicios/Banner_CargaRefrigerada.webp', alt: 'Carga Refrigerada' },
+                            { id: 'servicios-carrusel-3', src: '../assets/images/servicios/Banner_Distribución.webp', alt: 'Distribución Nacional' }
+                        ],
+                        next() { this.activeSlide = this.activeSlide === this.slides.length ? 1 : this.activeSlide + 1 },
+                        prev() { this.activeSlide = this.activeSlide === 1 ? this.slides.length : this.activeSlide - 1 }
+                    }" 
+                    x-init="setInterval(() => next(), 5000)"
+                    class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-2xl group border-t-4 border-jht-gold">
                     
-                    <form class="flex flex-col md:flex-row gap-4">
-                        <div class="flex-grow">
-                            <input type="text" placeholder="Ingresa tu número de guía..." class="jht-input w-full">
-                        </div>
-                        <button type="submit" class="inline-flex items-center justify-center bg-jht-gold text-jht-dark font-title font-semibold py-3 px-8 rounded transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#FFD400]/40">
-                            Buscar Envío
+                    <!-- Contenedor de imágenes -->
+                    <div class="relative h-64 md:h-[500px]">
+                        <template x-for="slide in slides" :key="slide.id">
+                            <div x-show="activeSlide === slides.indexOf(slide) + 1" 
+                                 x-transition:enter="transition ease-out duration-700"
+                                 x-transition:enter-start="opacity-0 translate-x-12 scale-105"
+                                 x-transition:enter-end="opacity-100 translate-x-0 scale-100"
+                                 x-transition:leave="transition ease-in duration-500 absolute top-0 left-0 w-full h-full"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 class="absolute inset-0">
+                                <img :id="slide.id" :src="slide.src" :alt="slide.alt" class="w-full h-full object-cover">
+                                <!-- Capa de texto sobre imagen -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-jht-dark/90 via-jht-dark/30 to-transparent flex items-end">
+                                    <div class="p-8 md:p-12 w-full transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
+                                        <h3 class="font-title text-2xl md:text-4xl font-bold text-white mb-2" x-text="slide.alt"></h3>
+                                        <div class="w-16 h-1 bg-jht-gold rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Botones de Control -->
+                    <button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+
+                    <!-- Indicadores Puntos -->
+                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+                        <template x-for="slide in slides">
+                            <button @click="activeSlide = slides.indexOf(slide) + 1" 
+                                    :class="{'w-8 bg-jht-gold': activeSlide === slides.indexOf(slide) + 1, 'w-3 bg-white/60 hover:bg-white': activeSlide !== slides.indexOf(slide) + 1}"
+                                    class="h-3 rounded-full shadow-md transition-all duration-300"></button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Flota -->
+        <section id="flota" class="py-24 bg-jht-gray relative">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="flota-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Nuestra Flota</h2>
+                    <p id="flota-subtitulo" class="text-lg text-jht-text-secondary max-w-2xl mx-auto">
+                        Vehículos modernos equipados con tecnología de rastreo satelital.
+                    </p>
+                </div>
+
+                <!-- Tabs Container Alpine -->
+                <div x-data="{ activeTab: 'liviana' }" class="mb-20">
+                    <!-- Tab Headers -->
+                    <div class="flex justify-center space-x-2 md:space-x-8 mb-12 border-b border-jht-gray-dark/30">
+                        <button @click="activeTab = 'liviana'" 
+                                :class="{'border-b-4 border-jht-gold text-jht-dark font-bold': activeTab === 'liviana', 'border-b-4 border-transparent text-jht-text-secondary hover:text-jht-dark': activeTab !== 'liviana'}"
+                                class="pb-4 px-4 font-title text-lg transition-all duration-300">
+                            Liviana
                         </button>
-                    </form>
+                        <button @click="activeTab = 'mediana'" 
+                                :class="{'border-b-4 border-jht-gold text-jht-dark font-bold': activeTab === 'mediana', 'border-b-4 border-transparent text-jht-text-secondary hover:text-jht-dark': activeTab !== 'mediana'}"
+                                class="pb-4 px-4 font-title text-lg transition-all duration-300">
+                            Mediana
+                        </button>
+                        <button @click="activeTab = 'pesada'" 
+                                :class="{'border-b-4 border-jht-gold text-jht-dark font-bold': activeTab === 'pesada', 'border-b-4 border-transparent text-jht-text-secondary hover:text-jht-dark': activeTab !== 'pesada'}"
+                                class="pb-4 px-4 font-title text-lg transition-all duration-300">
+                            Pesada
+                        </button>
+                    </div>
+
+                    <!-- Tab Contents -->
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden p-8 border-t-4 border-jht-gold">
+                        <!-- Liviana -->
+                        <div x-show="activeTab === 'liviana'" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div class="order-2 md:order-1">
+                                <h3 class="font-title text-2xl font-bold text-jht-dark mb-4">Flota Liviana</h3>
+                                <p id="flota-liviana-desc" class="text-jht-text-secondary mb-6 leading-relaxed">Vehículo multiusos diseñado para operaciones logísticas urbanas y regionales.</p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center text-jht-dark">
+                                        <span class="material-symbols-outlined text-jht-gold mr-3">weight</span>
+                                        <strong>Capacidad:</strong> <span id="flota-liviana-capacidad" class="ml-2">1-5 Toneladas</span>
+                                    </li>
+                                    <li class="flex items-center text-jht-dark">
+                                        <span class="material-symbols-outlined text-jht-gold mr-3">straighten</span>
+                                        <strong>Medidas:</strong> <span id="flota-liviana-medidas" class="ml-2">Largo 6m | Ancho 2m | Altura 2m</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="order-1 md:order-2 h-64 md:h-80 relative rounded-xl overflow-hidden shadow-lg">
+                                <video id="flota-liviana-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                                    <source src="../assets/videos/flota/FlotaLiviana.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+
+                        <!-- Mediana -->
+                        <div x-show="activeTab === 'mediana'" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" x-cloak>
+                            <div class="order-2 md:order-1">
+                                <h3 class="font-title text-2xl font-bold text-jht-dark mb-4">Flota Mediana</h3>
+                                <p id="flota-mediana-desc" class="text-jht-text-secondary mb-6 leading-relaxed">Flota profesional diseñada para operaciones logísticas de alto tonelaje.</p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center text-jht-dark">
+                                        <span class="material-symbols-outlined text-jht-gold mr-3">weight</span>
+                                        <strong>Capacidad:</strong> <span id="flota-mediana-capacidad" class="ml-2">10-15 Toneladas</span>
+                                    </li>
+                                    <li class="flex items-center text-jht-dark">
+                                        <span class="material-symbols-outlined text-jht-gold mr-3">straighten</span>
+                                        <strong>Medidas:</strong> <span id="flota-mediana-medidas" class="ml-2">Largo 8m | Ancho 2.5m | Altura 2.5m</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="order-1 md:order-2 h-64 md:h-80 relative rounded-xl overflow-hidden shadow-lg">
+                                <video id="flota-mediana-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                                    <source src="../assets/videos/flota/FlotaMedia.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+
+                        <!-- Pesada -->
+                        <div x-show="activeTab === 'pesada'" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center" x-cloak>
+                            <div class="order-2 md:order-1">
+                                <h3 class="font-title text-2xl font-bold text-jht-dark mb-4">Flota Pesada</h3>
+                                <p id="flota-pesada-desc" class="text-jht-text-secondary mb-6 leading-relaxed">Diseñado para el transporte eficiente de cargas medianas a pesadas.</p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center text-jht-dark">
+                                        <span class="material-symbols-outlined text-jht-gold mr-3">weight</span>
+                                        <strong>Capacidad:</strong> <span id="flota-pesada-capacidad" class="ml-2">25-28 Toneladas</span>
+                                    </li>
+                                    <li class="flex items-center text-jht-dark">
+                                        <span class="material-symbols-outlined text-jht-gold mr-3">straighten</span>
+                                        <strong>Medidas:</strong> <span id="flota-pesada-medidas" class="ml-2">Largo 12.5m | Ancho 2.5m | Altura 2.7m</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="order-1 md:order-2 h-64 md:h-80 relative rounded-xl overflow-hidden shadow-lg">
+                                <video id="flota-pesada-video" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                                    <source src="../assets/videos/flota/FlotaPesada.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carrusel Alpine Flota -->
+                <div x-data="{ 
+                        activeSlide: 1, 
+                        slides: [
+                            { id: 'flota-carrusel-1', src: '../assets/images/flota/banner_1.webp', alt: 'Flota Moderna' },
+                            { id: 'flota-carrusel-2', src: '../assets/images/flota/banner_dia_2.webp', alt: 'Transporte Diurno' },
+                            { id: 'flota-carrusel-3', src: '../assets/images/flota/banner_noche_3.webp', alt: 'Operaciones Nocturnas' }
+                        ],
+                        next() { this.activeSlide = this.activeSlide === this.slides.length ? 1 : this.activeSlide + 1 },
+                        prev() { this.activeSlide = this.activeSlide === 1 ? this.slides.length : this.activeSlide - 1 }
+                    }" 
+                    x-init="setInterval(() => next(), 5000)"
+                    class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-2xl group border-t-4 border-jht-dark">
+                    
+                    <!-- Contenedor de imágenes -->
+                    <div class="relative h-64 md:h-[400px]">
+                        <template x-for="slide in slides" :key="slide.id">
+                            <div x-show="activeSlide === slides.indexOf(slide) + 1" 
+                                 x-transition:enter="transition ease-out duration-700"
+                                 x-transition:enter-start="opacity-0 translate-x-12 scale-105"
+                                 x-transition:enter-end="opacity-100 translate-x-0 scale-100"
+                                 x-transition:leave="transition ease-in duration-500 absolute top-0 left-0 w-full h-full"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 class="absolute inset-0">
+                                <img :id="slide.id" :src="slide.src" :alt="slide.alt" class="w-full h-full object-cover">
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Botones de Control -->
+                    <button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+
+                    <!-- Indicadores Puntos -->
+                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+                        <template x-for="slide in slides">
+                            <button @click="activeSlide = slides.indexOf(slide) + 1" 
+                                    :class="{'w-8 bg-jht-gold': activeSlide === slides.indexOf(slide) + 1, 'w-3 bg-white/60 hover:bg-white': activeSlide !== slides.indexOf(slide) + 1}"
+                                    class="h-3 rounded-full shadow-md transition-all duration-300"></button>
+                        </template>
+                    </div>
                 </div>
             </div>
+        </section>
 
-        </div>
+        <!-- Sección Sobre Nosotros -->
+        <section id="nosotros" class="py-24 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="nosotros-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Sobre Nosotros</h2>
+                    <p id="nosotros-subtitulo" class="text-lg text-jht-text-secondary max-w-2xl mx-auto">
+                        Más de 10 años conectando empresas con soluciones logísticas confiables y eficientes.
+                    </p>
+                </div>
+
+                <!-- Valores con Videos -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <h3 class="font-title text-2xl font-bold text-jht-dark mb-6">Nuestra Misión</h3>
+                        <p id="nosotros-mision" class="text-jht-text-secondary leading-relaxed mb-8">
+                            Brindar servicios logísticos integrales con los más altos estándares de calidad, seguridad y tecnología, garantizando la satisfacción de nuestros clientes en cada envío.
+                        </p>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center p-4 bg-jht-gray rounded-xl">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl mb-2">verified</span>
+                                <p class="font-title font-bold text-jht-dark text-sm">Confianza</p>
+                            </div>
+                            <div class="text-center p-4 bg-jht-gray rounded-xl">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl mb-2">speed</span>
+                                <p class="font-title font-bold text-jht-dark text-sm">Rapidez</p>
+                            </div>
+                            <div class="text-center p-4 bg-jht-gray rounded-xl">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl mb-2">security</span>
+                                <p class="font-title font-bold text-jht-dark text-sm">Seguridad</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="h-48 md:h-64 rounded-xl overflow-hidden shadow-lg">
+                            <video id="nosotros-video-1" autoplay loop muted playsinline class="w-full h-full object-cover">
+                                <source src="../assets/videos/landing/Coordenadas_Continentes.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="h-48 md:h-64 rounded-xl overflow-hidden shadow-lg mt-8">
+                            <video id="nosotros-video-2" autoplay loop muted playsinline class="w-full h-full object-cover">
+                                <source src="../assets/videos/landing/CoberturaMapa_LandingPage.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carrusel Nosotros -->
+                <div x-data="{ 
+                        activeSlide: 1, 
+                        slides: [
+                            { id: 'nosotros-carrusel-1', src: '../assets/images/nosotros/banner_1.webp', alt: 'Equipo JHT' },
+                            { id: 'nosotros-carrusel-2', src: '../assets/images/nosotros/banner_2.webp', alt: 'Operaciones' },
+                            { id: 'nosotros-carrusel-3', src: '../assets/images/nosotros/banner_3.webp', alt: 'Compromiso' }
+                        ],
+                        next() { this.activeSlide = this.activeSlide === this.slides.length ? 1 : this.activeSlide + 1 },
+                        prev() { this.activeSlide = this.activeSlide === 1 ? this.slides.length : this.activeSlide - 1 }
+                    }" 
+                    x-init="setInterval(() => next(), 5000)"
+                    class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-2xl group border-t-4 border-jht-blue-support mb-20">
+                    
+                    <div class="relative h-64 md:h-[400px]">
+                        <template x-for="slide in slides" :key="slide.id">
+                            <div x-show="activeSlide === slides.indexOf(slide) + 1" 
+                                 x-transition:enter="transition ease-out duration-700"
+                                 x-transition:enter-start="opacity-0 translate-x-12 scale-105"
+                                 x-transition:enter-end="opacity-100 translate-x-0 scale-100"
+                                 x-transition:leave="transition ease-in duration-500 absolute top-0 left-0 w-full h-full"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 class="absolute inset-0">
+                                <img :id="slide.id" :src="slide.src" :alt="slide.alt" class="w-full h-full object-cover">
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Botones de Control -->
+                    <button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+
+                    <!-- Indicadores -->
+                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+                        <template x-for="slide in slides">
+                            <button @click="activeSlide = slides.indexOf(slide) + 1" 
+                                    :class="{'w-8 bg-jht-gold': activeSlide === slides.indexOf(slide) + 1, 'w-3 bg-white/60 hover:bg-white': activeSlide !== slides.indexOf(slide) + 1}"
+                                    class="h-3 rounded-full shadow-md transition-all duration-300"></button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nuestros Clientes Opinan -->
+        <section id="clientes" class="py-24 bg-jht-gray relative">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="clientes-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Nuestros Clientes Opinan</h2>
+                </div>
+
+                <!-- Grid de Logos (gris → color al hover) -->
+                <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6 items-center mb-20">
+                    <div id="cliente-1" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/Alicorp.png" alt="Alicorp" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-2" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/inkafarma.jpg" alt="Inkafarma" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-3" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/sewEurodrive.jpg" alt="SEW Eurodrive" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-4" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/linde.png" alt="Linde" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-5" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/Movitecnica.jpg" alt="Movitécnica" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-6" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/ibermatica.jpg" alt="Ibermática" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-7" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/inkacrops.jpg" alt="Inka Crops" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-8" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/quimicaBrisas.gif" alt="Química Brisas" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-9" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/lubtec.jpg" alt="Lubtec" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                </div>
+
+                <!-- Testimonios -->
+                <div class="text-center mb-12">
+                    <h3 id="testimonios-titulo" class="font-title text-2xl md:text-3xl font-bold text-jht-dark mb-4">Lo que dicen de nosotros</h3>
+                </div>
+
+                <div x-data="{ activeTestimonio: 1 }" class="max-w-4xl mx-auto">
+                    <div class="relative bg-white rounded-2xl shadow-xl p-8 md:p-12 border-t-4 border-jht-gold">
+                        <!-- Testimonio 1 -->
+                        <div id="testimonio-1" x-show="activeTestimonio === 1" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-6 bg-jht-gold/20 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl">format_quote</span>
+                            </div>
+                            <p class="text-jht-text-secondary text-lg leading-relaxed mb-6 italic">
+                                "JHT Transport ha sido un aliado estratégico para nuestra cadena de suministro. Su puntualidad y compromiso son excepcionales."
+                            </p>
+                            <p class="font-title font-bold text-jht-dark">Carlos Mendoza</p>
+                            <p class="text-sm text-jht-text-secondary">Gerente de Logística — Alicorp</p>
+                        </div>
+
+                        <!-- Testimonio 2 -->
+                        <div id="testimonio-2" x-show="activeTestimonio === 2" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="text-center" x-cloak>
+                            <div class="w-16 h-16 mx-auto mb-6 bg-jht-gold/20 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl">format_quote</span>
+                            </div>
+                            <p class="text-jht-text-secondary text-lg leading-relaxed mb-6 italic">
+                                "La tecnología de rastreo en tiempo real nos da total visibilidad de nuestras cargas. Un servicio de primer nivel."
+                            </p>
+                            <p class="font-title font-bold text-jht-dark">María Elena Ríos</p>
+                            <p class="text-sm text-jht-text-secondary">Directora de Operaciones — Inkafarma</p>
+                        </div>
+
+                        <!-- Testimonio 3 -->
+                        <div id="testimonio-3" x-show="activeTestimonio === 3" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="text-center" x-cloak>
+                            <div class="w-16 h-16 mx-auto mb-6 bg-jht-gold/20 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl">format_quote</span>
+                            </div>
+                            <p class="text-jht-text-secondary text-lg leading-relaxed mb-6 italic">
+                                "Confiamos en JHT para nuestras cargas sobredimensionadas. Su equipo siempre encuentra la mejor solución."
+                            </p>
+                            <p class="font-title font-bold text-jht-dark">Roberto Guzmán</p>
+                            <p class="text-sm text-jht-text-secondary">Jefe de Compras — SEW Eurodrive</p>
+                        </div>
+
+                        <!-- Indicadores de testimonio -->
+                        <div class="flex justify-center space-x-3 mt-8">
+                            <button @click="activeTestimonio = 1" :class="{'bg-jht-gold w-8': activeTestimonio === 1, 'bg-jht-gray-dark/30 w-3 hover:bg-jht-gray-dark/50': activeTestimonio !== 1}" class="h-3 rounded-full transition-all duration-300"></button>
+                            <button @click="activeTestimonio = 2" :class="{'bg-jht-gold w-8': activeTestimonio === 2, 'bg-jht-gray-dark/30 w-3 hover:bg-jht-gray-dark/50': activeTestimonio !== 2}" class="h-3 rounded-full transition-all duration-300"></button>
+                            <button @click="activeTestimonio = 3" :class="{'bg-jht-gold w-8': activeTestimonio === 3, 'bg-jht-gray-dark/30 w-3 hover:bg-jht-gray-dark/50': activeTestimonio !== 3}" class="h-3 rounded-full transition-all duration-300"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto" class="py-24 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="contacto-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">¿Listo para optimizar tu logística?</h2>
+                    <p id="contacto-subtitulo" class="text-lg text-jht-text-secondary max-w-2xl mx-auto">
+                        Contáctanos y descubre cómo podemos ayudarte.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+                    <!-- Formulario -->
+                    <div class="bg-jht-gray rounded-2xl p-8 md:p-10 shadow-lg border-t-4 border-jht-gold relative">
+                        <h3 class="font-title text-2xl font-bold text-jht-dark mb-2">Envíanos un mensaje</h3>
+                        <p class="text-sm text-jht-text-secondary mb-8 italic">¡Estamos al pendiente de tu solicitud!</p>
+                        <form id="contacto-form" novalidate>
+                            <div class="space-y-6">
+                                <!-- Nombre -->
+                                <div>
+                                    <label for="contacto-nombre" class="block font-title font-semibold text-jht-dark text-sm mb-2">Nombre completo</label>
+                                    <input 
+                                        type="text" 
+                                        id="contacto-nombre" 
+                                        name="nombre" 
+                                        placeholder="Tu nombre completo" 
+                                        class="jht-input w-full transition-all duration-300 focus:border-jht-dark focus:shadow-[0_0_0_3px_rgba(26,59,107,0.15)] focus:outline-none" 
+                                        required
+                                    >
+                                    <p id="error-nombre" class="text-red-500 text-xs mt-1 hidden transition-all">Por favor, ingresa tu nombre.</p>
+                                </div>
+                                <!-- Email -->
+                                <div>
+                                    <label for="contacto-email" class="block font-title font-semibold text-jht-dark text-sm mb-2">Correo electrónico</label>
+                                    <input 
+                                        type="email" 
+                                        id="contacto-email" 
+                                        name="email" 
+                                        placeholder="tucorreo@empresa.com" 
+                                        class="jht-input w-full transition-all duration-300 focus:border-jht-dark focus:shadow-[0_0_0_3px_rgba(26,59,107,0.15)] focus:outline-none" 
+                                        required
+                                    >
+                                    <p id="error-email" class="text-red-500 text-xs mt-1 hidden transition-all">Por favor, ingresa un correo electrónico válido.</p>
+                                </div>
+                                <!-- Teléfono -->
+                                <div>
+                                    <label for="contacto-telefono" class="block font-title font-semibold text-jht-dark text-sm mb-2">Teléfono</label>
+                                    <input 
+                                        type="tel" 
+                                        id="contacto-telefono" 
+                                        name="telefono" 
+                                        placeholder="+51 999 999 999" 
+                                        class="jht-input w-full transition-all duration-300 focus:border-jht-dark focus:shadow-[0_0_0_3px_rgba(26,59,107,0.15)] focus:outline-none" 
+                                        required
+                                    >
+                                    <p id="error-telefono" class="text-red-500 text-xs mt-1 hidden transition-all">Por favor, ingresa tu número de teléfono.</p>
+                                </div>
+                                <!-- Mensaje -->
+                                <div>
+                                    <label for="contacto-mensaje" class="block font-title font-semibold text-jht-dark text-sm mb-2">Mensaje</label>
+                                    <textarea 
+                                        id="contacto-mensaje" 
+                                        name="mensaje" 
+                                        rows="4" 
+                                        placeholder="Cuéntanos sobre tu necesidad logística..." 
+                                        class="jht-input w-full resize-none transition-all duration-300 focus:border-jht-dark focus:shadow-[0_0_0_3px_rgba(26,59,107,0.15)] focus:outline-none" 
+                                        required
+                                    ></textarea>
+                                    <p id="error-mensaje" class="text-red-500 text-xs mt-1 hidden transition-all">Por favor, escribe tu mensaje.</p>
+                                </div>
+                                <!-- Botón Enviar (spec 3.4: hover scale + sombra amarilla) -->
+                                <button 
+                                    type="submit" 
+                                    id="contacto-boton" 
+                                    class="inline-flex items-center justify-center w-full bg-jht-gold text-jht-dark font-title font-semibold text-lg py-4 rounded transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#FFD400]/40 active:scale-[0.98]"
+                                >
+                                    <span class="material-symbols-outlined mr-2">send</span>
+                                    Enviar mensaje
+                                </button>
+                            </div>
+                        </form>
+                        <!-- Mensaje de éxito (oculto por defecto) -->
+                        <div id="contacto-exito" class="hidden text-center py-12 animate-fade-in-up">
+                            <div class="w-20 h-20 mx-auto mb-6 bg-green-100 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-green-500 text-5xl">check_circle</span>
+                            </div>
+                            <p class="font-title font-bold text-jht-dark text-2xl mb-2">¡Mensaje enviado!</p>
+                            <p class="text-jht-text-secondary mb-6">Nos pondremos en contacto contigo pronto.</p>
+                            <button onclick="resetFormulario()" class="text-jht-dark font-title font-semibold text-sm underline hover:text-jht-gold transition-colors">Enviar otro mensaje</button>
+                        </div>
+                    </div>
+
+                    <!-- Datos de Contacto + Mapa -->
+                    <div class="flex flex-col justify-between space-y-8">
+                        <!-- Datos -->
+                        <div class="space-y-6">
+                            <!-- Teléfono -->
+                            <div class="flex items-start space-x-5 group cursor-pointer">
+                                <div class="bg-jht-gold/20 p-4 rounded-xl group-hover:bg-jht-gold group-hover:scale-[1.05] transition-all duration-300">
+                                    <span class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark text-2xl transition-colors duration-300">call</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-title font-bold text-jht-dark mb-1">Teléfono</h4>
+                                    <a href="tel:+51935833467" id="contacto-telefono-info" class="text-jht-text-secondary hover:text-jht-gold transition-colors duration-300">(+51) 935 833 467</a>
+                                </div>
+                            </div>
+                            <!-- Email -->
+                            <div class="flex items-start space-x-5 group cursor-pointer">
+                                <div class="bg-jht-gold/20 p-4 rounded-xl group-hover:bg-jht-gold group-hover:scale-[1.05] transition-all duration-300">
+                                    <span class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark text-2xl transition-colors duration-300">mail</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-title font-bold text-jht-dark mb-1">Email</h4>
+                                    <a href="mailto:info@jhttransport.com" id="contacto-email-info" class="text-jht-text-secondary hover:text-jht-gold transition-colors duration-300">info@jhttransport.com</a>
+                                </div>
+                            </div>
+                            <!-- Dirección -->
+                            <div class="flex items-start space-x-5 group cursor-pointer">
+                                <div class="bg-jht-gold/20 p-4 rounded-xl group-hover:bg-jht-gold group-hover:scale-[1.05] transition-all duration-300">
+                                    <span class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark text-2xl transition-colors duration-300">location_on</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-title font-bold text-jht-dark mb-1">Dirección</h4>
+                                    <p id="contacto-direccion" class="text-jht-text-secondary">Santa Anita, Lima - Perú</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Ubicación (spec sección 3: 1 video en Contacto) -->
+                        <div class="h-40 md:h-48 rounded-2xl overflow-hidden shadow-lg">
+                            <video id="contacto-video" autoplay loop muted playsinline class="w-full h-full object-cover">
+                                <source src="../assets/videos/landing/CoberturaMapa_LandingPage.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Google Maps Embebido (Santa Anita, Lima) -->
+                        <div class="h-56 md:h-64 rounded-2xl overflow-hidden shadow-lg border-2 border-jht-gray-dark/20">
+                            <iframe 
+                                id="contacto-mapa"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31209.341453038!2d-76.9783!3d-12.0432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c5f3a62a6b0d%3A0x53e3f85e1b7c5a1!2sSanta%20Anita%2C%20Lima!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Ubicación JHT Transport - Santa Anita, Lima"
+                            ></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carrusel Contacto -->
+                <div x-data="{ 
+                        activeSlide: 1, 
+                        slides: [
+                            { id: 'contacto-carrusel-1', src: '../assets/images/contacto/banner_dia_2.webp', alt: 'Operaciones Diurnas' },
+                            { id: 'contacto-carrusel-2', src: '../assets/images/contacto/banner_dia_cola_3.webp', alt: 'Flota en Ruta' },
+                            { id: 'contacto-carrusel-3', src: '../assets/images/contacto/banner_noche_1.webp', alt: 'Operaciones Nocturnas' }
+                        ],
+                        next() { this.activeSlide = this.activeSlide === this.slides.length ? 1 : this.activeSlide + 1 },
+                        prev() { this.activeSlide = this.activeSlide === 1 ? this.slides.length : this.activeSlide - 1 }
+                    }" 
+                    x-init="setInterval(() => next(), 5000)"
+                    class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-2xl group border-t-4 border-jht-gold">
+                    
+                    <div class="relative h-64 md:h-[400px]">
+                        <template x-for="slide in slides" :key="slide.id">
+                            <div x-show="activeSlide === slides.indexOf(slide) + 1" 
+                                 x-transition:enter="transition ease-out duration-700"
+                                 x-transition:enter-start="opacity-0 translate-x-12 scale-105"
+                                 x-transition:enter-end="opacity-100 translate-x-0 scale-100"
+                                 x-transition:leave="transition ease-in duration-500 absolute top-0 left-0 w-full h-full"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 class="absolute inset-0">
+                                <img :id="slide.id" :src="slide.src" :alt="slide.alt" class="w-full h-full object-cover">
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Botones de Control -->
+                    <button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+
+                    <!-- Indicadores -->
+                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+                        <template x-for="slide in slides">
+                            <button @click="activeSlide = slides.indexOf(slide) + 1" 
+                                    :class="{'w-8 bg-jht-gold': activeSlide === slides.indexOf(slide) + 1, 'w-3 bg-white/60 hover:bg-white': activeSlide !== slides.indexOf(slide) + 1}"
+                                    class="h-3 rounded-full shadow-md transition-all duration-300"></button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- Validación del Formulario de Contacto (Vanilla JS) -->
+    <script>
+        (function() {
+            'use strict';
+
+            const form = document.getElementById('contacto-form');
+            if (!form) return;
+
+            // Validación en tiempo real al perder el foco (blur)
+            const campos = [
+                { id: 'contacto-nombre',   errorId: 'error-nombre',   validar: v => v.trim().length > 0 },
+                { id: 'contacto-email',    errorId: 'error-email',    validar: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+                { id: 'contacto-telefono', errorId: 'error-telefono', validar: v => v.trim().length >= 7 },
+                { id: 'contacto-mensaje',  errorId: 'error-mensaje',  validar: v => v.trim().length > 0 }
+            ];
+
+            // Agregar evento blur a cada campo para validación en tiempo real
+            campos.forEach(campo => {
+                const el = document.getElementById(campo.id);
+                if (!el) return;
+
+                el.addEventListener('blur', function() {
+                    validarCampo(campo, el);
+                });
+
+                // Limpiar error cuando el usuario empieza a escribir
+                el.addEventListener('input', function() {
+                    if (campo.validar(el.value)) {
+                        limpiarError(campo, el);
+                    }
+                });
+            });
+
+            // Envío del formulario
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let formularioValido = true;
+
+                campos.forEach(campo => {
+                    const el = document.getElementById(campo.id);
+                    if (!validarCampo(campo, el)) {
+                        formularioValido = false;
+                    }
+                });
+
+                if (formularioValido) {
+                    // Ocultar formulario con animación y mostrar éxito
+                    form.style.opacity = '0';
+                    form.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        form.classList.add('hidden');
+                        form.style.opacity = '';
+                        form.style.transform = '';
+                        document.getElementById('contacto-exito').classList.remove('hidden');
+                    }, 300);
+                }
+            });
+
+            function validarCampo(campo, el) {
+                const errorEl = document.getElementById(campo.errorId);
+                if (!campo.validar(el.value)) {
+                    errorEl.classList.remove('hidden');
+                    el.classList.add('border-red-500');
+                    el.classList.remove('border-jht-dark');
+                    return false;
+                } else {
+                    limpiarError(campo, el);
+                    return true;
+                }
+            }
+
+            function limpiarError(campo, el) {
+                const errorEl = document.getElementById(campo.errorId);
+                errorEl.classList.add('hidden');
+                el.classList.remove('border-red-500');
+            }
+        })();
+
+        function resetFormulario() {
+            const form = document.getElementById('contacto-form');
+            form.reset();
+            form.classList.remove('hidden');
+            document.getElementById('contacto-exito').classList.add('hidden');
+        }
+    </script>
 
     <!-- Footer -->
     <footer class="bg-jht-dark text-white pt-16 pb-8">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div class="col-span-1 md:col-span-1">
-                <img src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Transport" class="h-12 w-auto mb-6 opacity-90">
+                <img id="footer-logo" src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Transport" class="h-12 w-auto mb-6 opacity-90">
                 <p class="text-jht-gray font-sans text-sm leading-relaxed">
                     La Calidez de la Confianza. Cuidamos tu carga como si fuera nuestra.
                 </p>
@@ -191,7 +903,7 @@
             </div>
         </div>
         <div class="container mx-auto px-6 pt-8 border-t border-jht-blue-support/30 flex flex-col md:flex-row justify-between items-center text-sm font-sans text-jht-gray/60">
-            <p class="mb-4 md:mb-0">&copy; 2026 JHT Transport. Todos los derechos reservados.</p>
+            <p id="footer-copyright" class="mb-4 md:mb-0">&copy; 2026 JHT Transport Company SAC. Todos los derechos reservados.</p>
             <div class="flex space-x-4">
                 <a href="#" class="hover:text-jht-gold transition-colors">Política de Privacidad</a>
                 <a href="#" class="hover:text-jht-gold transition-colors">Términos de Servicio</a>
