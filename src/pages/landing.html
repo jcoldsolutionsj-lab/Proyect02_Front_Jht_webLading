@@ -384,6 +384,193 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sección Sobre Nosotros -->
+        <section id="nosotros" class="py-24 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="nosotros-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Sobre Nosotros</h2>
+                    <p id="nosotros-subtitulo" class="text-lg text-jht-text-secondary max-w-2xl mx-auto">
+                        Más de 10 años conectando empresas con soluciones logísticas confiables y eficientes.
+                    </p>
+                </div>
+
+                <!-- Valores con Videos -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <h3 class="font-title text-2xl font-bold text-jht-dark mb-6">Nuestra Misión</h3>
+                        <p id="nosotros-mision" class="text-jht-text-secondary leading-relaxed mb-8">
+                            Brindar servicios logísticos integrales con los más altos estándares de calidad, seguridad y tecnología, garantizando la satisfacción de nuestros clientes en cada envío.
+                        </p>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center p-4 bg-jht-gray rounded-xl">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl mb-2">verified</span>
+                                <p class="font-title font-bold text-jht-dark text-sm">Confianza</p>
+                            </div>
+                            <div class="text-center p-4 bg-jht-gray rounded-xl">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl mb-2">speed</span>
+                                <p class="font-title font-bold text-jht-dark text-sm">Rapidez</p>
+                            </div>
+                            <div class="text-center p-4 bg-jht-gray rounded-xl">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl mb-2">security</span>
+                                <p class="font-title font-bold text-jht-dark text-sm">Seguridad</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="h-48 md:h-64 rounded-xl overflow-hidden shadow-lg">
+                            <video id="nosotros-video-1" autoplay loop muted playsinline class="w-full h-full object-cover">
+                                <source src="../assets/videos/landing/Coordenadas_Continentes.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="h-48 md:h-64 rounded-xl overflow-hidden shadow-lg mt-8">
+                            <video id="nosotros-video-2" autoplay loop muted playsinline class="w-full h-full object-cover">
+                                <source src="../assets/videos/landing/CoberturaMapa_LandingPage.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carrusel Nosotros -->
+                <div x-data="{ 
+                        activeSlide: 1, 
+                        slides: [
+                            { id: 'nosotros-carrusel-1', src: '../assets/images/nosotros/banner_1.webp', alt: 'Equipo JHT' },
+                            { id: 'nosotros-carrusel-2', src: '../assets/images/nosotros/banner_2.webp', alt: 'Operaciones' },
+                            { id: 'nosotros-carrusel-3', src: '../assets/images/nosotros/banner_3.webp', alt: 'Compromiso' }
+                        ],
+                        next() { this.activeSlide = this.activeSlide === this.slides.length ? 1 : this.activeSlide + 1 },
+                        prev() { this.activeSlide = this.activeSlide === 1 ? this.slides.length : this.activeSlide - 1 }
+                    }" 
+                    x-init="setInterval(() => next(), 5000)"
+                    class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-2xl group border-t-4 border-jht-blue-support mb-20">
+                    
+                    <div class="relative h-64 md:h-[400px]">
+                        <template x-for="slide in slides" :key="slide.id">
+                            <div x-show="activeSlide === slides.indexOf(slide) + 1" 
+                                 x-transition:enter="transition ease-out duration-700"
+                                 x-transition:enter-start="opacity-0 translate-x-12 scale-105"
+                                 x-transition:enter-end="opacity-100 translate-x-0 scale-100"
+                                 x-transition:leave="transition ease-in duration-500 absolute top-0 left-0 w-full h-full"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 class="absolute inset-0">
+                                <img :id="slide.id" :src="slide.src" :alt="slide.alt" class="w-full h-full object-cover">
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Botones de Control -->
+                    <button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+
+                    <!-- Indicadores -->
+                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+                        <template x-for="slide in slides">
+                            <button @click="activeSlide = slides.indexOf(slide) + 1" 
+                                    :class="{'w-8 bg-jht-gold': activeSlide === slides.indexOf(slide) + 1, 'w-3 bg-white/60 hover:bg-white': activeSlide !== slides.indexOf(slide) + 1}"
+                                    class="h-3 rounded-full shadow-md transition-all duration-300"></button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nuestros Clientes Opinan -->
+        <section id="clientes" class="py-24 bg-jht-gray relative">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="clientes-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Nuestros Clientes Opinan</h2>
+                </div>
+
+                <!-- Grid de Logos (gris → color al hover) -->
+                <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6 items-center mb-20">
+                    <div id="cliente-1" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/Alicorp.png" alt="Alicorp" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-2" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/inkafarma.jpg" alt="Inkafarma" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-3" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/sewEurodrive.jpg" alt="SEW Eurodrive" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-4" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/linde.png" alt="Linde" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-5" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/Movitecnica.jpg" alt="Movitécnica" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-6" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/ibermatica.jpg" alt="Ibermática" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-7" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/inkacrops.jpg" alt="Inka Crops" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-8" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/quimicaBrisas.gif" alt="Química Brisas" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                    <div id="cliente-9" class="bg-white rounded-xl p-4 shadow-sm hover:shadow-lg transition-all duration-300 flex items-center justify-center h-20">
+                        <img src="../assets/images/clientes/logos_1_1/lubtec.jpg" alt="Lubtec" class="max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100">
+                    </div>
+                </div>
+
+                <!-- Testimonios -->
+                <div class="text-center mb-12">
+                    <h3 id="testimonios-titulo" class="font-title text-2xl md:text-3xl font-bold text-jht-dark mb-4">Lo que dicen de nosotros</h3>
+                </div>
+
+                <div x-data="{ activeTestimonio: 1 }" class="max-w-4xl mx-auto">
+                    <div class="relative bg-white rounded-2xl shadow-xl p-8 md:p-12 border-t-4 border-jht-gold">
+                        <!-- Testimonio 1 -->
+                        <div id="testimonio-1" x-show="activeTestimonio === 1" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="text-center">
+                            <div class="w-16 h-16 mx-auto mb-6 bg-jht-gold/20 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl">format_quote</span>
+                            </div>
+                            <p class="text-jht-text-secondary text-lg leading-relaxed mb-6 italic">
+                                "JHT Transport ha sido un aliado estratégico para nuestra cadena de suministro. Su puntualidad y compromiso son excepcionales."
+                            </p>
+                            <p class="font-title font-bold text-jht-dark">Carlos Mendoza</p>
+                            <p class="text-sm text-jht-text-secondary">Gerente de Logística — Alicorp</p>
+                        </div>
+
+                        <!-- Testimonio 2 -->
+                        <div id="testimonio-2" x-show="activeTestimonio === 2" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="text-center" x-cloak>
+                            <div class="w-16 h-16 mx-auto mb-6 bg-jht-gold/20 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl">format_quote</span>
+                            </div>
+                            <p class="text-jht-text-secondary text-lg leading-relaxed mb-6 italic">
+                                "La tecnología de rastreo en tiempo real nos da total visibilidad de nuestras cargas. Un servicio de primer nivel."
+                            </p>
+                            <p class="font-title font-bold text-jht-dark">María Elena Ríos</p>
+                            <p class="text-sm text-jht-text-secondary">Directora de Operaciones — Inkafarma</p>
+                        </div>
+
+                        <!-- Testimonio 3 -->
+                        <div id="testimonio-3" x-show="activeTestimonio === 3" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="text-center" x-cloak>
+                            <div class="w-16 h-16 mx-auto mb-6 bg-jht-gold/20 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-jht-gold text-3xl">format_quote</span>
+                            </div>
+                            <p class="text-jht-text-secondary text-lg leading-relaxed mb-6 italic">
+                                "Confiamos en JHT para nuestras cargas sobredimensionadas. Su equipo siempre encuentra la mejor solución."
+                            </p>
+                            <p class="font-title font-bold text-jht-dark">Roberto Guzmán</p>
+                            <p class="text-sm text-jht-text-secondary">Jefe de Compras — SEW Eurodrive</p>
+                        </div>
+
+                        <!-- Indicadores de testimonio -->
+                        <div class="flex justify-center space-x-3 mt-8">
+                            <button @click="activeTestimonio = 1" :class="{'bg-jht-gold w-8': activeTestimonio === 1, 'bg-jht-gray-dark/30 w-3 hover:bg-jht-gray-dark/50': activeTestimonio !== 1}" class="h-3 rounded-full transition-all duration-300"></button>
+                            <button @click="activeTestimonio = 2" :class="{'bg-jht-gold w-8': activeTestimonio === 2, 'bg-jht-gray-dark/30 w-3 hover:bg-jht-gray-dark/50': activeTestimonio !== 2}" class="h-3 rounded-full transition-all duration-300"></button>
+                            <button @click="activeTestimonio = 3" :class="{'bg-jht-gold w-8': activeTestimonio === 3, 'bg-jht-gray-dark/30 w-3 hover:bg-jht-gray-dark/50': activeTestimonio !== 3}" class="h-3 rounded-full transition-all duration-300"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
