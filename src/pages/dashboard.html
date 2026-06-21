@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - JHT Transport</title>
+    <!-- Tailwind CSS Compilado -->
+    <link href="../css/style.css" rel="stylesheet">
+    <!-- Google Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    <!-- Chart.js para el gráfico -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        [x-cloak] { display: none !important; }
+        
+        /* Ocultar barra de desplazamiento en sidebar pero permitir scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-[#E3E4E5] text-jht-dark font-sans flex h-screen overflow-hidden" x-data="{ sidebarOpen: false }">
+
+    <!-- Overlay móvil -->
+    <div x-show="sidebarOpen" x-cloak class="fixed inset-0 bg-jht-dark/50 z-40 lg:hidden" @click="sidebarOpen = false" x-transition:enter="transition-opacity ease-linear duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition-opacity ease-linear duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
+
+    <!-- Sidebar -->
+    <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'" class="fixed inset-y-0 left-0 z-50 w-64 bg-[#021E5F] text-white transition-transform duration-300 ease-in-out lg:static lg:flex-shrink-0 flex flex-col shadow-xl">
+        <!-- Logo -->
+        <div class="h-20 flex items-center justify-center border-b border-white/10 shrink-0">
+            <img src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Logo" class="h-10 w-auto">
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto no-scrollbar py-6">
+            <ul class="space-y-2 px-3">
+                <!-- Dashboard (Activo) -->
+                <li>
+                    <a href="#" class="flex items-center px-4 py-3 bg-white/10 rounded-lg border-l-4 border-[#FFD400] text-white group transition-colors">
+                        <span class="material-symbols-outlined mr-3 text-[#FFD400]">dashboard</span>
+                        <span class="font-title font-semibold text-sm">Dashboard</span>
+                    </a>
+                </li>
+                <!-- Servicios -->
+                <li>
+                    <a href="#" class="flex items-center px-4 py-3 rounded-lg border-l-4 border-transparent text-white/70 hover:bg-white/5 hover:text-white hover:border-white/30 transition-all group">
+                        <span class="material-symbols-outlined mr-3">local_shipping</span>
+                        <span class="font-title font-medium text-sm">Servicios</span>
+                    </a>
+                </li>
+                <!-- Guías -->
+                <li>
+                    <a href="#" class="flex items-center px-4 py-3 rounded-lg border-l-4 border-transparent text-white/70 hover:bg-white/5 hover:text-white hover:border-white/30 transition-all group">
+                        <span class="material-symbols-outlined mr-3">receipt_long</span>
+                        <span class="font-title font-medium text-sm">Guías</span>
+                    </a>
+                </li>
+                <!-- Flota -->
+                <li>
+                    <a href="#" class="flex items-center px-4 py-3 rounded-lg border-l-4 border-transparent text-white/70 hover:bg-white/5 hover:text-white hover:border-white/30 transition-all group">
+                        <span class="material-symbols-outlined mr-3">directions_car</span>
+                        <span class="font-title font-medium text-sm">Flota</span>
+                    </a>
+                </li>
+                <!-- Clientes -->
+                <li>
+                    <a href="#" class="flex items-center px-4 py-3 rounded-lg border-l-4 border-transparent text-white/70 hover:bg-white/5 hover:text-white hover:border-white/30 transition-all group">
+                        <span class="material-symbols-outlined mr-3">group</span>
+                        <span class="font-title font-medium text-sm">Clientes</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="mt-8 px-6 text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">Sistema</div>
+            <ul class="space-y-2 px-3">
+                <!-- Configuración -->
+                <li>
+                    <a href="#" class="flex items-center px-4 py-3 rounded-lg border-l-4 border-transparent text-white/70 hover:bg-white/5 hover:text-white hover:border-white/30 transition-all group">
+                        <span class="material-symbols-outlined mr-3">settings</span>
+                        <span class="font-title font-medium text-sm">Configuración</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Cerrar Sesión -->
+        <div class="p-4 border-t border-white/10 shrink-0">
+            <a href="index.html" class="flex items-center justify-center px-4 py-3 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-colors group">
+                <span class="material-symbols-outlined mr-2">logout</span>
+                <span class="font-title font-semibold text-sm">Cerrar Sesión</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+        
+        <!-- Header -->
+        <header class="bg-white shadow-sm shrink-0 border-b border-gray-200">
+            <div class="flex items-center justify-between px-6 py-4">
+                <div class="flex items-center">
+                    <button @click="sidebarOpen = true" class="text-gray-500 hover:text-jht-dark lg:hidden mr-4 focus:outline-none">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                    <h1 class="font-title text-2xl font-bold text-jht-dark">Visión General</h1>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="bg-white p-2 rounded-full text-gray-500 hover:text-[#021E5F] hover:bg-gray-100 transition-colors relative">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 border-2 border-white rounded-full"></span>
+                    </button>
+                    <button class="flex items-center bg-[#FFD400] text-[#021E5F] font-title font-semibold px-4 py-2 rounded-lg hover:shadow-lg hover:shadow-[#FFD400]/30 hover:scale-[1.02] active:scale-95 transition-all">
+                        <span class="material-symbols-outlined mr-2 text-sm">add</span>
+                        <span class="text-sm">Nuevo Servicio</span>
+                    </button>
+                    <img src="https://ui-avatars.com/api/?name=Admin+JHT&background=021E5F&color=fff" alt="Perfil" class="w-10 h-10 rounded-full border-2 border-gray-200 ml-2 cursor-pointer hover:border-[#FFD400] transition-colors">
+                </div>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div class="flex-1 overflow-auto p-6 md:p-8">
+            <div class="max-w-7xl mx-auto space-y-8">
+                
+                <!-- Cards de Estadísticas -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-xl shadow-sm border-l-4 border-[#FFD400] p-6 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500 mb-1">Servicios Activos</p>
+                                <h3 class="text-3xl font-bold text-[#021E5F]">24</h3>
+                            </div>
+                            <div class="p-3 bg-yellow-50 rounded-lg">
+                                <span class="material-symbols-outlined text-[#FFD400]">inventory_2</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-green-600 mt-4 font-medium flex items-center">
+                            <span class="material-symbols-outlined text-xs mr-1">trending_up</span>
+                            ↑ 12% vs ayer
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-xl shadow-sm border-l-4 border-[#4CAF50] p-6 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500 mb-1">Entregas Completadas</p>
+                                <h3 class="text-3xl font-bold text-[#021E5F]">156</h3>
+                            </div>
+                            <div class="p-3 bg-green-50 rounded-lg">
+                                <span class="material-symbols-outlined text-[#4CAF50]">check_circle</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-green-600 mt-4 font-medium flex items-center">
+                            <span class="material-symbols-outlined text-xs mr-1">trending_up</span>
+                            ↑ 5% esta semana
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-xl shadow-sm border-l-4 border-red-500 p-6 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500 mb-1">Pendientes</p>
+                                <h3 class="text-3xl font-bold text-[#021E5F]">8</h3>
+                            </div>
+                            <div class="p-3 bg-red-50 rounded-lg">
+                                <span class="material-symbols-outlined text-red-500">pending_actions</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-red-500 mt-4 font-medium flex items-center">
+                            <span class="material-symbols-outlined text-xs mr-1">trending_down</span>
+                            ↓ 2 menos que ayer
+                        </p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white rounded-xl shadow-sm border-l-4 border-blue-500 p-6 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500 mb-1">Clientes Activos</p>
+                                <h3 class="text-3xl font-bold text-[#021E5F]">42</h3>
+                            </div>
+                            <div class="p-3 bg-blue-50 rounded-lg">
+                                <span class="material-symbols-outlined text-blue-500">groups</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-green-600 mt-4 font-medium flex items-center">
+                            <span class="material-symbols-outlined text-xs mr-1">trending_up</span>
+                            ↑ 3 nuevos este mes
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Gráfico y Actividad -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Gráfico -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 lg:col-span-2">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-title font-bold text-lg text-[#021E5F]">Servicios por Día (Última Semana)</h3>
+                            <select class="bg-gray-50 border border-gray-200 text-gray-700 text-sm rounded-lg focus:ring-[#021E5F] focus:border-[#021E5F] block p-2 outline-none">
+                                <option>Última Semana</option>
+                                <option>Último Mes</option>
+                            </select>
+                        </div>
+                        <div class="h-72 w-full">
+                            <canvas id="chartServicios"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Lista Resumen o Acciones Rápidas -->
+                    <div class="bg-white rounded-xl shadow-sm p-6 lg:col-span-1 flex flex-col">
+                        <h3 class="font-title font-bold text-lg text-[#021E5F] mb-6">Acciones Rápidas</h3>
+                        <div class="space-y-4 flex-1">
+                            <button class="w-full text-left p-4 rounded-lg border border-gray-100 hover:border-[#FFD400] hover:bg-yellow-50/50 transition-all group flex items-center">
+                                <div class="bg-yellow-100 text-[#FFD400] p-2 rounded-lg mr-4 group-hover:bg-[#FFD400] group-hover:text-[#021E5F] transition-colors">
+                                    <span class="material-symbols-outlined">add_box</span>
+                                </div>
+                                <div>
+                                    <p class="font-title font-semibold text-[#021E5F]">Crear Guía Remisión</p>
+                                    <p class="text-xs text-gray-500">Documento electrónico</p>
+                                </div>
+                            </button>
+                            <button class="w-full text-left p-4 rounded-lg border border-gray-100 hover:border-[#FFD400] hover:bg-yellow-50/50 transition-all group flex items-center">
+                                <div class="bg-blue-100 text-blue-500 p-2 rounded-lg mr-4 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined">local_shipping</span>
+                                </div>
+                                <div>
+                                    <p class="font-title font-semibold text-[#021E5F]">Asignar Unidad</p>
+                                    <p class="text-xs text-gray-500">Despacho de vehículos</p>
+                                </div>
+                            </button>
+                            <button class="w-full text-left p-4 rounded-lg border border-gray-100 hover:border-[#FFD400] hover:bg-yellow-50/50 transition-all group flex items-center">
+                                <div class="bg-green-100 text-green-500 p-2 rounded-lg mr-4 group-hover:bg-green-500 group-hover:text-white transition-colors">
+                                    <span class="material-symbols-outlined">person_add</span>
+                                </div>
+                                <div>
+                                    <p class="font-title font-semibold text-[#021E5F]">Nuevo Cliente</p>
+                                    <p class="text-xs text-gray-500">Registro en base de datos</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla Servicios Recientes -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="flex justify-between items-center p-6 border-b border-gray-100">
+                        <h3 class="font-title font-bold text-lg text-[#021E5F]">Servicios Recientes</h3>
+                        <a href="#" class="text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors">Ver todos →</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50/80 text-gray-500 text-xs uppercase tracking-wider font-semibold border-b border-gray-200">
+                                    <th class="p-4 pl-6">Guía</th>
+                                    <th class="p-4">Cliente</th>
+                                    <th class="p-4">Servicio</th>
+                                    <th class="p-4">Estado</th>
+                                    <th class="p-4">Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm divide-y divide-gray-100">
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="p-4 pl-6 font-medium text-[#021E5F]">#3241307995</td>
+                                    <td class="p-4">
+                                        <div class="flex items-center">
+                                            <div class="h-8 w-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xs mr-3">AL</div>
+                                            <span class="font-medium text-gray-800">Alicorp S.A.A.</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-gray-600">Transporte Pesado</td>
+                                    <td class="p-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#FFF3E0] text-[#E65100]">
+                                            <span class="w-1.5 h-1.5 mr-1.5 bg-[#E65100] rounded-full"></span>
+                                            En Ruta
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-gray-500">Hoy, 10:45 AM</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="p-4 pl-6 font-medium text-[#021E5F]">#3241307994</td>
+                                    <td class="p-4">
+                                        <div class="flex items-center">
+                                            <div class="h-8 w-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-xs mr-3">IN</div>
+                                            <span class="font-medium text-gray-800">Inkafarma</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-gray-600">Distribución Local</td>
+                                    <td class="p-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#E8F5E9] text-[#2E7D32]">
+                                            <span class="w-1.5 h-1.5 mr-1.5 bg-[#2E7D32] rounded-full"></span>
+                                            Completado
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-gray-500">Hoy, 08:30 AM</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="p-4 pl-6 font-medium text-[#021E5F]">#3241307993</td>
+                                    <td class="p-4">
+                                        <div class="flex items-center">
+                                            <div class="h-8 w-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-xs mr-3">SE</div>
+                                            <span class="font-medium text-gray-800">SEW Eurodrive</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-gray-600">Carga Sobredimensionada</td>
+                                    <td class="p-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#FFF3E0] text-[#E65100]">
+                                            <span class="w-1.5 h-1.5 mr-1.5 bg-[#E65100] rounded-full"></span>
+                                            En Ruta
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-gray-500">Ayer, 16:20 PM</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="p-4 pl-6 font-medium text-[#021E5F]">#3241307992</td>
+                                    <td class="p-4">
+                                        <div class="flex items-center">
+                                            <div class="h-8 w-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-xs mr-3">LI</div>
+                                            <span class="font-medium text-gray-800">Linde Perú</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-gray-600">Transporte Peligroso</td>
+                                    <td class="p-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#FFEBEE] text-[#C62828]">
+                                            <span class="w-1.5 h-1.5 mr-1.5 bg-[#C62828] rounded-full"></span>
+                                            Pendiente
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-gray-500">Ayer, 14:15 PM</td>
+                                </tr>
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="p-4 pl-6 font-medium text-[#021E5F]">#3241307991</td>
+                                    <td class="p-4">
+                                        <div class="flex items-center">
+                                            <div class="h-8 w-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold text-xs mr-3">MO</div>
+                                            <span class="font-medium text-gray-800">Movitécnica</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-gray-600">Transporte Mediano</td>
+                                    <td class="p-4">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#E8F5E9] text-[#2E7D32]">
+                                            <span class="w-1.5 h-1.5 mr-1.5 bg-[#2E7D32] rounded-full"></span>
+                                            Completado
+                                        </span>
+                                    </td>
+                                    <td class="p-4 text-gray-500">20 Oct, 09:00 AM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Script para el Gráfico -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('chartServicios').getContext('2d');
+            
+            // Gradiente para el área bajo la línea
+            const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+            gradient.addColorStop(0, 'rgba(2, 30, 95, 0.5)'); // Azul Marino JHT
+            gradient.addColorStop(1, 'rgba(2, 30, 95, 0.0)');
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+                    datasets: [{
+                        label: 'Servicios Completados',
+                        data: [12, 19, 15, 25, 22, 10, 8],
+                        borderColor: '#021E5F',
+                        backgroundColor: gradient,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#FFD400',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 7,
+                        fill: true,
+                        tension: 0.4 // Curva suave
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: '#021E5F',
+                            titleFont: { size: 13, family: "'Montserrat', sans-serif" },
+                            bodyFont: { size: 14, family: "'Open Sans', sans-serif" },
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + ' servicios';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)',
+                                drawBorder: false
+                            },
+                            ticks: {
+                                font: { family: "'Open Sans', sans-serif" },
+                                color: '#909AB3'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                font: { family: "'Open Sans', sans-serif", weight: 'bold' },
+                                color: '#57678E'
+                            }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index',
+                    },
+                }
+            });
+        });
+    </script>
+</body>
+</html>
