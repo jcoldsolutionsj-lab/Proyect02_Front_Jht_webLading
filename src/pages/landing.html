@@ -571,7 +571,293 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto" class="py-24 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="contacto-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">¿Listo para optimizar tu logística?</h2>
+                    <p id="contacto-subtitulo" class="text-lg text-jht-text-secondary max-w-2xl mx-auto">
+                        Contáctanos y descubre cómo podemos ayudarte.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+                    <!-- Formulario -->
+                    <div class="bg-jht-gray rounded-2xl p-8 md:p-10 shadow-lg border-t-4 border-jht-gold relative">
+                        <h3 class="font-title text-2xl font-bold text-jht-dark mb-2">Envíanos un mensaje</h3>
+                        <p class="text-sm text-jht-text-secondary mb-8 italic">¡Estamos al pendiente de tu solicitud!</p>
+                        <form id="contacto-form" novalidate>
+                            <div class="space-y-6">
+                                <!-- Nombre -->
+                                <div>
+                                    <label for="contacto-nombre" class="block font-title font-semibold text-jht-dark text-sm mb-2">Nombre completo</label>
+                                    <input 
+                                        type="text" 
+                                        id="contacto-nombre" 
+                                        name="nombre" 
+                                        placeholder="Tu nombre completo" 
+                                        class="jht-input w-full transition-all duration-300 focus:border-jht-dark focus:shadow-[0_0_0_3px_rgba(26,59,107,0.15)] focus:outline-none" 
+                                        required
+                                    >
+                                    <p id="error-nombre" class="text-red-500 text-xs mt-1 hidden transition-all">Por favor, ingresa tu nombre.</p>
+                                </div>
+                                <!-- Email -->
+                                <div>
+                                    <label for="contacto-email" class="block font-title font-semibold text-jht-dark text-sm mb-2">Correo electrónico</label>
+                                    <input 
+                                        type="email" 
+                                        id="contacto-email" 
+                                        name="email" 
+                                        placeholder="tucorreo@empresa.com" 
+                                        class="jht-input w-full transition-all duration-300 focus:border-jht-dark focus:shadow-[0_0_0_3px_rgba(26,59,107,0.15)] focus:outline-none" 
+                                        required
+                                    >
+                                    <p id="error-email" class="text-red-500 text-xs mt-1 hidden transition-all">Por favor, ingresa un correo electrónico válido.</p>
+                                </div>
+                                <!-- Teléfono -->
+                                <div>
+                                    <label for="contacto-telefono" class="block font-title font-semibold text-jht-dark text-sm mb-2">Teléfono</label>
+                                    <input 
+                                        type="tel" 
+                                        id="contacto-telefono" 
+                                        name="telefono" 
+                                        placeholder="+51 999 999 999" 
+                                        class="jht-input w-full transition-all duration-300 focus:border-jht-dark focus:shadow-[0_0_0_3px_rgba(26,59,107,0.15)] focus:outline-none" 
+                                        required
+                                    >
+                                    <p id="error-telefono" class="text-red-500 text-xs mt-1 hidden transition-all">Por favor, ingresa tu número de teléfono.</p>
+                                </div>
+                                <!-- Mensaje -->
+                                <div>
+                                    <label for="contacto-mensaje" class="block font-title font-semibold text-jht-dark text-sm mb-2">Mensaje</label>
+                                    <textarea 
+                                        id="contacto-mensaje" 
+                                        name="mensaje" 
+                                        rows="4" 
+                                        placeholder="Cuéntanos sobre tu necesidad logística..." 
+                                        class="jht-input w-full resize-none transition-all duration-300 focus:border-jht-dark focus:shadow-[0_0_0_3px_rgba(26,59,107,0.15)] focus:outline-none" 
+                                        required
+                                    ></textarea>
+                                    <p id="error-mensaje" class="text-red-500 text-xs mt-1 hidden transition-all">Por favor, escribe tu mensaje.</p>
+                                </div>
+                                <!-- Botón Enviar (spec 3.4: hover scale + sombra amarilla) -->
+                                <button 
+                                    type="submit" 
+                                    id="contacto-boton" 
+                                    class="inline-flex items-center justify-center w-full bg-jht-gold text-jht-dark font-title font-semibold text-lg py-4 rounded transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#FFD400]/40 active:scale-[0.98]"
+                                >
+                                    <span class="material-symbols-outlined mr-2">send</span>
+                                    Enviar mensaje
+                                </button>
+                            </div>
+                        </form>
+                        <!-- Mensaje de éxito (oculto por defecto) -->
+                        <div id="contacto-exito" class="hidden text-center py-12 animate-fade-in-up">
+                            <div class="w-20 h-20 mx-auto mb-6 bg-green-100 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-green-500 text-5xl">check_circle</span>
+                            </div>
+                            <p class="font-title font-bold text-jht-dark text-2xl mb-2">¡Mensaje enviado!</p>
+                            <p class="text-jht-text-secondary mb-6">Nos pondremos en contacto contigo pronto.</p>
+                            <button onclick="resetFormulario()" class="text-jht-dark font-title font-semibold text-sm underline hover:text-jht-gold transition-colors">Enviar otro mensaje</button>
+                        </div>
+                    </div>
+
+                    <!-- Datos de Contacto + Mapa -->
+                    <div class="flex flex-col justify-between space-y-8">
+                        <!-- Datos -->
+                        <div class="space-y-6">
+                            <!-- Teléfono -->
+                            <div class="flex items-start space-x-5 group cursor-pointer">
+                                <div class="bg-jht-gold/20 p-4 rounded-xl group-hover:bg-jht-gold group-hover:scale-[1.05] transition-all duration-300">
+                                    <span class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark text-2xl transition-colors duration-300">call</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-title font-bold text-jht-dark mb-1">Teléfono</h4>
+                                    <a href="tel:+51935833467" id="contacto-telefono-info" class="text-jht-text-secondary hover:text-jht-gold transition-colors duration-300">(+51) 935 833 467</a>
+                                </div>
+                            </div>
+                            <!-- Email -->
+                            <div class="flex items-start space-x-5 group cursor-pointer">
+                                <div class="bg-jht-gold/20 p-4 rounded-xl group-hover:bg-jht-gold group-hover:scale-[1.05] transition-all duration-300">
+                                    <span class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark text-2xl transition-colors duration-300">mail</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-title font-bold text-jht-dark mb-1">Email</h4>
+                                    <a href="mailto:info@jhttransport.com" id="contacto-email-info" class="text-jht-text-secondary hover:text-jht-gold transition-colors duration-300">info@jhttransport.com</a>
+                                </div>
+                            </div>
+                            <!-- Dirección -->
+                            <div class="flex items-start space-x-5 group cursor-pointer">
+                                <div class="bg-jht-gold/20 p-4 rounded-xl group-hover:bg-jht-gold group-hover:scale-[1.05] transition-all duration-300">
+                                    <span class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark text-2xl transition-colors duration-300">location_on</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-title font-bold text-jht-dark mb-1">Dirección</h4>
+                                    <p id="contacto-direccion" class="text-jht-text-secondary">Santa Anita, Lima - Perú</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Ubicación (spec sección 3: 1 video en Contacto) -->
+                        <div class="h-40 md:h-48 rounded-2xl overflow-hidden shadow-lg">
+                            <video id="contacto-video" autoplay loop muted playsinline class="w-full h-full object-cover">
+                                <source src="../assets/videos/landing/CoberturaMapa_LandingPage.mp4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <!-- Google Maps Embebido (Santa Anita, Lima) -->
+                        <div class="h-56 md:h-64 rounded-2xl overflow-hidden shadow-lg border-2 border-jht-gray-dark/20">
+                            <iframe 
+                                id="contacto-mapa"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31209.341453038!2d-76.9783!3d-12.0432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c5f3a62a6b0d%3A0x53e3f85e1b7c5a1!2sSanta%20Anita%2C%20Lima!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Ubicación JHT Transport - Santa Anita, Lima"
+                            ></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carrusel Contacto -->
+                <div x-data="{ 
+                        activeSlide: 1, 
+                        slides: [
+                            { id: 'contacto-carrusel-1', src: '../assets/images/contacto/banner_dia_2.webp', alt: 'Operaciones Diurnas' },
+                            { id: 'contacto-carrusel-2', src: '../assets/images/contacto/banner_dia_cola_3.webp', alt: 'Flota en Ruta' },
+                            { id: 'contacto-carrusel-3', src: '../assets/images/contacto/banner_noche_1.webp', alt: 'Operaciones Nocturnas' }
+                        ],
+                        next() { this.activeSlide = this.activeSlide === this.slides.length ? 1 : this.activeSlide + 1 },
+                        prev() { this.activeSlide = this.activeSlide === 1 ? this.slides.length : this.activeSlide - 1 }
+                    }" 
+                    x-init="setInterval(() => next(), 5000)"
+                    class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-2xl group border-t-4 border-jht-gold">
+                    
+                    <div class="relative h-64 md:h-[400px]">
+                        <template x-for="slide in slides" :key="slide.id">
+                            <div x-show="activeSlide === slides.indexOf(slide) + 1" 
+                                 x-transition:enter="transition ease-out duration-700"
+                                 x-transition:enter-start="opacity-0 translate-x-12 scale-105"
+                                 x-transition:enter-end="opacity-100 translate-x-0 scale-100"
+                                 x-transition:leave="transition ease-in duration-500 absolute top-0 left-0 w-full h-full"
+                                 x-transition:leave-start="opacity-100"
+                                 x-transition:leave-end="opacity-0"
+                                 class="absolute inset-0">
+                                <img :id="slide.id" :src="slide.src" :alt="slide.alt" class="w-full h-full object-cover">
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Botones de Control -->
+                    <button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+
+                    <!-- Indicadores -->
+                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+                        <template x-for="slide in slides">
+                            <button @click="activeSlide = slides.indexOf(slide) + 1" 
+                                    :class="{'w-8 bg-jht-gold': activeSlide === slides.indexOf(slide) + 1, 'w-3 bg-white/60 hover:bg-white': activeSlide !== slides.indexOf(slide) + 1}"
+                                    class="h-3 rounded-full shadow-md transition-all duration-300"></button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- Validación del Formulario de Contacto (Vanilla JS) -->
+    <script>
+        (function() {
+            'use strict';
+
+            const form = document.getElementById('contacto-form');
+            if (!form) return;
+
+            // Validación en tiempo real al perder el foco (blur)
+            const campos = [
+                { id: 'contacto-nombre',   errorId: 'error-nombre',   validar: v => v.trim().length > 0 },
+                { id: 'contacto-email',    errorId: 'error-email',    validar: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+                { id: 'contacto-telefono', errorId: 'error-telefono', validar: v => v.trim().length >= 7 },
+                { id: 'contacto-mensaje',  errorId: 'error-mensaje',  validar: v => v.trim().length > 0 }
+            ];
+
+            // Agregar evento blur a cada campo para validación en tiempo real
+            campos.forEach(campo => {
+                const el = document.getElementById(campo.id);
+                if (!el) return;
+
+                el.addEventListener('blur', function() {
+                    validarCampo(campo, el);
+                });
+
+                // Limpiar error cuando el usuario empieza a escribir
+                el.addEventListener('input', function() {
+                    if (campo.validar(el.value)) {
+                        limpiarError(campo, el);
+                    }
+                });
+            });
+
+            // Envío del formulario
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let formularioValido = true;
+
+                campos.forEach(campo => {
+                    const el = document.getElementById(campo.id);
+                    if (!validarCampo(campo, el)) {
+                        formularioValido = false;
+                    }
+                });
+
+                if (formularioValido) {
+                    // Ocultar formulario con animación y mostrar éxito
+                    form.style.opacity = '0';
+                    form.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        form.classList.add('hidden');
+                        form.style.opacity = '';
+                        form.style.transform = '';
+                        document.getElementById('contacto-exito').classList.remove('hidden');
+                    }, 300);
+                }
+            });
+
+            function validarCampo(campo, el) {
+                const errorEl = document.getElementById(campo.errorId);
+                if (!campo.validar(el.value)) {
+                    errorEl.classList.remove('hidden');
+                    el.classList.add('border-red-500');
+                    el.classList.remove('border-jht-dark');
+                    return false;
+                } else {
+                    limpiarError(campo, el);
+                    return true;
+                }
+            }
+
+            function limpiarError(campo, el) {
+                const errorEl = document.getElementById(campo.errorId);
+                errorEl.classList.add('hidden');
+                el.classList.remove('border-red-500');
+            }
+        })();
+
+        function resetFormulario() {
+            const form = document.getElementById('contacto-form');
+            form.reset();
+            form.classList.remove('hidden');
+            document.getElementById('contacto-exito').classList.add('hidden');
+        }
+    </script>
 
     <!-- Footer -->
     <footer class="bg-jht-dark text-white pt-16 pb-8">
