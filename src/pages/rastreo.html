@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastreo de Envíos - JHT Transport</title>
+    <!-- Tailwind CSS Compilado -->
+    <link href="../css/style.css" rel="stylesheet">
+    <!-- Google Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    
+    <style>
+        [x-cloak] { display: none !important; }
+        
+        /* Animación de los puntitos de carga */
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+        
+        /* Animación de latido para el estado actual */
+        .status-current {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(255, 212, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 212, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 212, 0, 0); }
+        }
+        
+        /* Tooltip Styles */
+        .tooltip-container {
+            position: relative;
+        }
+        .tooltip-container .tooltip-text {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            transform: translateY(10px);
+            background-color: #1A3B6B;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 12px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            width: 200px;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            pointer-events: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .tooltip-container .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #1A3B6B transparent transparent transparent;
+        }
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Estilos de la línea conectora para la línea de tiempo */
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background-color: #E3E4E5;
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+        .timeline-line-progress {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            height: 4px;
+            background-color: #4CAF50;
+            z-index: 0;
+            transform: translateY(-50%);
+            transition: width 1s ease-in-out;
+        }
+        @media (max-width: 768px) {
+            .timeline-line, .timeline-line-progress {
+                left: 20px;
+                top: 0;
+                bottom: 0;
+                width: 4px;
+                height: 100%;
+                transform: none;
+            }
+            .timeline-line-progress {
+                height: 0; /* Updated dynamically via JS for mobile */
+                width: 4px;
+                transition: height 1s ease-in-out;
+            }
+        }
+    </style>
+</head>
+<body class="bg-jht-gray text-jht-dark font-sans flex flex-col min-h-screen pt-24">
+    <!-- NAV (Menú de Navegación) -->
+    <header 
+        x-data="{ scrolled: false, mobileMenuOpen: false }" 
+        @scroll.window="scrolled = (window.pageYOffset > 20) ? true : false"
+        :class="{ 'bg-jht-dark py-6': !scrolled, 'bg-jht-dark shadow-lg py-3': scrolled }"
+        class="fixed w-full top-0 z-50 transition-all duration-300"
+    >
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="landing.html" class="flex items-center">
+                <img src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Transport Logo" class="h-10 md:h-12 w-auto transition-all duration-300">
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="landing.html#servicios" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide">Servicios</a>
+                <a href="landing.html#flota" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide">Flota</a>
+                <a href="landing.html#nosotros" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide">Nosotros</a>
+                <a href="landing.html#contacto" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide">Contacto</a>
+                <a href="#area-cliente" class="btn-primary text-sm shadow-md">Área Cliente</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-white focus:outline-none">
+                <svg x-show="!mobileMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <svg x-show="mobileMenuOpen" x-cloak class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div 
+            x-show="mobileMenuOpen" 
+            x-collapse
+            x-cloak
+            class="md:hidden bg-jht-dark shadow-lg absolute w-full left-0 top-full flex flex-col border-t border-jht-blue-support/20"
+        >
+            <a href="landing.html#servicios" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Servicios</a>
+            <a href="landing.html#flota" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Flota</a>
+            <a href="landing.html#nosotros" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Nosotros</a>
+            <a href="landing.html#contacto" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Contacto</a>
+            <div class="px-6 py-6 bg-jht-dark/90">
+                <a href="#area-cliente" class="btn-primary w-full shadow-md">Área Cliente</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow py-12">
+        <div class="container mx-auto px-6">
+            
+            <!-- Contenedor Principal -->
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                <div class="text-center mb-8">
+                    <h1 class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Seguimiento de tu Carga</h1>
+                    <p class="text-jht-text-secondary">Ingresa tu número de guía para conocer el estado de tu envío en tiempo real.</p>
+                </div>
+
+                <!-- Buscador -->
+                <div class="max-w-2xl mx-auto mb-12">
+                    <form id="tracking-form" class="flex flex-col md:flex-row gap-4" novalidate>
+                        <div class="flex-grow relative">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-jht-blue-support">search</span>
+                            <input 
+                                type="text" 
+                                id="tracking-input" 
+                                placeholder="Ej. 3241307995" 
+                                class="jht-input w-full pl-12 py-4 transition-all duration-300 focus:border-jht-dark focus:shadow-[0_0_0_3px_rgba(26,59,107,0.15)] focus:outline-none"
+                                required
+                            >
+                            <p id="tracking-error" class="text-red-500 text-xs mt-2 hidden transition-all">Por favor, ingresa un código de seguimiento.</p>
+                        </div>
+                        <button 
+                            type="submit" 
+                            id="tracking-button"
+                            class="inline-flex items-center justify-center bg-jht-gold text-jht-dark font-title font-semibold text-lg py-4 px-8 rounded transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#FFD400]/40 active:scale-[0.98] disabled:opacity-70 disabled:hover:scale-100 disabled:cursor-not-allowed"
+                        >
+                            Rastrear
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Estado Loading -->
+                <div id="tracking-loading" class="hidden text-center py-16 animate-fade-in-up">
+                    <div class="inline-block p-6 rounded-full bg-jht-gray mb-4">
+                        <span class="material-symbols-outlined text-jht-dark text-4xl animate-spin" style="animation-duration: 2s;">local_shipping</span>
+                    </div>
+                    <p class="font-title font-semibold text-xl text-jht-dark">
+                        Buscando tu envío<span class="loading-dots"></span>
+                    </p>
+                </div>
+
+                <!-- Estado Not Found -->
+                <div id="tracking-not-found" class="hidden text-center py-12 border-2 border-red-100 rounded-xl bg-red-50/50 animate-fade-in-up">
+                    <span class="material-symbols-outlined text-red-400 text-5xl mb-4">error</span>
+                    <p class="font-title font-bold text-jht-dark text-xl mb-2">No se encontró el envío</p>
+                    <p class="text-[#FF6B6B]">No encontramos ningún envío con ese código. Por favor, verifica el número ingresado.</p>
+                </div>
+
+                <!-- Área de Resultados (Found) -->
+                <div id="tracking-results" class="hidden animate-fade-in-up">
+                    <div class="border-b border-jht-blue-support/20 pb-6 mb-10 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+                        <div>
+                            <p class="text-sm font-semibold text-jht-text-secondary uppercase tracking-wider mb-1">Guía N°</p>
+                            <h2 id="tracking-guia" class="font-title text-3xl font-bold text-jht-dark">3241307995</h2>
+                        </div>
+                        <div class="md:text-right bg-jht-gray px-6 py-3 rounded-lg border border-jht-blue-support/10">
+                            <p id="tracking-producto" class="font-title font-semibold text-jht-dark">Repuestos Industriales</p>
+                            <p id="tracking-peso" class="text-sm text-jht-text-secondary">1 un. | 150 kg est.</p>
+                        </div>
+                    </div>
+
+                    <!-- Línea de Tiempo -->
+                    <div id="tracking-timeline" class="relative py-10 md:py-16">
+                        <!-- Conectores visuales -->
+                        <div class="timeline-line hidden md:block"></div>
+                        <div id="timeline-progress-bar" class="timeline-line-progress hidden md:block" style="width: 0%;"></div>
+                        
+                        <!-- Línea móvil vertical -->
+                        <div class="timeline-line md:hidden"></div>
+                        <div id="timeline-progress-bar-mobile" class="timeline-line-progress md:hidden" style="height: 0%;"></div>
+
+                        <div class="flex flex-col md:flex-row justify-between space-y-10 md:space-y-0 relative z-10 pl-12 md:pl-0">
+                            
+                            <!-- Paso 1 -->
+                            <div id="tracking-paso-1" class="flex md:flex-col items-center md:items-center relative group w-full md:w-1/5 tooltip-container">
+                                <div class="absolute left-[-48px] md:relative md:left-auto flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-[#4CAF50] text-white shadow-md z-10 transition-transform duration-300 group-hover:scale-110">
+                                    <span class="material-symbols-outlined text-lg">check</span>
+                                </div>
+                                <div class="mt-0 md:mt-4 text-left md:text-center ml-2 md:ml-0">
+                                    <p class="font-title font-bold text-jht-dark text-sm md:text-base leading-tight">Solicitud recibida</p>
+                                </div>
+                                <div class="tooltip-text hidden md:block">¡Ya recibimos tu solicitud! Estamos iniciando el proceso.</div>
+                            </div>
+
+                            <!-- Paso 2 (Estado Actual) -->
+                            <div id="tracking-paso-2" class="flex md:flex-col items-center md:items-center relative group w-full md:w-1/5 tooltip-container">
+                                <div class="absolute left-[-48px] md:relative md:left-auto flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-[#FFD400] text-jht-dark shadow-md z-10 status-current">
+                                    <span class="material-symbols-outlined text-lg">hourglass_top</span>
+                                </div>
+                                <div class="mt-0 md:mt-4 text-left md:text-center ml-2 md:ml-0">
+                                    <p class="font-title font-bold text-jht-dark text-sm md:text-base leading-tight">En preparación</p>
+                                    <p class="text-xs font-semibold text-jht-gold uppercase mt-1 hidden md:block">Estado Actual</p>
+                                </div>
+                                <div class="tooltip-text hidden md:block">Estamos alistando tu carga con el mayor cuidado.</div>
+                            </div>
+
+                            <!-- Paso 3 -->
+                            <div id="tracking-paso-3" class="flex md:flex-col items-center md:items-center relative group w-full md:w-1/5 tooltip-container">
+                                <div class="absolute left-[-48px] md:relative md:left-auto flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-white border-jht-blue-support/30 text-jht-blue-support/50 z-10 transition-colors duration-300 group-hover:border-jht-blue-support/60">
+                                    <div class="w-3 h-3 rounded-full bg-jht-blue-support/30"></div>
+                                </div>
+                                <div class="mt-0 md:mt-4 text-left md:text-center ml-2 md:ml-0">
+                                    <p class="font-title font-medium text-jht-text-secondary text-sm md:text-base leading-tight">En tránsito</p>
+                                </div>
+                                <div class="tooltip-text hidden md:block">Tu carga está en camino. ¡Pronto llegará!</div>
+                            </div>
+
+                            <!-- Paso 4 -->
+                            <div id="tracking-paso-4" class="flex md:flex-col items-center md:items-center relative group w-full md:w-1/5 tooltip-container">
+                                <div class="absolute left-[-48px] md:relative md:left-auto flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-white border-jht-blue-support/30 text-jht-blue-support/50 z-10 transition-colors duration-300 group-hover:border-jht-blue-support/60">
+                                    <div class="w-3 h-3 rounded-full bg-jht-blue-support/30"></div>
+                                </div>
+                                <div class="mt-0 md:mt-4 text-left md:text-center ml-2 md:ml-0">
+                                    <p class="font-title font-medium text-jht-text-secondary text-sm md:text-base leading-tight">Listo para entrega</p>
+                                </div>
+                                <div class="tooltip-text hidden md:block">¡Casi listo! El transportista está en camino.</div>
+                            </div>
+
+                            <!-- Paso 5 -->
+                            <div id="tracking-paso-5" class="flex md:flex-col items-center md:items-center relative group w-full md:w-1/5 tooltip-container">
+                                <div class="absolute left-[-48px] md:relative md:left-auto flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-white border-jht-blue-support/30 text-jht-blue-support/50 z-10 transition-colors duration-300 group-hover:border-jht-blue-support/60">
+                                    <div class="w-3 h-3 rounded-full bg-jht-blue-support/30"></div>
+                                </div>
+                                <div class="mt-0 md:mt-4 text-left md:text-center ml-2 md:ml-0">
+                                    <p class="font-title font-medium text-jht-text-secondary text-sm md:text-base leading-tight">Entregado</p>
+                                </div>
+                                <div class="tooltip-text hidden md:block">¡Tu carga fue entregada con éxito! Gracias por confiar en JHT.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mensaje de estado cálido -->
+                    <div class="mt-4 bg-jht-gold/10 border border-jht-gold/20 rounded-xl p-6 text-center">
+                        <p id="tracking-estado-texto" class="text-jht-text-secondary italic">"Terminamos de preparar tu pedido, te avisaremos cuando esté listo para el despacho."</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-jht-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="col-span-1 md:col-span-1">
+                <img id="footer-logo" src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Transport" class="h-12 w-auto mb-6 opacity-90">
+                <p class="text-jht-gray font-sans text-sm leading-relaxed">
+                    La Calidez de la Confianza. Cuidamos tu carga como si fuera nuestra.
+                </p>
+            </div>
+            <div>
+                <h3 class="font-title font-semibold text-lg mb-6 text-jht-gold">Enlaces Rápidos</h3>
+                <ul class="space-y-3 font-sans text-sm text-jht-gray/90">
+                    <li><a href="landing.html#servicios" class="hover:text-jht-gold transition-colors">Servicios</a></li>
+                    <li><a href="landing.html#flota" class="hover:text-jht-gold transition-colors">Nuestra Flota</a></li>
+                    <li><a href="landing.html#nosotros" class="hover:text-jht-gold transition-colors">Sobre Nosotros</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-title font-semibold text-lg mb-6 text-jht-gold">Soporte</h3>
+                <ul class="space-y-3 font-sans text-sm text-jht-gray/90">
+                    <li><a href="rastreo.html" class="hover:text-jht-gold transition-colors">Rastrear Envío</a></li>
+                    <li><a href="landing.html#contacto" class="hover:text-jht-gold transition-colors">Contacto</a></li>
+                    <li><a href="#faq" class="hover:text-jht-gold transition-colors">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-title font-semibold text-lg mb-6 text-jht-gold">Contacto</h3>
+                <ul class="space-y-3 font-sans text-sm text-jht-gray/90">
+                    <li class="flex items-start">
+                        <span class="text-jht-gold mr-3">📍</span> 
+                        <span>Lima, Perú</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-jht-gold mr-3">📞</span> 
+                        <span>+51 123 456 789</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-jht-gold mr-3">✉️</span> 
+                        <span>info@jht.com.pe</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 pt-8 border-t border-jht-blue-support/30 flex flex-col md:flex-row justify-between items-center text-sm font-sans text-jht-gray/60">
+            <p id="footer-copyright" class="mb-4 md:mb-0">&copy; 2026 JHT Transport Company SAC. Todos los derechos reservados.</p>
+            <div class="flex space-x-4">
+                <a href="#" class="hover:text-jht-gold transition-colors">Política de Privacidad</a>
+                <a href="#" class="hover:text-jht-gold transition-colors">Términos de Servicio</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lógica de Rastreo (Vanilla JS) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('tracking-form');
+            const input = document.getElementById('tracking-input');
+            const btn = document.getElementById('tracking-button');
+            const errorMsg = document.getElementById('tracking-error');
+            
+            const stateLoading = document.getElementById('tracking-loading');
+            const stateNotFound = document.getElementById('tracking-not-found');
+            const stateResults = document.getElementById('tracking-results');
+            
+            const progressBar = document.getElementById('timeline-progress-bar');
+            const progressBarMobile = document.getElementById('timeline-progress-bar-mobile');
+
+            // Limpiar error al escribir
+            input.addEventListener('input', () => {
+                if (input.value.trim().length > 0) {
+                    errorMsg.classList.add('hidden');
+                    input.classList.remove('border-red-500');
+                }
+            });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const code = input.value.trim();
+                
+                // Validación básica
+                if (!code) {
+                    errorMsg.classList.remove('hidden');
+                    input.classList.add('border-red-500');
+                    input.focus();
+                    return;
+                }
+                
+                // Ocultar todos los estados y mostrar loading
+                stateNotFound.classList.add('hidden');
+                stateResults.classList.add('hidden');
+                
+                stateLoading.classList.remove('hidden');
+                
+                // Deshabilitar input y botón
+                input.disabled = true;
+                btn.disabled = true;
+                
+                // Simular llamada a API
+                setTimeout(() => {
+                    // Habilitar controles
+                    input.disabled = false;
+                    btn.disabled = false;
+                    
+                    // Ocultar loading
+                    stateLoading.classList.add('hidden');
+                    
+                    // Lógica simulada: si ingresa "123" muestra not found, sino found
+                    if (code === '123' || code.toLowerCase() === 'error') {
+                        // Not found
+                        stateNotFound.classList.remove('hidden');
+                    } else {
+                        // Found
+                        document.getElementById('tracking-guia').textContent = code;
+                        stateResults.classList.remove('hidden');
+                        
+                        // Animar la barra de progreso después de un pequeño retraso
+                        setTimeout(() => {
+                            // En preparación es el paso 2 (aprox 25% o 30% dependiendo del diseño)
+                            if (progressBar) progressBar.style.width = '25%';
+                            if (progressBarMobile) progressBarMobile.style.height = '25%';
+                        }, 100);
+                    }
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
