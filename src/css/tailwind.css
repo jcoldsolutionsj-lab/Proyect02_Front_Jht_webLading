@@ -12,4 +12,72 @@
     --color-border: #909AB3;
     --color-text-secondary: #57678E;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* =========================================
+     BOTONES REUTILIZABLES
+     ========================================= */
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-jht-gold text-jht-dark font-title font-bold py-3 px-6 rounded transition-all duration-300;
+  }
+  .btn-primary:hover {
+    @apply scale-[1.02] shadow-lg shadow-jht-gold/40;
+  }
+  
+  /* =========================================
+     TARJETAS REUTILIZABLES (Servicios)
+     ========================================= */
+  .jht-card {
+    @apply bg-white rounded shadow-lg border-t-4 border-transparent transition-all duration-300 h-full flex flex-col;
+  }
+  .jht-card:hover {
+    @apply -translate-y-2 border-jht-gold shadow-xl;
+  }
+  
+  /* =========================================
+     CAMPOS DE FORMULARIO (Inputs)
+     ========================================= */
+  .jht-input {
+    @apply w-full border border-jht-gray-dark rounded py-3 px-4 text-jht-dark font-sans outline-none transition-all duration-300;
+  }
+  .jht-input:focus {
+    @apply border-jht-dark shadow-[0_0_8px_rgba(26,59,107,0.2)];
+  }
+
+  /* =========================================
+     MENÚ STICKY
+     ========================================= */
+  .nav-transparent {
+    @apply bg-transparent;
+  }
+  .nav-solid {
+    @apply bg-jht-dark shadow-md;
+  }
+
+  /* =========================================
+     ANIMACIONES GLOBALES
+     ========================================= */
+  .fade-in-load {
+    animation: fadeInLoad 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeInLoad {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .scroll-trigger {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .scroll-trigger.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
