@@ -23,7 +23,7 @@
         :class="{ 'bg-transparent py-6': !scrolled, 'bg-jht-dark shadow-lg py-3': scrolled }"
         class="fixed w-full top-0 z-50 transition-all duration-300"
     >
-        <div class="container mx-auto px-6 flex justify-between items-center">
+        <div class="container mx-auto px-10 flex justify-between items-center">
             <!-- Logo -->
             <a href="index.html" class="flex items-center">
                 <img src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Transport Logo" class="h-10 md:h-12 w-auto transition-all duration-300">
@@ -56,11 +56,11 @@
             x-cloak
             class="md:hidden bg-jht-dark shadow-lg absolute w-full left-0 top-full flex flex-col border-t border-jht-blue-support/20"
         >
-            <a href="#servicios" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Servicios</a>
-            <a href="#flota" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Flota</a>
-            <a href="#nosotros" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Nosotros</a>
-            <a href="#contacto" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Contacto</a>
-            <div class="px-6 py-6 bg-jht-dark/90">
+            <a href="#servicios" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-10 py-4 border-b border-jht-blue-support/20 font-medium">Servicios</a>
+            <a href="#flota" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-10 py-4 border-b border-jht-blue-support/20 font-medium">Flota</a>
+            <a href="#nosotros" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-10 py-4 border-b border-jht-blue-support/20 font-medium">Nosotros</a>
+            <a href="#contacto" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-10 py-4 border-b border-jht-blue-support/20 font-medium">Contacto</a>
+            <div class="px-10 py-6 bg-jht-dark/90">
                 <a href="#area-cliente" class="btn-primary w-full shadow-md">Área Cliente</a>
             </div>
         </div>
@@ -78,7 +78,7 @@
             <div class="absolute inset-0 bg-gradient-to-b from-jht-dark/70 via-jht-dark/40 to-jht-dark/80 z-10"></div>
 
             <!-- Contenido del Hero -->
-            <div class="relative z-20 container mx-auto px-6 text-center mt-16 animate-fade-in-up">
+            <div class="relative z-20 container mx-auto px-10 text-center mt-16 animate-fade-in-up">
                 <!-- Círculos decorativos -->
                 <div class="absolute top-10 left-1/4 w-12 h-12 rounded-full border-4 border-jht-gold/30 animate-pulse"></div>
                 <div class="absolute bottom-10 right-1/4 w-24 h-24 rounded-full border-2 border-jht-blue-support/40"></div>
@@ -89,15 +89,25 @@
                 <p id="hero-subtitulo" class="text-lg md:text-xl lg:text-2xl text-jht-gray mb-12 max-w-3xl mx-auto drop-shadow-md">
                     Soluciones integrales de transporte para empresas que exigen precisión, seguridad y velocidad en su cadena de suministro.
                 </p>
-                <a id="hero-cta" href="rastreo.html" class="btn-primary text-lg px-8 py-4 shadow-xl hover:-translate-y-1">
-                    Conoce el estado de tu servicio
-                </a>
+                <div class="max-w-2xl mx-auto bg-[#E3E4E5] p-2 md:p-3 rounded-2xl shadow-xl flex flex-col md:flex-row gap-2">
+                    <div class="flex-grow relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-jht-blue-support">search</span>
+                        <input 
+                            type="text" 
+                            placeholder="Ingresa tu número de guía..." 
+                            class="w-full pl-12 pr-4 py-4 md:py-5 rounded-xl border-none focus:ring-2 focus:ring-jht-dark text-jht-dark text-lg focus:outline-none"
+                        >
+                    </div>
+                    <button onclick="window.location.href='rastreo.html'" class="bg-jht-gold text-jht-dark font-title font-semibold text-lg py-4 md:py-5 px-8 rounded-xl hover:shadow-lg hover:shadow-[#FFD400]/40 transition-all active:scale-95 whitespace-nowrap">
+                        Rastrear
+                    </button>
+                </div>
             </div>
         </section>
 
         <!-- Sección Carrusel (Ejemplo: Nuestros Servicios) -->
-        <section id="servicios" class="py-24 bg-white relative">
-            <div class="container mx-auto px-6">
+        <section id="servicios" class="py-20 bg-white relative">
+            <div class="container mx-auto px-10">
                 <div class="text-center mb-16">
                     <h2 id="servicios-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Nuestros Servicios</h2>
                     <p id="servicios-subtitulo" class="text-lg text-jht-text-secondary max-w-2xl mx-auto">
@@ -232,8 +242,8 @@
         </section>
 
         <!-- Sección Flota -->
-        <section id="flota" class="py-24 bg-jht-gray relative">
-            <div class="container mx-auto px-6">
+        <section id="flota" class="py-20 bg-jht-gray relative">
+            <div class="container mx-auto px-10">
                 <div class="text-center mb-16">
                     <h2 id="flota-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Nuestra Flota</h2>
                     <p id="flota-subtitulo" class="text-lg text-jht-text-secondary max-w-2xl mx-auto">
@@ -386,8 +396,8 @@
         </section>
 
         <!-- Sección Sobre Nosotros -->
-        <section id="nosotros" class="py-24 bg-white relative overflow-hidden">
-            <div class="container mx-auto px-6">
+        <section id="nosotros" class="py-20 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-10">
                 <div class="text-center mb-16">
                     <h2 id="nosotros-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Sobre Nosotros</h2>
                     <p id="nosotros-subtitulo" class="text-lg text-jht-text-secondary max-w-2xl mx-auto">
@@ -481,8 +491,8 @@
         </section>
 
         <!-- Nuestros Clientes Opinan -->
-        <section id="clientes" class="py-24 bg-jht-gray relative">
-            <div class="container mx-auto px-6">
+        <section id="clientes" class="py-20 bg-jht-gray relative">
+            <div class="container mx-auto px-10">
                 <div class="text-center mb-16">
                     <h2 id="clientes-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Nuestros Clientes Opinan</h2>
                 </div>
@@ -573,8 +583,8 @@
         </section>
 
         <!-- Sección Contacto -->
-        <section id="contacto" class="py-24 bg-white relative overflow-hidden">
-            <div class="container mx-auto px-6">
+        <section id="contacto" class="py-20 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-10">
                 <div class="text-center mb-16">
                     <h2 id="contacto-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">¿Listo para optimizar tu logística?</h2>
                     <p id="contacto-subtitulo" class="text-lg text-jht-text-secondary max-w-2xl mx-auto">
@@ -861,7 +871,7 @@
 
     <!-- Footer -->
     <footer class="bg-jht-dark text-white pt-16 pb-8">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div class="container mx-auto px-10 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div class="col-span-1 md:col-span-1">
                 <img id="footer-logo" src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Transport" class="h-12 w-auto mb-6 opacity-90">
                 <p class="text-jht-gray font-sans text-sm leading-relaxed">
@@ -902,7 +912,7 @@
                 </ul>
             </div>
         </div>
-        <div class="container mx-auto px-6 pt-8 border-t border-jht-blue-support/30 flex flex-col md:flex-row justify-between items-center text-sm font-sans text-jht-gray/60">
+        <div class="container mx-auto px-10 pt-8 border-t border-jht-blue-support/30 flex flex-col md:flex-row justify-between items-center text-sm font-sans text-jht-gray/60">
             <p id="footer-copyright" class="mb-4 md:mb-0">&copy; 2026 JHT Transport Company SAC. Todos los derechos reservados.</p>
             <div class="flex space-x-4">
                 <a href="#" class="hover:text-jht-gold transition-colors">Política de Privacidad</a>
