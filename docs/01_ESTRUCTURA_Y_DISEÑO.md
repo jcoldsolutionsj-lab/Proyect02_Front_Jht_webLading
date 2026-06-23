@@ -96,7 +96,7 @@ Para garantizar que el proyecto sea **fácil de mantener y escalar**, los colore
   - Transición: `transition: background 0.3s ease, box-shadow 0.3s ease;`
 
 - **Elementos del menú:**  
-  - Enlaces: `Servicios`, `Flota`, `Nosotros`, `Contacto`, `Área Cliente` (este último como botón destacado en `#FFD400`).  
+  - Enlaces: `Servicios`, `Flota`, `Nosotros`, `Contacto`, `Acceso` (este último como botón destacado en `#FFD400`).  
   - Comportamiento: Al hacer clic en un enlace interno (ancla), la página debe desplazarse suavemente (Smooth Scroll) hasta la sección correspondiente.
 
 - **Responsive:**  

@@ -24,7 +24,7 @@ La Landing Page debe tener las siguientes secciones, en este orden:
   - El logo es un enlace a la página de inicio (`/`).
   - Se mantiene visible y con su aspecto original al hacer scroll.
   - No cambia de color ni de versión, ya que al ser transparente se adapta visualmente tanto a fondos claros como oscuros.
-- **Menú:** `Servicios | Flota | Clientes | Contacto | Área Cliente` (el último como botón destacado en `#FFD400`).
+- **Menú:** `Servicios | Flota | Clientes | Contacto | Acceso` (el último como botón destacado en `#FFD400`).
 - **Comportamiento del nav:**
   - Estado inicial (scroll = 0): `background: transparent;`
   - Estado con scroll: `background: #1A3B6B; box-shadow: 0 4px 12px rgba(0,0,0,0.1);`
