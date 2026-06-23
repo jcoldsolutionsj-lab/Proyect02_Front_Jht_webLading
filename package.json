@@ -4,9 +4,10 @@
   "description": "Servicios Logísticos JHT - Frontend",
   "main": "index.js",
   "scripts": {
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview",
     "build:css": "tailwindcss -i ./src/css/tailwind.css -o ./src/css/style.css --watch",
-    "build": "tailwindcss -i ./src/css/tailwind.css -o ./src/css/style.css --minify",
-    "build:all": "npm run build && npm run build:css",
     "start": "live-server src/"
   },
   "keywords": [],
@@ -17,6 +18,7 @@
     "autoprefixer": "^10.4.18",
     "live-server": "^1.2.2",
     "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "vite": "^6.4.3"
   }
 }
