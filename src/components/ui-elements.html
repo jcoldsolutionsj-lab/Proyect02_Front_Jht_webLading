@@ -1,13 +1,13 @@
 <!-- Componentes Reutilizables de UI (Ejemplos para copiar y pegar) -->
 
 <!-- 1. Botón Principal (Llamado a la Acción) -->
-<!-- Uso: Para botones destacados como "Rastrear mi envío" o "Área Cliente" -->
+<!-- Uso: Para botones destacados como "Rastrear mi envío" o "Acceso" -->
 <button class="btn-primary">
     Rastrear mi envío
 </button>
 
 <a href="#" class="btn-primary">
-    Área Cliente
+    Acceso
 </a>
 
 
@@ -33,7 +33,105 @@
 
 
 <!-- 4. Etiqueta / Tag (Para adornos o subtítulos pequeños) -->
-<div class="inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest">
+<div
+    class="inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest">
     <span class="w-1.5 h-1.5 rounded-full bg-jht-gold"></span>
     SOLUCIONES INTEGRALES
+</div>
+
+<!-- 5. Botones Flotantes (Teléfono y WhatsApp) -->
+<!-- Uso: Colocar justo antes de cerrar el </body> en todas las páginas -->
+<div class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex flex-col items-center gap-4">
+
+    <!-- Elementos de Audio -->
+    <audio id="sound-phone" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
+    <audio id="sound-whatsapp" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg" preload="auto"></audio>
+
+    <!-- Botón Flotante Teléfono (con Popup) -->
+    <div x-data="{ openContact: false }" 
+         @mouseenter="let a = document.getElementById('sound-phone'); a.currentTime = 0; a.volume = 0.4; a.play().catch(()=>{})" 
+         class="relative group">
+        
+        <!-- Tooltip Animado -->
+        <div class="absolute right-full top-1/2 mr-3 md:mr-4 whitespace-nowrap bg-white text-jht-dark text-xs md:text-sm font-bold py-2.5 px-4 rounded-xl shadow-lg border border-gray-100 animate-tooltip-pop pointer-events-none z-0">
+            ¡Habla con un asesor!
+            <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-white border-r border-t border-gray-100 rotate-45"></div>
+        </div>
+
+        <!-- Chat Popup de Contacto -->
+        <div x-show="openContact" 
+             @click.away="openContact = false"
+             x-transition:enter="transition-all ease-[cubic-bezier(0.34,1.56,0.64,1)] duration-[800ms] origin-bottom-right"
+             x-transition:enter-start="opacity-0 scale-y-0 scale-x-75 translate-y-12 rotate-6"
+             x-transition:enter-end="opacity-100 scale-y-100 scale-x-100 translate-y-0 rotate-0"
+             x-transition:leave="transition-all ease-in duration-300 origin-bottom-right"
+             x-transition:leave-start="opacity-100 scale-y-100 scale-x-100 translate-y-0 rotate-0"
+             x-transition:leave-end="opacity-0 scale-y-0 scale-x-75 translate-y-12 rotate-6"
+             style="display: none;"
+             class="absolute bottom-full right-0 mb-4 w-72 bg-white rounded-2xl rounded-br-sm shadow-[0_10px_40px_rgba(0,0,0,0.15)] p-5 border border-gray-100 cursor-default z-50">
+             
+             <!-- Cabecera -->
+             <div class="flex items-center justify-between border-b-2 border-gray-200 pb-3 mb-4">
+                 <div class="flex items-center gap-2">
+                     <span class="material-symbols-outlined text-jht-dark animate-pulse text-[22px]">cell_tower</span>
+                     <h4 class="font-title font-bold text-jht-dark text-lg">Central JHT</h4>
+                 </div>
+                 <button @click="openContact = false" class="text-gray-400 hover:text-red-500 transition-colors">
+                     <span class="material-symbols-outlined text-sm">close</span>
+                 </button>
+             </div>
+
+             <!-- Info de Contacto -->
+             <ul class="flex flex-col gap-4">
+                 <li class="flex items-start gap-3">
+                     <span class="material-symbols-outlined text-jht-gold text-[20px] mt-0.5 shrink-0">location_on</span>
+                     <p class="text-jht-blue-support text-sm leading-tight font-medium">Coop Miguel Grau Mz g lt 13<br>Santa Anita, Lima - Perú</p>
+                 </li>
+                 <li class="group/item flex items-center gap-3 cursor-pointer">
+                     <span class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">smartphone</span>
+                     <a href="tel:+51935833467" class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">(+51) 935 833 467</a>
+                 </li>
+                 <li class="group/item flex items-center gap-3 cursor-pointer">
+                     <span class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">smartphone</span>
+                     <a href="tel:+51951194143" class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">(+51) 951 194 143</a>
+                 </li>
+                 <li class="group/item flex items-center gap-3 cursor-pointer">
+                     <span class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">call</span>
+                     <a href="tel:016475336" class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">01 6475336</a>
+                 </li>
+             </ul>
+             
+             <!-- Colita del globo de chat -->
+             <div class="absolute -bottom-2 right-4 w-4 h-4 bg-white rotate-45 border-b border-r border-gray-100"></div>
+        </div>
+
+        <!-- Botón circular -->
+        <a href="javascript:void(0)" @click="openContact = !openContact" class="relative block z-10">
+            <!-- Efecto de pulso detrás -->
+            <div
+                class="absolute inset-1 bg-jht-dark rounded-full animate-slow-ping transition-opacity duration-300 ring-2 ring-jht-gold/50">
+            </div>
+            <!-- Imagen del Botón -->
+            <img src="../assets/images/telefono.png" alt="Llamar a JHT Transport"
+                class="relative w-10 h-10 md:w-12 md:h-12 object-contain transition-transform duration-500 group-hover:animate-vibrate-double drop-shadow-xl origin-center" />
+        </a>
+    </div>
+
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://api.whatsapp.com/send?phone=51935833467&text=Hola%2C%20vengo%20desde%20la%20web%20de%20JHT%20Transport%20Company"
+       @mouseenter="let a = document.getElementById('sound-whatsapp'); a.currentTime = 0; a.volume = 0.5; a.play().catch(()=>{})"
+       target="_blank" rel="noopener noreferrer" class="relative group">
+        
+        <!-- Tooltip Animado (Aparece desfasado 4 segundos) -->
+        <div class="absolute right-full top-1/2 mr-3 md:mr-4 whitespace-nowrap bg-[#25D366] text-white text-xs md:text-sm font-bold py-2.5 px-4 rounded-xl shadow-[0_4px_20px_rgba(37,211,102,0.4)] animate-tooltip-pop pointer-events-none z-0" style="animation-delay: 4s;">
+            ¡Cotiza tu envío aquí!
+            <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-[#25D366] rotate-45"></div>
+        </div>
+
+        <!-- Efecto de pulso detrás -->
+        <div class="absolute inset-2 bg-[#25D366] rounded-full animate-slow-ping transition-opacity duration-300"></div>
+        <!-- Imagen del Botón -->
+        <img src="../assets/images/whatsapp.png" alt="WhatsApp JHT Transport"
+            class="relative w-15 h-15 md:w-20 md:h-20 object-contain transition-transform duration-500 group-hover:animate-vibrate-double drop-shadow-2xl origin-center z-10" />
+    </a>
 </div>
