@@ -34,40 +34,40 @@
             <!-- Desktop Menu (Center) -->
             <nav class="hidden lg:flex items-center justify-center gap-8 xl:gap-12 flex-grow">
                 <a href="#servicios"
-                    class="group relative font-title font-semibold text-[20px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
+                    class="group relative font-title font-semibold text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
                     <span
-                        class="material-symbols-outlined absolute -left-7 text-[22px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">inventory_2</span>
-                    <span class="relative">
+                        class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">inventory_2</span>
+                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">
                         Servicios
                         <span
                             class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span>
                     </span>
                 </a>
                 <a href="#flota"
-                    class="group relative font-title font-semibold text-[20px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
+                    class="group relative font-title font-semibold text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
                     <span
-                        class="material-symbols-outlined absolute -left-7 text-[22px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">local_shipping</span>
-                    <span class="relative">
+                        class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">local_shipping</span>
+                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">
                         Flota
                         <span
                             class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span>
                     </span>
                 </a>
                 <a href="#nosotros"
-                    class="group relative font-title font-semibold text-[20px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
+                    class="group relative font-title font-semibold text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
                     <span
-                        class="material-symbols-outlined absolute -left-7 text-[22px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">groups</span>
-                    <span class="relative">
+                        class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">groups</span>
+                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">
                         Nosotros
                         <span
                             class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span>
                     </span>
                 </a>
                 <a href="#contacto"
-                    class="group relative font-title font-semibold text-[20px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
+                    class="group relative font-title font-semibold text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
                     <span
-                        class="material-symbols-outlined absolute -left-7 text-[22px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">headset_mic</span>
-                    <span class="relative">
+                        class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">headset_mic</span>
+                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">
                         Contacto
                         <span
                             class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span>
@@ -124,9 +124,9 @@
 
         <!-- 2. HERO -->
         <section id="home"
-            class="relative w-full min-h-screen pt-32 pb-20 md:py-0 flex items-center justify-center overflow-hidden">
+            class="relative w-full min-h-screen pt-32 pb-20 md:py-0 flex items-center justify-center overflow-hidden bg-jht-dark">
             <!-- Background Video (Parallax) --> <video
-                class="absolute inset-0 w-full h-full object-cover z-0 parallax-bg animate-fade-in-slow" autoplay loop
+                class="absolute inset-0 w-full h-full object-cover z-0 parallax-bg animate-fade-in-slow opacity-35" autoplay loop
                 muted playsinline>
                 <source src="../assets/videos/home/jhtOriginal.mp4" type="video/mp4">
             </video>
@@ -168,9 +168,17 @@
                             <span class="material-symbols-outlined fill text-jht-gold">local_shipping</span>
                         </div>
                         <div class="relative w-full h-48 bg-jht-gray flex items-center justify-center overflow-hidden">
-                            <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
+                            <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay loop muted playsinline>
                                 <source src="../assets/videos/home/RutasEstados_jht.mp4" type="video/mp4">
                             </video>
+                            <!-- Difuminado de bordes para integrar el video a la tarjeta -->
+                            <!-- Borde Superior (se disuelve con la cabecera oscura) -->
+                            <div class="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-jht-dark to-transparent pointer-events-none z-10"></div>
+                            <!-- Borde Inferior (se disuelve con el cuerpo blanco) -->
+                            <div class="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-white to-transparent pointer-events-none z-10"></div>
+                            <!-- Bordes Laterales (suavizado sutil a los lados) -->
+                            <div class="absolute inset-y-0 left-0 w-4 bg-gradient-to-r from-white/30 to-transparent pointer-events-none z-10"></div>
+                            <div class="absolute inset-y-0 right-0 w-4 bg-gradient-to-l from-white/30 to-transparent pointer-events-none z-10"></div>
                         </div>
                         <div class="p-6 bg-white">
                             <p class="font-title text-xl font-bold text-jht-dark text-center mb-1">Rastrea tu envío</p>
