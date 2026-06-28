@@ -6,35 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios - JHT Transport</title>
     <link href="../css/style.css?v=3" rel="stylesheet">
+    <link href="../css/servicios.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script type="module" src="../js/main.js"></script>
-    <style>
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
-
-    <style>
-        /* 3D Flip & Scale Scroll Animation */
-        .card-animate-once {
-            opacity: 0;
-            transform: perspective(1000px) rotateX(15deg) translateY(40px) scale(0.95);
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-            will-change: transform, opacity;
-        }
-
-        .card-animate-once.is-visible {
-            opacity: 1;
-            transform: perspective(1000px) rotateX(0deg) translateY(0) scale(1);
-        }
-    </style>
 </head>
 
 
@@ -136,66 +112,45 @@
             style="min-height: 100vh;">
 
             <!-- Background Image Carousel -->
-            <div class="absolute inset-0 z-0 overflow-hidden" x-data="{ active: 0, totalSlides: 7 }" x-init="setInterval(() => { active = (active + 1) % totalSlides }, 2500)">
+            <div class="absolute inset-0 z-0 overflow-hidden" x-data="{ active: 0, totalSlides: 7 }" x-init="setInterval(() => { active = (active + 1) % totalSlides }, 6000)">
 
                 <!-- Slide 0 -->
-                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
-                             'opacity-100 scale-100 z-10': active === 0,
-                             'opacity-0 scale-105 z-0': active !== 0
-                          }">
+                <div class="hero-slide" :class="active === 0 ? 'slide-active' : (active - 1 === 0 || (active === 0 && 0 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
                     <img src="../assets/images/servicios/Banner_Almacenaje.webp" alt="Banner Servicio" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slide 1 -->
-                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
-                             'opacity-100 scale-100 z-10': active === 1,
-                             'opacity-0 scale-105 z-0': active !== 1
-                          }">
+                <div class="hero-slide" :class="active === 1 ? 'slide-active' : (active - 1 === 1 || (active === 0 && 1 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
                     <img src="../assets/images/servicios/Banner_CargaRefrigerada.webp" alt="Banner Servicio" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slide 2 -->
-                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
-                             'opacity-100 scale-100 z-10': active === 2,
-                             'opacity-0 scale-105 z-0': active !== 2
-                          }">
+                <div class="hero-slide" :class="active === 2 ? 'slide-active' : (active - 1 === 2 || (active === 0 && 2 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
                     <img src="../assets/images/servicios/Banner_Carga_Sobredimensionada.webp" alt="Banner Servicio" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slide 3 -->
-                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
-                             'opacity-100 scale-100 z-10': active === 3,
-                             'opacity-0 scale-105 z-0': active !== 3
-                          }">
+                <div class="hero-slide" :class="active === 3 ? 'slide-active' : (active - 1 === 3 || (active === 0 && 3 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
                     <img src="../assets/images/servicios/Banner_DeliveryExpress.webp" alt="Banner Servicio" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slide 4 -->
-                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
-                             'opacity-100 scale-100 z-10': active === 4,
-                             'opacity-0 scale-105 z-0': active !== 4
-                          }">
+                <div class="hero-slide" :class="active === 4 ? 'slide-active' : (active - 1 === 4 || (active === 0 && 4 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
                     <img src="../assets/images/servicios/Banner_Distribucion.webp" alt="Banner Servicio" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slide 5 -->
-                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
-                             'opacity-100 scale-100 z-10': active === 5,
-                             'opacity-0 scale-105 z-0': active !== 5
-                          }">
+                <div class="hero-slide" :class="active === 5 ? 'slide-active' : (active - 1 === 5 || (active === 0 && 5 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
                     <img src="../assets/images/servicios/Banner_Mudanza.webp" alt="Banner Servicio" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slide 6 -->
-                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
-                             'opacity-100 scale-100 z-10': active === 6,
-                             'opacity-0 scale-105 z-0': active !== 6
-                          }">
+                <div class="hero-slide" :class="active === 6 ? 'slide-active' : (active - 1 === 6 || (active === 0 && 6 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
                     <img src="../assets/images/servicios/Banner_PersonaldeEstiba.webp" alt="Banner Servicio" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Overlay Gradient for text readability -->
-                <div class="absolute inset-0 bg-jht-dark/75 z-20 pointer-events-none"></div>
+                <div class="absolute inset-0 bg-jht-dark/85 z-20 pointer-events-none"></div>
                 <div
                     class="absolute inset-0 bg-gradient-to-t from-jht-dark/90 via-jht-dark/80 to-transparent z-20 pointer-events-none">
                 </div>
@@ -374,15 +329,15 @@
                  }" @resize.window="currentSlide = Math.min(currentSlide, maxSlide())">
 
             <div class="max-w-7xl mx-auto px-4 md:px-10">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 scroll-trigger from-bottom">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <div>
                         <h2 id="catalogo-titulo"
-                            class="font-title text-3xl md:text-5xl font-extrabold text-jht-dark mb-4 flex items-center gap-2">
-                            <span class="gps-icon text-jht-gold hidden md:flex"><span class="gps-dot"></span><span
+                            class="font-title text-3xl md:text-5xl font-extrabold text-jht-dark mb-4 flex items-start gap-3 scroll-trigger">
+                            <span class="gps-icon text-jht-gold hidden md:flex mt-3"><span class="gps-dot"></span><span
                                     class="gps-ring gps-ring-1"></span><span class="gps-ring gps-ring-2"></span></span>
-                            Nuestro Catálogo de Soluciones
+                            <span>Nuestro Catálogo de <br><span class="text-jht-gold drop-shadow-sm">Soluciones</span></span>
                         </h2>
-                        <p id="catalogo-subtitulo" class="text-lg text-jht-blue-support max-w-2xl">Descubre los 7
+                        <p id="catalogo-subtitulo" class="text-lg text-jht-blue-support max-w-2xl scroll-trigger">Descubre los 7
                             pilares de nuestra propuesta de valor logística, diseñados para cubrir cada eslabón de tu
                             cadena de suministro.</p>
                     </div>
@@ -407,7 +362,7 @@
 
                         <!-- Tarjeta 1 -->
                         <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 shrink-0 px-4">
-                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                 onclick="openModal(this)" style="transition-delay: 100ms">
                                 <!-- Card Image Header -->
                                 <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -470,7 +425,7 @@
 
                         <!-- Tarjeta 2 -->
                         <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 shrink-0 px-4">
-                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                 onclick="openModal(this)" style="transition-delay: 200ms">
                                 <!-- Card Image Header -->
                                 <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -533,7 +488,7 @@
 
                         <!-- Tarjeta 3 -->
                         <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 shrink-0 px-4">
-                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                 onclick="openModal(this)" style="transition-delay: 300ms">
                                 <!-- Card Image Header -->
                                 <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -596,7 +551,7 @@
 
                         <!-- Tarjeta 4 -->
                         <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 shrink-0 px-4">
-                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                 onclick="openModal(this)" style="transition-delay: 400ms">
                                 <!-- Card Image Header -->
                                 <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -658,7 +613,7 @@
 
                         <!-- Tarjeta 5 -->
                         <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 shrink-0 px-4">
-                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                 onclick="openModal(this)" style="transition-delay: 500ms">
                                 <!-- Card Image Header -->
                                 <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -721,7 +676,7 @@
 
                         <!-- Tarjeta 6 -->
                         <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 shrink-0 px-4">
-                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                 onclick="openModal(this)" style="transition-delay: 600ms">
                                 <!-- Card Image Header -->
                                 <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -784,7 +739,7 @@
 
                         <!-- Tarjeta 7 -->
                         <div class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 shrink-0 px-4">
-                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                            <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                 onclick="openModal(this)" style="transition-delay: 700ms">
                                 <!-- Card Image Header -->
                                 <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -856,9 +811,9 @@
                 <div class="flex flex-col-reverse lg:flex-row items-center gap-16">
 
                     <!-- Lado Izquierdo: 2 Videos -->
-                    <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4 relative scroll-trigger from-left">
+                    <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4 relative">
                         <!-- Video 1 (Más grande, ligeramente desplazado hacia arriba) -->
-                        <div class="rounded-2xl overflow-hidden shadow-2xl h-64 md:h-80 transform -translate-y-6">
+                        <div id="video-elegir-1" class="rounded-2xl overflow-hidden shadow-2xl h-64 md:h-80 scroll-trigger">
                             <video class="w-full h-full object-cover" autoplay loop muted playsinline
                                 onloadeddata="this.playbackRate = 0.8">
                                 <source src="../assets/videos/servicios/servicios_trasnporteGrandeRojo.mp4"
@@ -866,7 +821,7 @@
                             </video>
                         </div>
                         <!-- Video 2 (Más pequeño, desplazado hacia abajo) -->
-                        <div class="rounded-2xl overflow-hidden shadow-xl h-56 md:h-64 mt-auto transform translate-y-6">
+                        <div id="video-elegir-2" class="rounded-2xl overflow-hidden shadow-xl h-56 md:h-64 mt-auto scroll-trigger">
                             <video class="w-full h-full object-cover" autoplay loop muted playsinline
                                 onloadeddata="this.playbackRate = 0.9">
                                 <source src="../assets/videos/servicios/servicios_trasnporteMedioBlanco.mp4"
@@ -881,9 +836,17 @@
 
                     <!-- Lado Derecho: Contenido -->
                     <div class="w-full lg:w-1/2 scroll-trigger from-right">
-                        <h2 class="font-title text-3xl md:text-5xl font-extrabold text-jht-dark mb-6 leading-tight">
-                            ¿Por qué elegir a <br><span class="text-jht-gold drop-shadow-sm">JHT Transport?</span>
-                        </h2>
+                        <div class="flex items-start gap-3 mb-6">
+                            <span class="gps-icon text-jht-gold hidden md:flex mt-3 shrink-0">
+                                <span class="gps-dot"></span>
+                                <span class="gps-ring gps-ring-1"></span>
+                                <span class="gps-ring gps-ring-2"></span>
+                                <span class="gps-ring gps-ring-3"></span>
+                            </span>
+                            <h2 class="font-title text-3xl md:text-5xl font-extrabold text-jht-dark leading-tight">
+                                ¿Por qué elegir a <br><span class="text-jht-gold drop-shadow-sm">JHT Transport?</span>
+                            </h2>
+                        </div>
                         <p class="text-lg text-jht-blue-support mb-10 leading-relaxed">
                             Nuestra experiencia en el sector y el uso de tecnología avanzada nos permiten garantizar que
                             tu carga viaja segura y llega a tiempo. Nos convertimos en una extensión de tu empresa.
