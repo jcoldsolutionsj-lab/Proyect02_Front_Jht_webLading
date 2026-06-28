@@ -29,6 +29,14 @@ html {
 /* Ensure hero section allows dropdown to overflow visually */
 #hero-servicios {
     overflow: visible !important;
+    z-index: 10;
+    position: relative;
+}
+
+/* Catalog section must sit below the hero stacking context */
+#catalogo {
+    z-index: 1;
+    position: relative;
 }
 
 /* Dropdown panel – must float above all hero layers */
