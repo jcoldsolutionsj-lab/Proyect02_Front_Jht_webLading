@@ -169,6 +169,10 @@ html {
     animation-delay: 0.3s, 1.5s;
 }
 
+#catalogo-titulo, #por-que-elegir-titulo, #cta-servicios-titulo {
+    animation: titleBounceRadar 12.5s infinite ease-in-out;
+}
+
 @keyframes titleBounceRadar {
     0% {
         opacity: 0;
@@ -312,15 +316,15 @@ html {
 
 /* Hover slide left and back animation for paragraphs */
 @keyframes slideLeftBack {
-    0% { transform: translateX(0); }
-    30% { transform: translateX(-8px); }
-    70% { transform: translateX(2px); }
-    100% { transform: translateX(0); }
+    0% { translate: 0 0; }
+    30% { translate: -8px 0; }
+    70% { translate: 2px 0; }
+    100% { translate: 0 0; }
 }
 
 .hover-slide-left-back {
     display: inline-block;
-    transition: transform 0.3s ease;
+    transition: translate 0.3s ease;
 }
 
 .hover-slide-left-back:hover {
