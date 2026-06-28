@@ -23,10 +23,14 @@
 
         <div class="max-w-7xl mx-auto px-4 md:px-10 flex justify-between items-center w-full">
             <!-- Logo -->
-            <a href="index.html" class="flex items-center shrink-0 lg:w-48">
-                <img alt="JHT Transport Logo" :class="scrolled ? 'h-10 lg:h-12' : 'h-12 lg:h-16'"
-                    class="w-auto object-contain transition-all duration-300"
+            <a href="index.html" class="flex items-center shrink-0 relative overflow-hidden group/logo rounded-lg p-2">
+                <img alt="JHT Transport Logo" :class="scrolled ? 'h-10 lg:h-12' : 'h-14 lg:h-16'"
+                    class="w-auto object-contain transition-all duration-300 logo-animado logo-shadow-unscrolled"
                     src="../assets/images/branding/JHTmarca-transparente.png" />
+                <!-- Destello Metálico Continuo -->
+                <div
+                    class="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-full logo-shine">
+                </div>
             </a>
 
             <!-- Desktop Menu -->
@@ -112,45 +116,60 @@
             style="min-height: 100vh;">
 
             <!-- Background Image Carousel -->
-            <div class="absolute inset-0 z-0 overflow-hidden" x-data="{ active: 0, totalSlides: 7 }" x-init="setInterval(() => { active = (active + 1) % totalSlides }, 6000)">
+            <div class="absolute inset-0 z-0 overflow-hidden" x-data="{ active: 0, totalSlides: 7 }"
+                x-init="setInterval(() => { active = (active + 1) % totalSlides }, 6000)">
 
                 <!-- Slide 0 -->
-                <div class="hero-slide" :class="active === 0 ? 'slide-active' : (active - 1 === 0 || (active === 0 && 0 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
-                    <img src="../assets/images/servicios/Banner_Almacenaje.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                <div class="hero-slide"
+                    :class="active === 0 ? 'slide-active' : (active - 1 === 0 || (active === 0 && 0 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                    <img src="../assets/images/servicios/Banner_Almacenaje.webp" alt="Banner Servicio"
+                        class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slide 1 -->
-                <div class="hero-slide" :class="active === 1 ? 'slide-active' : (active - 1 === 1 || (active === 0 && 1 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
-                    <img src="../assets/images/servicios/Banner_CargaRefrigerada.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                <div class="hero-slide"
+                    :class="active === 1 ? 'slide-active' : (active - 1 === 1 || (active === 0 && 1 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                    <img src="../assets/images/servicios/Banner_CargaRefrigerada.webp" alt="Banner Servicio"
+                        class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slide 2 -->
-                <div class="hero-slide" :class="active === 2 ? 'slide-active' : (active - 1 === 2 || (active === 0 && 2 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
-                    <img src="../assets/images/servicios/Banner_Carga_Sobredimensionada.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                <div class="hero-slide"
+                    :class="active === 2 ? 'slide-active' : (active - 1 === 2 || (active === 0 && 2 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                    <img src="../assets/images/servicios/Banner_Carga_Sobredimensionada.webp" alt="Banner Servicio"
+                        class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slide 3 -->
-                <div class="hero-slide" :class="active === 3 ? 'slide-active' : (active - 1 === 3 || (active === 0 && 3 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
-                    <img src="../assets/images/servicios/Banner_DeliveryExpress.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                <div class="hero-slide"
+                    :class="active === 3 ? 'slide-active' : (active - 1 === 3 || (active === 0 && 3 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                    <img src="../assets/images/servicios/Banner_DeliveryExpress.webp" alt="Banner Servicio"
+                        class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slide 4 -->
-                <div class="hero-slide" :class="active === 4 ? 'slide-active' : (active - 1 === 4 || (active === 0 && 4 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
-                    <img src="../assets/images/servicios/Banner_Distribucion.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                <div class="hero-slide"
+                    :class="active === 4 ? 'slide-active' : (active - 1 === 4 || (active === 0 && 4 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                    <img src="../assets/images/servicios/Banner_Distribucion.webp" alt="Banner Servicio"
+                        class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slide 5 -->
-                <div class="hero-slide" :class="active === 5 ? 'slide-active' : (active - 1 === 5 || (active === 0 && 5 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
-                    <img src="../assets/images/servicios/Banner_Mudanza.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                <div class="hero-slide"
+                    :class="active === 5 ? 'slide-active' : (active - 1 === 5 || (active === 0 && 5 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                    <img src="../assets/images/servicios/Banner_Mudanza.webp" alt="Banner Servicio"
+                        class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slide 6 -->
-                <div class="hero-slide" :class="active === 6 ? 'slide-active' : (active - 1 === 6 || (active === 0 && 6 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
-                    <img src="../assets/images/servicios/Banner_PersonaldeEstiba.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                <div class="hero-slide"
+                    :class="active === 6 ? 'slide-active' : (active - 1 === 6 || (active === 0 && 6 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                    <img src="../assets/images/servicios/Banner_PersonaldeEstiba.webp" alt="Banner Servicio"
+                        class="w-full h-full object-cover">
                 </div>
 
                 <!-- Overlay Gradient for text readability -->
-                <div class="absolute inset-0 bg-jht-dark/85 z-20 pointer-events-none"></div>
+                <div class="absolute inset-0 bg-jht-dark/78 z-20 pointer-events-none"></div>
                 <div
                     class="absolute inset-0 bg-gradient-to-t from-jht-dark/90 via-jht-dark/80 to-transparent z-20 pointer-events-none">
                 </div>
@@ -192,7 +211,7 @@
             </div>
 
             <div
-                class="relative z-20 max-w-7xl mx-auto px-4 md:px-10 w-full flex flex-col lg:flex-row items-center justify-between gap-12">
+                class="relative z-30 max-w-7xl mx-auto px-4 md:px-10 w-full flex flex-col lg:flex-row items-center justify-between gap-12">
                 <!-- Text Content -->
                 <div class="w-full lg:w-3/5 text-left">
                     <div
@@ -228,14 +247,17 @@
                                     :style="open ? 'transform: rotate(180deg) scale(1.25); color: #c49a45;' : ''"
                                     :class="open ? 'group-hover:text-jht-dark' : 'group-hover:translate-y-1'">arrow_downward</span>
                             </button>
+                            <!-- Dropdown: Sideways on desktop, below on mobile -->
                             <div x-show="open" style="display: none;"
-                                x-transition:enter="transition ease-out duration-200"
-                                x-transition:enter-start="opacity-0 scale-95"
-                                x-transition:enter-end="opacity-100 scale-100"
-                                x-transition:leave="transition ease-in duration-75"
+                                x-transition:enter="transition ease-out duration-500"
+                                x-transition:enter-start="opacity-0 -translate-x-4 lg:translate-x-0 lg:-translate-y-0 scale-95"
+                                x-transition:enter-end="opacity-100 translate-x-0 translate-y-0 scale-100"
+                                x-transition:leave="transition ease-in duration-200"
                                 x-transition:leave-start="opacity-100 scale-100"
                                 x-transition:leave-end="opacity-0 scale-95"
-                                class="absolute mt-2 w-[360px] rounded-2xl shadow-2xl bg-jht-dark/85 backdrop-blur-md border border-white/20 focus:outline-none overflow-hidden origin-top-left left-0 lg:left-0 z-[100]">
+                                class="dropdown-servicios absolute w-[340px] rounded-2xl shadow-2xl bg-jht-dark/90 backdrop-blur-xl border border-white/20 focus:outline-none overflow-hidden
+                                       top-full mt-3 left-0 origin-top-left
+                                       lg:top-0 lg:mt-0 lg:left-full lg:ml-4 lg:origin-left">
 
                                 <div class="p-3 space-y-0">
                                     <button @click="document.querySelectorAll('.jht-card')[0].click(); open = false"
@@ -335,9 +357,11 @@
                             class="font-title text-3xl md:text-5xl font-extrabold text-jht-dark mb-4 flex items-start gap-3 scroll-trigger">
                             <span class="gps-icon text-jht-gold hidden md:flex mt-3"><span class="gps-dot"></span><span
                                     class="gps-ring gps-ring-1"></span><span class="gps-ring gps-ring-2"></span></span>
-                            <span>Nuestro Catálogo de <br><span class="text-jht-gold drop-shadow-sm">Soluciones</span></span>
+                            <span>Nuestro Catálogo de <br><span
+                                    class="text-jht-gold drop-shadow-sm">Soluciones</span></span>
                         </h2>
-                        <p id="catalogo-subtitulo" class="text-lg text-jht-blue-support max-w-2xl scroll-trigger">Descubre los 7
+                        <p id="catalogo-subtitulo" class="text-lg text-jht-blue-support max-w-2xl scroll-trigger">
+                            Descubre los 7
                             pilares de nuestra propuesta de valor logística, diseñados para cubrir cada eslabón de tu
                             cadena de suministro.</p>
                     </div>
@@ -813,7 +837,8 @@
                     <!-- Lado Izquierdo: 2 Videos -->
                     <div class="w-full lg:w-1/2 grid grid-cols-2 gap-4 relative">
                         <!-- Video 1 (Más grande, ligeramente desplazado hacia arriba) -->
-                        <div id="video-elegir-1" class="rounded-2xl overflow-hidden shadow-2xl h-64 md:h-80 scroll-trigger">
+                        <div id="video-elegir-1"
+                            class="rounded-2xl overflow-hidden shadow-2xl h-64 md:h-80 scroll-trigger">
                             <video class="w-full h-full object-cover" autoplay loop muted playsinline
                                 onloadeddata="this.playbackRate = 0.8">
                                 <source src="../assets/videos/servicios/servicios_trasnporteGrandeRojo.mp4"
@@ -821,7 +846,8 @@
                             </video>
                         </div>
                         <!-- Video 2 (Más pequeño, desplazado hacia abajo) -->
-                        <div id="video-elegir-2" class="rounded-2xl overflow-hidden shadow-xl h-56 md:h-64 mt-auto scroll-trigger">
+                        <div id="video-elegir-2"
+                            class="rounded-2xl overflow-hidden shadow-xl h-56 md:h-64 mt-auto scroll-trigger">
                             <video class="w-full h-full object-cover" autoplay loop muted playsinline
                                 onloadeddata="this.playbackRate = 0.9">
                                 <source src="../assets/videos/servicios/servicios_trasnporteMedioBlanco.mp4"
@@ -901,7 +927,8 @@
             <div
                 class="absolute inset-0 z-0 opacity-10 bg-[url('../assets/images/branding/JHTmarca-transparente.png')] bg-repeat bg-center mix-blend-overlay">
             </div>
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white z-10" style="background: linear-gradient(to bottom, transparent, white);"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white z-10"
+                style="background: linear-gradient(to bottom, transparent, white);"></div>
             <div
                 class="absolute -top-40 -right-40 w-96 h-96 bg-jht-gold/20 rounded-full blur-[100px] z-10 pointer-events-none">
             </div>
@@ -917,12 +944,13 @@
                     Eleva la eficiencia de tu cadena de suministro hoy mismo. Deja el transporte en manos de expertos y
                     enfócate en hacer crecer tu negocio.
                 </p>
-                <form action="contacto.html" class="flex flex-col sm:flex-row items-center justify-between w-full max-w-2xl mx-auto bg-white border-2 border-gray-200 rounded-2xl p-2 mt-4 shadow-xl focus-within:border-jht-gold transition-all duration-300 hover:shadow-2xl">
+                <form action="contacto.html"
+                    class="flex flex-col sm:flex-row items-center justify-between w-full max-w-2xl mx-auto bg-white border-2 border-gray-200 rounded-2xl p-2 mt-4 shadow-xl focus-within:border-jht-gold transition-all duration-300 hover:shadow-2xl">
                     <div class="flex-grow w-full px-4 py-2 sm:py-0">
                         <input type="email" placeholder="Su correo corporativo" required style="box-shadow: none;"
                             class="w-full bg-transparent border-0 text-jht-dark placeholder-gray-400 py-2 outline-none focus:outline-none focus:ring-0 text-lg font-medium">
                     </div>
-                    <button type="submit" 
+                    <button type="submit"
                         class="w-full sm:w-auto bg-jht-gold text-jht-dark py-4 px-10 rounded-xl text-lg font-bold hover:bg-jht-dark hover:text-jht-gold transition-colors duration-300 whitespace-nowrap shadow-md">
                         Solicitar Asesoría
                     </button>

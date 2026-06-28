@@ -1,5 +1,22 @@
 /* Styles specific to the Servicios page */
 
+/* Global 10% zoom — escalado proporcional adaptable */
+html {
+    font-size: 110%; /* Base 17.6px en vez de 16px → todo 10% más grande */
+}
+
+@media (max-width: 640px) {
+    html {
+        font-size: 105%; /* En móviles solo 5% más para no desbordar */
+    }
+}
+
+@media (min-width: 1536px) {
+    html {
+        font-size: 115%; /* En pantallas 2xl un poco más de presencia */
+    }
+}
+
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
 }
@@ -7,6 +24,17 @@
 .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+/* Ensure hero section allows dropdown to overflow visually */
+#hero-servicios {
+    overflow: visible !important;
+}
+
+/* Dropdown panel – must float above all hero layers */
+.dropdown-servicios {
+    position: absolute;
+    z-index: 9999 !important;
 }
 
 /* 3D Flip & Scale Scroll Animation */
@@ -101,7 +129,7 @@
 }
 
 .hero-slide img {
-    filter: brightness(0.65);
+    filter: brightness(0.78);
 }
 
 /* Active Slide - center stage */
@@ -181,6 +209,77 @@
         transform: translateY(0);
     }
 }
+
+/* Animated Brand Logo */
+.logo-animado {
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.5s ease, height 0.3s ease !important;
+    animation: entranceLogo 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, logoNudge 8s infinite ease-in-out 1.5s;
+    transform-origin: center center;
+}
+
+.logo-animado:hover {
+    transform: scale(1.06) rotate(-1.5deg);
+    filter: brightness(1.15) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12)) drop-shadow(0 8px 15px rgba(255, 212, 0, 0.25));
+}
+
+@keyframes entranceLogo {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-10px);
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+}
+
+@keyframes logoNudge {
+    0%, 72%, 100% {
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+    84% {
+        transform: scale(1.08) rotate(375deg); /* Giro 360 + 15 de rebote - zoom moderado */
+        filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12)) drop-shadow(0 8px 18px rgba(255, 212, 0, 0.25));
+    }
+    90% {
+        transform: scale(1.03) rotate(350deg); /* Retroceso del rebote */
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+    95% {
+        transform: scale(1.06) rotate(363deg); /* Micro oscilación */
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+    98%, 100% {
+        transform: scale(1) rotate(360deg); /* Asentamiento final */
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+}
+
+/* Continuous Metallic Shine Sweep */
+.logo-shine {
+    animation: shineSweep 4s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes shineSweep {
+    0% {
+        transform: translateX(-150%) skewX(-12deg);
+    }
+    15%, 100% {
+        transform: translateX(250%) skewX(-12deg);
+    }
+}
+
+/* White drop shadow filter for high contrast around the logo (Permanent) */
+.logo-shadow-unscrolled {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+}
+
+
+
 
 
 
