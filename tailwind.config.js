@@ -21,8 +21,16 @@ module.exports = {
         'vibrate-y': 'vibrate-y 0.4s ease-in-out',
         'fade-in-up': 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both',
         'fade-in-slow': 'fadeInSlow 3.5s ease-out forwards',
+        'takeoff': 'takeoff 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
       },
       keyframes: {
+        takeoff: {
+          '0%': { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+          '20%': { transform: 'translate(-3px, 3px) scale(0.9)', opacity: 1 },
+          '50%': { transform: 'translate(25px, -25px) scale(1.1)', opacity: 0 },
+          '51%': { transform: 'translate(-25px, 25px) scale(0.8)', opacity: 0 },
+          '100%': { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+        },
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },

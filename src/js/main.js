@@ -23,8 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                // Stop observing once animated so it only animates once
-                observer.unobserve(entry.target); 
+            } else {
+                // Remueve la clase para que se vuelva a animar al subir o bajar scroll
+                entry.target.classList.remove('is-visible');
             }
         });
     }, observerOptions);

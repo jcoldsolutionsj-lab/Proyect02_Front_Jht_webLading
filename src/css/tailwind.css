@@ -77,8 +77,9 @@
   .scroll-trigger {
     opacity: 0;
     transition-property: opacity, transform;
-    transition-duration: 2s;
+    transition-duration: 1.4s;
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
   }
   
   /* Direcciones iniciales */
@@ -222,6 +223,42 @@
   0%, 62% { opacity: 0; transform: translateY(-50%) translateX(15px) scale(0.9); visibility: hidden; }
   68%, 94% { opacity: 1; transform: translateY(-50%) translateX(0) scale(1); visibility: visible; }
   100% { opacity: 0; transform: translateY(-50%) translateX(15px) scale(0.9); visibility: hidden; }
+}
+
+/* Hero Entrance Animations */
+@keyframes slide-down-fade {
+  0% { transform: translateY(-40px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-up-fade {
+  0% { transform: translateY(40px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-left-fade {
+  0% { transform: translateX(40px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.animate-hero-badge {
+  animation: slide-down-fade 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-hero-title {
+  animation: slide-up-fade 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.animate-hero-desc {
+  animation: slide-up-fade 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.animate-hero-btn1 {
+  animation: slide-left-fade 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+}
+
+.animate-hero-btn2 {
+  animation: slide-left-fade 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.0s both;
 }
 
 
