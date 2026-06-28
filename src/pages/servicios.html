@@ -255,71 +255,72 @@
                                 x-transition:leave="transition ease-in duration-200"
                                 x-transition:leave-start="opacity-100 scale-100"
                                 x-transition:leave-end="opacity-0 scale-95"
-                                class="dropdown-servicios absolute w-[340px] rounded-2xl shadow-2xl bg-jht-dark/90 backdrop-blur-xl border border-white/20 focus:outline-none overflow-hidden
+                                class="dropdown-servicios absolute w-[340px] rounded-2xl shadow-2xl border border-gray-200 focus:outline-none overflow-hidden
                                        top-full mt-3 left-0 origin-top-left
-                                       lg:top-0 lg:mt-0 lg:left-full lg:ml-4 lg:origin-left">
+                                       lg:top-0 lg:mt-0 lg:left-full lg:ml-4 lg:origin-left"
+                                style="background-color: #E3E4E5;">
 
-                                <div class="p-3 space-y-0">
+                                <div class="p-3 space-y-1">
                                     <button @click="document.querySelectorAll('.jht-card')[0].click(); open = false"
-                                        class="text-left w-full px-4 py-2 text-base text-white hover:bg-white/10 hover:text-jht-gold font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
+                                        class="text-left w-full px-4 py-2 text-base text-jht-dark hover:bg-white/65 font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-jht-gold transition-colors duration-300">
+                                            class="w-10 h-10 rounded-lg bg-jht-dark/5 flex items-center justify-center group-hover:bg-jht-dark transition-colors duration-300">
                                             <span
-                                                class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark transition-colors">warehouse</span>
+                                                class="material-symbols-outlined text-jht-dark group-hover:text-white transition-colors">warehouse</span>
                                         </div>
                                         <span class="flex-grow whitespace-nowrap">Almacenaje</span>
                                     </button>
                                     <button @click="document.querySelectorAll('.jht-card')[1].click(); open = false"
-                                        class="text-left w-full px-4 py-2 text-base text-white hover:bg-white/10 hover:text-jht-gold font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
+                                        class="text-left w-full px-4 py-2 text-base text-jht-dark hover:bg-white/65 font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-jht-gold transition-colors duration-300">
+                                            class="w-10 h-10 rounded-lg bg-jht-dark/5 flex items-center justify-center group-hover:bg-jht-dark transition-colors duration-300">
                                             <span
-                                                class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark transition-colors">ac_unit</span>
+                                                class="material-symbols-outlined text-jht-dark group-hover:text-white transition-colors">ac_unit</span>
                                         </div>
                                         <span class="flex-grow whitespace-nowrap">Carga Refrigerada</span>
                                     </button>
                                     <button @click="document.querySelectorAll('.jht-card')[2].click(); open = false"
-                                        class="text-left w-full px-4 py-2 text-base text-white hover:bg-white/10 hover:text-jht-gold font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
+                                        class="text-left w-full px-4 py-2 text-base text-jht-dark hover:bg-white/65 font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-jht-gold transition-colors duration-300">
+                                            class="w-10 h-10 rounded-lg bg-jht-dark/5 flex items-center justify-center group-hover:bg-jht-dark transition-colors duration-300">
                                             <span
-                                                class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark transition-colors">front_loader</span>
+                                                class="material-symbols-outlined text-jht-dark group-hover:text-white transition-colors">front_loader</span>
                                         </div>
                                         <span class="flex-grow whitespace-nowrap">Carga Sobredimensionada</span>
                                     </button>
                                     <button @click="document.querySelectorAll('.jht-card')[3].click(); open = false"
-                                        class="text-left w-full px-4 py-2 text-base text-white hover:bg-white/10 hover:text-jht-gold font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
+                                        class="text-left w-full px-4 py-2 text-base text-jht-dark hover:bg-white/65 font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-jht-gold transition-colors duration-300">
+                                            class="w-10 h-10 rounded-lg bg-jht-dark/5 flex items-center justify-center group-hover:bg-jht-dark transition-colors duration-300">
                                             <span
-                                                class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark transition-colors">local_shipping</span>
+                                                class="material-symbols-outlined text-jht-dark group-hover:text-white transition-colors">local_shipping</span>
                                         </div>
                                         <span class="flex-grow whitespace-nowrap">Delivery Express</span>
                                     </button>
                                     <button @click="document.querySelectorAll('.jht-card')[4].click(); open = false"
-                                        class="text-left w-full px-4 py-2 text-base text-white hover:bg-white/10 hover:text-jht-gold font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
+                                        class="text-left w-full px-4 py-2 text-base text-jht-dark hover:bg-white/65 font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-jht-gold transition-colors duration-300">
+                                            class="w-10 h-10 rounded-lg bg-jht-dark/5 flex items-center justify-center group-hover:bg-jht-dark transition-colors duration-300">
                                             <span
-                                                class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark transition-colors">route</span>
+                                                class="material-symbols-outlined text-jht-dark group-hover:text-white transition-colors">route</span>
                                         </div>
                                         <span class="flex-grow whitespace-nowrap">Distribución Regional y Local</span>
                                     </button>
                                     <button @click="document.querySelectorAll('.jht-card')[5].click(); open = false"
-                                        class="text-left w-full px-4 py-2 text-base text-white hover:bg-white/10 hover:text-jht-gold font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
+                                        class="text-left w-full px-4 py-2 text-base text-jht-dark hover:bg-white/65 font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-jht-gold transition-colors duration-300">
+                                            class="w-10 h-10 rounded-lg bg-jht-dark/5 flex items-center justify-center group-hover:bg-jht-dark transition-colors duration-300">
                                             <span
-                                                class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark transition-colors">home_work</span>
+                                                class="material-symbols-outlined text-jht-dark group-hover:text-white transition-colors">home_work</span>
                                         </div>
                                         <span class="flex-grow whitespace-nowrap">Mudanza Integral</span>
                                     </button>
                                     <button @click="document.querySelectorAll('.jht-card')[6].click(); open = false"
-                                        class="text-left w-full px-4 py-3 text-base text-white hover:bg-white/10 hover:text-jht-gold font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
+                                        class="text-left w-full px-4 py-3 text-base text-jht-dark hover:bg-white/65 font-semibold rounded-xl flex items-center gap-4 transition-all duration-200 group">
                                         <div
-                                            class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-jht-gold transition-colors duration-300">
+                                            class="w-10 h-10 rounded-lg bg-jht-dark/5 flex items-center justify-center group-hover:bg-jht-dark transition-colors duration-300">
                                             <span
-                                                class="material-symbols-outlined text-jht-gold group-hover:text-jht-dark transition-colors">engineering</span>
+                                                class="material-symbols-outlined text-jht-dark group-hover:text-white transition-colors">engineering</span>
                                         </div>
                                         <span class="flex-grow whitespace-nowrap">Personal de Estiba</span>
                                     </button>
