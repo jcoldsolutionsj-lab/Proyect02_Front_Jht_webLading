@@ -286,6 +286,23 @@ html {
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
 }
 
+/* Hover slide left and back animation for paragraphs */
+@keyframes slideLeftBack {
+    0% { transform: translateX(0); }
+    30% { transform: translateX(-8px); }
+    70% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
+}
+
+.hover-slide-left-back {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.hover-slide-left-back:hover {
+    animation: slideLeftBack 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 
 
 
