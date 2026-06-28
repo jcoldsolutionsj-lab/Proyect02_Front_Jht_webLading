@@ -140,24 +140,63 @@
             style="min-height: 100vh;">
 
             <!-- Background Image Carousel -->
-            <div class="absolute inset-0 z-0 overflow-hidden" x-data="{ active: 0, slides: [
-                     '../assets/images/servicios/Banner_Almacenaje.webp',
-                     '../assets/images/servicios/Banner_CargaRefrigerada.webp',
-                     '../assets/images/servicios/Banner_Carga_Sobredimensionada.webp',
-                     '../assets/images/servicios/Banner_DeliveryExpress.webp',
-                     '../assets/images/servicios/Banner_Distribucion.webp',
-                     '../assets/images/servicios/Banner_Mudanza.webp',
-                     '../assets/images/servicios/Banner_PersonaldeEstiba.webp'
-                 ] }" x-init="setInterval(() => { active = (active + 1) % slides.length }, 5000)">
+            <div class="absolute inset-0 z-0 overflow-hidden" x-data="{ active: 0, totalSlides: 7 }" x-init="setInterval(() => { active = (active + 1) % totalSlides }, 2500)">
 
-                <template x-for="(slide, index) in slides" :key="index">
-                    <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
-                             'opacity-100 scale-100 z-10': active === index,
-                             'opacity-0 scale-105 z-0': active !== index
-                         }">
-                        <img :src="slide" alt="Banner Servicio" class="w-full h-full object-cover">
-                    </div>
-                </template>
+                <!-- Slide 0 -->
+                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
+                             'opacity-100 scale-100 z-10': active === 0,
+                             'opacity-0 scale-105 z-0': active !== 0
+                          }">
+                    <img src="../assets/images/servicios/Banner_Almacenaje.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Slide 1 -->
+                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
+                             'opacity-100 scale-100 z-10': active === 1,
+                             'opacity-0 scale-105 z-0': active !== 1
+                          }">
+                    <img src="../assets/images/servicios/Banner_CargaRefrigerada.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
+                             'opacity-100 scale-100 z-10': active === 2,
+                             'opacity-0 scale-105 z-0': active !== 2
+                          }">
+                    <img src="../assets/images/servicios/Banner_Carga_Sobredimensionada.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
+                             'opacity-100 scale-100 z-10': active === 3,
+                             'opacity-0 scale-105 z-0': active !== 3
+                          }">
+                    <img src="../assets/images/servicios/Banner_DeliveryExpress.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
+                             'opacity-100 scale-100 z-10': active === 4,
+                             'opacity-0 scale-105 z-0': active !== 4
+                          }">
+                    <img src="../assets/images/servicios/Banner_Distribucion.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
+                             'opacity-100 scale-100 z-10': active === 5,
+                             'opacity-0 scale-105 z-0': active !== 5
+                          }">
+                    <img src="../assets/images/servicios/Banner_Mudanza.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="absolute inset-0 transition-all duration-[2000ms] ease-in-out transform" :class="{
+                             'opacity-100 scale-100 z-10': active === 6,
+                             'opacity-0 scale-105 z-0': active !== 6
+                          }">
+                    <img src="../assets/images/servicios/Banner_PersonaldeEstiba.webp" alt="Banner Servicio" class="w-full h-full object-cover">
+                </div>
 
                 <!-- Overlay Gradient for text readability -->
                 <div class="absolute inset-0 bg-jht-dark/75 z-20 pointer-events-none"></div>
@@ -167,15 +206,15 @@
 
                 <!-- Indicadores (Puntos) -->
                 <div class="absolute bottom-6 left-0 right-0 flex justify-center gap-3 z-30 pointer-events-none">
-                    <template x-for="(slide, index) in slides" :key="index">
-                        <button @click="active = index"
+                    <template x-for="index in totalSlides">
+                        <button @click="active = index - 1"
                             class="h-2 rounded-full transition-all duration-500 shadow-md pointer-events-auto"
-                            :class="active === index ? 'w-8 bg-jht-gold' : 'w-2 bg-white/50 hover:bg-white'"></button>
+                            :class="active === (index - 1) ? 'w-8 bg-jht-gold' : 'w-2 bg-white/50 hover:bg-white'"></button>
                     </template>
                 </div>
 
                 <!-- Controles Prev/Next -->
-                <button type="button" @click="active = (active === 0) ? slides.length - 1 : active - 1"
+                <button type="button" @click="active = (active === 0) ? totalSlides - 1 : active - 1"
                     class="absolute top-0 left-0 md:left-4 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none pointer-events-auto">
                     <span
                         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white/70 transition-all shadow-lg">
@@ -187,7 +226,7 @@
                         <span class="sr-only">Previous</span>
                     </span>
                 </button>
-                <button type="button" @click="active = (active + 1) % slides.length"
+                <button type="button" @click="active = (active + 1) % totalSlides"
                     class="absolute top-0 right-0 md:right-4 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none pointer-events-auto">
                     <span
                         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white/70 transition-all shadow-lg">
