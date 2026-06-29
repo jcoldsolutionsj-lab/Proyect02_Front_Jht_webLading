@@ -1269,10 +1269,10 @@
 
     <!-- Modal Dialog -->
     <dialog id="service-modal"
-        class="bg-transparent m-auto fixed inset-0 z-50 backdrop:bg-jht-dark/95 backdrop:backdrop-blur-md open:flex flex-col items-center justify-center p-4"
+        class="bg-transparent m-auto fixed inset-0 z-50 backdrop:bg-white/50 backdrop:backdrop-blur-md open:flex flex-col items-center justify-center p-4"
         onclick="if(event.target === this) this.close()">
         <div
-            class="bg-white rounded-3xl overflow-hidden max-w-3xl w-full shadow-2xl relative flex flex-col max-h-[90vh]">
+            class="bg-white rounded-3xl overflow-hidden max-w-3xl w-full shadow-2xl relative flex flex-col">
             <!-- Image Header -->
             <div class="w-full h-64 sm:h-72 relative flex-shrink-0 group overflow-hidden bg-jht-dark">
                 <img id="modal-img" src="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90">
@@ -1293,7 +1293,7 @@
             </div>
 
             <!-- Content Body -->
-            <div class="pt-12 pb-8 px-8 sm:px-10 flex flex-col relative bg-white overflow-y-auto">
+            <div class="pt-12 pb-8 px-8 sm:px-10 flex flex-col relative bg-white overflow-hidden">
                 <h3 id="modal-title" class="text-3xl sm:text-4xl font-title font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-jht-dark to-jht-blue-support mb-3 leading-tight tracking-tight">
                 </h3>
                 <p id="modal-desc" class="text-gray-600 text-lg leading-relaxed pb-6 border-b border-gray-100">
