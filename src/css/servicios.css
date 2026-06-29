@@ -340,3 +340,141 @@ html {
 .animate-bounce-twice {
     animation: bounceTwice 1.2s ease-in-out;
 }
+
+/* Rocket launch animation */
+@keyframes rocketLaunch {
+    0% {
+        translate: 0 0;
+        scale: 1;
+        opacity: 1;
+        rotate: 0deg;
+    }
+    25% {
+        translate: 4px -6px;
+        scale: 1.12;
+        opacity: 1;
+        rotate: 30deg;
+    }
+    55% {
+        translate: 55px -55px;
+        scale: 0.6;
+        opacity: 0;
+        rotate: 45deg;
+    }
+    56% {
+        translate: -40px 30px;
+        scale: 0.2;
+        opacity: 0;
+        rotate: 45deg;
+    }
+    78% {
+        translate: -20px 15px;
+        scale: 0.2;
+        opacity: 0;
+        rotate: 45deg;
+    }
+    92% {
+        translate: 0 0;
+        scale: 1.15;
+        opacity: 1;
+        rotate: 0deg;
+    }
+    100% {
+        translate: 0 0;
+        scale: 1;
+        opacity: 1;
+        rotate: 0deg;
+    }
+}
+
+.animate-rocket {
+    display: inline-block;
+    animation: rocketLaunch 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation-delay: 1.5s;
+}
+
+/* Click pulse animation for submit button */
+@keyframes clickPulse {
+    0%, 60%, 100% {
+        scale: 1;
+        box-shadow: 0 4px 15px rgba(196, 154, 69, 0.3);
+    }
+    65% {
+        scale: 0.93;
+        box-shadow: 0 2px 6px rgba(196, 154, 69, 0.2);
+    }
+    72% {
+        scale: 1.04;
+        box-shadow: 0 6px 24px rgba(196, 154, 69, 0.55);
+    }
+    78% {
+        scale: 0.97;
+        box-shadow: 0 4px 15px rgba(196, 154, 69, 0.35);
+    }
+    83% {
+        scale: 1;
+        box-shadow: 0 4px 15px rgba(196, 154, 69, 0.3);
+    }
+}
+
+.animate-click-pulse {
+    animation: clickPulse 4s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+/* Animated cursor that "clicks" the button */
+.btn-animated-cursor {
+    position: absolute;
+    bottom: -8px;
+    right: 14px;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0;
+    animation: cursorClickAnim 4s ease-in-out infinite;
+    animation-delay: 2s;
+    filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.4));
+}
+
+@keyframes cursorClickAnim {
+    /* Hidden, offset to bottom-right */
+    0%, 54% {
+        opacity: 0;
+        translate: 36px 36px;
+        scale: 1;
+    }
+    /* Fade in at bottom-right */
+    59% {
+        opacity: 1;
+        translate: 36px 36px;
+        scale: 1;
+    }
+    /* Slide smoothly into position over the button */
+    64% {
+        opacity: 1;
+        translate: 0 0;
+        scale: 1;
+    }
+    /* Press down - click! (synced with button scale 0.93 at 65%) */
+    66% {
+        opacity: 1;
+        translate: 0 5px;
+        scale: 0.85;
+    }
+    /* Release - lift back up (synced with button scale 1.04 at 72%) */
+    73% {
+        opacity: 1;
+        translate: 0 0;
+        scale: 1;
+    }
+    /* Fade out and slide away */
+    78% {
+        opacity: 0;
+        translate: 36px 36px;
+        scale: 1;
+    }
+    100% {
+        opacity: 0;
+        translate: 36px 36px;
+        scale: 1;
+    }
+}
