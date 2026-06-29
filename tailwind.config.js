@@ -19,6 +19,7 @@ module.exports = {
       animation: {
         'marquee': 'marquee 25s linear infinite',
         'vibrate-y': 'vibrate-y 0.4s ease-in-out',
+        'shake': 'shake 0.4s ease-in-out',
         'fade-in-up': 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both',
         'fade-in-slow': 'fadeInSlow 3.5s ease-out forwards',
         'takeoff': 'takeoff 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
@@ -40,6 +41,11 @@ module.exports = {
           '25%': { transform: 'translateY(-6px)' },
           '50%': { transform: 'translateY(3px)' },
           '75%': { transform: 'translateY(-2px)' },
+        },
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '20%, 60%': { transform: 'translateX(-3px)' },
+          '40%, 80%': { transform: 'translateX(3px)' },
         },
         fadeInSlow: {
           '0%': { opacity: 0 },
