@@ -5,6 +5,17 @@ html {
     font-size: 110%; /* Base 17.6px en vez de 16px → todo 10% más grande */
 }
 
+/* Hide scrollbar on desktop, keep scroll functionality */
+@media (min-width: 768px) {
+    html {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE / Edge */
+    }
+    html::-webkit-scrollbar {
+        display: none; /* Chrome / Safari */
+    }
+}
+
 @media (max-width: 640px) {
     html {
         font-size: 105%; /* En móviles solo 5% más para no desbordar */
