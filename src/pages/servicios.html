@@ -228,30 +228,73 @@
                         class="animate-hero-title font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
                         Nuestras Soluciones <br /><span class="text-jht-gold">Logísticas</span>
                     </h1>
-                    <p id="servicios-hero-subtitulo"
-                        class="animate-hero-desc text-lg text-gray-200 mb-8 font-light max-w-xl leading-relaxed hover-slide-left-back">
-                        Proporcionamos cobertura nacional integral y trazabilidad en tiempo real para todas sus
-                        necesidades operativas. Confíe en nuestra precisión y velocidad para mantener su cadena de
-                        suministro en constante movimiento.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#contacto"
-                            class="animate-hero-btn1 inline-flex items-center justify-center gap-2 btn-primary py-3 px-8 text-lg font-bold group shadow-xl hover:shadow-jht-gold/20 transition-all duration-300 hover:-translate-y-1 rounded-md">
-                            Solicitar Cotizacion
-                            <span
-                                class="material-symbols-outlined transition-transform duration-300 group-hover:translate-x-1">request_quote</span>
-                        </a>
-                        <div x-data="{ open: false, closeTimeout: null }"
-                            @mouseleave="closeTimeout = setTimeout(() => open = false, 250)"
-                            @mouseenter="clearTimeout(closeTimeout)" class="relative inline-block text-left z-50">
-                            <button @click="open = !open" @click.away="open = false"
-                                class="animate-hero-btn2 inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white/80 text-white hover:bg-white hover:text-jht-dark py-3 px-8 text-lg font-bold group transition-all duration-300 hover:-translate-y-1 rounded-md">
-                                Ver Servicios
-                                <span class="material-symbols-outlined"
-                                    style="transition: all 500ms cubic-bezier(0.34, 1.56, 0.64, 1); display: inline-block;"
-                                    :style="open ? 'transform: rotate(180deg) scale(1.25); color: #c49a45;' : ''"
-                                    :class="open ? 'group-hover:text-jht-dark' : 'group-hover:translate-y-1'">arrow_downward</span>
-                            </button>
+                    <div x-data="{
+                            text: 'Proporcionamos cobertura nacional integral y trazabilidad en tiempo real para todas sus necesidades operativas. Confíe en nuestra precisión y velocidad para mantener su cadena de suministro en constante movimiento.',
+                            fullText: 'Proporcionamos cobertura nacional integral y trazabilidad en tiempo real para todas sus necesidades operativas. Confíe en nuestra precisión y velocidad para mantener su cadena de suministro en constante movimiento.',
+                            charIndex: 215,
+                            isDeleting: true,
+                            bounce1: false,
+                            bounce2: false,
+                            type() {
+                                if (this.isDeleting) {
+                                    this.charIndex -= 2; // delete faster
+                                    if(this.charIndex < 0) this.charIndex = 0;
+                                } else {
+                                    this.charIndex++;
+                                }
+                                this.text = this.fullText.substring(0, this.charIndex) + (this.charIndex < this.fullText.length ? '|' : '');
+                                
+                                let typeSpeed = this.isDeleting ? 10 : 25;
+                                
+                                if (!this.isDeleting && this.charIndex >= this.fullText.length) {
+                                    typeSpeed = 3000;
+                                    this.isDeleting = true;
+                                    this.text = this.fullText; // remove cursor during pause
+                                    
+                                    this.bounce1 = true;
+                                    setTimeout(() => { 
+                                        this.bounce1 = false; 
+                                        this.bounce2 = true;
+                                        setTimeout(() => { this.bounce2 = false; }, 1200);
+                                    }, 1200);
+                                } else if (this.isDeleting && this.charIndex <= 0) {
+                                    this.isDeleting = false;
+                                    typeSpeed = 500;
+                                }
+                                setTimeout(() => this.type(), typeSpeed);
+                            }
+                        }"
+                        x-init="setTimeout(() => type(), 3500)">
+                        
+                        <p id="servicios-hero-subtitulo"
+                            class="animate-hero-desc text-lg text-gray-200 mb-8 font-light max-w-xl leading-relaxed hover-slide-left-back min-h-[140px] sm:min-h-[110px] md:min-h-[90px]"
+                            x-text="text">
+                            Proporcionamos cobertura nacional integral y trazabilidad en tiempo real para todas sus
+                            necesidades operativas. Confíe en nuestra precisión y velocidad para mantener su cadena de
+                            suministro en constante movimiento.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div :class="bounce1 ? 'animate-bounce-twice' : ''">
+                                <a href="#contacto"
+                                    class="animate-hero-btn1 w-full sm:w-auto inline-flex items-center justify-center gap-2 btn-primary py-3 px-8 text-lg font-bold group shadow-xl hover:shadow-jht-gold/20 transition-all duration-300 hover:-translate-y-1 rounded-md">
+                                    Solicitar Cotizacion
+                                    <span
+                                        class="material-symbols-outlined transition-transform duration-300 group-hover:translate-x-1">request_quote</span>
+                                </a>
+                            </div>
+                            <div x-data="{ open: false, closeTimeout: null }"
+                                @mouseleave="closeTimeout = setTimeout(() => open = false, 250)"
+                                @mouseenter="clearTimeout(closeTimeout)" class="relative inline-block text-left z-50">
+                                <div :class="bounce2 ? 'animate-bounce-twice' : ''">
+                                    <button @click="open = !open" @click.away="open = false"
+                                        class="animate-hero-btn2 w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white/80 text-white hover:bg-white hover:text-jht-dark py-3 px-8 text-lg font-bold group transition-all duration-300 hover:-translate-y-1 rounded-md">
+                                        Ver Servicios
+                                        <span class="material-symbols-outlined"
+                                            style="transition: all 500ms cubic-bezier(0.34, 1.56, 0.64, 1); display: inline-block;"
+                                            :style="open ? 'transform: rotate(180deg) scale(1.25); color: #c49a45;' : ''"
+                                            :class="open ? 'group-hover:text-jht-dark' : 'group-hover:translate-y-1'">arrow_downward</span>
+                                    </button>
+                                </div>
                             <!-- Dropdown: Sideways on desktop, below on mobile -->
                             <div x-show="open" style="display: none;"
                                 x-transition:enter="transition ease-out duration-500"
@@ -332,6 +375,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
 
