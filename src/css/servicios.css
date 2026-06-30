@@ -1,0 +1,293 @@
+/* Styles specific to the Servicios page */
+
+/* Global 10% zoom — escalado proporcional adaptable */
+html {
+    font-size: 110%; /* Base 17.6px en vez de 16px → todo 10% más grande */
+}
+
+@media (max-width: 640px) {
+    html {
+        font-size: 105%; /* En móviles solo 5% más para no desbordar */
+    }
+}
+
+@media (min-width: 1536px) {
+    html {
+        font-size: 115%; /* En pantallas 2xl un poco más de presencia */
+    }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Ensure hero section allows dropdown to overflow visually */
+#hero-servicios {
+    overflow: visible !important;
+    z-index: 10;
+    position: relative;
+}
+
+/* Catalog section must sit below the hero stacking context */
+#catalogo {
+    z-index: 1;
+    position: relative;
+}
+
+/* Dropdown panel – must float above all hero layers */
+.dropdown-servicios {
+    position: absolute;
+    z-index: 9999 !important;
+}
+
+/* 3D Flip & Scale Scroll Animation */
+.card-animate-once {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(15deg) translateY(40px) scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform, opacity;
+}
+
+.card-animate-once.is-visible {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0) scale(1);
+}
+
+/* Custom smooth scroll trigger for title (from left) */
+#catalogo-titulo.scroll-trigger {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: opacity 1.3s cubic-bezier(0.25, 1, 0.5, 1), transform 1.3s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, opacity;
+}
+#catalogo-titulo.scroll-trigger.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Custom smooth scroll trigger for subtitle (from right) */
+#catalogo-subtitulo.scroll-trigger {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: opacity 1.3s cubic-bezier(0.25, 1, 0.5, 1), transform 1.3s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, opacity;
+}
+#catalogo-subtitulo.scroll-trigger.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Video 1 (From top) */
+#video-elegir-1.scroll-trigger {
+    opacity: 0;
+    transform: translateY(-90px) scale(0.95);
+    transition: opacity 1.3s cubic-bezier(0.25, 1, 0.5, 1), transform 1.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+    will-change: transform, opacity;
+}
+#video-elegir-1.scroll-trigger.is-visible {
+    opacity: 1;
+    transform: translateY(-24px) scale(1); /* Maintains original -translate-y-6 */
+}
+#video-elegir-1 {
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s ease;
+}
+#video-elegir-1.is-visible:hover {
+    transform: translateY(-36px) scale(1.04) rotate(-1.5deg);
+    box-shadow: 0 30px 45px -10px rgba(255, 212, 0, 0.35);
+}
+
+/* Video 2 (From bottom) */
+#video-elegir-2.scroll-trigger {
+    opacity: 0;
+    transform: translateY(90px) scale(0.95);
+    transition: opacity 1.3s cubic-bezier(0.25, 1, 0.5, 1), transform 1.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+    will-change: transform, opacity;
+}
+#video-elegir-2.scroll-trigger.is-visible {
+    opacity: 1;
+    transform: translateY(24px) scale(1); /* Maintains original translate-y-6 */
+}
+#video-elegir-2 {
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.6s ease;
+}
+#video-elegir-2.is-visible:hover {
+    transform: translateY(12px) scale(1.04) rotate(1.5deg);
+    box-shadow: 0 30px 45px -10px rgba(255, 212, 0, 0.35);
+}
+
+/* 3D Push & Reveal Hero Carousel */
+#hero-servicios {
+    perspective: 1500px;
+}
+
+#hero-servicios .overflow-hidden {
+    transform-style: preserve-3d;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    transition: transform 2.5s cubic-bezier(0.25, 1, 0.3, 1), opacity 2.5s cubic-bezier(0.25, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.hero-slide img {
+    filter: brightness(0.78);
+}
+
+/* Active Slide - center stage */
+.hero-slide.slide-active {
+    opacity: 1;
+    transform: translateX(0) translateZ(0) rotateY(0deg) scale(1);
+    z-index: 10;
+}
+
+/* Previous Slide - exiting to the left */
+.hero-slide.slide-prev {
+    opacity: 0;
+    transform: translateX(-100%) translateZ(-200px) rotateY(15deg) scale(0.9);
+    z-index: 5;
+}
+
+/* Next Slide - waiting on the right */
+.hero-slide.slide-next {
+    opacity: 0;
+    transform: translateX(100%) translateZ(-200px) rotateY(-15deg) scale(0.9);
+    z-index: 0;
+}
+
+/* Text Mask Reveal Animations */
+.animate-hero-title {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    transform: translateY(40px);
+    animation: revealHeroText 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.3s;
+}
+
+.animate-hero-desc {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    transform: translateY(30px);
+    animation: revealHeroText 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes revealHeroText {
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transform: translateY(0);
+    }
+}
+
+.animate-hero-badge {
+    opacity: 0;
+    transform: scale(0.85);
+    animation: revealHeroBadge 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 0.1s;
+}
+
+@keyframes revealHeroBadge {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-hero-btn1 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealHeroBtn 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.7s;
+}
+
+.animate-hero-btn2 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealHeroBtn 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.8s;
+}
+
+@keyframes revealHeroBtn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animated Brand Logo */
+.logo-animado {
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.5s ease, height 0.3s ease !important;
+    animation: entranceLogo 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, logoNudge 8s infinite ease-in-out 1.5s;
+    transform-origin: center center;
+}
+
+.logo-animado:hover {
+    transform: scale(1.06) rotate(-1.5deg);
+    filter: brightness(1.15) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12)) drop-shadow(0 8px 15px rgba(255, 212, 0, 0.25));
+}
+
+@keyframes entranceLogo {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-10px);
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+}
+
+@keyframes logoNudge {
+    0%, 72%, 100% {
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+    84% {
+        transform: scale(1.08) rotate(375deg); /* Giro 360 + 15 de rebote - zoom moderado */
+        filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12)) drop-shadow(0 8px 18px rgba(255, 212, 0, 0.25));
+    }
+    90% {
+        transform: scale(1.03) rotate(350deg); /* Retroceso del rebote */
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+    95% {
+        transform: scale(1.06) rotate(363deg); /* Micro oscilación */
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+    98%, 100% {
+        transform: scale(1) rotate(360deg); /* Asentamiento final */
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+}
+
+/* Continuous Metallic Shine Sweep */
+.logo-shine {
+    animation: shineSweep 4s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes shineSweep {
+    0% {
+        transform: translateX(-150%) skewX(-12deg);
+    }
+    15%, 100% {
+        transform: translateX(250%) skewX(-12deg);
+    }
+}
+
+/* White drop shadow filter for high contrast around the logo (Permanent) */
+.logo-shadow-unscrolled {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+}
+
+
+
+
+
+
