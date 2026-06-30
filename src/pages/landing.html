@@ -864,7 +864,7 @@
 
         <!-- ===== CÓMO TRABAJAMOS ===== -->
         <section id="como-trabajamos" class="py-20 md:py-28 bg-white relative" aria-labelledby="proceso-titulo">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-6" x-data="{ activeStep: 0 }" x-init="setInterval(() => { activeStep = (activeStep + 1) % 5 }, 3000)">
                 <div class="text-center mb-14 scroll-trigger">
                     <h2 id="proceso-titulo" class="section-title flex items-center justify-center gap-3">
                         <span class="gps-icon text-jht-gold shrink-0">
@@ -875,45 +875,74 @@
                         </span>
                         <span>Cómo Trabajamos</span>
                     </h2>
-                    <p class="section-subtitle">Un proceso simple y transparente en cuatro pasos.</p>
+                    <p class="section-subtitle">Trazabilidad total de tu carga en cinco estados.</p>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto scroll-trigger">
-                    <!-- Paso 1 -->
-                    <div class="text-center relative">
-                        <div class="w-16 h-16 rounded-full bg-jht-dark flex items-center justify-center mx-auto mb-5 shadow-lg">
-                            <span class="font-title text-2xl font-bold text-jht-gold">1</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 max-w-6xl mx-auto scroll-trigger relative">
+                    <!-- Paso 1: Programado -->
+                    <div class="text-center relative flex flex-col items-center">
+                        <div :class="activeStep === 0 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg' : (activeStep > 0 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
+                             class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
+                            1
                         </div>
-                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2">Solicitud</h3>
-                        <p class="text-sm text-jht-blue-support">Cuéntanos qué necesitas. Recibe tu cotización personalizada.</p>
-                        <!-- Connector line (hidden on mobile) -->
-                        <div class="hidden lg:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-jht-gold/30" aria-hidden="true"></div>
+                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500" :class="activeStep === 0 ? 'text-jht-gold' : 'text-jht-dark'">Programado</h3>
+                        <p class="text-sm text-jht-blue-support max-w-[200px]">Tu envío es planificado y registrado en nuestro sistema.</p>
+                        <!-- Connector line -->
+                        <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-1 bg-gray-200 -z-0 rounded" aria-hidden="true">
+                            <div class="h-full bg-jht-gold transition-all duration-700" :style="activeStep > 0 ? 'width: 100%' : 'width: 0%'"></div>
+                        </div>
                     </div>
-                    <!-- Paso 2 -->
-                    <div class="text-center relative">
-                        <div class="w-16 h-16 rounded-full bg-jht-dark flex items-center justify-center mx-auto mb-5 shadow-lg">
-                            <span class="font-title text-2xl font-bold text-jht-gold">2</span>
+
+                    <!-- Paso 2: En Ruta -->
+                    <div class="text-center relative flex flex-col items-center">
+                        <div :class="activeStep === 1 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg' : (activeStep > 1 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
+                             class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
+                            2
                         </div>
-                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2">Recojo</h3>
-                        <p class="text-sm text-jht-blue-support">Recogemos tu carga en el punto de origen acordado.</p>
-                        <div class="hidden lg:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-jht-gold/30" aria-hidden="true"></div>
+                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500" :class="activeStep === 1 ? 'text-jht-gold' : 'text-jht-dark'">En Ruta</h3>
+                        <p class="text-sm text-jht-blue-support max-w-[200px]">La unidad de transporte inicia el recorrido hacia el destino.</p>
+                        <!-- Connector line -->
+                        <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-1 bg-gray-200 -z-0 rounded" aria-hidden="true">
+                            <div class="h-full bg-jht-gold transition-all duration-700" :style="activeStep > 1 ? 'width: 100%' : 'width: 0%'"></div>
+                        </div>
                     </div>
-                    <!-- Paso 3 -->
-                    <div class="text-center relative">
-                        <div class="w-16 h-16 rounded-full bg-jht-dark flex items-center justify-center mx-auto mb-5 shadow-lg">
-                            <span class="font-title text-2xl font-bold text-jht-gold">3</span>
+
+                    <!-- Paso 3: Recepcionado -->
+                    <div class="text-center relative flex flex-col items-center">
+                        <div :class="activeStep === 2 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg' : (activeStep > 2 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
+                             class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
+                            3
                         </div>
-                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2">Seguimiento</h3>
-                        <p class="text-sm text-jht-blue-support">Monitorea tu envío en tiempo real con GPS satelital.</p>
-                        <div class="hidden lg:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-jht-gold/30" aria-hidden="true"></div>
+                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500" :class="activeStep === 2 ? 'text-jht-gold' : 'text-jht-dark'">Recepcionado</h3>
+                        <p class="text-sm text-jht-blue-support max-w-[200px]">La carga es recibida y controlada en nuestro centro logístico.</p>
+                        <!-- Connector line -->
+                        <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-1 bg-gray-200 -z-0 rounded" aria-hidden="true">
+                            <div class="h-full bg-jht-gold transition-all duration-700" :style="activeStep > 2 ? 'width: 100%' : 'width: 0%'"></div>
+                        </div>
                     </div>
-                    <!-- Paso 4 -->
-                    <div class="text-center">
-                        <div class="w-16 h-16 rounded-full bg-jht-gold flex items-center justify-center mx-auto mb-5 shadow-lg">
-                            <span class="font-title text-2xl font-bold text-jht-dark">4</span>
+
+                    <!-- Paso 4: En Reparto -->
+                    <div class="text-center relative flex flex-col items-center">
+                        <div :class="activeStep === 3 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg' : (activeStep > 3 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
+                             class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
+                            4
                         </div>
-                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2">Entrega</h3>
-                        <p class="text-sm text-jht-blue-support">Tu carga llega segura y a tiempo al destino.</p>
+                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500" :class="activeStep === 3 ? 'text-jht-gold' : 'text-jht-dark'">En Reparto</h3>
+                        <p class="text-sm text-jht-blue-support max-w-[200px]">Nuestra unidad realiza el tramo final para la entrega capilar.</p>
+                        <!-- Connector line -->
+                        <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-1 bg-gray-200 -z-0 rounded" aria-hidden="true">
+                            <div class="h-full bg-jht-gold transition-all duration-700" :style="activeStep > 3 ? 'width: 100%' : 'width: 0%'"></div>
+                        </div>
+                    </div>
+
+                    <!-- Paso 5: Entregado -->
+                    <div class="text-center relative flex flex-col items-center">
+                        <div :class="activeStep === 4 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg' : 'bg-gray-200 text-gray-500'"
+                             class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
+                            5
+                        </div>
+                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500" :class="activeStep === 4 ? 'text-jht-gold' : 'text-jht-dark'">Entregado</h3>
+                        <p class="text-sm text-jht-blue-support max-w-[200px]">La mercadería es entregada conforme al destinatario final.</p>
                     </div>
                 </div>
             </div>
