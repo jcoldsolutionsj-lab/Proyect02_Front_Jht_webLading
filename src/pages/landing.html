@@ -1,210 +1,1089 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page - JHT Transport</title>
-    <!-- Tailwind CSS Compilado -->
+
+    <!-- ===== SEO TÉCNICO ===== -->
+    <title>Transporte de Carga Nacional | JHT Transport - Logística Empresarial en Perú</title>
+    <meta name="description" content="JHT Transport: empresa de transporte de carga terrestre, distribución, almacenaje, mudanzas y logística empresarial con cobertura nacional en Perú. GPS en tiempo real. Solicita tu cotización.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.jhttransport.com/">
+    <meta name="author" content="JHT Transport Company SAC">
+    <meta name="keywords" content="transporte de carga, logística empresarial, distribución, almacenaje, mudanzas, courier, carga refrigerada, transporte Perú">
+
+    <!-- ===== OPEN GRAPH ===== -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Transporte de Carga Nacional | JHT Transport">
+    <meta property="og:description" content="Soluciones integrales de transporte de carga y logística empresarial con cobertura nacional en Perú. GPS en tiempo real.">
+    <meta property="og:url" content="https://www.jhttransport.com/">
+    <meta property="og:site_name" content="JHT Transport">
+    <meta property="og:locale" content="es_PE">
+
+    <!-- ===== TWITTER CARDS ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Transporte de Carga Nacional | JHT Transport">
+    <meta name="twitter:description" content="Soluciones integrales de transporte de carga y logística empresarial con cobertura nacional en Perú.">
+
+    <!-- ===== PERFORMANCE: Preconnect ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- ===== CSS ===== -->
     <link href="../css/style.css" rel="stylesheet">
-    <!-- Alpine.js -->
+
+    <!-- ===== ALPINE.JS ===== -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
-    
+
+    <!-- ===== GOOGLE MATERIAL SYMBOLS ===== -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+
     <style>
         [x-cloak] { display: none !important; }
     </style>
+
+    <!-- ===== JSON-LD: Organization ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "JHT Transport Company SAC",
+        "url": "https://www.jhttransport.com",
+        "logo": "https://www.jhttransport.com/assets/images/branding/JHTmarca-transparente.png",
+        "description": "Empresa de transporte de carga y logística empresarial con cobertura nacional en Perú.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Santa Anita",
+            "addressRegion": "Lima",
+            "addressCountry": "PE"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+51-935-833-467",
+            "contactType": "sales",
+            "availableLanguage": "Spanish"
+        }
+    }
+    </script>
+
+    <!-- ===== JSON-LD: LocalBusiness ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "JHT Transport",
+        "@id": "https://www.jhttransport.com",
+        "url": "https://www.jhttransport.com",
+        "telephone": "+51-935-833-467",
+        "email": "info@jhttransport.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Santa Anita",
+            "addressLocality": "Lima",
+            "addressCountry": "PE"
+        },
+        "openingHours": "Mo-Fr 08:00-18:00, Sa 08:00-13:00"
+    }
+    </script>
+
+    <!-- ===== JSON-LD: WebSite + SearchAction ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "JHT Transport",
+        "url": "https://www.jhttransport.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.jhttransport.com/rastreo?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+
+    <!-- ===== JSON-LD: BreadcrumbList ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://www.jhttransport.com/"
+        }]
+    }
+    </script>
+
+    <!-- ===== JSON-LD: Service (7 servicios) ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Servicios de JHT Transport",
+        "itemListElement": [
+            { "@type": "Service", "position": 1, "name": "Transporte de Carga", "description": "Movimiento seguro y eficiente de mercancías a nivel nacional con GPS en tiempo real.", "provider": { "@type": "Organization", "name": "JHT Transport" } },
+            { "@type": "Service", "position": 2, "name": "Distribución Regional y Local", "description": "Optimización de rutas para entregas capilares oportunas en todo el Perú.", "provider": { "@type": "Organization", "name": "JHT Transport" } },
+            { "@type": "Service", "position": 3, "name": "Courier y Delivery Express", "description": "Servicio de mensajería rápida para documentos y paquetes pequeños.", "provider": { "@type": "Organization", "name": "JHT Transport" } },
+            { "@type": "Service", "position": 4, "name": "Mudanzas Integrales", "description": "Traslados corporativos y residenciales con embalaje especializado.", "provider": { "@type": "Organization", "name": "JHT Transport" } },
+            { "@type": "Service", "position": 5, "name": "Carga Refrigerada", "description": "Transporte con cadena de frío para productos perecederos y farmacéuticos.", "provider": { "@type": "Organization", "name": "JHT Transport" } },
+            { "@type": "Service", "position": 6, "name": "Almacenaje", "description": "Espacios seguros y monitoreados para almacenamiento de mercancías.", "provider": { "@type": "Organization", "name": "JHT Transport" } },
+            { "@type": "Service", "position": 7, "name": "Personal de Estiba", "description": "Equipo capacitado para carga y descarga de mercancías.", "provider": { "@type": "Organization", "name": "JHT Transport" } }
+        ]
+    }
+    </script>
+
+    <!-- ===== JSON-LD: FAQPage ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "¿Qué tipos de transporte de carga ofrece JHT Transport?", "acceptedAnswer": { "@type": "Answer", "text": "Ofrecemos transporte de carga terrestre a nivel nacional, distribución regional y local, courier express, mudanzas integrales, carga refrigerada, almacenaje y servicio de estiba." } },
+            { "@type": "Question", "name": "¿Cuál es la cobertura de JHT Transport?", "acceptedAnswer": { "@type": "Answer", "text": "Contamos con cobertura en las principales ciudades del Perú: Lima, Arequipa, Trujillo, Chiclayo, Piura, Cusco, Huancayo, Ica y más." } },
+            { "@type": "Question", "name": "¿Cómo puedo solicitar una cotización?", "acceptedAnswer": { "@type": "Answer", "text": "Puede solicitar una cotización a través del formulario en nuestra página web, por WhatsApp al (+51) 935 833 467 o enviando un correo a info@jhttransport.com." } },
+            { "@type": "Question", "name": "¿Ofrecen servicio de rastreo GPS en tiempo real?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, toda nuestra flota cuenta con GPS satelital que permite el seguimiento en tiempo real de su carga." } },
+            { "@type": "Question", "name": "¿Qué capacidad tiene la flota de JHT Transport?", "acceptedAnswer": { "@type": "Answer", "text": "Nuestra flota incluye vehículos livianos (1-5 ton), medianos (10-15 ton) y pesados (25-28 ton) para cubrir cualquier necesidad logística." } },
+            { "@type": "Question", "name": "¿La carga está asegurada?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, todas las cargas transportadas cuentan con seguro integral que protege su mercancía durante todo el trayecto." } },
+            { "@type": "Question", "name": "¿Cuál es el horario de atención?", "acceptedAnswer": { "@type": "Answer", "text": "Nuestro horario de atención es de lunes a viernes de 8:00 a 18:00 y sábados de 8:00 a 13:00." } },
+            { "@type": "Question", "name": "¿Realizan transporte de carga refrigerada?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, contamos con unidades especializadas para transporte con cadena de frío, ideal para productos perecederos, farmacéuticos y alimentos." } }
+        ]
+    }
+    </script>
 </head>
-<body class="bg-jht-gray text-jht-dark font-sans flex flex-col min-h-screen">
-    <!-- NAV (Menú de Navegación) -->
-    <header 
-        x-data="{ scrolled: false, mobileMenuOpen: false }" 
-        @scroll.window="scrolled = (window.pageYOffset > 20) ? true : false"
-        :class="{ 'bg-transparent py-6': !scrolled, 'bg-jht-dark shadow-lg py-3': scrolled }"
+
+<body class="bg-jht-gray text-jht-dark font-sans flex flex-col min-h-screen animate-fade-in-slow">
+
+    <!-- ===== SKIP TO CONTENT (Accesibilidad WCAG) ===== -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-jht-gold focus:text-jht-dark focus:px-6 focus:py-3 focus:rounded-lg focus:font-bold focus:shadow-xl">
+        Saltar al contenido principal
+    </a>
+
+    <!-- ===== HEADER ===== -->
+    <header
+        x-data="{ scrolled: false, mobileMenuOpen: false }"
+        @scroll.window="scrolled = (window.pageYOffset > 20)"
+        :class="{ 'bg-transparent py-5': !scrolled, 'bg-jht-dark shadow-lg py-3': scrolled }"
         class="fixed w-full top-0 z-50 transition-all duration-300"
+        role="banner"
     >
         <div class="container mx-auto px-6 flex justify-between items-center">
             <!-- Logo -->
-            <a href="index.html" class="flex items-center">
-                <img src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Transport Logo" class="h-10 md:h-12 w-auto transition-all duration-300">
+            <a href="/" class="flex items-center" aria-label="JHT Transport — Ir al inicio">
+                <img src="../assets/images/branding/JHTmarca-transparente.png"
+                     alt="JHT Transport Logo"
+                     class="h-10 md:h-12 w-auto transition-all duration-300"
+                     width="160" height="48" loading="eager">
             </a>
 
             <!-- Desktop Menu -->
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#servicios" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide">Servicios</a>
-                <a href="#flota" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide">Flota</a>
-                <a href="#clientes" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide">Clientes</a>
-                <a href="#contacto" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide">Contacto</a>
-                <a href="#area-cliente" class="btn-primary text-sm shadow-md">Área Cliente</a>
+            <nav class="hidden lg:flex items-center space-x-8" role="navigation" aria-label="Menú principal">
+                <a href="#hero" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide focus-visible:ring-2 focus-visible:ring-jht-gold" aria-current="page">Inicio</a>
+                <a href="#servicios" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide focus-visible:ring-2 focus-visible:ring-jht-gold">Servicios</a>
+                <a href="#flota" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide focus-visible:ring-2 focus-visible:ring-jht-gold">Flota</a>
+                <a href="#nosotros" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide focus-visible:ring-2 focus-visible:ring-jht-gold">Nosotros</a>
+                <a href="#contacto" class="text-white hover:text-jht-gold transition-colors font-medium text-sm tracking-wide focus-visible:ring-2 focus-visible:ring-jht-gold">Contacto</a>
+                <a href="#area-cliente" class="btn-primary text-sm shadow-md" aria-label="Acceso al Área de Cliente">Área Cliente</a>
             </nav>
 
             <!-- Mobile Menu Button -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-white focus:outline-none">
-                <svg x-show="!mobileMenuOpen" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button
+                @click="mobileMenuOpen = !mobileMenuOpen"
+                class="lg:hidden text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-jht-gold rounded-md p-1"
+                :aria-expanded="mobileMenuOpen.toString()"
+                aria-controls="mobile-menu"
+                aria-label="Abrir menú de navegación"
+            >
+                <svg x-show="!mobileMenuOpen" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
-                <svg x-show="mobileMenuOpen" x-cloak class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg x-show="mobileMenuOpen" x-cloak class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div 
-            x-show="mobileMenuOpen" 
+        <div
+            id="mobile-menu"
+            x-show="mobileMenuOpen"
             x-collapse
             x-cloak
-            class="md:hidden bg-jht-dark shadow-lg absolute w-full left-0 top-full flex flex-col border-t border-jht-blue-support/20"
+            class="lg:hidden bg-jht-dark shadow-lg absolute w-full left-0 top-full flex flex-col border-t border-jht-blue-support/20"
+            role="navigation"
+            aria-label="Menú móvil"
         >
+            <a href="#hero" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Inicio</a>
             <a href="#servicios" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Servicios</a>
             <a href="#flota" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Flota</a>
-            <a href="#clientes" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Clientes</a>
+            <a href="#nosotros" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Nosotros</a>
             <a href="#contacto" @click="mobileMenuOpen = false" class="text-white hover:text-jht-gold px-6 py-4 border-b border-jht-blue-support/20 font-medium">Contacto</a>
             <div class="px-6 py-6 bg-jht-dark/90">
-                <a href="#area-cliente" class="btn-primary w-full shadow-md">Área Cliente</a>
+                <a href="#area-cliente" class="btn-primary w-full shadow-md text-center">Área Cliente</a>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow">
-        <!-- Hero / Banner Secundario -->
-        <section class="relative h-screen flex items-center justify-center overflow-hidden bg-jht-dark">
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="main-content" class="flex-grow">
+
+        <!-- ===== HERO ===== -->
+        <section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-jht-dark" aria-label="Portada principal">
             <!-- Video Background -->
-            <video autoplay loop muted playsinline class="absolute z-0 min-w-full min-h-full object-cover opacity-60">
+            <video autoplay loop muted playsinline
+                   class="absolute z-0 min-w-full min-h-full object-cover opacity-50"
+                   fetchpriority="high"
+                   aria-hidden="true">
                 <source src="../assets/videos/landing/banner_landingPage.mp4" type="video/mp4">
             </video>
-            
+
             <!-- Degradado para legibilidad -->
-            <div class="absolute inset-0 bg-gradient-to-b from-jht-dark/70 via-jht-dark/40 to-jht-dark/80 z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-jht-dark/70 via-jht-dark/40 to-jht-dark/90 z-10" aria-hidden="true"></div>
 
             <!-- Contenido del Hero -->
-            <div class="relative z-20 container mx-auto px-6 text-center mt-16 animate-fade-in-up">
-                <!-- Círculos decorativos -->
-                <div class="absolute top-10 left-1/4 w-12 h-12 rounded-full border-4 border-jht-gold/30 animate-pulse"></div>
-                <div class="absolute bottom-10 right-1/4 w-24 h-24 rounded-full border-2 border-jht-blue-support/40"></div>
+            <div class="relative z-20 container mx-auto px-6 pt-24 pb-12 lg:pt-20">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-                <h1 id="hero-titulo" class="font-title text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 drop-shadow-lg leading-tight">
-                    Logística y Trazabilidad <br/><span class="text-jht-gold">en Tiempo Real</span>
-                </h1>
-                <p id="hero-subtitulo" class="text-lg md:text-xl lg:text-2xl text-jht-gray mb-12 max-w-3xl mx-auto drop-shadow-md">
-                    Soluciones integrales de transporte para empresas que exigen precisión, seguridad y velocidad en su cadena de suministro.
-                </p>
-                <a id="hero-cta" href="rastreo.html" class="btn-primary text-lg px-8 py-4 shadow-xl hover:-translate-y-1">
-                    Conoce el estado de tu servicio
-                </a>
+                    <!-- Columna Izquierda: Texto + Indicadores -->
+                    <div class="text-left">
+                        <h1 id="hero-titulo" class="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg leading-tight">
+                            Transporte y<br>Servicio Logístico<br>
+                            <span class="text-jht-gold">para empresas en<br>todo el país</span>
+                        </h1>
+                        <p id="hero-subtitulo" class="text-base sm:text-lg text-gray-300 mb-10 max-w-lg leading-relaxed">
+                            Soluciones integrales de transporte de carga, distribución y almacenaje para empresas que exigen precisión, seguridad y velocidad.
+                        </p>
+
+                        <!-- Indicadores numéricos -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6" aria-label="Cifras destacadas">
+                            <div class="text-center sm:text-left">
+                                <span class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title" data-counter="150">0</span>
+                                <span class="text-xs sm:text-sm text-gray-400 font-sans">Empresas</span>
+                            </div>
+                            <div class="text-center sm:text-left">
+                                <span class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title" data-counter="12000">0</span>
+                                <span class="text-xs sm:text-sm text-gray-400 font-sans">Envíos</span>
+                            </div>
+                            <div class="text-center sm:text-left">
+                                <span class="block text-2xl sm:text-3xl font-bold text-white font-title" data-counter="24">0</span>
+                                <span class="text-xs sm:text-sm text-gray-400 font-sans">Ciudades</span>
+                            </div>
+                            <div class="text-center sm:text-left">
+                                <div class="flex items-center justify-center sm:justify-start gap-1">
+                                    <span class="material-symbols-outlined text-green-400 text-xl" aria-hidden="true">gps_fixed</span>
+                                    <span class="text-sm font-bold text-green-400 font-title">GPS</span>
+                                </div>
+                                <span class="text-xs sm:text-sm text-gray-400 font-sans">Tiempo real</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Formulario de Cotización (Lead Comercial) -->
+                    <div class="w-full max-w-md mx-auto lg:ml-auto">
+                        <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-2xl border border-white/20">
+                            <h2 class="font-title text-xl sm:text-2xl font-bold text-jht-dark mb-1">Solicita tu Cotización</h2>
+                            <p class="text-sm text-jht-blue-support mb-6">Respuesta en menos de 24 horas</p>
+
+                            <form id="form-cotizacion" class="space-y-4" data-form-type="lead-comercial" novalidate>
+                                <div>
+                                    <label for="cot-servicio" class="sr-only">Servicio requerido</label>
+                                    <select id="cot-servicio" name="servicio" class="jht-input" required aria-required="true">
+                                        <option value="" disabled selected>Servicio requerido</option>
+                                        <option value="transporte-carga">Transporte de Carga</option>
+                                        <option value="distribucion">Distribución</option>
+                                        <option value="courier">Courier / Delivery Express</option>
+                                        <option value="mudanzas">Mudanzas</option>
+                                        <option value="carga-refrigerada">Carga Refrigerada</option>
+                                        <option value="almacenaje">Almacenaje</option>
+                                        <option value="personal-estiba">Personal de Estiba</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="cot-nombre" class="sr-only">Nombre completo</label>
+                                    <input type="text" id="cot-nombre" name="nombre" placeholder="Nombre completo" class="jht-input" required aria-required="true">
+                                </div>
+                                <div>
+                                    <label for="cot-empresa" class="sr-only">Empresa</label>
+                                    <input type="text" id="cot-empresa" name="empresa" placeholder="Empresa" class="jht-input">
+                                </div>
+                                <div>
+                                    <label for="cot-correo" class="sr-only">Correo electrónico</label>
+                                    <input type="email" id="cot-correo" name="correo" placeholder="Correo electrónico" class="jht-input" required aria-required="true">
+                                </div>
+                                <div>
+                                    <label for="cot-celular" class="sr-only">Celular</label>
+                                    <input type="tel" id="cot-celular" name="celular" placeholder="Celular" class="jht-input" required aria-required="true">
+                                </div>
+                                <button type="submit" class="btn-primary w-full text-base py-3.5 shadow-lg">
+                                    Solicitar Cotización
+                                    <span class="material-symbols-outlined ml-2 text-lg" aria-hidden="true">send</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Sección Carrusel (Ejemplo: Nuestros Servicios) -->
-        <section id="servicios" class="py-24 bg-white relative">
+        <!-- ===== SERVICIOS ===== -->
+        <section id="servicios" class="py-20 md:py-28 bg-white relative" aria-labelledby="servicios-titulo">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 id="servicios-titulo" class="font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4">Nuestros Servicios</h2>
-                    <p id="servicios-subtitulo" class="text-lg text-jht-text-secondary max-w-2xl mx-auto">
+                <div class="text-center mb-14 scroll-trigger">
+                    <h2 id="servicios-titulo" class="section-title">Nuestros Servicios</h2>
+                    <p id="servicios-subtitulo" class="section-subtitle">
                         Soluciones logísticas adaptadas a las necesidades específicas de tu negocio.
                     </p>
                 </div>
 
-                <!-- Carrusel Alpine -->
-                <div x-data="{ 
-                        activeSlide: 1, 
-                        slides: [
-                            { id: 'servicios-carrusel-1', src: '../assets/images/servicios/Banner_Almacenaje.webp', alt: 'Almacenaje Seguro' },
-                            { id: 'servicios-carrusel-2', src: '../assets/images/servicios/Banner_CargaRefrigerada.webp', alt: 'Carga Refrigerada' },
-                            { id: 'servicios-carrusel-3', src: '../assets/images/servicios/Banner_Distribución.webp', alt: 'Distribución Nacional' }
+                <!-- Carrusel de Servicios (Alpine.js) -->
+                <div x-data="{
+                        currentSlide: 0,
+                        services: [
+                            { id: 'servicio-1', title: 'Transporte de Carga', desc: 'Movimiento seguro y eficiente de mercancías a nivel nacional con monitoreo GPS en tiempo real.', icon: 'local_shipping', img: '../assets/images/servicios/Banner_Carga_Sobredimensionada.webp' },
+                            { id: 'servicio-2', title: 'Distribución', desc: 'Optimización de rutas para entregas capilares oportunas en todo el Perú.', icon: 'route', img: '../assets/images/servicios/Banner_Distribución.webp' },
+                            { id: 'servicio-3', title: 'Courier Express', desc: 'Servicio de mensajería rápida para documentos y paquetes pequeños.', icon: 'package_2', img: '../assets/images/servicios/Banner_DeliveryExpress.webp' },
+                            { id: 'servicio-4', title: 'Mudanzas', desc: 'Traslados corporativos y residenciales con embalaje especializado y personal capacitado.', icon: 'home_work', img: '../assets/images/servicios/Banner_Mudanza.webp' },
+                            { id: 'servicio-5', title: 'Carga Refrigerada', desc: 'Transporte con cadena de frío para productos perecederos y farmacéuticos.', icon: 'ac_unit', img: '../assets/images/servicios/Banner_CargaRefrigerada.webp' },
+                            { id: 'servicio-6', title: 'Almacenaje', desc: 'Espacios seguros y monitoreados para almacenamiento de mercancías.', icon: 'warehouse', img: '../assets/images/servicios/Banner_Almacenaje.webp' },
+                            { id: 'servicio-7', title: 'Personal de Estiba', desc: 'Equipo capacitado para carga, descarga y manipulación de mercancías.', icon: 'engineering', img: '../assets/images/servicios/Banner_PersonaldeEstiba.webp' }
                         ],
-                        next() { this.activeSlide = this.activeSlide === this.slides.length ? 1 : this.activeSlide + 1 },
-                        prev() { this.activeSlide = this.activeSlide === 1 ? this.slides.length : this.activeSlide - 1 }
-                    }" 
-                    x-init="setInterval(() => next(), 5000)"
-                    class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-2xl shadow-2xl group border-t-4 border-jht-gold">
-                    
-                    <!-- Contenedor de imágenes -->
-                    <div class="relative h-64 md:h-[500px]">
-                        <template x-for="slide in slides" :key="slide.id">
-                            <div x-show="activeSlide === slides.indexOf(slide) + 1" 
-                                 x-transition:enter="transition ease-out duration-700"
-                                 x-transition:enter-start="opacity-0 translate-x-12 scale-105"
-                                 x-transition:enter-end="opacity-100 translate-x-0 scale-100"
-                                 x-transition:leave="transition ease-in duration-500 absolute top-0 left-0 w-full h-full"
-                                 x-transition:leave-start="opacity-100"
-                                 x-transition:leave-end="opacity-0"
-                                 class="absolute inset-0">
-                                <img :id="slide.id" :src="slide.src" :alt="slide.alt" class="w-full h-full object-cover">
-                                <!-- Capa de texto sobre imagen -->
-                                <div class="absolute inset-0 bg-gradient-to-t from-jht-dark/90 via-jht-dark/30 to-transparent flex items-end">
-                                    <div class="p-8 md:p-12 w-full transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
-                                        <h3 class="font-title text-2xl md:text-4xl font-bold text-white mb-2" x-text="slide.alt"></h3>
-                                        <div class="w-16 h-1 bg-jht-gold rounded"></div>
+                        get cardsPerView() {
+                            if (window.innerWidth >= 1024) return 3;
+                            if (window.innerWidth >= 768) return 2;
+                            return 1;
+                        },
+                        get maxSlide() { return Math.max(0, this.services.length - this.cardsPerView) },
+                        next() { this.currentSlide = Math.min(this.currentSlide + 1, this.maxSlide) },
+                        prev() { this.currentSlide = Math.max(this.currentSlide - 1, 0) }
+                    }"
+                    x-init="window.addEventListener('resize', () => { if(currentSlide > maxSlide) currentSlide = maxSlide })"
+                    class="relative scroll-trigger"
+                    aria-label="Carrusel de servicios"
+                >
+                    <!-- Cards Container -->
+                    <div class="overflow-hidden">
+                        <div class="flex transition-transform duration-500 ease-out"
+                             :style="`transform: translateX(-${currentSlide * (100 / cardsPerView)}%)`">
+
+                            <template x-for="(service, index) in services" :key="service.id">
+                                <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                                    <div class="jht-card overflow-hidden h-full flex flex-col group" :id="service.id">
+                                        <!-- Card Image -->
+                                        <div class="h-48 relative overflow-hidden">
+                                            <img :src="service.img" :alt="service.title"
+                                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                                 loading="lazy" decoding="async">
+                                            <div class="absolute inset-0 bg-gradient-to-t from-jht-dark/60 to-transparent"></div>
+                                            <div class="absolute top-4 left-4 w-10 h-10 rounded-lg bg-jht-gold flex items-center justify-center shadow-md">
+                                                <span class="material-symbols-outlined text-jht-dark text-xl" x-text="service.icon" aria-hidden="true"></span>
+                                            </div>
+                                        </div>
+                                        <!-- Card Body -->
+                                        <div class="p-6 flex flex-col flex-grow">
+                                            <h3 class="font-title text-lg font-bold text-jht-dark mb-2" x-text="service.title"></h3>
+                                            <p class="text-sm text-jht-blue-support mb-4 flex-grow" x-text="service.desc"></p>
+                                            <a href="#contacto" class="text-jht-dark font-bold text-sm hover:text-jht-gold transition-colors inline-flex items-center group/link">
+                                                Conoce más
+                                                <span class="material-symbols-outlined ml-1 text-sm transition-transform group-hover/link:translate-x-1" aria-hidden="true">arrow_forward</span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </template>
+                            </template>
+                        </div>
                     </div>
 
-                    <!-- Botones de Control -->
-                    <button @click="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <!-- Navigation Arrows -->
+                    <button @click="prev()" :disabled="currentSlide === 0"
+                            class="absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-jht-dark hover:bg-jht-gold hover:text-jht-dark transition-all disabled:opacity-30 disabled:cursor-not-allowed z-10"
+                            aria-label="Servicio anterior">
+                        <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
                     </button>
-                    <button @click="next()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-jht-gold text-white hover:text-jht-dark rounded-full p-3 backdrop-blur-sm transition-all shadow-lg opacity-0 group-hover:opacity-100">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <button @click="next()" :disabled="currentSlide >= maxSlide"
+                            class="absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center text-jht-dark hover:bg-jht-gold hover:text-jht-dark transition-all disabled:opacity-30 disabled:cursor-not-allowed z-10"
+                            aria-label="Servicio siguiente">
+                        <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
                     </button>
 
-                    <!-- Indicadores Puntos -->
-                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
-                        <template x-for="slide in slides">
-                            <button @click="activeSlide = slides.indexOf(slide) + 1" 
-                                    :class="{'w-8 bg-jht-gold': activeSlide === slides.indexOf(slide) + 1, 'w-3 bg-white/60 hover:bg-white': activeSlide !== slides.indexOf(slide) + 1}"
-                                    class="h-3 rounded-full shadow-md transition-all duration-300"></button>
+                    <!-- Dots Indicator -->
+                    <div class="flex justify-center mt-8 gap-2" role="tablist" aria-label="Indicadores del carrusel">
+                        <template x-for="i in (maxSlide + 1)">
+                            <button @click="currentSlide = i - 1"
+                                    :class="currentSlide === i - 1 ? 'w-8 bg-jht-gold' : 'w-3 bg-jht-gray-dark/40 hover:bg-jht-gray-dark'"
+                                    class="h-3 rounded-full transition-all duration-300"
+                                    :aria-label="'Ir al grupo ' + i"
+                                    :aria-selected="currentSlide === i - 1"></button>
                         </template>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- ===== FLOTA ===== -->
+        <section id="flota" class="py-20 md:py-28 bg-jht-gray relative" aria-labelledby="flota-titulo">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-14 scroll-trigger">
+                    <h2 id="flota-titulo" class="section-title">Nuestra Flota</h2>
+                    <p id="flota-subtitulo" class="section-subtitle">
+                        Vehículos modernos equipados con tecnología de rastreo satelital.
+                    </p>
+                </div>
+
+                <!-- Tabs Alpine.js -->
+                <div x-data="{ activeTab: 'liviana' }" class="max-w-5xl mx-auto scroll-trigger">
+                    <!-- Tab Buttons -->
+                    <div class="flex justify-center mb-10 gap-2" role="tablist" aria-label="Categorías de flota">
+                        <button @click="activeTab = 'liviana'" :class="activeTab === 'liviana' ? 'bg-jht-gold text-jht-dark shadow-lg' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
+                                class="px-6 py-3 rounded-lg font-title font-semibold text-sm transition-all duration-300"
+                                role="tab" :aria-selected="activeTab === 'liviana'" aria-controls="tab-liviana">
+                            Liviana
+                        </button>
+                        <button @click="activeTab = 'mediana'" :class="activeTab === 'mediana' ? 'bg-jht-gold text-jht-dark shadow-lg' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
+                                class="px-6 py-3 rounded-lg font-title font-semibold text-sm transition-all duration-300"
+                                role="tab" :aria-selected="activeTab === 'mediana'" aria-controls="tab-mediana">
+                            Mediana
+                        </button>
+                        <button @click="activeTab = 'pesada'" :class="activeTab === 'pesada' ? 'bg-jht-gold text-jht-dark shadow-lg' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
+                                class="px-6 py-3 rounded-lg font-title font-semibold text-sm transition-all duration-300"
+                                role="tab" :aria-selected="activeTab === 'pesada'" aria-controls="tab-pesada">
+                            Pesada
+                        </button>
+                    </div>
+
+                    <!-- Tab Content: Liviana -->
+                    <div x-show="activeTab === 'liviana'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+                         id="tab-liviana" role="tabpanel" class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2">
+                            <div class="relative h-64 md:h-auto">
+                                <video id="flota-liviana-video" autoplay loop muted playsinline class="w-full h-full object-cover" loading="lazy">
+                                    <source src="../assets/videos/flota/FlotaLiviana.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="p-8 md:p-12 flex flex-col justify-center">
+                                <h3 class="font-title text-2xl font-bold text-jht-dark mb-3">Flota Liviana</h3>
+                                <p id="flota-liviana-desc" class="text-jht-blue-support mb-6">Vehículo multiusos diseñado para operaciones logísticas urbanas y regionales.</p>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-jht-gold" aria-hidden="true">scale</span>
+                                        <span id="flota-liviana-capacidad" class="text-sm font-semibold text-jht-dark">Capacidad: 1 – 5 Toneladas</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-jht-gold" aria-hidden="true">straighten</span>
+                                        <span id="flota-liviana-medidas" class="text-sm text-jht-blue-support">Largo 6m | Ancho 2m | Altura 2m</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Content: Mediana -->
+                    <div x-show="activeTab === 'mediana'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+                         id="tab-mediana" role="tabpanel" class="bg-white rounded-2xl shadow-xl overflow-hidden" x-cloak>
+                        <div class="grid grid-cols-1 md:grid-cols-2">
+                            <div class="relative h-64 md:h-auto">
+                                <video id="flota-mediana-video" autoplay loop muted playsinline class="w-full h-full object-cover" loading="lazy">
+                                    <source src="../assets/videos/flota/FlotaMedia.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="p-8 md:p-12 flex flex-col justify-center">
+                                <h3 class="font-title text-2xl font-bold text-jht-dark mb-3">Flota Mediana</h3>
+                                <p id="flota-mediana-desc" class="text-jht-blue-support mb-6">Flota profesional diseñada para operaciones logísticas de alto tonelaje.</p>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-jht-gold" aria-hidden="true">scale</span>
+                                        <span id="flota-mediana-capacidad" class="text-sm font-semibold text-jht-dark">Capacidad: 10 – 15 Toneladas</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-jht-gold" aria-hidden="true">straighten</span>
+                                        <span id="flota-mediana-medidas" class="text-sm text-jht-blue-support">Largo 8m | Ancho 2.5m | Altura 2.5m</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Content: Pesada -->
+                    <div x-show="activeTab === 'pesada'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+                         id="tab-pesada" role="tabpanel" class="bg-white rounded-2xl shadow-xl overflow-hidden" x-cloak>
+                        <div class="grid grid-cols-1 md:grid-cols-2">
+                            <div class="relative h-64 md:h-auto">
+                                <video id="flota-pesada-video" autoplay loop muted playsinline class="w-full h-full object-cover" loading="lazy">
+                                    <source src="../assets/videos/flota/FlotaPesada.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="p-8 md:p-12 flex flex-col justify-center">
+                                <h3 class="font-title text-2xl font-bold text-jht-dark mb-3">Flota Pesada</h3>
+                                <p id="flota-pesada-desc" class="text-jht-blue-support mb-6">Diseñado para el transporte eficiente de cargas medianas a pesadas.</p>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-jht-gold" aria-hidden="true">scale</span>
+                                        <span id="flota-pesada-capacidad" class="text-sm font-semibold text-jht-dark">Capacidad: 25 – 28 Toneladas</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-jht-gold" aria-hidden="true">straighten</span>
+                                        <span id="flota-pesada-medidas" class="text-sm text-jht-blue-support">Largo 12.5m | Ancho 2.5m | Altura 2.7m</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BENEFICIOS (POR QUÉ ELEGIRNOS) ===== -->
+        <section id="beneficios" class="py-20 md:py-28 bg-jht-dark relative" aria-labelledby="beneficios-titulo">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-14 scroll-trigger">
+                    <h2 id="beneficios-titulo" class="font-title text-3xl md:text-4xl font-bold text-white mb-4">¿Por Qué Elegir JHT Transport?</h2>
+                    <p class="text-lg text-gray-300 max-w-2xl mx-auto">Más que un servicio de transporte, somos tu socio estratégico en logística.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 scroll-trigger">
+                    <!-- Beneficio 1 -->
+                    <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                        <div class="w-16 h-16 rounded-full bg-jht-gold/20 flex items-center justify-center mx-auto mb-5 group-hover:bg-jht-gold/30 transition-colors">
+                            <span class="material-symbols-outlined text-jht-gold text-3xl" aria-hidden="true">schedule</span>
+                        </div>
+                        <h3 class="font-title text-lg font-bold text-white mb-2">Entrega Puntual</h3>
+                        <p class="text-sm text-gray-400">Cumplimos con los tiempos pactados. Tu carga llega cuando la necesitas.</p>
+                    </div>
+                    <!-- Beneficio 2 -->
+                    <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                        <div class="w-16 h-16 rounded-full bg-jht-gold/20 flex items-center justify-center mx-auto mb-5 group-hover:bg-jht-gold/30 transition-colors">
+                            <span class="material-symbols-outlined text-jht-gold text-3xl" aria-hidden="true">gps_fixed</span>
+                        </div>
+                        <h3 class="font-title text-lg font-bold text-white mb-2">GPS en Tiempo Real</h3>
+                        <p class="text-sm text-gray-400">Monitoreo satelital de cada envío. Trazabilidad total desde el origen.</p>
+                    </div>
+                    <!-- Beneficio 3 -->
+                    <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                        <div class="w-16 h-16 rounded-full bg-jht-gold/20 flex items-center justify-center mx-auto mb-5 group-hover:bg-jht-gold/30 transition-colors">
+                            <span class="material-symbols-outlined text-jht-gold text-3xl" aria-hidden="true">verified_user</span>
+                        </div>
+                        <h3 class="font-title text-lg font-bold text-white mb-2">Seguro de Carga</h3>
+                        <p class="text-sm text-gray-400">Protección integral para tu mercancía durante todo el trayecto.</p>
+                    </div>
+                    <!-- Beneficio 4 -->
+                    <div class="text-center p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                        <div class="w-16 h-16 rounded-full bg-jht-gold/20 flex items-center justify-center mx-auto mb-5 group-hover:bg-jht-gold/30 transition-colors">
+                            <span class="material-symbols-outlined text-jht-gold text-3xl" aria-hidden="true">public</span>
+                        </div>
+                        <h3 class="font-title text-lg font-bold text-white mb-2">Cobertura Nacional</h3>
+                        <p class="text-sm text-gray-400">Llegamos a las principales ciudades del Perú con eficiencia y seguridad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CÓMO TRABAJAMOS ===== -->
+        <section id="como-trabajamos" class="py-20 md:py-28 bg-white relative" aria-labelledby="proceso-titulo">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-14 scroll-trigger">
+                    <h2 id="proceso-titulo" class="section-title">Cómo Trabajamos</h2>
+                    <p class="section-subtitle">Un proceso simple y transparente en cuatro pasos.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto scroll-trigger">
+                    <!-- Paso 1 -->
+                    <div class="text-center relative">
+                        <div class="w-16 h-16 rounded-full bg-jht-dark flex items-center justify-center mx-auto mb-5 shadow-lg">
+                            <span class="font-title text-2xl font-bold text-jht-gold">1</span>
+                        </div>
+                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2">Solicitud</h3>
+                        <p class="text-sm text-jht-blue-support">Cuéntanos qué necesitas. Recibe tu cotización personalizada.</p>
+                        <!-- Connector line (hidden on mobile) -->
+                        <div class="hidden lg:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-jht-gold/30" aria-hidden="true"></div>
+                    </div>
+                    <!-- Paso 2 -->
+                    <div class="text-center relative">
+                        <div class="w-16 h-16 rounded-full bg-jht-dark flex items-center justify-center mx-auto mb-5 shadow-lg">
+                            <span class="font-title text-2xl font-bold text-jht-gold">2</span>
+                        </div>
+                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2">Recojo</h3>
+                        <p class="text-sm text-jht-blue-support">Recogemos tu carga en el punto de origen acordado.</p>
+                        <div class="hidden lg:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-jht-gold/30" aria-hidden="true"></div>
+                    </div>
+                    <!-- Paso 3 -->
+                    <div class="text-center relative">
+                        <div class="w-16 h-16 rounded-full bg-jht-dark flex items-center justify-center mx-auto mb-5 shadow-lg">
+                            <span class="font-title text-2xl font-bold text-jht-gold">3</span>
+                        </div>
+                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2">Seguimiento</h3>
+                        <p class="text-sm text-jht-blue-support">Monitorea tu envío en tiempo real con GPS satelital.</p>
+                        <div class="hidden lg:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-jht-gold/30" aria-hidden="true"></div>
+                    </div>
+                    <!-- Paso 4 -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full bg-jht-gold flex items-center justify-center mx-auto mb-5 shadow-lg">
+                            <span class="font-title text-2xl font-bold text-jht-dark">4</span>
+                        </div>
+                        <h3 class="font-title text-lg font-bold text-jht-dark mb-2">Entrega</h3>
+                        <p class="text-sm text-jht-blue-support">Tu carga llega segura y a tiempo al destino.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SOBRE NOSOTROS ===== -->
+        <section id="nosotros" class="py-20 md:py-28 bg-jht-gray relative" aria-labelledby="nosotros-titulo">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-trigger">
+                    <!-- Imagen Corporativa -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-xl">
+                        <img src="../assets/images/nosotros/banner_1.webp" alt="Equipo JHT Transport" class="w-full h-80 lg:h-[450px] object-cover" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-gradient-to-t from-jht-dark/40 to-transparent"></div>
+                    </div>
+
+                    <!-- Contenido -->
+                    <div>
+                        <h2 id="nosotros-titulo" class="section-title text-left">Sobre JHT Transport</h2>
+                        <p class="text-jht-blue-support mb-8 leading-relaxed">
+                            Somos una empresa peruana especializada en transporte de carga y logística empresarial. Con años de experiencia, hemos construido una reputación basada en la confianza, puntualidad y seguridad.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="p-5 bg-white rounded-xl shadow-sm border border-jht-gray-dark/10">
+                                <span class="material-symbols-outlined text-jht-gold text-2xl mb-2" aria-hidden="true">flag</span>
+                                <h3 class="font-title font-bold text-jht-dark mb-1">Misión</h3>
+                                <p class="text-sm text-jht-blue-support">Brindar soluciones logísticas eficientes que impulsen el crecimiento de nuestros clientes.</p>
+                            </div>
+                            <div class="p-5 bg-white rounded-xl shadow-sm border border-jht-gray-dark/10">
+                                <span class="material-symbols-outlined text-jht-gold text-2xl mb-2" aria-hidden="true">visibility</span>
+                                <h3 class="font-title font-bold text-jht-dark mb-1">Visión</h3>
+                                <p class="text-sm text-jht-blue-support">Ser la empresa de transporte más confiable y tecnológica del Perú.</p>
+                            </div>
+                            <div class="p-5 bg-white rounded-xl shadow-sm border border-jht-gray-dark/10 sm:col-span-2">
+                                <span class="material-symbols-outlined text-jht-gold text-2xl mb-2" aria-hidden="true">diamond</span>
+                                <h3 class="font-title font-bold text-jht-dark mb-1">Valores</h3>
+                                <p class="text-sm text-jht-blue-support">Confianza · Puntualidad · Innovación · Seguridad · Compromiso</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== EMPRESAS QUE CONFÍAN EN NOSOTROS ===== -->
+        <section id="clientes" class="py-16 md:py-20 bg-white relative overflow-hidden" aria-labelledby="clientes-titulo">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 scroll-trigger">
+                    <h2 id="clientes-titulo" class="section-title">Empresas que Confían en Nosotros</h2>
+                </div>
+            </div>
+
+            <!-- Marquee de Logos (pause on hover, prefers-reduced-motion) -->
+            <div class="scroll-trigger" aria-label="Logos de clientes">
+                <div class="marquee-track animate-marquee" style="width: max-content;">
+                    <!-- Primer set de logos -->
+                    <div class="flex items-center gap-12 px-6">
+                        <img id="cliente-1" src="../assets/images/clientes/logos_1_1/Alicorp.png" alt="Alicorp" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img id="cliente-2" src="../assets/images/clientes/logos_1_1/inkafarma.jpg" alt="Inkafarma" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img id="cliente-3" src="../assets/images/clientes/logos_1_1/sewEurodrive.jpg" alt="SEW Eurodrive" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img id="cliente-4" src="../assets/images/clientes/logos_1_1/linde.png" alt="Linde" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img id="cliente-5" src="../assets/images/clientes/logos_1_1/Movitecnica.jpg" alt="Movitécnica" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img id="cliente-6" src="../assets/images/clientes/logos_1_1/ibermatica.jpg" alt="Ibermática" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img id="cliente-7" src="../assets/images/clientes/logos_1_1/inkacrops.jpg" alt="Inka Crops" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img id="cliente-8" src="../assets/images/clientes/logos_1_1/quimicaBrisas.gif" alt="Química Brisas" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img id="cliente-9" src="../assets/images/clientes/logos_1_1/lubtec.jpg" alt="Lubtec" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                    </div>
+                    <!-- Duplicado para efecto infinito -->
+                    <div class="flex items-center gap-12 px-6" aria-hidden="true">
+                        <img src="../assets/images/clientes/logos_1_1/Alicorp.png" alt="" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img src="../assets/images/clientes/logos_1_1/inkafarma.jpg" alt="" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img src="../assets/images/clientes/logos_1_1/sewEurodrive.jpg" alt="" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img src="../assets/images/clientes/logos_1_1/linde.png" alt="" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img src="../assets/images/clientes/logos_1_1/Movitecnica.jpg" alt="" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img src="../assets/images/clientes/logos_1_1/ibermatica.jpg" alt="" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img src="../assets/images/clientes/logos_1_1/inkacrops.jpg" alt="" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img src="../assets/images/clientes/logos_1_1/quimicaBrisas.gif" alt="" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                        <img src="../assets/images/clientes/logos_1_1/lubtec.jpg" alt="" class="h-12 md:h-16 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== COBERTURA NACIONAL ===== -->
+        <section id="cobertura" class="py-20 md:py-28 bg-jht-dark relative overflow-hidden" aria-labelledby="cobertura-titulo">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-trigger">
+                    <!-- Video del Mapa -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <video autoplay loop muted playsinline class="w-full h-72 lg:h-96 object-cover" loading="lazy">
+                            <source src="../assets/videos/landing/CoberturaMapa_LandingPage.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <!-- Contenido -->
+                    <div>
+                        <h2 id="cobertura-titulo" class="font-title text-3xl md:text-4xl font-bold text-white mb-6">Cobertura Nacional</h2>
+                        <p class="text-gray-300 mb-8 leading-relaxed">
+                            Nuestra red logística conecta las principales ciudades del Perú, garantizando entregas seguras y puntuales en todo el territorio nacional.
+                        </p>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <span class="flex items-center gap-2 text-sm text-gray-300"><span class="material-symbols-outlined text-jht-gold text-base" aria-hidden="true">location_on</span> Lima</span>
+                            <span class="flex items-center gap-2 text-sm text-gray-300"><span class="material-symbols-outlined text-jht-gold text-base" aria-hidden="true">location_on</span> Arequipa</span>
+                            <span class="flex items-center gap-2 text-sm text-gray-300"><span class="material-symbols-outlined text-jht-gold text-base" aria-hidden="true">location_on</span> Trujillo</span>
+                            <span class="flex items-center gap-2 text-sm text-gray-300"><span class="material-symbols-outlined text-jht-gold text-base" aria-hidden="true">location_on</span> Chiclayo</span>
+                            <span class="flex items-center gap-2 text-sm text-gray-300"><span class="material-symbols-outlined text-jht-gold text-base" aria-hidden="true">location_on</span> Piura</span>
+                            <span class="flex items-center gap-2 text-sm text-gray-300"><span class="material-symbols-outlined text-jht-gold text-base" aria-hidden="true">location_on</span> Cusco</span>
+                            <span class="flex items-center gap-2 text-sm text-gray-300"><span class="material-symbols-outlined text-jht-gold text-base" aria-hidden="true">location_on</span> Huancayo</span>
+                            <span class="flex items-center gap-2 text-sm text-gray-300"><span class="material-symbols-outlined text-jht-gold text-base" aria-hidden="true">location_on</span> Ica</span>
+                            <span class="flex items-center gap-2 text-sm text-gray-300"><span class="material-symbols-outlined text-jht-gold text-base" aria-hidden="true">location_on</span> + más</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TESTIMONIOS ===== -->
+        <!-- NOTA: Contenido placeholder. Preparado para consumir API REST sin modificar HTML -->
+        <section id="testimonios" class="py-20 md:py-28 bg-white relative" aria-labelledby="testimonios-titulo">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-14 scroll-trigger">
+                    <h2 id="testimonios-titulo" class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+                </div>
+
+                <!-- Carrusel Testimonios (Alpine.js) — preparado para API REST -->
+                <div x-data="{
+                        current: 0,
+                        testimonials: [
+                            { id: 'testimonio-1', name: 'Carlos Mendoza', role: 'Gerente de Logística', company: 'Empresa Industrial SAC', text: 'JHT Transport ha sido clave para optimizar nuestra cadena de suministro. Su puntualidad y seguimiento GPS nos dan total tranquilidad.', stars: 5 },
+                            { id: 'testimonio-2', name: 'María Fernández', role: 'Directora de Operaciones', company: 'Distribuciones Nacionales', text: 'El servicio de distribución regional de JHT nos ha permitido expandir nuestra cobertura a todo el Perú con total confianza.', stars: 5 },
+                            { id: 'testimonio-3', name: 'Roberto Silva', role: 'Jefe de Almacén', company: 'Grupo Comercial del Sur', text: 'Excelente servicio de almacenaje y personal de estiba. Profesionales comprometidos con la seguridad de nuestra mercancía.', stars: 5 }
+                        ],
+                        next() { this.current = (this.current + 1) % this.testimonials.length },
+                        prev() { this.current = (this.current - 1 + this.testimonials.length) % this.testimonials.length }
+                    }"
+                    x-init="setInterval(() => next(), 6000)"
+                    class="max-w-3xl mx-auto scroll-trigger"
+                    data-source="placeholder"
+                >
+                    <template x-for="(t, idx) in testimonials" :key="t.id">
+                        <div x-show="current === idx"
+                             x-transition:enter="transition ease-out duration-500"
+                             x-transition:enter-start="opacity-0 translate-x-8"
+                             x-transition:enter-end="opacity-100 translate-x-0"
+                             :id="t.id"
+                             class="text-center p-8 md:p-12 bg-jht-gray/50 rounded-2xl">
+
+                            <!-- Stars -->
+                            <div class="flex justify-center mb-4" aria-label="5 estrellas">
+                                <template x-for="s in t.stars"><span class="text-jht-gold text-xl">★</span></template>
+                            </div>
+
+                            <blockquote>
+                                <p class="text-lg md:text-xl text-jht-dark italic leading-relaxed mb-6" x-text="'\"' + t.text + '\"'"></p>
+                            </blockquote>
+                            <div>
+                                <p class="font-title font-bold text-jht-dark" x-text="t.name"></p>
+                                <p class="text-sm text-jht-blue-support" x-text="t.role + ' — ' + t.company"></p>
+                            </div>
+                        </div>
+                    </template>
+
+                    <!-- Nav Dots -->
+                    <div class="flex justify-center mt-8 gap-2">
+                        <template x-for="(t, idx) in testimonials">
+                            <button @click="current = idx"
+                                    :class="current === idx ? 'w-8 bg-jht-gold' : 'w-3 bg-jht-gray-dark/40'"
+                                    class="h-3 rounded-full transition-all duration-300"
+                                    :aria-label="'Testimonio ' + (idx + 1)"></button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ (PREGUNTAS FRECUENTES) ===== -->
+        <section id="faq" class="py-20 md:py-28 bg-jht-gray relative" aria-labelledby="faq-titulo">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <div class="text-center mb-14 scroll-trigger">
+                    <h2 id="faq-titulo" class="section-title">Preguntas Frecuentes</h2>
+                </div>
+
+                <div x-data="{ open: null }" class="space-y-3 scroll-trigger">
+                    <!-- FAQ 1 -->
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <button @click="open = open === 1 ? null : 1" class="w-full px-6 py-5 text-left flex justify-between items-center group" :aria-expanded="open === 1">
+                            <span class="font-title font-semibold text-jht-dark pr-4">¿Qué tipos de transporte de carga ofrece JHT Transport?</span>
+                            <span class="material-symbols-outlined text-jht-gold transition-transform duration-300" :class="open === 1 ? 'rotate-180' : ''" aria-hidden="true">expand_more</span>
+                        </button>
+                        <div x-show="open === 1" x-collapse x-cloak class="px-6 pb-5">
+                            <p class="text-sm text-jht-blue-support leading-relaxed">Ofrecemos transporte de carga terrestre a nivel nacional, distribución regional y local, courier express, mudanzas integrales, carga refrigerada, almacenaje y servicio de estiba.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <button @click="open = open === 2 ? null : 2" class="w-full px-6 py-5 text-left flex justify-between items-center" :aria-expanded="open === 2">
+                            <span class="font-title font-semibold text-jht-dark pr-4">¿Cuál es la cobertura de JHT Transport?</span>
+                            <span class="material-symbols-outlined text-jht-gold transition-transform duration-300" :class="open === 2 ? 'rotate-180' : ''" aria-hidden="true">expand_more</span>
+                        </button>
+                        <div x-show="open === 2" x-collapse x-cloak class="px-6 pb-5">
+                            <p class="text-sm text-jht-blue-support leading-relaxed">Contamos con cobertura en las principales ciudades del Perú: Lima, Arequipa, Trujillo, Chiclayo, Piura, Cusco, Huancayo, Ica y más.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <button @click="open = open === 3 ? null : 3" class="w-full px-6 py-5 text-left flex justify-between items-center" :aria-expanded="open === 3">
+                            <span class="font-title font-semibold text-jht-dark pr-4">¿Cómo puedo solicitar una cotización?</span>
+                            <span class="material-symbols-outlined text-jht-gold transition-transform duration-300" :class="open === 3 ? 'rotate-180' : ''" aria-hidden="true">expand_more</span>
+                        </button>
+                        <div x-show="open === 3" x-collapse x-cloak class="px-6 pb-5">
+                            <p class="text-sm text-jht-blue-support leading-relaxed">Puede solicitar una cotización a través del formulario en nuestra página web, por WhatsApp al (+51) 935 833 467 o enviando un correo a info@jhttransport.com.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 4 -->
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <button @click="open = open === 4 ? null : 4" class="w-full px-6 py-5 text-left flex justify-between items-center" :aria-expanded="open === 4">
+                            <span class="font-title font-semibold text-jht-dark pr-4">¿Ofrecen servicio de rastreo GPS en tiempo real?</span>
+                            <span class="material-symbols-outlined text-jht-gold transition-transform duration-300" :class="open === 4 ? 'rotate-180' : ''" aria-hidden="true">expand_more</span>
+                        </button>
+                        <div x-show="open === 4" x-collapse x-cloak class="px-6 pb-5">
+                            <p class="text-sm text-jht-blue-support leading-relaxed">Sí, toda nuestra flota cuenta con GPS satelital que permite el seguimiento en tiempo real de su carga.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 5 -->
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <button @click="open = open === 5 ? null : 5" class="w-full px-6 py-5 text-left flex justify-between items-center" :aria-expanded="open === 5">
+                            <span class="font-title font-semibold text-jht-dark pr-4">¿Qué capacidad tiene la flota de JHT Transport?</span>
+                            <span class="material-symbols-outlined text-jht-gold transition-transform duration-300" :class="open === 5 ? 'rotate-180' : ''" aria-hidden="true">expand_more</span>
+                        </button>
+                        <div x-show="open === 5" x-collapse x-cloak class="px-6 pb-5">
+                            <p class="text-sm text-jht-blue-support leading-relaxed">Nuestra flota incluye vehículos livianos (1-5 ton), medianos (10-15 ton) y pesados (25-28 ton) para cubrir cualquier necesidad logística.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 6 -->
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <button @click="open = open === 6 ? null : 6" class="w-full px-6 py-5 text-left flex justify-between items-center" :aria-expanded="open === 6">
+                            <span class="font-title font-semibold text-jht-dark pr-4">¿La carga está asegurada?</span>
+                            <span class="material-symbols-outlined text-jht-gold transition-transform duration-300" :class="open === 6 ? 'rotate-180' : ''" aria-hidden="true">expand_more</span>
+                        </button>
+                        <div x-show="open === 6" x-collapse x-cloak class="px-6 pb-5">
+                            <p class="text-sm text-jht-blue-support leading-relaxed">Sí, todas las cargas transportadas cuentan con seguro integral que protege su mercancía durante todo el trayecto.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 7 -->
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <button @click="open = open === 7 ? null : 7" class="w-full px-6 py-5 text-left flex justify-between items-center" :aria-expanded="open === 7">
+                            <span class="font-title font-semibold text-jht-dark pr-4">¿Cuál es el horario de atención?</span>
+                            <span class="material-symbols-outlined text-jht-gold transition-transform duration-300" :class="open === 7 ? 'rotate-180' : ''" aria-hidden="true">expand_more</span>
+                        </button>
+                        <div x-show="open === 7" x-collapse x-cloak class="px-6 pb-5">
+                            <p class="text-sm text-jht-blue-support leading-relaxed">Nuestro horario de atención es de lunes a viernes de 8:00 a 18:00 y sábados de 8:00 a 13:00.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ 8 -->
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <button @click="open = open === 8 ? null : 8" class="w-full px-6 py-5 text-left flex justify-between items-center" :aria-expanded="open === 8">
+                            <span class="font-title font-semibold text-jht-dark pr-4">¿Realizan transporte de carga refrigerada?</span>
+                            <span class="material-symbols-outlined text-jht-gold transition-transform duration-300" :class="open === 8 ? 'rotate-180' : ''" aria-hidden="true">expand_more</span>
+                        </button>
+                        <div x-show="open === 8" x-collapse x-cloak class="px-6 pb-5">
+                            <p class="text-sm text-jht-blue-support leading-relaxed">Sí, contamos con unidades especializadas para transporte con cadena de frío, ideal para productos perecederos, farmacéuticos y alimentos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA FINAL ===== -->
+        <section id="cta-final" class="py-20 md:py-24 bg-jht-dark relative overflow-hidden" aria-label="Llamada a la acción">
+            <!-- Decorative circle -->
+            <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-jht-gold/5" aria-hidden="true"></div>
+            <div class="absolute -bottom-20 -left-20 w-56 h-56 rounded-full bg-jht-blue-support/10" aria-hidden="true"></div>
+
+            <div class="container mx-auto px-6 text-center relative z-10 scroll-trigger">
+                <h2 class="font-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                    ¿Necesitas Optimizar tu<br><span class="text-jht-gold">Cadena Logística?</span>
+                </h2>
+                <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
+                    Más de 150 empresas ya confían en JHT Transport. Únete y transforma la forma en que mueves tu carga.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#hero" class="btn-primary text-base px-8 py-4 shadow-xl">
+                        Solicitar Cotización
+                        <span class="material-symbols-outlined ml-2" aria-hidden="true">request_quote</span>
+                    </a>
+                    <a href="https://wa.me/51935833467?text=Hola%2C%20necesito%20información%20sobre%20sus%20servicios%20de%20transporte"
+                       target="_blank" rel="noopener noreferrer"
+                       class="btn-secondary text-base px-8 py-4"
+                       data-whatsapp="51935833467"
+                       aria-label="Hablar con un asesor por WhatsApp">
+                        Hablar con un Asesor
+                        <span class="material-symbols-outlined ml-2" aria-hidden="true">chat</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACTO ===== -->
+        <section id="contacto" class="py-20 md:py-28 bg-white relative" aria-labelledby="contacto-titulo">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-14 scroll-trigger">
+                    <h2 id="contacto-titulo" class="section-title">¿Listo para Optimizar tu Logística?</h2>
+                    <p id="contacto-subtitulo" class="section-subtitle">Contáctanos y descubre cómo podemos ayudarte.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 scroll-trigger">
+                    <!-- Formulario Consulta General (diferente del Hero Lead Comercial) -->
+                    <div class="bg-jht-gray/50 rounded-2xl p-8">
+                        <h3 class="font-title text-xl font-bold text-jht-dark mb-6">Envíanos tu Consulta</h3>
+                        <form id="form-contacto" class="space-y-4" data-form-type="consulta-general" novalidate>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="con-nombre" class="sr-only">Nombre</label>
+                                    <input type="text" id="con-nombre" name="nombre" placeholder="Nombre" class="jht-input" required aria-required="true">
+                                </div>
+                                <div>
+                                    <label for="con-email" class="sr-only">Email</label>
+                                    <input type="email" id="con-email" name="email" placeholder="Email" class="jht-input" required aria-required="true">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="con-telefono" class="sr-only">Teléfono</label>
+                                    <input type="tel" id="con-telefono" name="telefono" placeholder="Teléfono" class="jht-input">
+                                </div>
+                                <div>
+                                    <label for="con-empresa" class="sr-only">Empresa</label>
+                                    <input type="text" id="con-empresa" name="empresa" placeholder="Empresa (opcional)" class="jht-input">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="con-mensaje" class="sr-only">Mensaje</label>
+                                <textarea id="con-mensaje" name="mensaje" placeholder="¿En qué podemos ayudarte?" rows="4" class="jht-input resize-none" required aria-required="true"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full sm:w-auto text-base py-3 px-8">
+                                Enviar Mensaje
+                                <span class="material-symbols-outlined ml-2 text-lg" aria-hidden="true">send</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Información de Contacto + Mapa -->
+                    <div class="space-y-6">
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4 p-4 bg-jht-gray/30 rounded-xl">
+                                <span class="material-symbols-outlined text-jht-gold text-2xl mt-0.5" aria-hidden="true">location_on</span>
+                                <div>
+                                    <h3 class="font-title font-semibold text-jht-dark">Dirección</h3>
+                                    <p id="contacto-direccion" class="text-sm text-jht-blue-support">Santa Anita, Lima - Perú</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 bg-jht-gray/30 rounded-xl">
+                                <span class="material-symbols-outlined text-jht-gold text-2xl mt-0.5" aria-hidden="true">call</span>
+                                <div>
+                                    <h3 class="font-title font-semibold text-jht-dark">Teléfono / WhatsApp</h3>
+                                    <a id="contacto-telefono" href="tel:+51935833467" class="text-sm text-jht-blue-support hover:text-jht-gold transition-colors">(+51) 935 833 467</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 bg-jht-gray/30 rounded-xl">
+                                <span class="material-symbols-outlined text-jht-gold text-2xl mt-0.5" aria-hidden="true">mail</span>
+                                <div>
+                                    <h3 class="font-title font-semibold text-jht-dark">Correo</h3>
+                                    <a id="contacto-email" href="mailto:info@jhttransport.com" class="text-sm text-jht-blue-support hover:text-jht-gold transition-colors">info@jhttransport.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 bg-jht-gray/30 rounded-xl">
+                                <span class="material-symbols-outlined text-jht-gold text-2xl mt-0.5" aria-hidden="true">schedule</span>
+                                <div>
+                                    <h3 class="font-title font-semibold text-jht-dark">Horario</h3>
+                                    <p class="text-sm text-jht-blue-support">Lun - Vie: 8:00 - 18:00 | Sáb: 8:00 - 13:00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Google Maps iframe -->
+                        <div class="rounded-xl overflow-hidden shadow-md h-52">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31207.07385289988!2d-76.97!3d-12.04!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c5c75a01e0b7%3A0xa5c5c75a01e0b7!2sSanta%20Anita%2C%20Lima!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe"
+                                width="100%" height="100%" style="border:0;"
+                                allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Ubicación de JHT Transport en Google Maps">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-jht-dark text-white pt-16 pb-8">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            <div class="col-span-1 md:col-span-1">
-                <img id="footer-logo" src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Transport" class="h-12 w-auto mb-6 opacity-90">
-                <p class="text-jht-gray font-sans text-sm leading-relaxed">
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-jht-dark text-white pt-16 pb-8" role="contentinfo">
+        <div class="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- Columna: Empresa -->
+            <div>
+                <img id="footer-logo" src="../assets/images/branding/JHTmarca-transparente.png" alt="JHT Transport" class="h-12 w-auto mb-6 opacity-90" loading="lazy">
+                <p class="text-gray-400 font-sans text-sm leading-relaxed">
                     La Calidez de la Confianza. Cuidamos tu carga como si fuera nuestra.
                 </p>
             </div>
+
+            <!-- Columna: Servicios -->
             <div>
-                <h3 class="font-title font-semibold text-lg mb-6 text-jht-gold">Enlaces Rápidos</h3>
-                <ul class="space-y-3 font-sans text-sm text-jht-gray/90">
-                    <li><a href="#servicios" class="hover:text-jht-gold transition-colors">Servicios</a></li>
-                    <li><a href="#flota" class="hover:text-jht-gold transition-colors">Nuestra Flota</a></li>
-                    <li><a href="#nosotros" class="hover:text-jht-gold transition-colors">Sobre Nosotros</a></li>
+                <h3 class="font-title font-semibold text-lg mb-6 text-jht-gold">Servicios</h3>
+                <ul class="space-y-3 font-sans text-sm text-gray-400">
+                    <li><a href="#servicios" class="hover:text-jht-gold transition-colors">Transporte de Carga</a></li>
+                    <li><a href="#servicios" class="hover:text-jht-gold transition-colors">Distribución</a></li>
+                    <li><a href="#servicios" class="hover:text-jht-gold transition-colors">Courier Express</a></li>
+                    <li><a href="#servicios" class="hover:text-jht-gold transition-colors">Mudanzas</a></li>
+                    <li><a href="#servicios" class="hover:text-jht-gold transition-colors">Carga Refrigerada</a></li>
+                    <li><a href="#servicios" class="hover:text-jht-gold transition-colors">Almacenaje</a></li>
                 </ul>
             </div>
+
+            <!-- Columna: Legal / Soporte -->
             <div>
                 <h3 class="font-title font-semibold text-lg mb-6 text-jht-gold">Soporte</h3>
-                <ul class="space-y-3 font-sans text-sm text-jht-gray/90">
-                    <li><a href="#rastreo" class="hover:text-jht-gold transition-colors">Rastrear Envío</a></li>
-                    <li><a href="#contacto" class="hover:text-jht-gold transition-colors">Contacto</a></li>
+                <ul class="space-y-3 font-sans text-sm text-gray-400">
                     <li><a href="#faq" class="hover:text-jht-gold transition-colors">Preguntas Frecuentes</a></li>
+                    <li><a href="#contacto" class="hover:text-jht-gold transition-colors">Contacto</a></li>
+                    <li><a href="#" class="hover:text-jht-gold transition-colors" data-placeholder="legal">Política de Privacidad</a></li>
+                    <li><a href="#" class="hover:text-jht-gold transition-colors" data-placeholder="legal">Términos de Servicio</a></li>
+                    <li><a href="#area-cliente" class="hover:text-jht-gold transition-colors">Área Cliente</a></li>
                 </ul>
             </div>
+
+            <!-- Columna: Contacto + Redes -->
             <div>
                 <h3 class="font-title font-semibold text-lg mb-6 text-jht-gold">Contacto</h3>
-                <ul class="space-y-3 font-sans text-sm text-jht-gray/90">
-                    <li class="flex items-start">
-                        <span class="text-jht-gold mr-3">📍</span> 
-                        <span>Lima, Perú</span>
+                <ul class="space-y-3 font-sans text-sm text-gray-400 mb-6">
+                    <li class="flex items-start gap-2">
+                        <span class="material-symbols-outlined text-jht-gold text-base mt-0.5" aria-hidden="true">location_on</span>
+                        <span>Santa Anita, Lima - Perú</span>
                     </li>
-                    <li class="flex items-start">
-                        <span class="text-jht-gold mr-3">📞</span> 
-                        <span>+51 123 456 789</span>
+                    <li class="flex items-start gap-2">
+                        <span class="material-symbols-outlined text-jht-gold text-base mt-0.5" aria-hidden="true">call</span>
+                        <a href="tel:+51935833467" class="hover:text-jht-gold transition-colors">(+51) 935 833 467</a>
                     </li>
-                    <li class="flex items-start">
-                        <span class="text-jht-gold mr-3">✉️</span> 
-                        <span>info@jht.com.pe</span>
+                    <li class="flex items-start gap-2">
+                        <span class="material-symbols-outlined text-jht-gold text-base mt-0.5" aria-hidden="true">mail</span>
+                        <a href="mailto:info@jhttransport.com" class="hover:text-jht-gold transition-colors">info@jhttransport.com</a>
                     </li>
                 </ul>
+
+                <!-- Redes Sociales (placeholders) -->
+                <div class="flex gap-3" aria-label="Redes sociales" data-placeholder="social-links">
+                    <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-jht-gold hover:text-jht-dark transition-all text-gray-400" aria-label="LinkedIn" data-social="linkedin">
+                        <span class="text-sm font-bold">in</span>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-jht-gold hover:text-jht-dark transition-all text-gray-400" aria-label="Facebook" data-social="facebook">
+                        <span class="text-sm font-bold">f</span>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-jht-gold hover:text-jht-dark transition-all text-gray-400" aria-label="Instagram" data-social="instagram">
+                        <span class="text-sm font-bold">ig</span>
+                    </a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-jht-gold hover:text-jht-dark transition-all text-gray-400" aria-label="YouTube" data-social="youtube">
+                        <span class="text-sm font-bold">yt</span>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="container mx-auto px-6 pt-8 border-t border-jht-blue-support/30 flex flex-col md:flex-row justify-between items-center text-sm font-sans text-jht-gray/60">
+
+        <!-- Copyright -->
+        <div class="container mx-auto px-6 pt-8 border-t border-jht-blue-support/20 flex flex-col md:flex-row justify-between items-center text-sm font-sans text-gray-500">
             <p id="footer-copyright" class="mb-4 md:mb-0">&copy; 2026 JHT Transport Company SAC. Todos los derechos reservados.</p>
             <div class="flex space-x-4">
                 <a href="#" class="hover:text-jht-gold transition-colors">Política de Privacidad</a>
@@ -212,5 +1091,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- ===== JAVASCRIPT: Animaciones y Rendimiento ===== -->
+    <script src="../js/main.js" defer></script>
+
 </body>
 </html>
