@@ -1105,9 +1105,10 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-trigger">
                     <!-- Video del Mapa -->
                     <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-                        <video autoplay loop muted playsinline class="w-full h-72 lg:h-96 object-cover" loading="lazy">
-                            <source src="../assets/videos/landing/CoberturaMapa_LandingPage.mp4" type="video/mp4">
+                        <video autoplay loop muted playsinline class="w-full h-72 lg:h-96 object-cover filter brightness-90 contrast-105 saturate-110" loading="lazy" oncanplay="this.playbackRate = 0.9;">
+                            <source src="../assets/videos/landing/Coordenadas_Continentes.mp4" type="video/mp4">
                         </video>
+                        <span class="absolute inset-0 bg-jht-blue-support/20 mix-blend-overlay pointer-events-none" aria-hidden="true"></span>
                     </div>
                     <!-- Contenido -->
                     <div>
@@ -1176,19 +1177,30 @@
                              x-transition:enter-start="opacity-0 translate-x-8"
                              x-transition:enter-end="opacity-100 translate-x-0"
                              :id="t.id"
-                             class="text-center p-8 md:p-12 bg-jht-gray/50 rounded-2xl">
+                             class="grid gap-8 items-center text-center lg:grid-cols-[240px_1fr] p-8 md:p-12 bg-jht-gray/50 rounded-2xl">
 
-                            <!-- Stars -->
-                            <div class="flex justify-center mb-4" aria-label="5 estrellas">
-                                <template x-for="s in t.stars"><span class="text-jht-gold text-xl">★</span></template>
+                            <div class="relative mx-auto w-full max-w-[240px] overflow-hidden rounded-[30px] border border-white/10 shadow-2xl bg-black/5">
+                                <img src="../assets/images/nosotros/banner_1.webp"
+                                     alt="Cliente satisfecho usando JHT Transport"
+                                     class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-jht-dark/85 to-transparent p-4">
+                                    <p class="text-xs uppercase tracking-[0.28em] text-white/80">Experiencia real del cliente</p>
+                                </div>
                             </div>
 
-                            <blockquote>
-                                <p class="text-lg md:text-xl text-jht-dark italic leading-relaxed mb-6 hover-tremble-soft" x-text="'“' + t.text + '”'"></p>
-                            </blockquote>
-                            <div>
-                                <p class="font-title font-bold text-jht-dark" x-text="t.name"></p>
-                                <p class="text-sm text-jht-blue-support" x-text="t.role + ' — ' + t.company"></p>
+                            <div class="lg:text-left">
+                                <!-- Stars -->
+                                <div class="flex justify-center lg:justify-start mb-4" aria-label="5 estrellas">
+                                    <template x-for="s in t.stars"><span class="text-jht-gold text-xl">★</span></template>
+                                </div>
+
+                                <blockquote>
+                                    <p class="text-lg md:text-xl text-jht-dark italic leading-relaxed mb-6 hover-tremble-soft" x-text="'“' + t.text + '”'"></p>
+                                </blockquote>
+                                <div class="bg-white/80 rounded-3xl p-5 shadow-lg border border-jht-gray-dark/10 inline-block">
+                                    <p class="font-title font-bold text-jht-dark" x-text="t.name"></p>
+                                    <p class="text-sm text-jht-blue-support" x-text="t.role + ' — ' + t.company"></p>
+                                </div>
                             </div>
                         </div>
                     </template>
@@ -1326,17 +1338,17 @@
                     Más de 150 empresas ya confían en JHT Transport. Únete y transforma la forma en que mueves tu carga nacional.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#hero" class="btn-primary text-base px-8 py-4 shadow-xl">
+                    <a href="#hero" class="btn-primary text-base px-8 py-4 shadow-xl btn-bounce-first">
                         Solicitar Cotización
-                        <span class="material-symbols-outlined ml-2" aria-hidden="true">request_quote</span>
+                        <span class="material-symbols-outlined ml-2 btn-icon-nudge" aria-hidden="true">request_quote</span>
                     </a>
                     <a href="https://wa.me/51935833467?text=Hola%2C%20necesito%20información%20sobre%20sus%20servicios%20de%20transporte"
                        target="_blank" rel="noopener noreferrer"
-                       class="btn-secondary text-base px-8 py-4"
+                       class="btn-secondary text-base px-8 py-4 btn-bounce-second"
                        data-whatsapp="51935833467"
                        aria-label="Hablar con un asesor por WhatsApp">
                         Hablar con un Asesor
-                        <span class="material-symbols-outlined ml-2" aria-hidden="true">chat</span>
+                        <span class="material-symbols-outlined ml-2 btn-icon-nudge" aria-hidden="true">chat</span>
                     </a>
                 </div>
             </div>
@@ -1387,10 +1399,13 @@
                                 <label for="con-mensaje" class="sr-only">Mensaje</label>
                                 <textarea id="con-mensaje" name="mensaje" placeholder="¿En qué podemos ayudarte?" rows="4" class="jht-input resize-none" required aria-required="true"></textarea>
                             </div>
-                            <button type="submit" class="btn-primary w-full sm:w-auto text-base py-3 px-8">
-                                Enviar Mensaje
-                                <span class="material-symbols-outlined ml-2 text-lg" aria-hidden="true">send</span>
-                            </button>
+                            <div class="relative inline-flex">
+                                <button type="submit" class="btn-primary w-full sm:w-auto text-base py-3 px-8 animate-click-pulse">
+                                    Enviar Mensaje
+                                    <span class="material-symbols-outlined ml-2 text-lg" aria-hidden="true">send</span>
+                                </button>
+                                <span class="submit-click-cursor"></span>
+                            </div>
                         </form>
                     </div>
 
