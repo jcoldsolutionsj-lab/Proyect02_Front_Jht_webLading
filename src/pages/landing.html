@@ -30,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- ===== CSS ===== -->
-    <link href="../css/tailwind.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 
     <!-- ===== ALPINE.JS ===== -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
@@ -163,27 +163,46 @@
     <header
         x-data="{ scrolled: false, mobileMenuOpen: false }"
         @scroll.window="scrolled = (window.pageYOffset > 20)"
-        :class="scrolled ? 'bg-jht-dark/95 py-3 shadow-[0_10px_35px_rgba(0,0,0,0.18)] backdrop-blur-sm' : 'bg-transparent py-5 md:py-6'"
         class="fixed w-full top-0 z-50 transition-all duration-300"
+        :class="{ 'bg-[#1A3B6B] shadow-md py-4 md:py-4': scrolled, 'bg-[#909AB3]/60 backdrop-blur-sm py-8 md:py-2': !scrolled }"
         role="banner"
     >
-        <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-            <!-- Logo -->
-            <a href="/" class="flex items-center shrink-0" aria-label="JHT Transport — Ir al inicio">
+        <div class="relative mx-auto flex w-full max-w-8xl items-center justify-between px-10 sm:px-12 lg:px-12 min-h-[100px] md:min-h-[100px]">
+            <!-- Logo movido más hacia la derecha -->
+            <a href="/" class="flex items-center shrink-0 ml-12 md:ml-20 lg:ml-16 lg:w-56" aria-label="JHT Transport — Ir al inicio">
                 <img src="../assets/images/branding/JHTmarca-transparente.png"
                      alt="JHT Transport Logo"
-                     class="h-14 w-auto transition-all duration-300 md:h-16"
-                     width="160" height="48" loading="eager">
+                     :class="scrolled ? 'h-14 md:h-16' : 'h-24 md:h-28'"
+                     class="w-auto transition-all duration-300 h-24 md:h-28"
+                     width="380" height="84" loading="eager">
             </a>
 
-            <!-- Desktop Menu -->
-            <nav class="hidden items-center gap-7 xl:gap-9 lg:flex" role="navigation" aria-label="Menú principal">
-                <a href="#hero" class="relative text-sm font-semibold tracking-wide text-white transition-colors duration-300 hover:text-jht-gold focus-visible:ring-2 focus-visible:ring-jht-gold" aria-current="page">Inicio</a>
-                <a href="#servicios" class="relative text-sm font-semibold tracking-wide text-white transition-colors duration-300 hover:text-jht-gold focus-visible:ring-2 focus-visible:ring-jht-gold">Servicios</a>
-                <a href="#flota" class="relative text-sm font-semibold tracking-wide text-white transition-colors duration-300 hover:text-jht-gold focus-visible:ring-2 focus-visible:ring-jht-gold">Flota</a>
-                <a href="#nosotros" class="relative text-sm font-semibold tracking-wide text-white transition-colors duration-300 hover:text-jht-gold focus-visible:ring-2 focus-visible:ring-jht-gold">Nosotros</a>
-                <a href="#contacto" class="relative text-sm font-semibold tracking-wide text-white transition-colors duration-300 hover:text-jht-gold focus-visible:ring-2 focus-visible:ring-jht-gold">Contacto</a>
-                <a href="acceso.html" class="btn-primary inline-flex items-center justify-center px-5 py-2.5 text-sm shadow-md" aria-label="Acceso al Área de Cliente">Área Cliente</a>
+            <!-- Desktop Menu (estilo index: iconos y underline en hover) -->
+            <nav class="hidden lg:flex items-center justify-end gap-8 xl:gap-12 flex-1" role="navigation" aria-label="Menú principal">
+                <a href="#hero" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">home</span>
+                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Inicio<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                </a>
+                <a href="#servicios" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">inventory_2</span>
+                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Servicios<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                </a>
+                <a href="#flota" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">local_shipping</span>
+                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Flota<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                </a>
+                <a href="#nosotros" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">groups</span>
+                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Nosotros<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                </a>
+                <a href="#contacto" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">headset_mic</span>
+                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Contacto<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                </a>
+                <a href="acceso.html" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">login</span>
+                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block btn-primary px-6 py-3 text-base">Área Cliente<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                </a>
             </nav>
 
             <!-- Mobile Menu Button -->
