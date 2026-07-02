@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- ===== SEO TÉCNICO ===== -->
-    <title>Transporte de Carga Nacional | JHT Transport - Logística Empresarial en Perú</title>
-    <meta name="description" content="JHT Transport: empresa de transporte de carga terrestre, distribución, almacenaje, mudanzas y logística empresarial con cobertura nacional en Perú. GPS en tiempo real. Solicita tu cotización.">
+    <header
+        x-data="{ scrolled: false, mobileMenuOpen: false }"
+        @scroll.window="scrolled = (window.pageYOffset > 20)"
+        class="fixed w-full top-0 z-50 transition-all duration-300"
+        :class="{ 'bg-[#1A3B6B]/80 shadow-md py-4 md:py-4': scrolled, 'bg-[#909AB3]/60 backdrop-blur-sm py-8 md:py-10': !scrolled }"
+        role="banner"
+    >
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://www.jhttransport.com/">
     <meta name="author" content="JHT Transport Company SAC">
@@ -172,8 +172,8 @@
             <a href="/" class="flex items-center shrink-0 ml-12 md:ml-20 lg:ml-16 lg:w-56" aria-label="JHT Transport — Ir al inicio">
                 <img src="../assets/images/branding/JHTmarca-transparente.png"
                      alt="JHT Transport Logo"
-                     :class="scrolled ? 'h-14 md:h-16' : 'h-24 md:h-28'"
-                     class="w-auto transition-all duration-300 h-24 md:h-28"
+                     :class="scrolled ? 'h-20 md:h-24' : 'h-24 md:h-28'"
+                     class="w-auto transition-all duration-300"
                      width="380" height="84" loading="eager">
             </a>
 
