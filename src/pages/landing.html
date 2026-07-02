@@ -27,6 +27,7 @@
 
     <!-- ===== CSS ===== -->
     <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/servicios.css" rel="stylesheet">
 
     <!-- ===== ALPINE.JS ===== -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
@@ -165,12 +166,13 @@
     >
         <div class="relative mx-auto flex w-full max-w-8xl items-center justify-between px-10 sm:px-12 lg:px-12 min-h-[100px] md:min-h-[100px]">
             <!-- Logo movido más hacia la derecha -->
-            <a href="/" class="flex items-center shrink-0 ml-12 md:ml-20 lg:ml-16 lg:w-56" aria-label="JHT Transport — Ir al inicio">
+            <a href="/" class="flex items-center shrink-0 relative overflow-hidden ml-12 md:ml-20 lg:ml-16 lg:w-56" aria-label="JHT Transport — Ir al inicio">
                 <img src="../assets/images/branding/JHTmarca-transparente.png"
                      alt="JHT Transport Logo"
                      :class="scrolled ? 'h-20 md:h-24' : 'h-24 md:h-28'"
-                     class="w-auto transition-all duration-300"
+                     class="w-auto transition-all duration-300 logo-animado logo-shadow-unscrolled"
                      width="380" height="84" loading="eager">
+                <div class="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-full logo-shine" aria-hidden="true"></div>
             </a>
 
             <!-- Desktop Menu (estilo index: iconos y underline en hover) -->
@@ -264,11 +266,48 @@
 
                     <!-- Columna Izquierda: Texto + Indicadores -->
                     <div class="text-left">
-                        <h1 id="hero-titulo" class="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg leading-tight">
+                        <div class="scroll-trigger from-top inline-flex items-center gap-1.5 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6 is-visible" style="transition-delay: 0.2s;">
+                            <span class="gps-icon-sm text-jht-gold -ml-1">
+                                <span class="gps-dot"></span>
+                                <span class="gps-ring gps-ring-1"></span>
+                                <span class="gps-ring gps-ring-2"></span>
+                                <span class="gps-ring gps-ring-3"></span>
+                            </span>
+                            SOLUCIONES INTEGRALES
+                        </div>
+                        <h1 id="hero-titulo" class="animate-hero-title font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg leading-tight">
                             Transporte y<br>Servicio Logístico<br>
                             <span class="text-jht-gold">para empresas en<br>todo el país</span>
                         </h1>
-                        <p id="hero-subtitulo" class="text-base sm:text-lg text-gray-300 mb-10 max-w-lg leading-relaxed">
+                        <p id="hero-subtitulo"
+                           x-data="{
+                               text: 'Soluciones integrales de transporte de carga, distribución y almacenaje para empresas que exigen precisión, seguridad y velocidad.',
+                               fullText: 'Soluciones integrales de transporte de carga, distribución y almacenaje para empresas que exigen precisión, seguridad y velocidad.',
+                               charIndex: 0,
+                               isDeleting: false,
+                               type() {
+                                   if (this.isDeleting) {
+                                       this.charIndex -= 2;
+                                       if (this.charIndex < 0) this.charIndex = 0;
+                                   } else {
+                                       this.charIndex++;
+                                   }
+                                   this.text = this.fullText.substring(0, this.charIndex) + (this.charIndex < this.fullText.length ? '|' : '');
+                                   let typeSpeed = this.isDeleting ? 10 : 25;
+                                   if (!this.isDeleting && this.charIndex >= this.fullText.length) {
+                                       typeSpeed = 3000;
+                                       this.isDeleting = true;
+                                       this.text = this.fullText;
+                                   } else if (this.isDeleting && this.charIndex <= 0) {
+                                       this.isDeleting = false;
+                                       typeSpeed = 500;
+                                   }
+                                   setTimeout(() => this.type(), typeSpeed);
+                               }
+                           }"
+                           x-init="setTimeout(() => type(), 500)"
+                           class="animate-hero-desc text-base sm:text-lg text-gray-300 mb-10 max-w-lg leading-relaxed hover-slide-left-back"
+                           x-text="text">
                             Soluciones integrales de transporte de carga, distribución y almacenaje para empresas que exigen precisión, seguridad y velocidad.
                         </p>
 
@@ -332,7 +371,7 @@
                                     <label for="cot-celular" class="sr-only">Celular</label>
                                     <input type="tel" id="cot-celular" name="celular" placeholder="Celular" class="jht-input" required aria-required="true">
                                 </div>
-                                <button type="submit" class="btn-primary w-full text-base py-3.5 shadow-lg">
+                                <button type="submit" class="btn-primary w-full text-base py-3.5 shadow-lg animate-click-pulse">
                                     Solicitar Cotización
                                     <span class="material-symbols-outlined ml-2 text-lg" aria-hidden="true">send</span>
                                 </button>
@@ -356,8 +395,8 @@
                         </span>
                         <span>Nuestros Servicios</span>
                     </h2>
-                    <p id="servicios-subtitulo" class="section-subtitle">
-                        Soluciones logísticas adaptadas a las necesidades específicas de tu negocio.
+                    <p id="servicios-subtitulo" class="section-subtitle hover-tremble-soft">
+                        Soluciones logísticas integrales adaptadas a las necesidades específicas de tu negocio.
                     </p>
                 </div>
 
@@ -393,7 +432,7 @@
 
                             <!-- Card 1: Transporte de Carga -->
                             <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
-                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                      onclick="openModal(this)">
                                     <!-- Card Image Header -->
                                     <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -434,7 +473,7 @@
 
                             <!-- Card 2: Distribución -->
                             <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
-                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                      onclick="openModal(this)">
                                     <!-- Card Image Header -->
                                     <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -475,7 +514,7 @@
 
                             <!-- Card 3: Courier Express -->
                             <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
-                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                      onclick="openModal(this)">
                                     <!-- Card Image Header -->
                                     <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -516,7 +555,7 @@
 
                             <!-- Card 4: Mudanzas -->
                             <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
-                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                      onclick="openModal(this)">
                                     <!-- Card Image Header -->
                                     <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -557,7 +596,7 @@
 
                             <!-- Card 5: Carga Refrigerada -->
                             <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
-                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                      onclick="openModal(this)">
                                     <!-- Card Image Header -->
                                     <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -598,7 +637,7 @@
 
                             <!-- Card 6: Almacenaje -->
                             <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
-                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                      onclick="openModal(this)">
                                     <!-- Card Image Header -->
                                     <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -639,7 +678,7 @@
 
                             <!-- Card 7: Personal de Estiba -->
                             <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
-                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
+                                <div class="jht-card h-full bg-white rounded-2xl border border-gray-100 flex flex-col group cursor-pointer card-animate-once scroll-trigger hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(26,59,107,0.1)] transition-all duration-500"
                                      onclick="openModal(this)">
                                     <!-- Card Image Header -->
                                     <div class="w-full h-48 overflow-hidden rounded-t-2xl relative">
@@ -720,8 +759,8 @@
                         </span>
                         <span>Nuestra Flota</span>
                     </h2>
-                    <p id="flota-subtitulo" class="section-subtitle">
-                        Vehículos modernos equipados con tecnología de rastreo satelital.
+                    <p id="flota-subtitulo" class="section-subtitle hover-tremble-soft">
+                        Vehículos modernos equipados con tecnología de rastreo satelital para transporte seguro y eficiente.
                     </p>
                 </div>
 
@@ -840,7 +879,7 @@
                         </span>
                         <span>¿Por Qué Elegir JHT Transport?</span>
                     </h2>
-                    <p class="text-lg text-gray-300 max-w-2xl mx-auto">Más que un servicio de transporte, somos tu socio estratégico en logística.</p>
+                    <p class="text-lg text-gray-300 max-w-2xl mx-auto hover-tremble-soft">Más que un servicio de transporte, somos tu socio estratégico en logística de carga nacional.</p>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 scroll-trigger">
@@ -893,7 +932,7 @@
                         </span>
                         <span>Cómo Trabajamos</span>
                     </h2>
-                    <p class="section-subtitle">Trazabilidad total de tu carga en cinco estados.</p>
+                    <p class="section-subtitle hover-tremble-soft">Trazabilidad total de tu carga en cinco estados operativos.</p>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 max-w-6xl mx-auto scroll-trigger relative">
@@ -987,8 +1026,8 @@
                             </span>
                             <span>Sobre JHT Transport</span>
                         </h2>
-                        <p class="text-jht-blue-support mb-8 leading-relaxed">
-                            Somos una empresa peruana especializada en transporte de carga y logística empresarial. Con años de experiencia, hemos construido una reputación basada en la confianza, puntualidad y seguridad.
+                        <p class="text-jht-blue-support mb-8 leading-relaxed hover-tremble-soft">
+                            Somos una empresa peruana especializada en transporte de carga y logística empresarial con seguimiento GPS. Con años de experiencia, hemos construido una reputación basada en la confianza, puntualidad y seguridad.
                         </p>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -1081,8 +1120,8 @@
                             </span>
                             <span>Cobertura Nacional</span>
                         </h2>
-                        <p class="text-gray-300 mb-8 leading-relaxed">
-                            Nuestra red logística conecta las principales ciudades del Perú, garantizando entregas seguras y puntuales en todo el territorio nacional.
+                        <p class="text-gray-300 mb-8 leading-relaxed hover-tremble-soft">
+                            Nuestra red logística conecta las principales ciudades del Perú, garantizando entregas seguras y puntuales de carga en todo el territorio nacional.
                         </p>
                         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                             <span class="flex items-center gap-2 text-sm text-gray-300"><span class="material-symbols-outlined text-jht-gold text-base" aria-hidden="true">location_on</span> Lima</span>
@@ -1145,7 +1184,7 @@
                             </div>
 
                             <blockquote>
-                                <p class="text-lg md:text-xl text-jht-dark italic leading-relaxed mb-6" x-text="'“' + t.text + '”'"></p>
+                                <p class="text-lg md:text-xl text-jht-dark italic leading-relaxed mb-6 hover-tremble-soft" x-text="'“' + t.text + '”'"></p>
                             </blockquote>
                             <div>
                                 <p class="font-title font-bold text-jht-dark" x-text="t.name"></p>
@@ -1283,8 +1322,8 @@
                     </span>
                     <span>¿Necesitas Optimizar tu<br><span class="text-jht-gold">Cadena Logística?</span></span>
                 </h2>
-                <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
-                    Más de 150 empresas ya confían en JHT Transport. Únete y transforma la forma en que mueves tu carga.
+                <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto hover-tremble-soft">
+                    Más de 150 empresas ya confían en JHT Transport. Únete y transforma la forma en que mueves tu carga nacional.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="#hero" class="btn-primary text-base px-8 py-4 shadow-xl">
@@ -1316,7 +1355,7 @@
                         </span>
                         <span>¿Listo para Optimizar tu Logística?</span>
                     </h2>
-                    <p id="contacto-subtitulo" class="section-subtitle">Contáctanos y descubre cómo podemos ayudarte.</p>
+                    <p id="contacto-subtitulo" class="section-subtitle hover-tremble-soft">Contáctanos y descubre cómo mejorar tu logística con transporte seguro y seguimiento en tiempo real.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 scroll-trigger">
