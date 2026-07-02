@@ -261,7 +261,7 @@
             <div class="absolute inset-0 bg-gradient-to-b from-jht-dark/70 via-jht-dark/40 to-jht-dark/90 z-10" aria-hidden="true"></div>
 
             <!-- Contenido del Hero -->
-            <div class="relative z-20 container mx-auto px-6 pt-24 pb-12 lg:pt-20">
+            <div class="relative z-10 container mx-auto px-3 pt-24 pb-6 lg:pt-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     <!-- Columna Izquierda: Texto + Indicadores -->
@@ -1407,6 +1407,14 @@
 
     <!-- ===== JAVASCRIPT: Animaciones y Rendimiento ===== -->
     <script type="module" src="../js/main.js"></script>
+
+    <!-- Flecha de orientación hacia WhatsApp -->
+    <div class="fixed bottom-10 left-6 z-[90] hidden xl:flex items-center gap-3 pointer-events-none">
+        <div class="flex items-center justify-center h-12 w-12 rounded-full border border-slate-400/20 bg-slate-800/15 shadow-[0_20px_40px_rgba(15,23,42,0.12)] text-slate-200/90">
+            <span class="material-symbols-outlined text-[24px]">arrow_forward</span>
+        </div>
+        <div class="text-sm uppercase tracking-[0.24em] text-slate-300/90 font-semibold">WhatsApp</div>
+    </div>
 
     <!-- Grupo de Botones Flotantes (Contacto y WhatsApp) -->
     <div class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex flex-col items-center gap-4">
