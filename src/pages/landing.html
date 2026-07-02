@@ -160,7 +160,7 @@
         x-data="{ scrolled: false, mobileMenuOpen: false }"
         @scroll.window="scrolled = (window.pageYOffset > 20)"
         class="fixed w-full top-0 z-50 transition-all duration-300"
-        :class="{ 'bg-[#1A3B6B] shadow-md py-4 md:py-4': scrolled, 'bg-[#909AB3]/60 backdrop-blur-sm py-8 md:py-2': !scrolled }"
+        :class="{ 'bg-[#1A3B6B]/60 shadow-md py-4 md:py-4': scrolled, 'bg-[#909AB3]/60 backdrop-blur-sm py-8 md:py-2': !scrolled }"
         role="banner"
     >
         <div class="relative mx-auto flex w-full max-w-8xl items-center justify-between px-10 sm:px-12 lg:px-12 min-h-[100px] md:min-h-[100px]">
