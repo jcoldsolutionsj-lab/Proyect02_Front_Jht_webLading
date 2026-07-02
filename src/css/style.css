@@ -2873,6 +2873,10 @@ html {
   animation: vibrate-double 0.6s ease-in-out forwards;
 }
 
+.group:hover .group-hover\:animate-vibrate-y {
+  animation: vibrate-y 0.4s ease-in-out forwards;
+}
+
 .group\/item:hover .group-hover\/item\:animate-slide-rl {
   animation: slide-right-left 0.5s ease-out forwards;
 }
