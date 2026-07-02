@@ -2019,6 +2019,14 @@ html {
   background-color: rgb(26 59 107 / 0.8);
 }
 
+.bg-\[\#1A3B6B\]\/50{
+  background-color: rgb(26 59 107 / 0.5);
+}
+
+.bg-\[\#1A3B6B\]\/60{
+  background-color: rgb(26 59 107 / 0.6);
+}
+
 .bg-\[url\(\'\.\.\/assets\/images\/branding\/JHTmarca-transparente\.png\'\)\]{
   background-image: url('../assets/images/branding/JHTmarca-transparente.png');
 }
