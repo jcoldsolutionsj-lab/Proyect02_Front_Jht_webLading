@@ -37,6 +37,20 @@
 
     <style>
         [x-cloak] { display: none !important; }
+
+        /* ===== OCULTAR SCROLLBAR VISUAL (Mantener scroll funcional) ===== */
+        html {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE y Edge */
+        }
+
+        html::-webkit-scrollbar {
+            display: none; /* Chrome, Safari y Edge basado en Chromium */
+        }
+
+        body {
+            overflow-y: scroll; /* Permite scroll funcional en todos los navegadores */
+        }
     </style>
 
     <!-- ===== JSON-LD: Organization ===== -->
