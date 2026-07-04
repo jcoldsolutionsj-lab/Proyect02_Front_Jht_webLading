@@ -276,8 +276,8 @@
             <div class="absolute inset-0 bg-gradient-to-b from-jht-dark/70 via-jht-dark/40 to-jht-dark/90 z-10" aria-hidden="true"></div>
 
             <!-- Contenido del Hero -->
-            <div class="relative z-10 container mx-auto px-3 pt-24 pb-6 lg:pt-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="relative z-10 container mx-auto px-3 pt-12 pb-6 lg:pt-20 lg:pb-40">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
 
                     <!-- Columna Izquierda: Texto + Indicadores -->
                     <div class="text-left">
@@ -351,12 +351,12 @@
                     </div>
 
                     <!-- Columna Derecha: Formulario de Cotización (Lead Comercial) -->
-                    <div class="w-full max-w-md mx-auto lg:ml-auto">
-                        <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-2xl border border-white/20">
+                    <div class="w-full max-w-md mx-auto lg:ml-auto h-full">
+                        <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-2xl border border-white/20 h-full flex flex-col">
                             <h2 class="font-title text-xl sm:text-2xl font-bold text-jht-dark mb-1">Solicita tu Cotización</h2>
                             <p class="text-sm text-jht-blue-support mb-6">Respuesta en menos de 24 horas</p>
 
-                            <form id="form-cotizacion" class="space-y-4" data-form-type="lead-comercial" novalidate>
+                            <form id="form-cotizacion" class="space-y-4 flex-grow flex flex-col justify-between" data-form-type="lead-comercial" novalidate>
                                 <div>
                                     <label for="cot-servicio" class="sr-only">Servicio requerido</label>
                                     <select id="cot-servicio" name="servicio" class="jht-input" required aria-required="true">
