@@ -1,8 +1,3 @@
-/* ============================================
-   JHT Transport — Design System (tailwind.css)
-   Fuente única de estilos base y componentes.
-   ============================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap');
 
 @tailwind base;
@@ -16,31 +11,10 @@
     --color-bg: #E3E4E5;
     --color-border: #909AB3;
     --color-text-secondary: #57678E;
-    
-    /* WhatsApp — Desacoplado para futura configuración */
-    --whatsapp-number: 51935833467;
   }
   
   html {
     scroll-behavior: smooth;
-    background-color: var(--color-bg);
-  }
-
-  /* Respeta prefers-reduced-motion */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
-
-  /* Focus visible para accesibilidad */
-  *:focus-visible {
-    outline: 3px solid var(--color-accent);
-    outline-offset: 2px;
-    border-radius: 2px;
   }
 }
 
@@ -53,14 +27,6 @@
   }
   .btn-primary:hover {
     @apply scale-[1.02] shadow-lg shadow-[0_10px_20px_rgba(255,212,0,0.4)];
-  }
-
-  /* --- Botón Secundario --- */
-  .btn-secondary {
-    @apply inline-flex items-center justify-center border-2 border-white text-white font-title font-semibold py-3 px-6 rounded transition-all duration-300;
-  }
-  .btn-secondary:hover {
-    @apply bg-white/10 scale-[1.02];
   }
   
   /* =========================================
@@ -83,14 +49,6 @@
     @apply border-jht-dark shadow-[0_0_8px_rgba(26,59,107,0.2)];
   }
 
-  /* --- Títulos de Sección --- */
-  .section-title {
-    @apply font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4;
-  }
-  .section-subtitle {
-    @apply text-lg text-jht-blue-support max-w-2xl mx-auto font-sans;
-  }
-
   /* =========================================
      MENÚ STICKY
      ========================================= */
@@ -100,6 +58,16 @@
   .nav-solid {
     @apply backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.3)] border-b border-white/10;
     background-color: rgba(26, 59, 107, 0.4);
+  }
+
+  /* =========================================
+     TÍTULOS DE SECCIÓN
+     ========================================= */
+  .section-title {
+    @apply font-title text-3xl md:text-4xl font-bold text-jht-dark mb-4;
+  }
+  .section-subtitle {
+    @apply text-lg text-jht-blue-support max-w-2xl mx-auto font-sans;
   }
 }
 
@@ -267,38 +235,190 @@
   100% { opacity: 0; transform: translateY(-50%) translateX(15px) scale(0.9); visibility: hidden; }
 }
 
-/* Hero Entrance Animations */
-@keyframes slide-down-fade {
-  0% { transform: translateY(-40px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+
+
+/* --- Migrated from servicios.css --- */
+/* Animated Brand Logo */
+.logo-animado {
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.5s ease, height 0.3s ease !important;
+    animation: entranceLogo 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, logoNudge 8s infinite ease-in-out 1.5s;
+    transform-origin: center center;
 }
 
-@keyframes slide-up-fade {
-  0% { transform: translateY(40px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+.logo-animado:hover {
+    transform: scale(1.06) rotate(-1.5deg);
+    filter: brightness(1.15) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12)) drop-shadow(0 8px 15px rgba(255, 212, 0, 0.25));
 }
 
-@keyframes slide-left-fade {
-  0% { transform: translateX(40px); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
+@keyframes entranceLogo {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-10px);
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
 }
 
-.animate-hero-badge {
-  animation: slide-down-fade 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+@keyframes logoNudge {
+    0%, 72%, 100% {
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+    84% {
+        transform: scale(1.08) rotate(375deg); /* Giro 360 + 15 de rebote - zoom moderado */
+        filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12)) drop-shadow(0 8px 18px rgba(255, 212, 0, 0.25));
+    }
+    90% {
+        transform: scale(1.03) rotate(350deg); /* Retroceso del rebote */
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+    95% {
+        transform: scale(1.06) rotate(363deg); /* Micro oscilación */
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
+    98%, 100% {
+        transform: scale(1) rotate(360deg); /* Asentamiento final */
+        filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
+    }
 }
 
-.animate-hero-title {
-  animation: slide-up-fade 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+/* Continuous Metallic Shine Sweep */
+.logo-shine {
+    animation: shineSweep 4s infinite ease-in-out;
+    pointer-events: none;
 }
 
-.animate-hero-desc {
-  animation: slide-up-fade 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+@keyframes shineSweep {
+    0% {
+        transform: translateX(-150%) skewX(-12deg);
+    }
+    15%, 100% {
+        transform: translateX(250%) skewX(-12deg);
+    }
 }
 
-.animate-hero-btn1 {
-  animation: slide-left-fade 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+/* White drop shadow filter for high contrast around the logo (Permanent) */
+.logo-shadow-unscrolled {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.22)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.12));
 }
 
-.animate-hero-btn2 {
-  animation: slide-left-fade 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.0s both;
+
+/* Hover slide left and back animation for paragraphs */
+@keyframes slideLeftBack {
+    0% { translate: 0 0; }
+    30% { translate: -8px 0; }
+    70% { translate: 2px 0; }
+    100% { translate: 0 0; }
 }
+
+.hover-slide-left-back {
+    display: inline-block;
+    transition: translate 0.3s ease;
+}
+
+.hover-slide-left-back:hover {
+    animation: slideLeftBack 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+
+@keyframes bounceTwice {
+    0%, 100% { translate: 0 0; }
+    25%, 75% { translate: 0 -12px; }
+    50% { translate: 0 0; }
+}
+
+.animate-bounce-twice {
+    animation: bounceTwice 1.2s ease-in-out;
+}
+
+
+/* Click pulse animation for submit button */
+@keyframes clickPulse {
+    0%, 60%, 100% {
+        scale: 1;
+        box-shadow: 0 4px 15px rgba(196, 154, 69, 0.3);
+    }
+    65% {
+        scale: 0.93;
+        box-shadow: 0 2px 6px rgba(196, 154, 69, 0.2);
+    }
+    72% {
+        scale: 1.04;
+        box-shadow: 0 6px 24px rgba(196, 154, 69, 0.55);
+    }
+    78% {
+        scale: 0.97;
+        box-shadow: 0 4px 15px rgba(196, 154, 69, 0.35);
+    }
+    83% {
+        scale: 1;
+        box-shadow: 0 4px 15px rgba(196, 154, 69, 0.3);
+    }
+}
+
+.animate-click-pulse {
+    animation: clickPulse 4s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+/* Animated cursor that "clicks" the button */
+.btn-animated-cursor {
+    position: absolute;
+    bottom: -8px;
+    right: 14px;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0;
+    animation: cursorClickAnim 4s ease-in-out infinite;
+    animation-delay: 2s;
+    filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.4));
+}
+
+@keyframes cursorClickAnim {
+    /* Hidden, offset to bottom-right */
+    0%, 54% {
+        opacity: 0;
+        translate: 36px 36px;
+        scale: 1;
+    }
+    /* Fade in at bottom-right */
+    59% {
+        opacity: 1;
+        translate: 36px 36px;
+        scale: 1;
+    }
+    /* Slide smoothly into position over the button */
+    64% {
+        opacity: 1;
+        translate: 0 0;
+        scale: 1;
+    }
+    /* Press down - click! (synced with button scale 0.93 at 65%) */
+    66% {
+        opacity: 1;
+        translate: 0 5px;
+        scale: 0.85;
+    }
+    /* Release - lift back up (synced with button scale 1.04 at 72%) */
+    73% {
+        opacity: 1;
+        translate: 0 0;
+        scale: 1;
+    }
+    /* Fade out and slide away */
+    78% {
+        opacity: 0;
+        translate: 36px 36px;
+        scale: 1;
+    }
+    100% {
+        opacity: 0;
+        translate: 36px 36px;
+        scale: 1;
+    }
+}
+
