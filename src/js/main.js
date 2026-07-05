@@ -23,13 +23,46 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-            } else {
-                // Remueve la clase para que se vuelva a animar al subir o bajar scroll
-                entry.target.classList.remove('is-visible');
+                // Stop observing once animated so it only animates once
+                observer.unobserve(entry.target); 
             }
         });
     }, observerOptions);
 
     const animatedElements = document.querySelectorAll('.scroll-trigger');
     animatedElements.forEach(el => scrollObserver.observe(el));
+});
+
+// 4. AlpineJS Global Components
+document.addEventListener('alpine:init', () => {
+    Alpine.data('typewriter', (fullText) => ({
+        text: fullText,
+        fullText: fullText,
+        charIndex: fullText.length,
+        isDeleting: true,
+        type() {
+            if (this.isDeleting) {
+                this.charIndex -= 2;
+                if(this.charIndex < 0) this.charIndex = 0;
+            } else {
+                this.charIndex++;
+            }
+            this.text = this.fullText.substring(0, this.charIndex) + (this.charIndex < this.fullText.length ? '|' : '');
+            
+            let typeSpeed = this.isDeleting ? 10 : 25;
+            
+            if (!this.isDeleting && this.charIndex >= this.fullText.length) {
+                typeSpeed = 3000;
+                this.isDeleting = true;
+                this.text = this.fullText; // quita el cursor en pausa
+            } else if (this.isDeleting && this.charIndex <= 0) {
+                this.isDeleting = false;
+                typeSpeed = 500;
+            }
+            setTimeout(() => this.type(), typeSpeed);
+        },
+        init() {
+            setTimeout(() => this.type(), 3500);
+        }
+    }));
 });
