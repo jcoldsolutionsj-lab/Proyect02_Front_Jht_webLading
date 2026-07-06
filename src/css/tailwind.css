@@ -52,6 +52,16 @@
       animation: tab-jump 0.5s ease-in-out;
   }
 
+  @keyframes shake-tremble {
+      0%, 100% { transform: translateX(0) rotate(0deg); }
+      25% { transform: translateX(-2px) rotate(-1deg); }
+      50% { transform: translateX(2px) rotate(1deg); }
+      75% { transform: translateX(-2px) rotate(-1deg); }
+  }
+  .hover-shake-tremble:hover {
+      animation: shake-tremble 0.3s ease-in-out infinite;
+  }
+
   /* =========================================
      CAMPOS DE FORMULARIO PREMIUM (Glass)
      ========================================= */
