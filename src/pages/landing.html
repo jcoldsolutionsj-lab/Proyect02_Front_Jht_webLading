@@ -168,10 +168,6 @@
 
 <body class="bg-jht-gray text-jht-dark font-sans flex flex-col min-h-screen animate-fade-in-slow overflow-y-auto">
 
-    <!-- ===== SKIP TO CONTENT (Accesibilidad WCAG) ===== -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-jht-gold focus:text-jht-dark focus:px-6 focus:py-3 focus:rounded-lg focus:font-bold focus:shadow-xl">
-        Saltar al contenido principal
-    </a>
 
     <!-- ===== HEADER ===== -->
     <header
@@ -193,30 +189,30 @@
             </a>
 
             <!-- Desktop Menu (estilo index: iconos y underline en hover) -->
-            <nav class="hidden lg:flex items-center justify-end gap-8 xl:gap-12 flex-1" role="navigation" aria-label="Menú principal">
-                <a href="#hero" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">home</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Inicio<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+            <nav class="hidden lg:flex items-center justify-end gap-6 xl:gap-10 flex-1" role="navigation" aria-label="Menú principal">
+                <a href="#hero" class="group relative font-title font-semibold text-[19px] xl:text-[21px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined mr-1.5 text-[22px] text-white group-hover:text-jht-gold transition-colors duration-300">explore</span>
+                    <span class="relative inline-block">Inicio<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="#servicios" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">inventory_2</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Servicios<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="#servicios" class="group relative font-title font-semibold text-[19px] xl:text-[21px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined mr-1.5 text-[22px] text-white group-hover:text-jht-gold transition-colors duration-300">category</span>
+                    <span class="relative inline-block">Servicios<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="#flota" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">local_shipping</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Flota<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="#flota" class="group relative font-title font-semibold text-[19px] xl:text-[21px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined mr-1.5 text-[22px] text-white group-hover:text-jht-gold transition-colors duration-300">route</span>
+                    <span class="relative inline-block">Flota<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="#nosotros" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">groups</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Nosotros<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="#nosotros" class="group relative font-title font-semibold text-[19px] xl:text-[21px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined mr-1.5 text-[22px] text-white group-hover:text-jht-gold transition-colors duration-300">handshake</span>
+                    <span class="relative inline-block">Nosotros<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="#contacto" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">headset_mic</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Contacto<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="#contacto" class="group relative font-title font-semibold text-[19px] xl:text-[21px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined mr-1.5 text-[22px] text-white group-hover:text-jht-gold transition-colors duration-300">support_agent</span>
+                    <span class="relative inline-block">Contacto<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="acceso.html" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">login</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block btn-primary px-6 py-3 text-base">Área Cliente<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="acceso.html" class="hidden group relative font-title font-semibold text-[19px] xl:text-[21px] text-white flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined mr-1.5 text-[22px] text-white group-hover:text-jht-gold transition-colors duration-300">login</span>
+                    <span class="relative inline-block btn-primary px-6 py-3 text-base">Área Cliente<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
             </nav>
 
