@@ -114,3 +114,47 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+
+// --- SCROLL SUAVE Y LENTO PERSONALIZADO PARA EL MENÚ ---
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                
+                // Duración en milisegundos (1500 = 1.5 segundos, MUY lento y suave)
+                const duration = 1500;
+                let start = null;
+                
+                // Función de easing para que arranque y frene muy suave (easeInOutCubic)
+                function step(timestamp) {
+                    if (!start) start = timestamp;
+                    const progress = timestamp - start;
+                    let time = progress / duration;
+                    if (time > 1) time = 1;
+                    
+                    const easeInOutCubic = time < 0.5 
+                        ? 4 * time * time * time 
+                        : 1 - Math.pow(-2 * time + 2, 3) / 2;
+                        
+                    const currentPosition = startPosition + distance * easeInOutCubic;
+                    window.scrollTo(0, currentPosition);
+                    
+                    if (progress < duration) {
+                        window.requestAnimationFrame(step);
+                    }
+                }
+                
+                window.requestAnimationFrame(step);
+            }
+        });
+    });
+});
