@@ -17,11 +17,13 @@ module.exports = {
         sans: ['Open Sans', 'sans-serif'],
       },
       animation: {
-        'marquee': 'marquee 25s linear infinite',
+        'marquee': 'marquee 30s linear infinite',
+        'marquee-reverse': 'marqueeReverse 30s linear infinite',
         'vibrate-y': 'vibrate-y 0.4s ease-in-out',
         'fade-in-up': 'fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both',
         'fade-in-slow': 'fadeInSlow 3.5s ease-out forwards',
         'takeoff': 'takeoff 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+        'counter': 'counterPulse 0.3s ease-out',
       },
       keyframes: {
         takeoff: {
@@ -35,16 +37,29 @@ module.exports = {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
         },
+        marqueeReverse: {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
         'vibrate-y': {
           '0%, 100%': { transform: 'translateY(0)' },
           '25%': { transform: 'translateY(-6px)' },
           '50%': { transform: 'translateY(3px)' },
           '75%': { transform: 'translateY(-2px)' },
         },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(40px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
         fadeInSlow: {
           '0%': { opacity: 0 },
           '100%': { opacity: 1 },
-        }
+        },
+        counterPulse: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.1)' },
+          '100%': { transform: 'scale(1)' },
+        },
       }
     },
   },

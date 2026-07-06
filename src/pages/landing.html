@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" dir="ltr">
+<html lang="es" dir="ltr" class="scroll-smooth">
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -166,12 +166,8 @@
     </script>
 </head>
 
-<body class="bg-jht-gray text-jht-dark font-sans flex flex-col min-h-screen animate-fade-in-slow overflow-y-auto">
+<body class="bg-jht-gray text-jht-dark font-sans flex flex-col min-h-screen animate-fade-in-slow scroll-smooth">
 
-    <!-- ===== SKIP TO CONTENT (Accesibilidad WCAG) ===== -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-jht-gold focus:text-jht-dark focus:px-6 focus:py-3 focus:rounded-lg focus:font-bold focus:shadow-xl">
-        Saltar al contenido principal
-    </a>
 
     <!-- ===== HEADER ===== -->
     <header
@@ -193,30 +189,30 @@
             </a>
 
             <!-- Desktop Menu (estilo index: iconos y underline en hover) -->
-            <nav class="hidden lg:flex items-center justify-end gap-8 xl:gap-12 flex-1" role="navigation" aria-label="Menú principal">
-                <a href="#hero" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">home</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Inicio<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+            <nav class="hidden lg:flex items-center justify-end gap-6 xl:gap-10 flex-1" role="navigation" aria-label="Menú principal">
+                <a href="#hero" class="group relative font-title font-semibold text-[19px] xl:text-[21px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined mr-1.5 text-[22px] text-white group-hover:text-jht-gold group-hover:rotate-[360deg] transition-all duration-700">explore</span>
+                    <span class="relative inline-block">Inicio<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="#servicios" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">inventory_2</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Servicios<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="#servicios" class="group relative font-title font-semibold text-[19px] xl:text-[21px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined mr-1.5 text-[22px] text-white group-hover:text-jht-gold group-hover:rotate-[360deg] transition-all duration-700">category</span>
+                    <span class="relative inline-block">Servicios<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="#flota" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">local_shipping</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Flota<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="#flota" class="group relative font-title font-semibold text-[19px] xl:text-[21px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined mr-1.5 text-[22px] text-white group-hover:text-jht-gold group-hover:rotate-[360deg] transition-all duration-700">route</span>
+                    <span class="relative inline-block">Flota<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="#nosotros" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">groups</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Nosotros<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="#nosotros" class="group relative font-title font-semibold text-[19px] xl:text-[21px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined mr-1.5 text-[22px] text-white group-hover:text-jht-gold group-hover:rotate-[360deg] transition-all duration-700">handshake</span>
+                    <span class="relative inline-block">Nosotros<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="#contacto" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">headset_mic</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Contacto<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="#contacto" class="group relative font-title font-semibold text-[19px] xl:text-[21px] text-white hover:text-jht-gold flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined mr-1.5 text-[22px] text-white group-hover:text-jht-gold group-hover:rotate-[360deg] transition-all duration-700">support_agent</span>
+                    <span class="relative inline-block">Contacto<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="acceso.html" class="group relative font-title font-semibold text-[18px] xl:text-[20px] text-white flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">login</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block btn-primary px-6 py-3 text-base">Área Cliente<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="acceso.html" class="hidden group relative font-title font-semibold text-[19px] xl:text-[21px] text-white flex items-center justify-center transition-all duration-300">
+                    <span class="material-symbols-outlined mr-1.5 text-[22px] text-white group-hover:text-jht-gold group-hover:rotate-[360deg] transition-all duration-700">login</span>
+                    <span class="relative inline-block btn-primary px-6 py-3 text-base">Área Cliente<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
             </nav>
 
@@ -279,10 +275,10 @@
 
             <!-- Contenido del Hero -->
             <div class="relative z-10 container mx-auto px-3 pt-12 pb-6 lg:pt-20 lg:pb-40">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch mt-1">
 
                     <!-- Columna Izquierda: Texto + Indicadores -->
-                    <div class="text-left">
+                    <div class="text-left mt-12">
                         <div class="scroll-trigger from-top inline-flex items-center gap-1.5 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6 is-visible" style="transition-delay: 0.2s;">
                             <span class="gps-icon-sm text-jht-gold -ml-1">
                                 <span class="gps-dot"></span>
@@ -306,74 +302,115 @@
 
                         <!-- Indicadores numéricos -->
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6" aria-label="Cifras destacadas">
-                            <div class="text-center sm:text-left">
-                                <span class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title" data-counter="150">0</span>
-                                <span class="text-xs sm:text-sm text-gray-400 font-sans">Empresas</span>
-                            </div>
-                            <div class="text-center sm:text-left">
-                                <span class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title" data-counter="12000">0</span>
-                                <span class="text-xs sm:text-sm text-gray-400 font-sans">Envíos</span>
-                            </div>
-                            <div class="text-center sm:text-left">
-                                <span class="block text-2xl sm:text-3xl font-bold text-white font-title" data-counter="24">0</span>
-                                <span class="text-xs sm:text-sm text-gray-400 font-sans">Ciudades</span>
-                            </div>
-                            <div class="text-center sm:text-left">
-                                <div class="flex items-center justify-center sm:justify-start gap-1">
-                                    <span class="material-symbols-outlined text-green-400 text-xl" aria-hidden="true">gps_fixed</span>
-                                    <span class="text-sm font-bold text-green-400 font-title">GPS</span>
+                            
+                            <!-- Indicador 1: Años -->
+                            <div class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default">
+                                <div class="flex items-baseline justify-center sm:justify-start">
+                                    <span class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title drop-shadow-md group-hover/metric:text-[#ffd700] transition-colors" data-counter="10">0</span>
+                                    <span class="text-xl sm:text-2xl font-bold text-jht-gold font-title ml-0.5">+</span>
                                 </div>
-                                <span class="text-xs sm:text-sm text-gray-400 font-sans">Tiempo real</span>
+                                <span class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Años de Exp.</span>
                             </div>
+
+                            <!-- Indicador 2: Clientes -->
+                            <div class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default delay-75">
+                                <div class="flex items-baseline justify-center sm:justify-start">
+                                    <span class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title drop-shadow-md group-hover/metric:text-[#ffd700] transition-colors" data-counter="93">0</span>
+                                    <span class="text-xl sm:text-2xl font-bold text-jht-gold font-title ml-0.5">+</span>
+                                </div>
+                                <span class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Clientes B2B</span>
+                            </div>
+
+                            <!-- Indicador 3: Cobertura -->
+                            <div class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default delay-150">
+                                <span class="block text-2xl sm:text-3xl font-bold text-white font-title drop-shadow-md group-hover/metric:text-gray-100 transition-colors" data-counter="13">0</span>
+                                <span class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Departamentos</span>
+                            </div>
+
+                            <!-- Indicador 4: GPS -->
+                            <div class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default delay-200 flex flex-col justify-center">
+                                <div class="flex items-center justify-center sm:justify-start gap-1">
+                                    <span class="material-symbols-outlined text-green-400 text-xl group-hover/metric:animate-pulse" aria-hidden="true">gps_fixed</span>
+                                    <span class="text-sm sm:text-base font-bold text-green-400 font-title">100%</span>
+                                </div>
+                                <span class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Flota Monitorizada</span>
+                            </div>
+                            
                         </div>
                     </div>
 
                     <!-- Columna Derecha: Formulario de Cotización (Lead Comercial) -->
-                    <div class="w-full max-w-md mx-auto lg:ml-auto h-full">
-                        <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-2xl border border-white/20 h-full flex flex-col">
-                            <h2 class="font-title text-xl sm:text-2xl font-bold text-jht-dark mb-1">Solicita tu Cotización</h2>
-                            <p class="text-sm text-jht-blue-support mb-6">Respuesta en menos de 24 horas</p>
+                    <div class="w-full max-w-md mx-auto lg:ml-auto mt-12">
+                        <div class="bg-black/20 backdrop-blur-xl rounded-[40px] p-5 sm:p-8 shadow-2xl border border-white/20 flex flex-col">
+                            <h2 class="font-title text-2xl sm:text-3xl font-bold text-white text-center mb-1">Solicita tu Cotización</h2>
+                            <p class="text-sm text-gray-300 text-center mb-8">Respuesta en menos de 24 horas</p>
 
-                            <form id="form-cotizacion" class="space-y-4 flex-grow flex flex-col justify-between" data-form-type="lead-comercial" novalidate>
-                                <div>
+                            <form id="form-cotizacion" class="space-y-4 flex-grow flex flex-col justify-between" data-form-type="lead-comercial" novalidate="">
+                                
+                                <div class="relative flex items-center">
+                                    <div class="absolute left-[3px] w-[2.75rem] h-[2.75rem] bg-white rounded-full flex items-center justify-center pointer-events-none shadow-sm z-10">
+                                        <span class="material-symbols-outlined text-jht-dark" aria-hidden="true">local_shipping</span>
+                                    </div>
                                     <label for="cot-servicio" class="sr-only">Servicio requerido</label>
-                                    <select id="cot-servicio" name="servicio" class="jht-input" required aria-required="true">
-                                        <option value="" disabled selected>Servicio requerido</option>
-                                        <option value="transporte-carga">Transporte de Carga</option>
-                                        <option value="distribucion">Distribución</option>
-                                        <option value="courier">Courier / Delivery Express</option>
-                                        <option value="mudanzas">Mudanzas</option>
-                                        <option value="carga-refrigerada">Carga Refrigerada</option>
-                                        <option value="almacenaje">Almacenaje</option>
-                                        <option value="personal-estiba">Personal de Estiba</option>
+                                    <select id="cot-servicio" name="servicio" class="jht-input-glass appearance-none cursor-pointer" required="" aria-required="true">
+                                        <option value="" disabled="" selected="" class="text-gray-500">Servicio requerido</option>
+                                        <option value="transporte-carga" class="text-jht-dark">Transporte de Carga</option>
+                                        <option value="distribucion" class="text-jht-dark">Distribución</option>
+                                        <option value="courier" class="text-jht-dark">Courier / Delivery Express</option>
+                                        <option value="mudanzas" class="text-jht-dark">Mudanzas</option>
+                                        <option value="carga-refrigerada" class="text-jht-dark">Carga Refrigerada</option>
+                                        <option value="almacenaje" class="text-jht-dark">Almacenaje</option>
+                                        <option value="personal-estiba" class="text-jht-dark">Personal de Estiba</option>
                                     </select>
+                                    <div class="absolute right-4 pointer-events-none text-white z-10">
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </div>
                                 </div>
-                                <div>
+
+                                <div class="relative flex items-center">
+                                    <div class="absolute left-[3px] w-[2.75rem] h-[2.75rem] bg-white rounded-full flex items-center justify-center pointer-events-none shadow-sm z-10">
+                                        <span class="material-symbols-outlined text-jht-dark" aria-hidden="true">person</span>
+                                    </div>
                                     <label for="cot-nombre" class="sr-only">Nombre completo</label>
-                                    <input type="text" id="cot-nombre" name="nombre" placeholder="Nombre completo" class="jht-input" required aria-required="true">
+                                    <input type="text" id="cot-nombre" name="nombre" placeholder="Nombre completo" class="jht-input-glass" required="" aria-required="true">
                                 </div>
-                                <div>
+
+                                <div class="relative flex items-center">
+                                    <div class="absolute left-[3px] w-[2.75rem] h-[2.75rem] bg-white rounded-full flex items-center justify-center pointer-events-none shadow-sm z-10">
+                                        <span class="material-symbols-outlined text-jht-dark" aria-hidden="true">domain</span>
+                                    </div>
                                     <label for="cot-empresa" class="sr-only">Empresa</label>
-                                    <input type="text" id="cot-empresa" name="empresa" placeholder="Empresa" class="jht-input">
+                                    <input type="text" id="cot-empresa" name="empresa" placeholder="Empresa (Opcional)" class="jht-input-glass">
                                 </div>
-                                <div>
+
+                                <div class="relative flex items-center">
+                                    <div class="absolute left-[3px] w-[2.75rem] h-[2.75rem] bg-white rounded-full flex items-center justify-center pointer-events-none shadow-sm z-10">
+                                        <span class="material-symbols-outlined text-jht-dark" aria-hidden="true">mail</span>
+                                    </div>
                                     <label for="cot-correo" class="sr-only">Correo electrónico</label>
-                                    <input type="email" id="cot-correo" name="correo" placeholder="Correo electrónico" class="jht-input" required aria-required="true">
+                                    <input type="email" id="cot-correo" name="correo" placeholder="Correo corporativo" class="jht-input-glass" required="" aria-required="true">
                                 </div>
-                                <div>
+
+                                <div class="relative flex items-center">
+                                    <div class="absolute left-[3px] w-[2.75rem] h-[2.75rem] bg-white rounded-full flex items-center justify-center pointer-events-none shadow-sm z-10">
+                                        <span class="material-symbols-outlined text-jht-dark" aria-hidden="true">call</span>
+                                    </div>
                                     <label for="cot-celular" class="sr-only">Celular</label>
-                                    <input type="tel" id="cot-celular" name="celular" placeholder="Celular" class="jht-input" required aria-required="true">
+                                    <input type="tel" id="cot-celular" name="celular" placeholder="Celular de contacto" class="jht-input-glass" required="" aria-required="true">
                                 </div>
-                                <div class="relative overflow-hidden group/btn w-full rounded-lg">
-                                    <button type="submit" class="btn-primary w-full text-base py-3.5 shadow-lg animate-click-pulse relative z-10">
-                                        Solicitar Cotización
-                                        <span class="material-symbols-outlined ml-2 text-lg" aria-hidden="true">send</span>
-                                    </button>
-                                    <span class="btn-animated-cursor" aria-hidden="true">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                                            <path d="M5.5 2 L5.5 18.5 L8.8 14.8 L11.5 21.5 L13.8 20.5 L11.1 13.8 L16.5 13.8 Z" fill="white" stroke="#1a1a2e" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"></path>
-                                        </svg>
-                                    </span>
+                                
+                                <div class="pt-4">
+                                    <div class="relative overflow-hidden group/btn w-full rounded-full">
+                                        <button type="submit" class="w-full bg-jht-gold text-jht-dark py-4 px-6 rounded-full font-bold uppercase tracking-wide shadow-lg hover:bg-[#d4af37] hover:shadow-xl transition-all duration-300 animate-click-pulse relative z-10 flex items-center justify-center gap-2">
+                                            Solicitar Cotización
+                                            <span class="material-symbols-outlined text-xl" aria-hidden="true">send</span>
+                                        </button>
+                                        <span class="btn-animated-cursor" aria-hidden="true">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                                                <path d="M5.5 2 L5.5 18.5 L8.8 14.8 L11.5 21.5 L13.8 20.5 L11.1 13.8 L16.5 13.8 Z" fill="white" stroke="#1a1a2e" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -629,20 +666,37 @@
                 </div>
 
                 <!-- Tabs Alpine.js -->
-                <div x-data="{ activeTab: 'liviana' }" class="max-w-5xl mx-auto scroll-trigger">
+                <div x-data="{ 
+                        activeTab: 'liviana',
+                        tabs: ['liviana', 'mediana', 'pesada'],
+                        interval: null,
+                        startInterval() {
+                            this.interval = setInterval(() => {
+                                let currentIndex = this.tabs.indexOf(this.activeTab);
+                                this.activeTab = this.tabs[(currentIndex + 1) % this.tabs.length];
+                            }, 5000);
+                        },
+                        resetInterval() {
+                            clearInterval(this.interval);
+                            this.startInterval();
+                        },
+                        init() {
+                            this.startInterval();
+                        }
+                    }" class="max-w-5xl mx-auto scroll-trigger">
                     <!-- Tab Buttons -->
                     <div class="flex justify-center mb-10 gap-2" role="tablist" aria-label="Categorías de flota">
-                        <button @click="activeTab = 'liviana'" :class="activeTab === 'liviana' ? 'bg-jht-gold text-jht-dark shadow-lg' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
+                        <button @click="activeTab = 'liviana'; resetInterval()" :class="activeTab === 'liviana' ? 'bg-jht-gold text-jht-dark shadow-lg animate-tab-jump' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
                                 class="px-6 py-3 rounded-lg font-title font-semibold text-sm transition-all duration-300"
                                 role="tab" :aria-selected="activeTab === 'liviana'" aria-controls="tab-liviana">
                             Liviana
                         </button>
-                        <button @click="activeTab = 'mediana'" :class="activeTab === 'mediana' ? 'bg-jht-gold text-jht-dark shadow-lg' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
+                        <button @click="activeTab = 'mediana'; resetInterval()" :class="activeTab === 'mediana' ? 'bg-jht-gold text-jht-dark shadow-lg animate-tab-jump' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
                                 class="px-6 py-3 rounded-lg font-title font-semibold text-sm transition-all duration-300"
                                 role="tab" :aria-selected="activeTab === 'mediana'" aria-controls="tab-mediana">
                             Mediana
                         </button>
-                        <button @click="activeTab = 'pesada'" :class="activeTab === 'pesada' ? 'bg-jht-gold text-jht-dark shadow-lg' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
+                        <button @click="activeTab = 'pesada'; resetInterval()" :class="activeTab === 'pesada' ? 'bg-jht-gold text-jht-dark shadow-lg animate-tab-jump' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
                                 class="px-6 py-3 rounded-lg font-title font-semibold text-sm transition-all duration-300"
                                 role="tab" :aria-selected="activeTab === 'pesada'" aria-controls="tab-pesada">
                             Pesada
@@ -659,15 +713,15 @@
                                 </video>
                             </div>
                             <div class="p-8 md:p-12 flex flex-col justify-center">
-                                <h3 class="font-title text-2xl font-bold text-jht-dark mb-3">Flota Liviana</h3>
-                                <p id="flota-liviana-desc" class="text-jht-blue-support mb-6">Vehículo multiusos diseñado para operaciones logísticas urbanas y regionales.</p>
+                                <h3 class="font-title text-2xl font-bold text-jht-dark hover:text-jht-gold transition-colors duration-300 cursor-default mb-3">Flota Liviana</h3>
+                                <p id="flota-liviana-desc" class="text-jht-blue-support mb-6 hover-shake-tremble cursor-default inline-block">Vehículo multiusos diseñado para operaciones logísticas urbanas y regionales.</p>
                                 <div class="space-y-3">
-                                    <div class="flex items-center gap-3">
-                                        <span class="material-symbols-outlined text-jht-gold" aria-hidden="true">scale</span>
+                                    <div class="flex items-center gap-3 group cursor-default">
+                                        <span class="material-symbols-outlined text-jht-gold transition-all duration-700 group-hover:rotate-[360deg] group-hover:scale-125" aria-hidden="true">scale</span>
                                         <span id="flota-liviana-capacidad" class="text-sm font-semibold text-jht-dark">Capacidad: 1 – 5 Toneladas</span>
                                     </div>
-                                    <div class="flex items-center gap-3">
-                                        <span class="material-symbols-outlined text-jht-gold" aria-hidden="true">straighten</span>
+                                    <div class="flex items-center gap-3 group cursor-default">
+                                        <span class="material-symbols-outlined text-jht-gold transition-all duration-700 group-hover:rotate-[360deg] group-hover:scale-125" aria-hidden="true">straighten</span>
                                         <span id="flota-liviana-medidas" class="text-sm text-jht-blue-support">Largo 6m | Ancho 2m | Altura 2m</span>
                                     </div>
                                 </div>
@@ -685,15 +739,15 @@
                                 </video>
                             </div>
                             <div class="p-8 md:p-12 flex flex-col justify-center">
-                                <h3 class="font-title text-2xl font-bold text-jht-dark mb-3">Flota Mediana</h3>
-                                <p id="flota-mediana-desc" class="text-jht-blue-support mb-6">Flota profesional diseñada para operaciones logísticas de alto tonelaje.</p>
+                                <h3 class="font-title text-2xl font-bold text-jht-dark hover:text-jht-gold transition-colors duration-300 cursor-default mb-3">Flota Mediana</h3>
+                                <p id="flota-mediana-desc" class="text-jht-blue-support mb-6 hover-shake-tremble cursor-default inline-block">Flota profesional diseñada para operaciones logísticas de alto tonelaje.</p>
                                 <div class="space-y-3">
-                                    <div class="flex items-center gap-3">
-                                        <span class="material-symbols-outlined text-jht-gold" aria-hidden="true">scale</span>
+                                    <div class="flex items-center gap-3 group cursor-default">
+                                        <span class="material-symbols-outlined text-jht-gold transition-all duration-700 group-hover:rotate-[360deg] group-hover:scale-125" aria-hidden="true">scale</span>
                                         <span id="flota-mediana-capacidad" class="text-sm font-semibold text-jht-dark">Capacidad: 10 – 15 Toneladas</span>
                                     </div>
-                                    <div class="flex items-center gap-3">
-                                        <span class="material-symbols-outlined text-jht-gold" aria-hidden="true">straighten</span>
+                                    <div class="flex items-center gap-3 group cursor-default">
+                                        <span class="material-symbols-outlined text-jht-gold transition-all duration-700 group-hover:rotate-[360deg] group-hover:scale-125" aria-hidden="true">straighten</span>
                                         <span id="flota-mediana-medidas" class="text-sm text-jht-blue-support">Largo 8m | Ancho 2.5m | Altura 2.5m</span>
                                     </div>
                                 </div>
@@ -711,15 +765,15 @@
                                 </video>
                             </div>
                             <div class="p-8 md:p-12 flex flex-col justify-center">
-                                <h3 class="font-title text-2xl font-bold text-jht-dark mb-3">Flota Pesada</h3>
-                                <p id="flota-pesada-desc" class="text-jht-blue-support mb-6">Diseñado para el transporte eficiente de cargas medianas a pesadas.</p>
+                                <h3 class="font-title text-2xl font-bold text-jht-dark hover:text-jht-gold transition-colors duration-300 cursor-default mb-3">Flota Pesada</h3>
+                                <p id="flota-pesada-desc" class="text-jht-blue-support mb-6 hover-shake-tremble cursor-default inline-block">Diseñado para el transporte eficiente de cargas medianas a pesadas.</p>
                                 <div class="space-y-3">
-                                    <div class="flex items-center gap-3">
-                                        <span class="material-symbols-outlined text-jht-gold" aria-hidden="true">scale</span>
+                                    <div class="flex items-center gap-3 group cursor-default">
+                                        <span class="material-symbols-outlined text-jht-gold transition-all duration-700 group-hover:rotate-[360deg] group-hover:scale-125" aria-hidden="true">scale</span>
                                         <span id="flota-pesada-capacidad" class="text-sm font-semibold text-jht-dark">Capacidad: 25 – 28 Toneladas</span>
                                     </div>
-                                    <div class="flex items-center gap-3">
-                                        <span class="material-symbols-outlined text-jht-gold" aria-hidden="true">straighten</span>
+                                    <div class="flex items-center gap-3 group cursor-default">
+                                        <span class="material-symbols-outlined text-jht-gold transition-all duration-700 group-hover:rotate-[360deg] group-hover:scale-125" aria-hidden="true">straighten</span>
                                         <span id="flota-pesada-medidas" class="text-sm text-jht-blue-support">Largo 12.5m | Ancho 2.5m | Altura 2.7m</span>
                                     </div>
                                 </div>
@@ -1419,7 +1473,7 @@
         <div class="text-sm uppercase tracking-[0.24em] text-slate-300/90 font-semibold">WhatsApp</div>
     </div>
 
-    <!-- Grupo de Botones Flotantes (Contacto y WhatsApp) -->
+        <!-- Grupo de Botones Flotantes -->
     <div class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex flex-col items-center gap-4">
 
         <!-- Elementos de Audio -->
@@ -1427,12 +1481,17 @@
         <audio id="sound-whatsapp" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg" preload="auto"></audio>
 
         <!-- Botón Flotante Teléfono (con Popup) -->
-        <div x-data="{ openContact: false }" class="relative flex justify-center">
+        <div x-data="{ openContact: false }"
+            @mouseenter="let a = document.getElementById('sound-phone'); a.currentTime = 0; a.volume = 0.4; a.play().catch(()=>{})"
+            class="relative group">
 
             <!-- Tooltip Animado -->
-            <div class="absolute right-full top-1/2 mr-3 md:mr-4 whitespace-nowrap bg-white text-jht-dark text-xs md:text-sm font-bold py-2.5 px-4 rounded-xl shadow-lg border border-gray-100 animate-tooltip-pop pointer-events-none z-0">
+            <div
+                class="absolute right-full top-1/2 mr-3 md:mr-4 whitespace-nowrap bg-white text-jht-dark text-xs md:text-sm font-bold py-2.5 px-4 rounded-xl shadow-lg border border-gray-100 animate-tooltip-pop pointer-events-none z-0">
                 ¡Habla con un asesor!
-                <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-white border-r border-t border-gray-100 rotate-45"></div>
+                <div
+                    class="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-white border-r border-t border-gray-100 rotate-45">
+                </div>
             </div>
 
             <!-- Chat Popup de Contacto -->
@@ -1448,7 +1507,8 @@
                 <!-- Cabecera -->
                 <div class="flex items-center justify-between border-b-2 border-gray-200 pb-3 mb-4">
                     <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-jht-dark animate-pulse text-[22px]">cell_tower</span>
+                        <span
+                            class="material-symbols-outlined text-jht-dark animate-pulse text-[22px]">cell_tower</span>
                         <h4 class="font-title font-bold text-jht-dark text-lg">Central JHT</h4>
                     </div>
                     <button @click="openContact = false" class="text-gray-400 hover:text-red-500 transition-colors">
@@ -1459,35 +1519,50 @@
                 <!-- Info de Contacto -->
                 <ul class="flex flex-col gap-4">
                     <li class="flex items-start gap-3">
-                        <span class="material-symbols-outlined text-jht-gold text-[20px] mt-0.5 shrink-0">location_on</span>
-                        <p class="text-jht-blue-support text-sm leading-tight font-medium">Coop Miguel Grau Mz g lt 13<br>Santa Anita, Lima - Perú</p>
+                        <span
+                            class="material-symbols-outlined text-jht-gold text-[20px] mt-0.5 shrink-0">location_on</span>
+                        <p class="text-jht-blue-support text-sm leading-tight font-medium">Coop Miguel Grau Mz g lt
+                            13<br>Santa Anita, Lima - Perú</p>
                     </li>
                     <li class="group/item flex items-center gap-3 cursor-pointer">
-                        <span class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">smartphone</span>
-                        <a href="tel:+51935833467" class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">(+51) 935 833 467</a>
+                        <span
+                            class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">smartphone</span>
+                        <a href="tel:+51935833467"
+                            class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">(+51)
+                            935 833 467</a>
                     </li>
                     <li class="group/item flex items-center gap-3 cursor-pointer">
-                        <span class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">smartphone</span>
-                        <a href="tel:+51951194143" class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">(+51) 951 194 143</a>
+                        <span
+                            class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">smartphone</span>
+                        <a href="tel:+51951194143"
+                            class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">(+51)
+                            951 194 143</a>
                     </li>
                     <li class="group/item flex items-center gap-3 cursor-pointer">
-                        <span class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">call</span>
-                        <a href="tel:016475336" class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">01 6475336</a>
+                        <span
+                            class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">call</span>
+                        <a href="tel:016475336"
+                            class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">01
+                            6475336</a>
                     </li>
                 </ul>
 
                 <!-- Colita del globo de chat -->
-                <div class="absolute -bottom-2 right-4 w-4 h-4 bg-white rotate-45 border-b border-r border-gray-100"></div>
+                <div class="absolute -bottom-2 right-4 w-4 h-4 bg-white rotate-45 border-b border-r border-gray-100">
+                </div>
             </div>
 
             <!-- Botón circular -->
-            <a href="javascript:void(0)" @click="openContact = !openContact"
+            <a href="javascript:void(0)" @click="openContact = !openContact" 
                @mouseenter="let a = document.getElementById('sound-phone'); if(a){a.currentTime = 0; a.volume = 0.4; a.play().catch(()=>{})}" 
                class="group relative block z-10">
                 <!-- Efecto de pulso detrás -->
-                <div class="absolute inset-1 bg-jht-dark rounded-full animate-slow-ping transition-opacity duration-300 ring-2 ring-jht-gold/50"></div>
+                <div
+                    class="absolute inset-1 bg-jht-dark rounded-full animate-slow-ping transition-opacity duration-300 ring-2 ring-jht-gold/50">
+                </div>
                 <!-- Imagen del Botón -->
-                <img src="../assets/images/telefono.png" alt="Llamar a JHT Transport" class="relative w-10 h-10 md:w-12 md:h-12 object-contain transition-transform duration-500 group-hover:animate-vibrate-double drop-shadow-xl origin-center" />
+                <img src="../assets/images/telefono.png" alt="Llamar a JHT Transport"
+                    class="relative w-10 h-10 md:w-12 md:h-12 object-contain transition-transform duration-500 group-hover:animate-vibrate-double drop-shadow-xl origin-center" />
             </a>
         </div>
 
@@ -1495,13 +1570,17 @@
         <a href="https://api.whatsapp.com/send?phone=51935833467&text=Hola%2C%20vengo%20desde%20la%20web%20de%20JHT%20Transport%20Company"
             @mouseenter="let a = document.getElementById('sound-whatsapp'); if(a){a.currentTime = 0; a.volume = 0.5; a.play().catch(()=>{})}"
             target="_blank" rel="noopener noreferrer" class="group relative block z-10">
-            
-            <div class="absolute right-full top-1/2 mr-3 md:mr-4 whitespace-nowrap bg-[#25D366] text-white text-xs md:text-sm font-bold py-2.5 px-4 rounded-xl shadow-[0_4px_20px_rgba(37,211,102,0.4)] animate-tooltip-pop pointer-events-none z-0" style="animation-delay: 4s;">
+
+            <!-- Tooltip Animado (Aparece desfasado 4 segundos) -->
+            <div class="absolute right-full top-1/2 mr-3 md:mr-4 whitespace-nowrap bg-[#25D366] text-white text-xs md:text-sm font-bold py-2.5 px-4 rounded-xl shadow-[0_4px_20px_rgba(37,211,102,0.4)] animate-tooltip-pop pointer-events-none z-0"
+                style="animation-delay: 4s;">
                 ¡Cotiza tu envío aquí!
                 <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-[#25D366] rotate-45"></div>
             </div>
-            
-            <div class="absolute inset-2 bg-[#25D366] rounded-full animate-slow-ping transition-opacity duration-300"></div>
+
+            <!-- Efecto de pulso detrás -->
+            <div class="absolute inset-2 bg-[#25D366] rounded-full animate-slow-ping transition-opacity duration-300">
+            </div>
             <!-- Imagen del Botón -->
             <img src="../assets/images/whatsapp.png" alt="WhatsApp JHT Transport"
                 class="relative w-20 h-20 md:w-24 md:h-24 object-contain transition-transform duration-500 group-hover:animate-vibrate-double drop-shadow-2xl origin-center z-10" />

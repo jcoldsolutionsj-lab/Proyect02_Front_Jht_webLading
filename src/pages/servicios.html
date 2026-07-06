@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios - JHT Transport</title>
-    <link href="../css/style.css?v=3" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
     <link href="../css/servicios.css" rel="stylesheet">
     <link href="../css/animaciones.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
@@ -223,15 +223,15 @@
                             <span class="gps-ring gps-ring-2"></span>
 
                         </span>
-                        CAT├üLOGO DE SERVICIOS
+                        CATÁLOGO DE SERVICIOS
                     </div>
                     <h1 id="servicios-hero-titulo"
                         class="animate-hero-title font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
                         Nuestras Soluciones <br /><span class="text-jht-gold">Log├¡sticas</span>
                     </h1>
                     <div x-data="{
-                            text: 'Proporcionamos cobertura nacional integral y trazabilidad en tiempo real para todas sus necesidades operativas. Conf├¡e en nuestra precisi├│n y velocidad para mantener su cadena de suministro en constante movimiento.',
-                            fullText: 'Proporcionamos cobertura nacional integral y trazabilidad en tiempo real para todas sus necesidades operativas. Conf├¡e en nuestra precisi├│n y velocidad para mantener su cadena de suministro en constante movimiento.',
+                            text: 'Proporcionamos cobertura nacional integral y trazabilidad en tiempo real para todas sus necesidades operativas. Confíe en nuestra precisión y velocidad para mantener su cadena de suministro en constante movimiento.',
+                            fullText: 'Proporcionamos cobertura nacional integral y trazabilidad en tiempo real para todas sus necesidades operativas. Confíe en nuestra precisión y velocidad para mantener su cadena de suministro en constante movimiento.',
                             charIndex: 215,
                             isDeleting: true,
                             bounce1: false,
@@ -268,10 +268,10 @@
                         x-init="setTimeout(() => type(), 3500)">
                         
                         <p id="servicios-hero-subtitulo"
-                            class="animate-hero-desc text-lg text-gray-200 mb-8 font-medium max-w-xl leading-relaxed min-h-[140px] sm:min-h-[110px] md:min-h-[90px]"
+                            class="animate-hero-desc text-lg text-gray-200 mb-8 font-medium max-w-xl leading-relaxed hover-slide-left-back min-h-[140px] sm:min-h-[110px] md:min-h-[90px]"
                             x-text="text">
                             Proporcionamos cobertura nacional integral y trazabilidad en tiempo real para todas sus
-                            necesidades operativas. Conf├¡e en nuestra precisi├│n y velocidad para mantener su cadena de
+                            necesidades operativas. Confíe en nuestra precisión y velocidad para mantener su cadena de
                             suministro en constante movimiento.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4">
@@ -280,7 +280,7 @@
                                     class="animate-hero-btn1 w-full sm:w-auto inline-flex items-center justify-center gap-2 btn-primary py-3 px-8 text-lg font-bold group shadow-xl hover:shadow-jht-gold/20 transition-all duration-300 hover:-translate-y-1 rounded-md">
                                     Solicitar Cotizacion
                                     <span
-                                        class="material-symbols-outlined transition-transform duration-300 group-hover:animate-shake">request_quote</span>
+                                        class="material-symbols-outlined transition-transform duration-300 group-hover:translate-x-1">request_quote</span>
                                 </a>
                             </div>
                             <div x-data="{ open: false, closeTimeout: null }"
@@ -288,12 +288,12 @@
                                 @mouseenter="clearTimeout(closeTimeout)" class="relative inline-block text-left z-50">
                                 <div :class="bounce2 ? 'animate-bounce-twice' : ''">
                                     <button @click="open = !open" @click.away="open = false"
-                                        class="animate-hero-btn2 w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white/80 text-white hover:bg-blue-400/30 hover:border-blue-300/80 py-3 px-8 text-lg font-bold group transition-all duration-300 hover:-translate-y-1 rounded-md">
+                                        class="animate-hero-btn2 w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white/80 text-white hover:bg-white hover:text-jht-dark py-3 px-8 text-lg font-bold group transition-all duration-300 hover:-translate-y-1 rounded-md">
                                         Ver Servicios
                                         <span class="material-symbols-outlined"
                                             style="transition: all 500ms cubic-bezier(0.34, 1.56, 0.64, 1); display: inline-block;"
                                             :style="open ? 'transform: rotate(180deg) scale(1.25); color: #c49a45;' : ''"
-                                            :class="open ? '' : 'group-hover:translate-y-1'">arrow_downward</span>
+                                            :class="open ? 'group-hover:text-jht-dark' : 'group-hover:translate-y-1'">arrow_downward</span>
                                     </button>
                                 </div>
                             <!-- Dropdown: Sideways on desktop, below on mobile -->
@@ -413,7 +413,7 @@
                         </h2>
                         <p id="catalogo-subtitulo" class="text-lg text-jht-blue-support max-w-2xl scroll-trigger hover-slide-left-back">
                             Descubre los 7
-                            pilares de nuestra propuesta de valor log├¡stica, dise├▒ados para cubrir cada eslab├│n de tu
+                            pilares de nuestra propuesta de valor logística, diseñados para cubrir cada eslabón de tu
                             cadena de suministro.
                         </p>
                     </div>
@@ -922,12 +922,12 @@
 
                             </span>
                             <h2 id="por-que-elegir-titulo" class="font-title text-3xl md:text-5xl font-extrabold text-jht-dark leading-tight">
-                                ┬┐Por qu├® elegir a <br><span class="text-jht-gold drop-shadow-sm">JHT Transport?</span>
+                                ¿Por qué elegir a <br><span class="text-jht-gold drop-shadow-sm">JHT Transport?</span>
                             </h2>
                         </div>
                         <p class="text-lg text-jht-blue-support mb-10 leading-relaxed hover-slide-left-back">
-                            Nuestra experiencia en el sector y el uso de tecnolog├¡a avanzada nos permiten garantizar que
-                            tu carga viajar├í segura, con trazabilidad completa y entregas puntuales. Contamos con
+                            Nuestra experiencia en el sector y el uso de tecnología avanzada nos permiten garantizar que
+                            tu carga viajará segura, con trazabilidad completa y entregas puntuales. Contamos con
                             procedimientos estandarizados y personal altamente capacitado para responder a cualquier
                             eventualidad.
                         </p>
@@ -942,7 +942,7 @@
                                     <h4 class="font-title font-bold text-xl text-jht-dark mb-1 transition-colors duration-300 group-hover:text-jht-gold">Seguridad Garantizada
                                     </h4>
                                     <p class="text-jht-blue-support text-sm hover-slide-left-back">Protocolos estrictos y monitoreo constante
-                                        para asegurar la integridad de tu mercader├¡a.</p>
+                                        para asegurar la integridad de tu mercadería.</p>
                                 </div>
                             </div>
                             <div class="flex gap-4 group cursor-pointer transition-all duration-500 hover:translate-x-2">
@@ -953,8 +953,8 @@
                                 <div>
                                     <h4 class="font-title font-bold text-xl text-jht-dark mb-1 transition-colors duration-300 group-hover:text-jht-gold">Velocidad de Respuesta
                                     </h4>
-                                    <p class="text-jht-blue-support text-sm hover-slide-left-back">Flota disponible y log├¡stica optimizada
-                                        para cumplir con los plazos m├ís exigentes.</p>
+                                    <p class="text-jht-blue-support text-sm hover-slide-left-back">Flota disponible y logística optimizada
+                                        para cumplir con los plazos más exigentes.</p>
                                 </div>
                             </div>
                             <div class="flex gap-4 group cursor-pointer transition-all duration-500 hover:translate-x-2">
@@ -964,8 +964,8 @@
                                 </div>
                                 <div>
                                     <h4 class="font-title font-bold text-xl text-jht-dark mb-1 transition-colors duration-300 group-hover:text-jht-gold">Soporte Dedicado</h4>
-                                    <p class="text-jht-blue-support text-sm hover-slide-left-back">Atenci├│n personalizada y ejecutivos de
-                                        cuenta asignados a tu operaci├│n log├¡stica.</p>
+                                    <p class="text-jht-blue-support text-sm hover-slide-left-back">Atención personalizada y ejecutivos de
+                                        cuenta asignados a tu operación logística.</p>
                                 </div>
                             </div>
                         </div>
@@ -993,12 +993,12 @@
                     <span class="material-symbols-outlined text-4xl text-jht-gold animate-rocket">rocket_launch</span>
                 </div>
                 <h2 id="cta-servicios-titulo" class="font-title text-4xl md:text-5xl font-extrabold text-jht-dark mb-6 tracking-tight">
-                    ┬┐Listo para optimizar su log├¡stica?
+                    ¿Listo para optimizar su logística?
                 </h2>
                 <p class="text-jht-blue-support text-lg mb-10 max-w-2xl mx-auto font-light leading-relaxed hover-slide-left-back">
                     Eleva la eficiencia de tu cadena de suministro hoy mismo. Deja el transporte en manos de expertos y
-                    enf├│cate en hacer crecer tu negocio. Solicita una evaluaci├│n gratuita de tus necesidades
-                    log├¡sticas.
+                    enfócate en hacer crecer tu negocio. Solicita una evaluación gratuita de tus necesidades
+                    logísticas.
                 </p>
                 <form action="contacto.html"
                     class="flex flex-col sm:flex-row items-center justify-between w-full max-w-2xl mx-auto bg-white border-2 border-gray-200 rounded-2xl p-2 mt-4 shadow-xl focus-within:border-jht-gold transition-all duration-300 hover:shadow-2xl">
@@ -1041,7 +1041,7 @@
                     <div class="relative">
                         <button type="submit"
                             class="w-full sm:w-auto bg-jht-gold text-jht-dark py-4 px-10 rounded-xl text-lg font-bold hover:bg-jht-dark hover:text-jht-gold transition-colors duration-300 whitespace-nowrap shadow-md animate-click-pulse">
-                            Solicitar Asesor├¡a
+                            Solicitar Asesoría
                         </button>
                         <span class="btn-animated-cursor" aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
@@ -1159,8 +1159,7 @@
         </div>
     </footer>
 
-    <!-- Grupo de Botones Flotantes (WhatsApp) -->
-    <!-- Grupo de Botones Flotantes -->
+        <!-- Grupo de Botones Flotantes -->
     <div class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex flex-col items-center gap-4">
 
         <!-- Elementos de Audio -->
@@ -1239,11 +1238,11 @@
                 </div>
             </div>
 
-            <!-- Bot├│n circular -->
+            <!-- Botón circular -->
             <a href="javascript:void(0)" @click="openContact = !openContact" 
                @mouseenter="let a = document.getElementById('sound-phone'); if(a){a.currentTime = 0; a.volume = 0.4; a.play().catch(()=>{})}" 
                class="group relative block z-10">
-                <!-- Efecto de pulso detr├ís -->
+                <!-- Efecto de pulso detrás -->
                 <div
                     class="absolute inset-1 bg-jht-dark rounded-full animate-slow-ping transition-opacity duration-300 ring-2 ring-jht-gold/50">
                 </div>
@@ -1257,104 +1256,22 @@
         <a href="https://api.whatsapp.com/send?phone=51935833467&text=Hola%2C%20vengo%20desde%20la%20web%20de%20JHT%20Transport%20Company"
             @mouseenter="let a = document.getElementById('sound-whatsapp'); if(a){a.currentTime = 0; a.volume = 0.5; a.play().catch(()=>{})}"
             target="_blank" rel="noopener noreferrer" class="group relative block z-10">
+
+            <!-- Tooltip Animado (Aparece desfasado 4 segundos) -->
             <div class="absolute right-full top-1/2 mr-3 md:mr-4 whitespace-nowrap bg-[#25D366] text-white text-xs md:text-sm font-bold py-2.5 px-4 rounded-xl shadow-[0_4px_20px_rgba(37,211,102,0.4)] animate-tooltip-pop pointer-events-none z-0"
                 style="animation-delay: 4s;">
                 ┬íCotiza tu env├¡o aqu├¡!
                 <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-[#25D366] rotate-45"></div>
             </div>
+
+            <!-- Efecto de pulso detrás -->
             <div class="absolute inset-2 bg-[#25D366] rounded-full animate-slow-ping transition-opacity duration-300">
             </div>
+            <!-- Imagen del Botón -->
             <img src="../assets/images/whatsapp.png" alt="WhatsApp JHT Transport"
-                class="relative w-16 h-16 md:w-20 md:h-20 object-contain transition-transform duration-500 group-hover:animate-vibrate-double drop-shadow-2xl origin-center z-10" />
+                class="relative w-20 h-20 md:w-24 md:h-24 object-contain transition-transform duration-500 group-hover:animate-vibrate-double drop-shadow-2xl origin-center z-10" />
         </a>
     </div>
-
-
-    <!-- Modal Dialog -->
-    <dialog id="service-modal"
-        class="bg-transparent m-auto fixed inset-0 z-50 backdrop:bg-white/50 backdrop:backdrop-blur-md open:flex flex-col items-center justify-center p-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-        onclick="if(event.target === this) this.close()">
-        <div class="group relative flex flex-col bg-white shadow-2xl border border-slate-200 rounded-2xl max-w-2xl w-full mx-auto overflow-hidden">
-            
-
-
-            <!-- Image Header with margin -->
-            <div class="relative h-48 sm:h-56 m-2.5 overflow-hidden text-white rounded-xl bg-slate-100 shadow-[0_15px_40px_-10px_rgba(0,0,0,0.2)]">
-                <img id="modal-img" class="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] transform group-hover:scale-110" 
-                     src="" alt="Servicio JHT" />
-                <!-- Bottom gradient fade to soften the straight edge -->
-                <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
-            </div>
-            
-            <!-- Content Body -->
-            <div class="p-6 sm:p-8">
-                <!-- Title & Icon -->
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-yellow-400 flex items-center justify-center text-[#1a3b6b] shadow-sm">
-                        <span id="modal-icon" class="material-symbols-outlined text-xl font-bold"></span>
-                    </div>
-                    <h6 id="modal-title" class="text-slate-800 text-2xl sm:text-3xl font-semibold leading-tight">
-                    </h6>
-                </div>
-                
-                <p id="modal-desc" class="text-slate-600 leading-relaxed font-light text-base sm:text-lg">
-                </p>
-
-                <!-- Compliance List Container -->
-                <div class="bg-slate-50 rounded-xl p-4 mt-5 shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
-                    <ul id="modal-features" class="space-y-2 text-sm sm:text-base font-medium text-slate-700">
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Button Container -->
-            <div class="px-6 sm:px-8 pb-6 sm:pb-8 pt-0 mt-2 flex justify-end">
-                <button onclick="document.getElementById('service-modal').close()" 
-                    class="rounded-lg bg-slate-800 py-2.5 px-6 border border-transparent text-center text-sm font-medium text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none flex items-center gap-2 group" type="button">
-                    Entendido
-                    <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:translate-x-1">arrow_right_alt</span>
-                </button>
-            </div>
-        </div>
-    </dialog>
-
-    <script>
-        function openModal(card) {
-            const titleEl = card.querySelector('h3');
-            const title = titleEl ? titleEl.innerText : '';
-
-            const descEl = card.querySelector('p');
-            const desc = descEl ? descEl.innerText : '';
-
-            const iconEl = card.querySelector('.material-symbols-outlined');
-            const icon = iconEl ? iconEl.innerText : '';
-
-            const video = card.querySelector('source');
-            const img = card.querySelector('img');
-
-            const ulEl = card.querySelector('ul');
-            const ulHTML = ulEl ? ulEl.innerHTML : '';
-
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-desc').innerText = desc;
-            document.getElementById('modal-icon').innerText = icon;
-            document.getElementById('modal-features').innerHTML = ulHTML;
-
-            if (video) {
-                document.getElementById('modal-img').src = video.src.replace('.mp4', '.webp').replace('videos', 'images');
-            } else if (img) {
-                document.getElementById('modal-img').src = img.src;
-            }
-
-            const modal = document.getElementById('service-modal');
-            document.body.classList.add('overflow-hidden');
-            modal.showModal();
-        }
-
-        document.getElementById('service-modal').addEventListener('close', function () {
-            document.body.classList.remove('overflow-hidden');
-        });
-    </script>
 
 </body>
 

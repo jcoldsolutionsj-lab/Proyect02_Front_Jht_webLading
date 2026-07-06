@@ -40,6 +40,39 @@
   }
   
   /* =========================================
+     ANIMACIONES PERSONALIZADAS DE TABS
+     ========================================= */
+  @keyframes tab-jump {
+      0%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-6px); }
+      50% { transform: translateY(0); }
+      75% { transform: translateY(-3px); }
+  }
+  .animate-tab-jump {
+      animation: tab-jump 0.5s ease-in-out;
+  }
+
+  @keyframes shake-tremble {
+      0%, 100% { transform: translateX(0) rotate(0deg); }
+      25% { transform: translateX(-2px) rotate(-1deg); }
+      50% { transform: translateX(2px) rotate(1deg); }
+      75% { transform: translateX(-2px) rotate(-1deg); }
+  }
+  .hover-shake-tremble:hover {
+      animation: shake-tremble 0.3s ease-in-out infinite;
+  }
+
+  /* =========================================
+     CAMPOS DE FORMULARIO PREMIUM (Glass)
+     ========================================= */
+  .jht-input-glass {
+    @apply w-full bg-white/20 border border-white/30 rounded-full py-2 pl-[3.5rem] pr-5 text-white font-medium outline-none transition-all duration-300 shadow-inner placeholder:text-white/80;
+  }
+  .jht-input-glass:focus {
+    @apply bg-white/30 border-white/60 ring-2 ring-jht-gold shadow-md;
+  }
+
+  /* =========================================
      CAMPOS DE FORMULARIO (Inputs)
      ========================================= */
   .jht-input {
