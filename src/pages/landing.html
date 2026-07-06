@@ -666,20 +666,37 @@
                 </div>
 
                 <!-- Tabs Alpine.js -->
-                <div x-data="{ activeTab: 'liviana' }" class="max-w-5xl mx-auto scroll-trigger">
+                <div x-data="{ 
+                        activeTab: 'liviana',
+                        tabs: ['liviana', 'mediana', 'pesada'],
+                        interval: null,
+                        startInterval() {
+                            this.interval = setInterval(() => {
+                                let currentIndex = this.tabs.indexOf(this.activeTab);
+                                this.activeTab = this.tabs[(currentIndex + 1) % this.tabs.length];
+                            }, 3000);
+                        },
+                        resetInterval() {
+                            clearInterval(this.interval);
+                            this.startInterval();
+                        },
+                        init() {
+                            this.startInterval();
+                        }
+                    }" class="max-w-5xl mx-auto scroll-trigger">
                     <!-- Tab Buttons -->
                     <div class="flex justify-center mb-10 gap-2" role="tablist" aria-label="Categorías de flota">
-                        <button @click="activeTab = 'liviana'" :class="activeTab === 'liviana' ? 'bg-jht-gold text-jht-dark shadow-lg' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
+                        <button @click="activeTab = 'liviana'; resetInterval()" :class="activeTab === 'liviana' ? 'bg-jht-gold text-jht-dark shadow-lg animate-tab-jump' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
                                 class="px-6 py-3 rounded-lg font-title font-semibold text-sm transition-all duration-300"
                                 role="tab" :aria-selected="activeTab === 'liviana'" aria-controls="tab-liviana">
                             Liviana
                         </button>
-                        <button @click="activeTab = 'mediana'" :class="activeTab === 'mediana' ? 'bg-jht-gold text-jht-dark shadow-lg' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
+                        <button @click="activeTab = 'mediana'; resetInterval()" :class="activeTab === 'mediana' ? 'bg-jht-gold text-jht-dark shadow-lg animate-tab-jump' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
                                 class="px-6 py-3 rounded-lg font-title font-semibold text-sm transition-all duration-300"
                                 role="tab" :aria-selected="activeTab === 'mediana'" aria-controls="tab-mediana">
                             Mediana
                         </button>
-                        <button @click="activeTab = 'pesada'" :class="activeTab === 'pesada' ? 'bg-jht-gold text-jht-dark shadow-lg' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
+                        <button @click="activeTab = 'pesada'; resetInterval()" :class="activeTab === 'pesada' ? 'bg-jht-gold text-jht-dark shadow-lg animate-tab-jump' : 'bg-white text-jht-dark hover:bg-jht-gold/20'"
                                 class="px-6 py-3 rounded-lg font-title font-semibold text-sm transition-all duration-300"
                                 role="tab" :aria-selected="activeTab === 'pesada'" aria-controls="tab-pesada">
                             Pesada
