@@ -466,8 +466,8 @@ html {
 }
 
 .animate-click-pulse {
-    animation: clickPulse 3s ease-in-out infinite;
-    animation-delay: 1s;
+    animation: clickPulse 4s ease-in-out infinite;
+    animation-delay: 2s;
 }
 
 @keyframes cursorClickAnim {
