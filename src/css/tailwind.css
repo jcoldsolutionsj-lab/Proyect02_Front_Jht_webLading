@@ -40,6 +40,16 @@
   }
   
   /* =========================================
+     CAMPOS DE FORMULARIO PREMIUM (Glass)
+     ========================================= */
+  .jht-input-glass {
+    @apply w-full bg-white/20 border border-white/30 rounded-full py-2 pl-[3.5rem] pr-5 text-white font-medium outline-none transition-all duration-300 shadow-inner placeholder:text-white/80;
+  }
+  .jht-input-glass:focus {
+    @apply bg-white/30 border-white/60 ring-2 ring-jht-gold shadow-md;
+  }
+
+  /* =========================================
      CAMPOS DE FORMULARIO (Inputs)
      ========================================= */
   .jht-input {

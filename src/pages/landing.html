@@ -279,10 +279,10 @@
 
             <!-- Contenido del Hero -->
             <div class="relative z-10 container mx-auto px-3 pt-12 pb-6 lg:pt-20 lg:pb-40">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch mt-16">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch mt-1">
 
                     <!-- Columna Izquierda: Texto + Indicadores -->
-                    <div class="text-left">
+                    <div class="text-left mt-12">
                         <div class="scroll-trigger from-top inline-flex items-center gap-1.5 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6 is-visible" style="transition-delay: 0.2s;">
                             <span class="gps-icon-sm text-jht-gold -ml-1">
                                 <span class="gps-dot"></span>
@@ -329,51 +329,69 @@
                     </div>
 
                     <!-- Columna Derecha: Formulario de Cotización (Lead Comercial) -->
-                    <div class="w-full max-w-md mx-auto lg:ml-auto h-full">
-                        <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-2xl border border-white/20 h-full flex flex-col">
-                            <h2 class="font-title text-xl sm:text-2xl font-bold text-jht-dark mb-1">Solicita tu Cotización</h2>
-                            <p class="text-sm text-jht-blue-support mb-6">Respuesta en menos de 24 horas</p>
+                    <div class="w-full max-w-md mx-auto lg:ml-auto mt-12">
+                        <div class="bg-black/20 backdrop-blur-xl rounded-[40px] p-5 sm:p-8 shadow-2xl border border-white/20 flex flex-col">
+                            <h2 class="font-title text-2xl sm:text-3xl font-bold text-white text-center mb-1">Solicita tu Cotización</h2>
+                            <p class="text-sm text-gray-300 text-center mb-8">Respuesta en menos de 24 horas</p>
 
-                            <form id="form-cotizacion" class="space-y-4 flex-grow flex flex-col justify-between" data-form-type="lead-comercial" novalidate>
-                                <div>
+                            <form id="form-cotizacion" class="space-y-4 flex-grow flex flex-col justify-between" data-form-type="lead-comercial" novalidate="">
+                                
+                                <div class="relative flex items-center">
+                                    <div class="absolute left-[3px] w-[2.75rem] h-[2.75rem] bg-white rounded-full flex items-center justify-center pointer-events-none shadow-sm z-10">
+                                        <span class="material-symbols-outlined text-jht-dark" aria-hidden="true">local_shipping</span>
+                                    </div>
                                     <label for="cot-servicio" class="sr-only">Servicio requerido</label>
-                                    <select id="cot-servicio" name="servicio" class="jht-input" required aria-required="true">
-                                        <option value="" disabled selected>Servicio requerido</option>
-                                        <option value="transporte-carga">Transporte de Carga</option>
-                                        <option value="distribucion">Distribución</option>
-                                        <option value="courier">Courier / Delivery Express</option>
-                                        <option value="mudanzas">Mudanzas</option>
-                                        <option value="carga-refrigerada">Carga Refrigerada</option>
-                                        <option value="almacenaje">Almacenaje</option>
-                                        <option value="personal-estiba">Personal de Estiba</option>
+                                    <select id="cot-servicio" name="servicio" class="jht-input-glass appearance-none cursor-pointer" required="" aria-required="true">
+                                        <option value="" disabled="" selected="" class="text-gray-500">Servicio requerido</option>
+                                        <option value="transporte-carga" class="text-jht-dark">Transporte de Carga</option>
+                                        <option value="distribucion" class="text-jht-dark">Distribución</option>
+                                        <option value="courier" class="text-jht-dark">Courier / Delivery Express</option>
+                                        <option value="mudanzas" class="text-jht-dark">Mudanzas</option>
+                                        <option value="carga-refrigerada" class="text-jht-dark">Carga Refrigerada</option>
+                                        <option value="almacenaje" class="text-jht-dark">Almacenaje</option>
+                                        <option value="personal-estiba" class="text-jht-dark">Personal de Estiba</option>
                                     </select>
+                                    <div class="absolute right-4 pointer-events-none text-white z-10">
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </div>
                                 </div>
-                                <div>
+
+                                <div class="relative flex items-center">
+                                    <div class="absolute left-[3px] w-[2.75rem] h-[2.75rem] bg-white rounded-full flex items-center justify-center pointer-events-none shadow-sm z-10">
+                                        <span class="material-symbols-outlined text-jht-dark" aria-hidden="true">person</span>
+                                    </div>
                                     <label for="cot-nombre" class="sr-only">Nombre completo</label>
-                                    <input type="text" id="cot-nombre" name="nombre" placeholder="Nombre completo" class="jht-input" required aria-required="true">
+                                    <input type="text" id="cot-nombre" name="nombre" placeholder="Nombre completo" class="jht-input-glass" required="" aria-required="true">
                                 </div>
-                                <div>
+
+                                <div class="relative flex items-center">
+                                    <div class="absolute left-[3px] w-[2.75rem] h-[2.75rem] bg-white rounded-full flex items-center justify-center pointer-events-none shadow-sm z-10">
+                                        <span class="material-symbols-outlined text-jht-dark" aria-hidden="true">domain</span>
+                                    </div>
                                     <label for="cot-empresa" class="sr-only">Empresa</label>
-                                    <input type="text" id="cot-empresa" name="empresa" placeholder="Empresa" class="jht-input">
+                                    <input type="text" id="cot-empresa" name="empresa" placeholder="Empresa (Opcional)" class="jht-input-glass">
                                 </div>
-                                <div>
+
+                                <div class="relative flex items-center">
+                                    <div class="absolute left-[3px] w-[2.75rem] h-[2.75rem] bg-white rounded-full flex items-center justify-center pointer-events-none shadow-sm z-10">
+                                        <span class="material-symbols-outlined text-jht-dark" aria-hidden="true">mail</span>
+                                    </div>
                                     <label for="cot-correo" class="sr-only">Correo electrónico</label>
-                                    <input type="email" id="cot-correo" name="correo" placeholder="Correo electrónico" class="jht-input" required aria-required="true">
+                                    <input type="email" id="cot-correo" name="correo" placeholder="Correo corporativo" class="jht-input-glass" required="" aria-required="true">
                                 </div>
-                                <div>
+
+                                <div class="relative flex items-center">
+                                    <div class="absolute left-[3px] w-[2.75rem] h-[2.75rem] bg-white rounded-full flex items-center justify-center pointer-events-none shadow-sm z-10">
+                                        <span class="material-symbols-outlined text-jht-dark" aria-hidden="true">call</span>
+                                    </div>
                                     <label for="cot-celular" class="sr-only">Celular</label>
-                                    <input type="tel" id="cot-celular" name="celular" placeholder="Celular" class="jht-input" required aria-required="true">
+                                    <input type="tel" id="cot-celular" name="celular" placeholder="Celular de contacto" class="jht-input-glass" required="" aria-required="true">
                                 </div>
-                                <div class="relative overflow-hidden group/btn w-full rounded-lg">
-                                    <button type="submit" class="btn-primary w-full text-base py-3.5 shadow-lg animate-click-pulse relative z-10">
+                                
+                                <div class="pt-4">
+                                    <button type="submit" class="w-full bg-jht-gold text-jht-dark py-4 px-6 rounded-full font-bold uppercase tracking-wide shadow-lg hover:bg-[#d4af37] hover:shadow-xl transition-all duration-300">
                                         Solicitar Cotización
-                                        <span class="material-symbols-outlined ml-2 text-lg" aria-hidden="true">send</span>
                                     </button>
-                                    <span class="btn-animated-cursor" aria-hidden="true">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                                            <path d="M5.5 2 L5.5 18.5 L8.8 14.8 L11.5 21.5 L13.8 20.5 L11.1 13.8 L16.5 13.8 Z" fill="white" stroke="#1a1a2e" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"></path>
-                                        </svg>
-                                    </span>
                                 </div>
                             </form>
                         </div>
