@@ -1421,14 +1421,23 @@
 
     <!-- Grupo de Botones Flotantes (Contacto y WhatsApp) -->
     <div class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex flex-col items-center gap-4">
-        <!-- Audio -->
+
+        <!-- Elementos de Audio -->
+        <audio id="sound-phone" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
         <audio id="sound-whatsapp" src="https://actions.google.com/sounds/v1/cartoon/pop.ogg" preload="auto"></audio>
 
-        <!-- Globo emergente de información (Central JHT) -->
-        <div x-data="{ openContact: false }" class="relative flex justify-center group">
-            
+        <!-- Botón Flotante Teléfono (con Popup) -->
+        <div x-data="{ openContact: false }" class="relative flex justify-center">
+
+            <!-- Tooltip Animado -->
+            <div class="absolute right-full top-1/2 mr-3 md:mr-4 whitespace-nowrap bg-white text-jht-dark text-xs md:text-sm font-bold py-2.5 px-4 rounded-xl shadow-lg border border-gray-100 animate-tooltip-pop pointer-events-none z-0">
+                ¡Habla con un asesor!
+                <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-white border-r border-t border-gray-100 rotate-45"></div>
+            </div>
+
+            <!-- Chat Popup de Contacto -->
             <div x-show="openContact" @click.away="openContact = false"
-                x-transition:enter="transition-all ease-out duration-300 origin-bottom-right"
+                x-transition:enter="transition-all ease-[cubic-bezier(0.34,1.56,0.64,1)] duration-[800ms] origin-bottom-right"
                 x-transition:enter-start="opacity-0 scale-y-0 scale-x-75 translate-y-12 rotate-6"
                 x-transition:enter-end="opacity-100 scale-y-100 scale-x-100 translate-y-0 rotate-0"
                 x-transition:leave="transition-all ease-in duration-300 origin-bottom-right"
@@ -1472,7 +1481,9 @@
             </div>
 
             <!-- Botón circular -->
-            <a href="javascript:void(0)" @click="openContact = !openContact" class="relative block z-10">
+            <a href="javascript:void(0)" @click="openContact = !openContact"
+               @mouseenter="let a = document.getElementById('sound-phone'); if(a){a.currentTime = 0; a.volume = 0.4; a.play().catch(()=>{})}" 
+               class="group relative block z-10">
                 <!-- Efecto de pulso detrás -->
                 <div class="absolute inset-1 bg-jht-dark rounded-full animate-slow-ping transition-opacity duration-300 ring-2 ring-jht-gold/50"></div>
                 <!-- Imagen del Botón -->
@@ -1482,19 +1493,18 @@
 
         <!-- Botón Flotante WhatsApp -->
         <a href="https://api.whatsapp.com/send?phone=51935833467&text=Hola%2C%20vengo%20desde%20la%20web%20de%20JHT%20Transport%20Company"
-            @mouseenter="let a = document.getElementById('sound-whatsapp'); a.currentTime = 0; a.volume = 0.5; a.play().catch(()=>{})"
-            target="_blank" rel="noopener noreferrer" class="relative group">
-
-            <!-- Tooltip Animado (Aparece desfasado 4 segundos) -->
+            @mouseenter="let a = document.getElementById('sound-whatsapp'); if(a){a.currentTime = 0; a.volume = 0.5; a.play().catch(()=>{})}"
+            target="_blank" rel="noopener noreferrer" class="group relative block z-10">
+            
             <div class="absolute right-full top-1/2 mr-3 md:mr-4 whitespace-nowrap bg-[#25D366] text-white text-xs md:text-sm font-bold py-2.5 px-4 rounded-xl shadow-[0_4px_20px_rgba(37,211,102,0.4)] animate-tooltip-pop pointer-events-none z-0" style="animation-delay: 4s;">
                 ¡Cotiza tu envío aquí!
                 <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-[#25D366] rotate-45"></div>
             </div>
-
-            <!-- Efecto de pulso detrás -->
+            
             <div class="absolute inset-2 bg-[#25D366] rounded-full animate-slow-ping transition-opacity duration-300"></div>
             <!-- Imagen del Botón -->
-            <img src="../assets/images/whatsapp.png" alt="WhatsApp JHT Transport" class="relative w-20 h-20 md:w-24 md:h-24 object-contain transition-transform duration-500 group-hover:animate-vibrate-double drop-shadow-2xl origin-center z-10" />
+            <img src="../assets/images/whatsapp.png" alt="WhatsApp JHT Transport"
+                class="relative w-20 h-20 md:w-24 md:h-24 object-contain transition-transform duration-500 group-hover:animate-vibrate-double drop-shadow-2xl origin-center z-10" />
         </a>
     </div>
 

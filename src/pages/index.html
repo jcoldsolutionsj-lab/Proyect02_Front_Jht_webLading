@@ -844,7 +844,9 @@
             </div>
 
             <!-- Botón circular -->
-            <a href="javascript:void(0)" @click="openContact = !openContact" class="relative block z-10">
+            <a href="javascript:void(0)" @click="openContact = !openContact" 
+               @mouseenter="let a = document.getElementById('sound-phone'); if(a){a.currentTime = 0; a.volume = 0.4; a.play().catch(()=>{})}" 
+               class="group relative block z-10">
                 <!-- Efecto de pulso detrás -->
                 <div
                     class="absolute inset-1 bg-jht-dark rounded-full animate-slow-ping transition-opacity duration-300 ring-2 ring-jht-gold/50">
