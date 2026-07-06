@@ -719,7 +719,7 @@
         </div>
     </footer>
 
-    <!-- Grupo de Botones Flotantes -->
+        <!-- Grupo de Botones Flotantes -->
     <div class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex flex-col items-center gap-4">
 
         <!-- Elementos de Audio -->
@@ -799,7 +799,9 @@
             </div>
 
             <!-- Botón circular -->
-            <a href="javascript:void(0)" @click="openContact = !openContact" class="relative block z-10">
+            <a href="javascript:void(0)" @click="openContact = !openContact" 
+               @mouseenter="let a = document.getElementById('sound-phone'); if(a){a.currentTime = 0; a.volume = 0.4; a.play().catch(()=>{})}" 
+               class="group relative block z-10">
                 <!-- Efecto de pulso detrás -->
                 <div
                     class="absolute inset-1 bg-jht-dark rounded-full animate-slow-ping transition-opacity duration-300 ring-2 ring-jht-gold/50">
@@ -812,8 +814,8 @@
 
         <!-- Botón Flotante WhatsApp -->
         <a href="https://api.whatsapp.com/send?phone=51935833467&text=Hola%2C%20vengo%20desde%20la%20web%20de%20JHT%20Transport%20Company"
-            @mouseenter="let a = document.getElementById('sound-whatsapp'); a.currentTime = 0; a.volume = 0.5; a.play().catch(()=>{})"
-            target="_blank" rel="noopener noreferrer" class="relative group">
+            @mouseenter="let a = document.getElementById('sound-whatsapp'); if(a){a.currentTime = 0; a.volume = 0.5; a.play().catch(()=>{})}"
+            target="_blank" rel="noopener noreferrer" class="group relative block z-10">
 
             <!-- Tooltip Animado (Aparece desfasado 4 segundos) -->
             <div class="absolute right-full top-1/2 mr-3 md:mr-4 whitespace-nowrap bg-[#25D366] text-white text-xs md:text-sm font-bold py-2.5 px-4 rounded-xl shadow-[0_4px_20px_rgba(37,211,102,0.4)] animate-tooltip-pop pointer-events-none z-0"
