@@ -306,25 +306,40 @@
 
                         <!-- Indicadores numéricos -->
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6" aria-label="Cifras destacadas">
-                            <div class="text-center sm:text-left">
-                                <span class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title" data-counter="150">0</span>
-                                <span class="text-xs sm:text-sm text-gray-400 font-sans">Empresas</span>
-                            </div>
-                            <div class="text-center sm:text-left">
-                                <span class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title" data-counter="12000">0</span>
-                                <span class="text-xs sm:text-sm text-gray-400 font-sans">Envíos</span>
-                            </div>
-                            <div class="text-center sm:text-left">
-                                <span class="block text-2xl sm:text-3xl font-bold text-white font-title" data-counter="24">0</span>
-                                <span class="text-xs sm:text-sm text-gray-400 font-sans">Ciudades</span>
-                            </div>
-                            <div class="text-center sm:text-left">
-                                <div class="flex items-center justify-center sm:justify-start gap-1">
-                                    <span class="material-symbols-outlined text-green-400 text-xl" aria-hidden="true">gps_fixed</span>
-                                    <span class="text-sm font-bold text-green-400 font-title">GPS</span>
+                            
+                            <!-- Indicador 1: Años -->
+                            <div class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default">
+                                <div class="flex items-baseline justify-center sm:justify-start">
+                                    <span class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title drop-shadow-md group-hover/metric:text-[#ffd700] transition-colors" data-counter="10">0</span>
+                                    <span class="text-xl sm:text-2xl font-bold text-jht-gold font-title ml-0.5">+</span>
                                 </div>
-                                <span class="text-xs sm:text-sm text-gray-400 font-sans">Tiempo real</span>
+                                <span class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Años de Exp.</span>
                             </div>
+
+                            <!-- Indicador 2: Clientes -->
+                            <div class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default delay-75">
+                                <div class="flex items-baseline justify-center sm:justify-start">
+                                    <span class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title drop-shadow-md group-hover/metric:text-[#ffd700] transition-colors" data-counter="93">0</span>
+                                    <span class="text-xl sm:text-2xl font-bold text-jht-gold font-title ml-0.5">+</span>
+                                </div>
+                                <span class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Clientes B2B</span>
+                            </div>
+
+                            <!-- Indicador 3: Cobertura -->
+                            <div class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default delay-150">
+                                <span class="block text-2xl sm:text-3xl font-bold text-white font-title drop-shadow-md group-hover/metric:text-gray-100 transition-colors" data-counter="13">0</span>
+                                <span class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Departamentos</span>
+                            </div>
+
+                            <!-- Indicador 4: GPS -->
+                            <div class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default delay-200 flex flex-col justify-center">
+                                <div class="flex items-center justify-center sm:justify-start gap-1">
+                                    <span class="material-symbols-outlined text-green-400 text-xl group-hover/metric:animate-pulse" aria-hidden="true">gps_fixed</span>
+                                    <span class="text-sm sm:text-base font-bold text-green-400 font-title">100%</span>
+                                </div>
+                                <span class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Flota Monitorizada</span>
+                            </div>
+                            
                         </div>
                     </div>
 
