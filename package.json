@@ -4,11 +4,8 @@
   "description": "Servicios Logísticos JHT - Frontend",
   "main": "index.js",
   "scripts": {
-    "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build",
-    "preview": "vite preview",
-    "build:css": "tailwindcss -i ./src/css/tailwind.css -o ./src/css/style.css --watch",
-    "start": "live-server src/"
+    "dev:css": "tailwindcss -i ./jht_cms/static_src/css/tailwind.css -o ./jht_cms/static_src/css/style.css --watch",
+    "build:css": "tailwindcss -i ./jht_cms/static_src/css/tailwind.css -o ./jht_cms/static_src/css/style.css --minify"
   },
   "keywords": [],
   "author": "JHT Transport",
