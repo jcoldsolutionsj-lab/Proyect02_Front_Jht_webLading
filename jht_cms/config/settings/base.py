@@ -38,7 +38,6 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'apps.core',
-    'apps.cms',
     'apps.website',
     'apps.service_status',
     'apps.service_management',
