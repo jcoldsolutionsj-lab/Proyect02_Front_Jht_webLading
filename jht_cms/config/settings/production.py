@@ -8,7 +8,8 @@ from .base import *  # noqa: F401, F403
 # ===========================================
 # PRODUCCIÓN
 # ===========================================
-DEBUG = False
+import os
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # Seguridad
 SECURE_BROWSER_XSS_FILTER = True
