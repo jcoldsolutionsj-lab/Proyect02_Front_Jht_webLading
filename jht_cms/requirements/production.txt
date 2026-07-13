@@ -1,0 +1,8 @@
+# ==========================================
+# Servicios Logísticos JHT - Django CMS
+# Dependencias de PRODUCCIÓN
+# ==========================================
+-r base.txt
+
+gunicorn>=21.2
+whitenoise>=6.5

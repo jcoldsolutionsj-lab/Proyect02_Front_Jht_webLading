@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JHT Transport Company</title>
     <!-- Configuración de Tailwind -->
-     <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
     <!-- Iconos Material Symbols -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet">
@@ -25,34 +25,57 @@
 
         <div class="max-w-7xl mx-auto px-4 md:px-10 flex justify-between items-center w-full">
             <!-- Logo -->
-            <a href="index.html" class="flex items-center shrink-0 lg:w-48 relative overflow-hidden group/logo rounded-lg p-2">
+            <a href="index.html"
+                class="flex items-center shrink-0 lg:w-48 relative overflow-hidden group/logo rounded-lg p-2">
                 <img alt="JHT Transport Logo" :class="scrolled ? 'h-10 lg:h-12' : 'h-12 lg:h-16'"
                     class="w-auto object-contain transition-all duration-300 logo-animado logo-shadow-unscrolled"
                     src="../assets/images/branding/JHTmarca-transparente.png" />
-                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-full logo-shine"></div>
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-full logo-shine">
+                </div>
             </a>
 
             <!-- Desktop Menu -->
-                                                <nav class="hidden lg:flex items-center justify-center gap-8 xl:gap-12 flex-grow">
-                <a href="servicios.html" class="group relative font-title font-semibold text-[16px] xl:text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">inventory_2</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Servicios<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+            <nav class="hidden lg:flex items-center justify-center gap-8 xl:gap-12 flex-grow">
+                <a href="servicios.html"
+                    class="group relative font-title font-semibold text-[16px] xl:text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
+                    <span
+                        class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">inventory_2</span>
+                    <span
+                        class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Servicios<span
+                            class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="flota.html" class="group relative font-title font-semibold text-[16px] xl:text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">local_shipping</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Flota<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="flota.html"
+                    class="group relative font-title font-semibold text-[16px] xl:text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
+                    <span
+                        class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">local_shipping</span>
+                    <span
+                        class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Flota<span
+                            class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="nosotros.html" class="group relative font-title font-semibold text-[16px] xl:text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">groups</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Nosotros<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="nosotros.html"
+                    class="group relative font-title font-semibold text-[16px] xl:text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
+                    <span
+                        class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">groups</span>
+                    <span
+                        class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Nosotros<span
+                            class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="contacto.html" class="group relative font-title font-semibold text-[16px] xl:text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">headset_mic</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Contacto<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="contacto.html"
+                    class="group relative font-title font-semibold text-[16px] xl:text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
+                    <span
+                        class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">headset_mic</span>
+                    <span
+                        class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Contacto<span
+                            class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
-                <a href="landing.html" class="group relative font-title font-semibold text-[16px] xl:text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
-                    <span class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">campaign</span>
-                    <span class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Landing<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <a href="landing.html"
+                    class="group relative font-title font-semibold text-[16px] xl:text-[18px] text-white hover:text-jht-dark flex items-center justify-center transition-all duration-300">
+                    <span
+                        class="material-symbols-outlined absolute -left-7 text-[20px] text-jht-gold opacity-0 -translate-x-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">campaign</span>
+                    <span
+                        class="relative transition-transform duration-300 group-hover:translate-x-2 inline-block">Landing<span
+                            class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
                 </a>
             </nav>
 
@@ -73,12 +96,17 @@
             x-transition:leave-end="opacity-0 -translate-y-2" @click.away="mobileMenuOpen = false"
             class="lg:hidden absolute top-full left-0 w-full bg-jht-dark border-t border-jht-blue-support/20 shadow-xl"
             style="display: none;">
-                                                <nav class="flex flex-col p-6 gap-6">
-                <a href="servicios.html" class="font-title font-semibold text-[20px] text-white hover:text-jht-gold transition-colors">Servicios</a>
-                <a href="flota.html" class="font-title font-semibold text-[20px] text-white hover:text-jht-gold transition-colors">Flota</a>
-                <a href="nosotros.html" class="font-title font-semibold text-[20px] text-white hover:text-jht-gold transition-colors">Nosotros</a>
-                <a href="contacto.html" class="font-title font-semibold text-[20px] text-white hover:text-jht-gold transition-colors">Contacto</a>
-                <a href="landing.html" class="font-title font-semibold text-[20px] text-white hover:text-jht-gold transition-colors">Landing</a>
+            <nav class="flex flex-col p-6 gap-6">
+                <a href="servicios.html"
+                    class="font-title font-semibold text-[20px] text-white hover:text-jht-gold transition-colors">Servicios</a>
+                <a href="flota.html"
+                    class="font-title font-semibold text-[20px] text-white hover:text-jht-gold transition-colors">Flota</a>
+                <a href="nosotros.html"
+                    class="font-title font-semibold text-[20px] text-white hover:text-jht-gold transition-colors">Nosotros</a>
+                <a href="contacto.html"
+                    class="font-title font-semibold text-[20px] text-white hover:text-jht-gold transition-colors">Contacto</a>
+                <a href="landing.html"
+                    class="font-title font-semibold text-[20px] text-white hover:text-jht-gold transition-colors">Landing</a>
                 <a href="acceso.html" class="btn-primary w-full text-center mt-2 text-[20px] py-3">Acceso</a>
             </nav>
         </div>
@@ -89,18 +117,16 @@
 
         <!-- 2. HERO -->
         <section id="home"
-            class="relative w-full min-h-screen pt-32 pb-20 md:py-0 flex items-center justify-center overflow-hidden bg-jht-dark">
+            class="relative w-full min-h-screen pb-20 flex items-center justify-center overflow-hidden bg-jht-dark" style="padding-top: 140px;">
             <!-- Background Video (Parallax) --> <video
-                class="absolute inset-0 w-full h-full object-cover z-0 parallax-bg animate-fade-in-slow opacity-35" autoplay loop
-                muted playsinline>
+                class="absolute inset-0 w-full h-full object-cover z-0 parallax-bg animate-fade-in-slow opacity-35 saturate-150"
+                autoplay loop muted playsinline onloadedmetadata="this.playbackRate = 0.7">
                 <source src="../assets/videos/home/jhtOriginal.mp4" type="video/mp4">
             </video>
             <!-- Overlay Base (Sin Animación) -->
             <div class="absolute inset-0 bg-jht-dark/70 z-10"></div>
 
-            <div
-                class="relative z-20 max-w-7xl mx-auto px-4 md:px-10 w-full flex flex-col md:flex-row items-center justify-between gap-12 mt-16 md:mt-0">
-
+            <div class="relative z-20 max-w-7xl mx-auto px-4 md:px-10 w-full flex flex-col md:flex-row items-center justify-between gap-12 mt-12 md:mt-0">
                 <!-- Text Content -->
                 <div class="w-full md:w-1/2 text-left">
                     <div class="scroll-trigger from-top inline-flex items-center gap-1.5 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6"
@@ -113,12 +139,16 @@
                         </span>
                         SOLUCIONES INTEGRALES
                     </div>
-                    <h1 class="animate-hero-title font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
+                    <h1
+                        class="animate-hero-title font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
                         Logística y Trazabilidad <br />
                         <span class="text-jht-gold">en Tiempo Real</span>
                     </h1>
-                    <div x-data="typewriter('Soluciones integrales de transporte para empresas que exigen precisión, seguridad y velocidad en su cadena de suministro.')">
-                        <p class="animate-hero-desc text-lg text-gray-200 mb-8 font-light max-w-lg min-h-[84px]" x-text="text">Soluciones integrales de transporte para empresas que exigen precisión, seguridad y velocidad en su cadena de suministro.</p>
+                    <div
+                        x-data="typewriter('Soluciones integrales de transporte para empresas que exigen precisión, seguridad y velocidad en su cadena de suministro.')">
+                        <p class="animate-hero-desc text-lg text-gray-200 mb-8 font-light max-w-lg min-h-[84px]"
+                            x-text="text">Soluciones integrales de transporte para empresas que exigen precisión,
+                            seguridad y velocidad en su cadena de suministro.</p>
                     </div>
                 </div>
 
@@ -132,17 +162,26 @@
                             <span class="material-symbols-outlined fill text-jht-gold">local_shipping</span>
                         </div>
                         <div class="relative w-full h-48 bg-jht-gray flex items-center justify-center overflow-hidden">
-                            <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay loop muted playsinline>
+                            <video class="absolute inset-0 w-full h-full object-cover z-0" autoplay loop muted
+                                playsinline>
                                 <source src="../assets/videos/home/RutasEstados_jht.mp4" type="video/mp4">
                             </video>
                             <!-- Difuminado de bordes para integrar el video a la tarjeta -->
                             <!-- Borde Superior (se disuelve con la cabecera oscura) -->
-                            <div class="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-jht-dark to-transparent pointer-events-none z-10"></div>
+                            <div
+                                class="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-jht-dark to-transparent pointer-events-none z-10">
+                            </div>
                             <!-- Borde Inferior (se disuelve con el cuerpo blanco) -->
-                            <div class="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-white to-transparent pointer-events-none z-10"></div>
+                            <div
+                                class="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-white to-transparent pointer-events-none z-10">
+                            </div>
                             <!-- Bordes Laterales (suavizado sutil a los lados) -->
-                            <div class="absolute inset-y-0 left-0 w-4 bg-gradient-to-r from-white/30 to-transparent pointer-events-none z-10"></div>
-                            <div class="absolute inset-y-0 right-0 w-4 bg-gradient-to-l from-white/30 to-transparent pointer-events-none z-10"></div>
+                            <div
+                                class="absolute inset-y-0 left-0 w-4 bg-gradient-to-r from-white/30 to-transparent pointer-events-none z-10">
+                            </div>
+                            <div
+                                class="absolute inset-y-0 right-0 w-4 bg-gradient-to-l from-white/30 to-transparent pointer-events-none z-10">
+                            </div>
                         </div>
                         <div class="p-6 bg-white">
                             <p class="font-title text-xl font-bold text-jht-dark text-center mb-1">Rastrea tu envío</p>
@@ -151,12 +190,17 @@
                             <div class="flex flex-col gap-3">
                                 <input type="text" placeholder="Ej. V001-20000" class="jht-input text-sm">
                                 <div class="relative">
-                                    <button onclick="window.location.href='rastreo.html'" class="btn-primary w-full animate-click-pulse">
+                                    <button onclick="window.location.href='rastreo.html'"
+                                        class="btn-primary w-full animate-click-pulse">
                                         RASTREAR
                                     </button>
                                     <span class="btn-animated-cursor" aria-hidden="true">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-                                            <path d="M5.5 2 L5.5 18.5 L8.8 14.8 L11.5 21.5 L13.8 20.5 L11.1 13.8 L16.5 13.8 Z" fill="white" stroke="#1a1a2e" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"></path>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                                d="M5.5 2 L5.5 18.5 L8.8 14.8 L11.5 21.5 L13.8 20.5 L11.1 13.8 L16.5 13.8 Z"
+                                                fill="white" stroke="#1a1a2e" stroke-width="1.3" stroke-linejoin="round"
+                                                stroke-linecap="round"></path>
                                         </svg>
                                     </span>
                                 </div>
@@ -184,7 +228,8 @@
                         </span>
                         Nuestros Servicios
                     </h2>
-                    <p id="servicios-subtitulo" class="hover-slide-left-back text-lg text-jht-blue-support">Soluciones logísticas adaptadas a
+                    <p id="servicios-subtitulo" class="hover-slide-left-back text-lg text-jht-blue-support">Soluciones
+                        logísticas adaptadas a
                         las necesidades específicas de tu negocio.</p>
                 </div>
 
@@ -321,7 +366,8 @@
                         </span>
                         Empresas que confían en nosotros
                     </h2>
-                    <p class="hover-slide-left-back text-lg text-jht-blue-support max-w-2xl mx-auto">Nuestros socios estratégicos en el éxito
+                    <p class="hover-slide-left-back text-lg text-jht-blue-support max-w-2xl mx-auto">Nuestros socios
+                        estratégicos en el éxito
                         logístico.</p>
                 </div>
             </div>
@@ -343,79 +389,99 @@
 
                     <!-- Grupo 1 -->
                     <!-- Se aumentó a scale-125 y z-20 al hacer hover -->
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img id="cliente-1" src="../assets/images/clientes/logos_1_1/Alicorp.png" alt="Alicorp"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img id="cliente-1" src="../assets/images/clientes/Formato_png/alicorp_4_3-removebg-preview.png" alt="Alicorp"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img id="cliente-2" src="../assets/images/clientes/logos_1_1/Movitecnica.jpg" alt="Movitecnica"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img id="cliente-2" src="../assets/images/clientes/Formato_png/movitecnica_4_3-removebg-preview.png" alt="Movitecnica"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img id="cliente-3" src="../assets/images/clientes/logos_1_1/ibermatica.jpg" alt="Ibermatica"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img id="cliente-3" src="../assets/images/clientes/Formato_png/ibermatica_4_3-removebg-preview.png" alt="Ibermatica"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img id="cliente-4" src="../assets/images/clientes/logos_1_1/inkacrops.jpg" alt="InkaCrops"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img id="cliente-4" src="../assets/images/clientes/Formato_png/inkacrops_4_3-removebg-preview.png" alt="InkaCrops"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img id="cliente-5" src="../assets/images/clientes/logos_1_1/inkafarma.jpg" alt="Inkafarma"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img id="cliente-5" src="../assets/images/clientes/Formato_png/inkafarma_4_3-removebg-preview.png" alt="Inkafarma"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img id="cliente-6" src="../assets/images/clientes/logos_1_1/linde.png" alt="Linde"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img id="cliente-6" src="../assets/images/clientes/Formato_png/linde_4_3-removebg-preview.png" alt="Linde"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img id="cliente-7" src="../assets/images/clientes/logos_1_1/lubtec.jpg" alt="Lubtec"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img id="cliente-7" src="../assets/images/clientes/Formato_png/lubtec_4_3-removebg-preview.png" alt="Lubtec"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img id="cliente-8" src="../assets/images/clientes/logos_1_1/quimicaBrisas.gif" alt="Quimica Brisas"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img id="cliente-8" src="../assets/images/clientes/Formato_png/quibrimsac_4_3-removebg-preview.png"
+                            alt="Quimica Brisas"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img id="cliente-9" src="../assets/images/clientes/logos_1_1/sewEurodrive.jpg" alt="SEW Eurodrive"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img id="cliente-9" src="../assets/images/clientes/Formato_png/sew_4_3-removebg-preview.png"
+                            alt="SEW Eurodrive"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
 
                     <!-- Grupo 2 (Copia idéntica para scroll infinito sin saltos) -->
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img src="../assets/images/clientes/logos_1_1/Alicorp.png" alt="Alicorp"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img src="../assets/images/clientes/Formato_png/alicorp_4_3-removebg-preview.png" alt="Alicorp"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img src="../assets/images/clientes/logos_1_1/Movitecnica.jpg" alt="Movitecnica"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img src="../assets/images/clientes/Formato_png/movitecnica_4_3-removebg-preview.png" alt="Movitecnica"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img src="../assets/images/clientes/logos_1_1/ibermatica.jpg" alt="Ibermatica"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img src="../assets/images/clientes/Formato_png/ibermatica_4_3-removebg-preview.png" alt="Ibermatica"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img src="../assets/images/clientes/logos_1_1/inkacrops.jpg" alt="InkaCrops"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img src="../assets/images/clientes/Formato_png/inkacrops_4_3-removebg-preview.png" alt="InkaCrops"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img src="../assets/images/clientes/logos_1_1/inkafarma.jpg" alt="Inkafarma"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img src="../assets/images/clientes/Formato_png/inkafarma_4_3-removebg-preview.png" alt="Inkafarma"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img src="../assets/images/clientes/logos_1_1/linde.png" alt="Linde"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img src="../assets/images/clientes/Formato_png/linde_4_3-removebg-preview.png" alt="Linde"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img src="../assets/images/clientes/logos_1_1/lubtec.jpg" alt="Lubtec"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img src="../assets/images/clientes/Formato_png/lubtec_4_3-removebg-preview.png" alt="Lubtec"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img src="../assets/images/clientes/logos_1_1/quimicaBrisas.gif" alt="Quimica Brisas"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img src="../assets/images/clientes/Formato_png/quibrimsac_4_3-removebg-preview.png" alt="Quimica Brisas"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
-                    <div class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-20 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
-                        <img src="../assets/images/clientes/logos_1_1/sewEurodrive.jpg" alt="SEW Eurodrive"
-                        class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_15px_25px_rgba(26,59,107,0.2)]   origin-center">
+                    <div
+                        class="relative h-16 md:h-20 w-32 flex items-center justify-center group/logo cursor-pointer group-hover/marquee:opacity-50 hover:!opacity-100 hover:z-20 transition-all duration-500 shrink-0">
+                        <img src="../assets/images/clientes/Formato_png/sew_4_3-removebg-preview.png" alt="SEW Eurodrive"
+                            class="relative h-16 md:h-20 w-auto object-contain grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:!opacity-100 transition-all duration-500 group-hover/logo:scale-[1.5]  group-hover/logo:-translate-y-2 group-hover/logo:drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]   origin-center group-hover/logo:brightness-110">
                     </div>
 
                 </div>
@@ -762,7 +828,7 @@
         </div>
     </footer>
 
-        <!-- Grupo de Botones Flotantes -->
+    <!-- Grupo de Botones Flotantes -->
     <div class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[100] flex flex-col items-center gap-4">
 
         <!-- Elementos de Audio -->
@@ -842,9 +908,9 @@
             </div>
 
             <!-- Botón circular -->
-            <a href="javascript:void(0)" @click="openContact = !openContact" 
-               @mouseenter="let a = document.getElementById('sound-phone'); if(a){a.currentTime = 0; a.volume = 0.4; a.play().catch(()=>{})}" 
-               class="group relative block z-10">
+            <a href="javascript:void(0)" @click="openContact = !openContact"
+                @mouseenter="let a = document.getElementById('sound-phone'); if(a){a.currentTime = 0; a.volume = 0.4; a.play().catch(()=>{})}"
+                class="group relative block z-10">
                 <!-- Efecto de pulso detrás -->
                 <div
                     class="absolute inset-1 bg-jht-dark rounded-full animate-slow-ping transition-opacity duration-300 ring-2 ring-jht-gold/50">

@@ -144,3 +144,25 @@ public/
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# ===========================================
+# Python / Django
+# ===========================================
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+jht_cms/venv/
+
+# Django
+jht_cms/static/
+jht_cms/media/
+jht_cms/db.sqlite3
+*.egg-info/
+
+# IDE
+.idea/
+*.swp
+*.swo

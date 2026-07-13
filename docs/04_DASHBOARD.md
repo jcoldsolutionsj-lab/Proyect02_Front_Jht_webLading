@@ -1,51 +1,113 @@
-# Especificaciones - Dashboard de Administración
+Jimy
+Alta
+REQF01
+Loguin
+Acceso restringido al aplicativo en donde solo los colaboradores puedan ingresar mediante credenciales asignadas por un administrador.
+Adriana
+Alta
+REQF02
+Listar Ordenes pendientes
+El conductor debe visualizar una lista de pendientes de las ordenes de envío.
+Adriana
+Alta
+REQF03
+Actualización de ordenes pendientes
+El conductor debe realizar la actualización del estado de la orden.
+Adriana
+Alta
+REQF04
+Registrar ordenes de envíos
+El administrador solo tendrá el acceso para este módulo de registro de orden.
+Adriana
+Baja
+REQF05
+Consultar pedido
+Modulo libre en donde estará el form de consulta por medio del código de orden para que realicen el seguimiento los clientes
 
-## 1. Objetivo del Dashboard
-Proveer a los administradores de JHT una vista rápida y clara del estado de las operaciones. El enfoque es **50% UI/UX limpio y 50% funcional**.
+REQUISITOS NO FUNCIONALES:
+STAKEHOLDER
+PRIORIDAD OTORGADA POR EL STAKEHOLDER
+REQUERIMIENTOS
+CODIGO
+CONCEPTO
+DESCRIPCIÓN
+Jimy
+Alta
+REQN06
+Despliegue por Servidor web
+El aplicativo debe desplegarse en un servidor web para la parte administrativa.
+Jimy
+Alta
+REQN07
+Despliegue por Sistema Android
+El módulo conductor debe desplegarse en Android desde la versión 14 en adelante.
+Jimy
+Media
+REQN08
+Motor DB PostgreSQL
+El proyecto debe contar con el motor de base de datos PostgreSQL versión 16 y ser desarrollado con software libre
+Jimy
+Baja
+REQN09
+Interfaz intuitiva
+Debe tener una interfaz gráfica intuitiva.
+Jimy
+Baja
+REQN10
+Tiempo de respuesta
+El tiempo de consulta de las actividades debe ser como máximo 5 segundos
+REQUISITOS DE CALIDAD:
+STAKEHOLDER
+PRIORIDAD OTORGADA POR EL STAKEHOLDER
+REQUERIMIENTOS
+CODIGO
+CONCEPTO
+DESCRIPCIÓN
+Jimy
+Media
+REQC11
+Sistema cerrado
+Se debe prohibir el acceso a usuarios no autorizados, para esto se manejará credenciales gestionadas por el encargado administrador.
+Jimy
+Alta
+REQC12
+Sistema seguro
+El aplicativo web debe estar seguro de las inyecciones SQL y mitigar otros riesgos de seguridad.
+Jimy
+Media
+REQC13
+Sistema Cifrado Hash
+Las credenciales deben estar ocultas en la DB con un nivel de encriptación avanzado.
+CRITERIOS DE ACEPTACIÓN:
+CONCEPTO
+CRITERIOS DE ACEPTACIÓN
+Iniciar el proceso con disponibilidad 24X7.
+Que el MPF cuente con un trabajo continuo sin interrupción.
+Revisar las ordenes pendientes desde el mas antiguo al más reciente.
+Contar con un algoritmo de filtro de antigüedad de casos.
+Gestionar los errores.
+Ser capaz de tomar flujos alternos al observar errores de los sistemas.
+Comunicar una base de trazabilidad.
+Brindar como datos de salida la base de trazabilidad.
+Integridad con otros sistemas.
+Que el MPF se comunique con los diferentes recursos habilitados.
+REGLAS DE NEGOCIO:
+REGLA 1 los clientes solo pueden revisar el estado de su orden.
+REGLA 2 los clientes no necesitan credenciales para utilizar el servicio de consulta, solo deben contar con su código.
+REGLA 3 El cliente puede realizar la consulta y descarga de sus documentos con el código de orden y su ruc
+REGLA 4 El administrador puede realizar cualquier gestión.
+REGLA 5 Los conductores solo se limitarán a realizar la actualización de las órdenes y adjuntar documento en caso así lo solicite el sistema.
+IMPACTOS EN OTRAS ÁREAS:
+Generar una trazabilidad de las ordenes de servicio.
+Mayor control y trazabilidad de la flota.
+Generar una base para su análisis posterior.
+Agilizar el proceso de asignación de órdenes.
+IMPACTOS EN OTRAS ENTIDADES:
+El cliente JHT mejorará su prestigio frente al cliente final.
+REQUISITOS DE SOPORTE Y ENTRENAMIENTO:
+Capacitación para todos los miembros del proyecto durante el primer mes.
+SUPUESTOS RELATIVOS A REQUISITOS:
+La recopilación de los requisitos fue completa y pertinente.
+RESTRICCIONES RELATIVAS A REQUISITOS:
+--
 
-## 2. Diseño General
-- **Layout:** Sidebar izquierdo + contenido principal.
-- **Sidebar:**
-  - Fondo: `#021E5F` (azul marino).
-  - Ítems: `Dashboard | Servicios | Guías | Flota | Clientes | Configuración | Cerrar Sesión`.
-  - El ítem activo debe tener un indicador (ej. barra lateral amarilla `#FDCF06`).
-  - Hover con cambio de fondo sutil.
-- **Contenido principal:**
-  - Fondo: `#E3E4E5` (gris claro).
-  - Header con título y botón de "Nuevo Servicio".
-
-## 3. Componentes del Contenido Principal
-
-### 3.1 Cards de Estadísticas (4 columnas)
-- **Servicios Activos:** 24 (con ícono 📦)
-- **Entregas Completadas:** 156 (con ícono ✅)
-- **Pendientes:** 8 (con ícono ⏳)
-- **Clientes Activos:** 42 (con ícono 👥)
-
-Cada card debe tener:
-- Fondo blanco.
-- Borde izquierdo de 4px en un color distintivo (ej. `#FDCF06` para activos, `#4CAF50` para completados, etc.).
-- Número grande y legible.
-- Tendencia (ej. "↑ 12% vs ayer") en color verde o rojo.
-
-### 3.2 Tabla de Servicios Recientes
-- **Columnas:** `Guía | Cliente | Servicio | Estado | Fecha`
-- **Estados con badges:**
-  - `Completado` → Fondo verde (`#E8F5E9`), texto `#2E7D32`.
-  - `En Ruta` → Fondo naranja (`#FFF3E0`), texto `#E65100`.
-  - `Pendiente` → Fondo rojo (`#FFEBEE`), texto `#C62828`.
-- **Acciones:** Botón "Ver todos" que lleva a la lista completa de servicios.
-
-### 3.3 Gráfico de Servicios por Día (Última Semana)
-- Representación visual simple (puede ser con CSS puro o con Chart.js).
-- Mostrar barras o líneas con los días de la semana en el eje X.
-- Los datos pueden ser estáticos y de ejemplo.
-
-## 4. Interacciones y Comportamiento
-- **Sidebar:** Colapsable en móvil (con botón hamburguesa).
-- **Tabla:** Responsive (scroll horizontal en móvil).
-- **Cards:** Hover con elevación sutil.
-
-## 5. Instrucciones para el Agente
-
-Construye un dashboard de administración con estas características. El diseño debe ser limpio, profesional y priorizar la legibilidad de los datos. Usa Tailwind CSS para el layout y Vanilla JS para cualquier interacción básica (apertura/cierre de sidebar en móvil). Los datos pueden ser estáticos y de ejemplo. No se necesita lógica de backend aún.

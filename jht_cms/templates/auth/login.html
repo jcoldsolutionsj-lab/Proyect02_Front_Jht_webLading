@@ -1,0 +1,58 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}Acceso - JHT Transport{% endblock %}
+
+{% block whatsapp %}{% endblock %}
+
+{% block content %}
+<section class="min-h-screen flex items-center justify-center bg-jht-dark pt-20">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md mx-4">
+        <div class="text-center mb-8">
+            <img src="{% static 'assets/images/branding/JHTmarca-transparente.png' %}" alt="JHT Transport"
+                class="h-16 w-auto mx-auto mb-4">
+            <h1 class="font-title text-2xl font-bold text-jht-dark">Acceso al Sistema</h1>
+            <p class="text-jht-blue-support text-sm mt-2">Ingresa tus credenciales para continuar</p>
+        </div>
+
+        {% if form.errors %}
+        <div class="bg-red-50 border border-red-200 text-red-700 rounded-lg p-3 mb-4 text-sm">
+            <p class="font-semibold">Credenciales incorrectas.</p>
+            <p>Verifica tu usuario y contraseña.</p>
+        </div>
+        {% endif %}
+
+        <form method="post" class="space-y-5">
+            {% csrf_token %}
+            <div>
+                <label for="id_username" class="block text-sm font-title font-semibold text-jht-dark mb-2">Usuario</label>
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-jht-blue-support text-xl">person</span>
+                    <input type="text" name="username" id="id_username" required autofocus
+                        class="jht-input pl-10"
+                        placeholder="Ingresa tu usuario">
+                </div>
+            </div>
+            <div>
+                <label for="id_password" class="block text-sm font-title font-semibold text-jht-dark mb-2">Contraseña</label>
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-jht-blue-support text-xl">lock</span>
+                    <input type="password" name="password" id="id_password" required
+                        class="jht-input pl-10"
+                        placeholder="Ingresa tu contraseña">
+                </div>
+            </div>
+            <button type="submit" class="btn-primary w-full text-center py-3">
+                <span class="material-symbols-outlined mr-2">login</span>
+                Iniciar Sesión
+            </button>
+        </form>
+
+        <div class="text-center mt-6">
+            <a href="{% url 'website:index' %}" class="text-jht-blue-support hover:text-jht-dark text-sm transition-colors">
+                ← Volver al sitio
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

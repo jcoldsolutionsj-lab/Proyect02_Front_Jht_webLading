@@ -1,0 +1,8 @@
+# ==========================================
+# Servicios Logísticos JHT - Django CMS
+# Dependencias de DESARROLLO
+# ==========================================
+-r base.txt
+
+# Debug
+# django-debug-toolbar>=4.0
