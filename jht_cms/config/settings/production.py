@@ -17,6 +17,13 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 X_FRAME_OPTIONS = 'DENY'
 
-# WhiteNoise para archivos estáticos (se instalará más adelante)
-# MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# ===========================================
+# STATIC FILES (WhiteNoise)
+# ===========================================
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# ===========================================
+# BASE DE DATOS (SSL requerido en Render)
+# ===========================================
+DATABASES['default']['OPTIONS'] = {'sslmode': 'require'}
