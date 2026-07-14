@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Servicio, VehiculoFlota, Cliente, SitioConfiguracion
+from .models import Servicio, VehiculoFlota, Cliente, SitioConfiguracion, SeccionLanding, Beneficio, PasoTrabajo, PreguntaFrecuente
 
 @admin.register(Servicio)
 class ServicioAdmin(admin.ModelAdmin):
@@ -30,3 +30,27 @@ class SitioConfiguracionAdmin(admin.ModelAdmin):
         if self.model.objects.exists():
             return False
         return super().has_add_permission(request)
+
+@admin.register(SeccionLanding)
+class SeccionLandingAdmin(admin.ModelAdmin):
+    list_display = ('get_seccion_display', 'titulo', 'activo')
+    list_filter = ('activo',)
+    list_editable = ('activo',)
+
+@admin.register(Beneficio)
+class BeneficioAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'orden', 'activo')
+    list_editable = ('orden', 'activo')
+    search_fields = ('titulo', 'descripcion')
+
+@admin.register(PasoTrabajo)
+class PasoTrabajoAdmin(admin.ModelAdmin):
+    list_display = ('numero', 'titulo', 'activo')
+    list_editable = ('activo',)
+    search_fields = ('titulo', 'descripcion')
+
+@admin.register(PreguntaFrecuente)
+class PreguntaFrecuenteAdmin(admin.ModelAdmin):
+    list_display = ('pregunta', 'orden', 'activo')
+    list_editable = ('orden', 'activo')
+    search_fields = ('pregunta', 'respuesta')

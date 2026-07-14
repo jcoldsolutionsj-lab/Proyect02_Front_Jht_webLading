@@ -89,3 +89,79 @@ class SitioConfiguracion(models.Model):
             # Si ya existe una, no permitir crear otra. Solo editar.
             return
         super().save(*args, **kwargs)
+
+class SeccionLanding(models.Model):
+    """Modelo para administrar los Títulos y Multimedia de cada sección de la Landing"""
+    SECCIONES = [
+        ('HERO', 'Sección Principal (Hero)'),
+        ('SERVICIOS', 'Sección Servicios'),
+        ('FLOTA', 'Sección Nuestra Flota'),
+        ('BENEFICIOS', 'Sección Beneficios'),
+        ('PROCESO', 'Sección Cómo Trabajamos'),
+        ('NOSOTROS', 'Sección Sobre Nosotros'),
+        ('CLIENTES', 'Sección Empresas (Clientes)'),
+        ('COBERTURA', 'Sección Cobertura Nacional'),
+        ('CTA', 'Llamada a la acción (CTA final)'),
+    ]
+    seccion = models.CharField("Sección", max_length=20, choices=SECCIONES, unique=True)
+    titulo = models.CharField("Título Principal", max_length=200, blank=True)
+    subtitulo = models.TextField("Subtítulo o Descripción corta", blank=True)
+    imagen = models.ImageField("Imagen", upload_to='landing/imagenes/', blank=True, null=True, help_text="Para secciones como Nosotros o Cobertura.")
+    video_url = models.FileField("Video (MP4)", upload_to='landing/videos/', blank=True, null=True, help_text="Para el fondo del Hero o Cobertura.")
+    activo = models.BooleanField("Mostrar Sección", default=True)
+
+    class Meta:
+        verbose_name = "Sección de Landing"
+        verbose_name_plural = "Secciones de Landing"
+
+    def __str__(self):
+        return self.get_seccion_display()
+
+
+class Beneficio(models.Model):
+    """Modelo para la sección de Beneficios (¿Por qué elegir JHT?)"""
+    titulo = models.CharField("Título", max_length=100)
+    descripcion = models.TextField("Descripción", max_length=255)
+    icono = models.CharField("Nombre del Ícono (Google Material Symbols)", max_length=50, default="verified", help_text="Ej: schedule, gps_fixed, verified_user, public")
+    orden = models.PositiveIntegerField("Orden", default=0)
+    activo = models.BooleanField("Activo", default=True)
+
+    class Meta:
+        verbose_name = "Beneficio"
+        verbose_name_plural = "Beneficios"
+        ordering = ['orden']
+
+    def __str__(self):
+        return self.titulo
+
+
+class PasoTrabajo(models.Model):
+    """Modelo para la sección de Cómo Trabajamos"""
+    numero = models.PositiveIntegerField("Paso Número", unique=True, help_text="El número que aparece en el círculo.")
+    titulo = models.CharField("Título", max_length=100)
+    descripcion = models.TextField("Descripción", max_length=255)
+    activo = models.BooleanField("Activo", default=True)
+
+    class Meta:
+        verbose_name = "Paso de Trabajo"
+        verbose_name_plural = "Pasos de Trabajo"
+        ordering = ['numero']
+
+    def __str__(self):
+        return f"Paso {self.numero}: {self.titulo}"
+
+
+class PreguntaFrecuente(models.Model):
+    """Modelo para la sección de Preguntas Frecuentes (FAQ)"""
+    pregunta = models.CharField("Pregunta", max_length=255)
+    respuesta = models.TextField("Respuesta")
+    orden = models.PositiveIntegerField("Orden", default=0)
+    activo = models.BooleanField("Activo", default=True)
+
+    class Meta:
+        verbose_name = "Pregunta Frecuente"
+        verbose_name_plural = "Preguntas Frecuentes"
+        ordering = ['orden']
+
+    def __str__(self):
+        return self.pregunta

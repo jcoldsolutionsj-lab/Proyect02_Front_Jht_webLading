@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from .models import Servicio, VehiculoFlota, Cliente, SitioConfiguracion
+from .models import Servicio, VehiculoFlota, Cliente, SitioConfiguracion, SeccionLanding, Beneficio, PasoTrabajo, PreguntaFrecuente
 
 
 class IndexView(TemplateView):
@@ -33,8 +33,18 @@ class LandingView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # Modelos existentes
         context['servicios'] = Servicio.objects.filter(activo=True)
         context['vehiculos'] = VehiculoFlota.objects.filter(activo=True)
         context['clientes'] = Cliente.objects.filter(activo=True)
         context['config'] = SitioConfiguracion.objects.first()
+
+        # Nuevos modelos de Secciones
+        # Convertimos las secciones a un diccionario para accederlas fácilmente en el template: {{ secciones.HERO.titulo }}
+        secciones_activas = SeccionLanding.objects.filter(activo=True)
+        context['secciones'] = {sec.seccion: sec for sec in secciones_activas}
+
+        context['beneficios'] = Beneficio.objects.filter(activo=True)
+        context['pasos'] = PasoTrabajo.objects.filter(activo=True)
+        context['faqs'] = PreguntaFrecuente.objects.filter(activo=True)
         return context
