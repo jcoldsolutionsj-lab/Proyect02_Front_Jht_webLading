@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView
+from .models import Servicio, VehiculoFlota, Cliente, SitioConfiguracion
 
 
 class IndexView(TemplateView):
@@ -29,3 +30,11 @@ class ContactoView(TemplateView):
 class LandingView(TemplateView):
     """Landing page."""
     template_name = 'public/landing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['servicios'] = Servicio.objects.filter(activo=True)
+        context['vehiculos'] = VehiculoFlota.objects.filter(activo=True)
+        context['clientes'] = Cliente.objects.filter(activo=True)
+        context['config'] = SitioConfiguracion.objects.first()
+        return context
