@@ -134,7 +134,18 @@ document.addEventListener('DOMContentLoaded', () => {
  * ApiClient - Clase envoltorio para manejar peticiones HTTP centralizadas
  */
 class ApiClient {
-    static baseUrl = 'http://127.0.0.1:8000'; // Puedes ajustar la URL base aquí
+    static getBaseUrl() {
+        if (window.BACKEND_API_URL) {
+            return window.BACKEND_API_URL;
+        }
+        const hostname = window.location.hostname;
+        if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname.startsWith('192.168.')) {
+            return `http://${hostname}:8000`;
+        }
+        return 'https://jht-mnt-api.onrender.com'; // Ajusta esta URL con tu dominio real de Render si es diferente
+    }
+
+    static baseUrl = ApiClient.getBaseUrl();
 
     static async post(endpoint, data, options = {}) {
         const url = `${this.baseUrl}${endpoint}`;
