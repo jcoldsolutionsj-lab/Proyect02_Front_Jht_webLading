@@ -220,9 +220,18 @@
 </section>
 
 <!-- ===== EMPRESAS QUE CONFÍAN EN NOSOTROS ===== -->
-<section id="clientes" class="py-16 md:py-20 bg-white relative overflow-hidden" aria-labelledby="clientes-titulo">
+<section id="clientes" class="pt-12 pb-10 md:pt-16 md:pb-14 bg-white relative overflow-hidden"
+    aria-labelledby="clientes-titulo">
+    <style>
+        .marquee-track img {
+            transition: transform 0.3s ease-in-out !important;
+        }
+        .marquee-track img:hover {
+            transform: scale(1.25) !important;
+        }
+    </style>
     <div class="container mx-auto px-6">
-        <div class="text-center mb-12 scroll-trigger">
+        <div class="text-center mb-12 scroll-trigger is-visible">
             <h2 id="clientes-titulo" class="section-title flex items-center justify-center gap-3 animate-title-radar">
                 <span class="gps-icon text-jht-gold shrink-0">
                     <span class="gps-dot"></span>
@@ -236,7 +245,7 @@
     </div>
 
     <!-- Marquee de Logos (pause on hover, prefers-reduced-motion) -->
-    <div class="scroll-trigger" aria-label="Logos de clientes">
+    <div class="scroll-trigger is-visible" aria-label="Logos de clientes">
         <div class="marquee-track flex animate-marquee" style="width: max-content;">
             {% if clientes %}
             <!-- Primer set de logos -->
@@ -245,12 +254,12 @@
                 {% if cliente.enlace %}
                 <a href="{{ cliente.enlace }}" target="_blank" rel="noopener noreferrer" class="block">
                     <img src="{{ cliente.logo.url }}" alt="{{ cliente.nombre }}" title="{{ cliente.nombre }}"
-                        class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                        class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                         loading="lazy">
                 </a>
                 {% else %}
                 <img src="{{ cliente.logo.url }}" alt="{{ cliente.nombre }}" title="{{ cliente.nombre }}"
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 {% endif %}
                 {% endfor %}
@@ -259,7 +268,7 @@
             <div class="flex items-center gap-16 px-6" aria-hidden="true">
                 {% for cliente in clientes %}
                 <img src="{{ cliente.logo.url }}" alt=""
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 {% endfor %}
             </div>
@@ -269,74 +278,74 @@
                 <img id="cliente-1"
                     src="{% static 'assets/images/clientes/Formato_png/alicorp_4_3-removebg-preview.png' %}"
                     alt="Alicorp"
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img id="cliente-2"
                     src="{% static 'assets/images/clientes/Formato_png/inkafarma_4_3-removebg-preview.png' %}"
                     alt="Inkafarma"
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img id="cliente-3" src="{% static 'assets/images/clientes/Formato_png/sew_4_3-removebg-preview.png' %}"
                     alt="SEW Eurodrive"
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img id="cliente-4"
                     src="{% static 'assets/images/clientes/Formato_png/linde_4_3-removebg-preview.png' %}" alt="Linde"
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img id="cliente-5"
                     src="{% static 'assets/images/clientes/Formato_png/movitecnica_4_3-removebg-preview.png' %}"
                     alt="Movitécnica"
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img id="cliente-6"
                     src="{% static 'assets/images/clientes/Formato_png/ibermatica_4_3-removebg-preview.png' %}"
                     alt="Ibermática"
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img id="cliente-7"
                     src="{% static 'assets/images/clientes/Formato_png/inkacrops_4_3-removebg-preview.png' %}"
                     alt="Inka Crops"
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img id="cliente-8"
                     src="{% static 'assets/images/clientes/Formato_png/quibrimsac_4_3-removebg-preview.png' %}"
                     alt="Química Brisas"
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img id="cliente-9"
                     src="{% static 'assets/images/clientes/Formato_png/lubtec_4_3-removebg-preview.png' %}" alt="Lubtec"
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
             </div>
             <!-- Duplicado para efecto infinito -->
             <div class="flex items-center gap-16 px-6" aria-hidden="true">
                 <img src="{% static 'assets/images/clientes/Formato_png/alicorp_4_3-removebg-preview.png' %}" alt=""
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img src="{% static 'assets/images/clientes/Formato_png/inkafarma_4_3-removebg-preview.png' %}" alt=""
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img src="{% static 'assets/images/clientes/Formato_png/sew_4_3-removebg-preview.png' %}" alt=""
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img src="{% static 'assets/images/clientes/Formato_png/linde_4_3-removebg-preview.png' %}" alt=""
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img src="{% static 'assets/images/clientes/Formato_png/movitecnica_4_3-removebg-preview.png' %}" alt=""
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img src="{% static 'assets/images/clientes/Formato_png/ibermatica_4_3-removebg-preview.png' %}" alt=""
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img src="{% static 'assets/images/clientes/Formato_png/inkacrops_4_3-removebg-preview.png' %}" alt=""
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img src="{% static 'assets/images/clientes/Formato_png/quibrimsac_4_3-removebg-preview.png' %}" alt=""
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
                 <img src="{% static 'assets/images/clientes/Formato_png/lubtec_4_3-removebg-preview.png' %}" alt=""
-                    class="h-20 md:h-28 lg:h-36 w-auto object-contain hover:scale-110 transform transition-all duration-300 cursor-pointer"
+                    class="h-16 md:h-22 lg:h-28 w-auto object-contain hover:scale-125 transform transition-all duration-300 cursor-pointer"
                     loading="lazy">
             </div>
             {% endif %}
@@ -346,9 +355,9 @@
 
 
 <!-- ===== SERVICIOS ===== -->
-<section id="servicios" class="py-20 md:py-28 bg-white relative" aria-labelledby="servicios-titulo">
+<section id="servicios" class="pt-16 pb-24 md:pt-20 md:pb-32 bg-white relative" aria-labelledby="servicios-titulo">
     <div class="container mx-auto px-6">
-        <div class="text-center mb-14 scroll-trigger">
+        <div class="text-center mb-8 scroll-trigger">
             <h2 id="servicios-titulo" class="section-title flex items-center justify-center gap-3 animate-title-radar">
                 <span class="gps-icon text-jht-gold shrink-0">
                     <span class="gps-dot"></span>
@@ -445,12 +454,14 @@
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Monitoreo GPS 24/7</li>
+                                aria-hidden="true">check_circle</span>Monitoreo GPS 24/7
+                        </li>
                         <li
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Flota moderna y equipada</li>
+                                aria-hidden="true">check_circle</span>Flota moderna y equipada
+                        </li>
                     </ul>
                     <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                         <span
@@ -494,12 +505,14 @@
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Tiempos de entrega optimizados</li>
+                                aria-hidden="true">check_circle</span>Tiempos de entrega optimizados
+                        </li>
                         <li
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Cobertura urbana y regional</li>
+                                aria-hidden="true">check_circle</span>Cobertura urbana y regional
+                        </li>
                     </ul>
                     <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                         <span
@@ -542,12 +555,14 @@
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Entregas express en 24h</li>
+                                aria-hidden="true">check_circle</span>Entregas express en 24h
+                        </li>
                         <li
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Tracking en tiempo real</li>
+                                aria-hidden="true">check_circle</span>Tracking en tiempo real
+                        </li>
                     </ul>
                     <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                         <span
@@ -591,12 +606,14 @@
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Embalaje profesional seguro</li>
+                                aria-hidden="true">check_circle</span>Embalaje profesional seguro
+                        </li>
                         <li
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Cuidado integral de mobiliario</li>
+                                aria-hidden="true">check_circle</span>Cuidado integral de mobiliario
+                        </li>
                     </ul>
                     <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                         <span
@@ -639,12 +656,14 @@
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Control estricto de temperatura</li>
+                                aria-hidden="true">check_circle</span>Control estricto de temperatura
+                        </li>
                         <li
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Cadena de frío ininterrumpida</li>
+                                aria-hidden="true">check_circle</span>Cadena de frío ininterrumpida
+                        </li>
                     </ul>
                     <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                         <span
@@ -687,12 +706,14 @@
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Seguridad y vigilancia 24/7</li>
+                                aria-hidden="true">check_circle</span>Seguridad y vigilancia 24/7
+                        </li>
                         <li
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Gestión de inventarios precisa</li>
+                                aria-hidden="true">check_circle</span>Gestión de inventarios precisa
+                        </li>
                     </ul>
                     <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                         <span
@@ -735,12 +756,14 @@
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Personal altamente capacitado</li>
+                                aria-hidden="true">check_circle</span>Personal altamente capacitado
+                        </li>
                         <li
                             class="flex items-center gap-2 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:text-jht-dark group-hover:animate-vibrate-y">
                             <span
                                 class="material-symbols-outlined text-jht-gold text-base transition-transform duration-500 ease-out group-hover:translate-x-1"
-                                aria-hidden="true">check_circle</span>Cumplimiento de normas SST</li>
+                                aria-hidden="true">check_circle</span>Cumplimiento de normas SST
+                        </li>
                     </ul>
                     <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                         <span
@@ -1149,6 +1172,39 @@
 
 <!-- ===== CÓMO TRABAJAMOS ===== -->
 <section id="como-trabajamos" class="py-20 md:py-28 bg-white relative" aria-labelledby="proceso-titulo">
+    <style>
+        .ecg-line-pulse {
+            stroke-dasharray: 8 4;
+            stroke-dashoffset: 48;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .ecg-active {
+            opacity: 1 !important;
+            animation: ecgFlow 1.2s linear infinite !important;
+        }
+        @keyframes ecgFlow {
+            0% {
+                stroke-dashoffset: 48;
+            }
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+        .active-step-pulse {
+            animation: activeCircleBeat 2.0s infinite ease-in-out !important;
+        }
+        @keyframes activeCircleBeat {
+            0%, 100% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
+            }
+            50% {
+                transform: scale(1.18);
+                box-shadow: 0 0 0 12px rgba(212, 175, 55, 0);
+            }
+        }
+    </style>
     <div class="container mx-auto px-6" x-data="{ activeStep: 0 }"
         x-init="setInterval(() => { activeStep = (activeStep + 1) % {{ pasos|length|default:5 }} }, 3000)">
         <div class="text-center mb-14 scroll-trigger">
@@ -1161,8 +1217,7 @@
                 </span>
                 <span>{{ secciones.PROCESO.titulo|default:"Cómo Trabajamos" }}</span>
             </h2>
-            <p class="section-subtitle hover-slide-left-back">{{ secciones.PROCESO.subtitulo|default:"Trazabilidad total
-                de tu carga en cinco estados operativos." }}</p>
+            <p class="section-subtitle hover-slide-left-back">{{ secciones.PROCESO.subtitulo|default:"Trazabilidad total de tu carga en cinco estados operativos." }}</p>
         </div>
 
         <div
@@ -1170,7 +1225,7 @@
             {% if pasos %}
             {% for paso in pasos %}
             <div class="text-center relative flex flex-col items-center">
-                <div :class="activeStep === {{ forloop.counter0 }} ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg' : (activeStep > {{ forloop.counter0 }} ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
+                <div :class="activeStep === {{ forloop.counter0 }} ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > {{ forloop.counter0 }} ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
                     class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
                     {{ paso.numero }}
                 </div>
@@ -1178,20 +1233,21 @@
                     :class="activeStep === {{ forloop.counter0 }} ? 'text-jht-gold' : 'text-jht-dark'">{{ paso.titulo }}
                 </h3>
                 <p class="text-sm text-jht-blue-support max-w-[200px]">{{ paso.descripcion }}</p>
-                <!-- Connector line -->
+                <!-- Connector line (frecuenciómetro / ECG pulse) -->
                 {% if not forloop.last %}
-                <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-1 bg-gray-200 -z-0 rounded"
-                    aria-hidden="true">
-                    <div class="h-full bg-jht-gold transition-all duration-700"
-                        :style="activeStep > {{ forloop.counter0 }} ? 'width: 100%' : 'width: 0%'"></div>
-                </div>
+                <svg class="hidden md:block absolute top-8 left-[60%] w-[80%] h-6 -z-0 pointer-events-none overflow-visible" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2" />
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2"
+                          class="ecg-line-pulse"
+                          :class="activeStep > {{ forloop.counter0 }} ? 'ecg-active' : ''" />
+                </svg>
                 {% endif %}
             </div>
             {% endfor %}
             {% else %}
             <!-- Paso 1: Programado -->
             <div class="text-center relative flex flex-col items-center">
-                <div :class="activeStep === 0 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg' : (activeStep > 0 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
+                <div :class="activeStep === 0 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > 0 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
                     class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
                     1
                 </div>
@@ -1199,17 +1255,18 @@
                     :class="activeStep === 0 ? 'text-jht-gold' : 'text-jht-dark'">Programado</h3>
                 <p class="text-sm text-jht-blue-support max-w-[200px]">Tu envío es planificado y registrado en nuestro
                     sistema.</p>
-                <!-- Connector line -->
-                <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-1 bg-gray-200 -z-0 rounded"
-                    aria-hidden="true">
-                    <div class="h-full bg-jht-gold transition-all duration-700"
-                        :style="activeStep > 0 ? 'width: 100%' : 'width: 0%'"></div>
-                </div>
+                <!-- Connector line (frecuenciómetro / ECG pulse) -->
+                <svg class="hidden md:block absolute top-8 left-[60%] w-[80%] h-6 -z-0 pointer-events-none overflow-visible" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2" />
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2"
+                          class="ecg-line-pulse"
+                          :class="activeStep > 0 ? 'ecg-active' : ''" />
+                </svg>
             </div>
 
             <!-- Paso 2: En Ruta -->
             <div class="text-center relative flex flex-col items-center">
-                <div :class="activeStep === 1 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg' : (activeStep > 1 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
+                <div :class="activeStep === 1 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > 1 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
                     class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
                     2
                 </div>
@@ -1217,17 +1274,18 @@
                     :class="activeStep === 1 ? 'text-jht-gold' : 'text-jht-dark'">En Ruta</h3>
                 <p class="text-sm text-jht-blue-support max-w-[200px]">La unidad de transporte inicia el recorrido hacia
                     el destino.</p>
-                <!-- Connector line -->
-                <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-1 bg-gray-200 -z-0 rounded"
-                    aria-hidden="true">
-                    <div class="h-full bg-jht-gold transition-all duration-700"
-                        :style="activeStep > 1 ? 'width: 100%' : 'width: 0%'"></div>
-                </div>
+                <!-- Connector line (frecuenciómetro / ECG pulse) -->
+                <svg class="hidden md:block absolute top-8 left-[60%] w-[80%] h-6 -z-0 pointer-events-none overflow-visible" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2" />
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2"
+                          class="ecg-line-pulse"
+                          :class="activeStep > 1 ? 'ecg-active' : ''" />
+                </svg>
             </div>
 
             <!-- Paso 3: Recepcionado -->
             <div class="text-center relative flex flex-col items-center">
-                <div :class="activeStep === 2 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg' : (activeStep > 2 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
+                <div :class="activeStep === 2 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > 2 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
                     class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
                     3
                 </div>
@@ -1235,17 +1293,18 @@
                     :class="activeStep === 2 ? 'text-jht-gold' : 'text-jht-dark'">Recepcionado</h3>
                 <p class="text-sm text-jht-blue-support max-w-[200px]">La carga es recibida y controlada en nuestro
                     centro logístico.</p>
-                <!-- Connector line -->
-                <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-1 bg-gray-200 -z-0 rounded"
-                    aria-hidden="true">
-                    <div class="h-full bg-jht-gold transition-all duration-700"
-                        :style="activeStep > 2 ? 'width: 100%' : 'width: 0%'"></div>
-                </div>
+                <!-- Connector line (frecuenciómetro / ECG pulse) -->
+                <svg class="hidden md:block absolute top-8 left-[60%] w-[80%] h-6 -z-0 pointer-events-none overflow-visible" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2" />
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2"
+                          class="ecg-line-pulse"
+                          :class="activeStep > 2 ? 'ecg-active' : ''" />
+                </svg>
             </div>
 
             <!-- Paso 4: En Reparto -->
             <div class="text-center relative flex flex-col items-center">
-                <div :class="activeStep === 3 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg' : (activeStep > 3 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
+                <div :class="activeStep === 3 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > 3 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
                     class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
                     4
                 </div>
@@ -1253,17 +1312,18 @@
                     :class="activeStep === 3 ? 'text-jht-gold' : 'text-jht-dark'">En Reparto</h3>
                 <p class="text-sm text-jht-blue-support max-w-[200px]">Nuestra unidad realiza el tramo final para la
                     entrega capilar.</p>
-                <!-- Connector line -->
-                <div class="hidden md:block absolute top-8 left-[60%] w-[80%] h-1 bg-gray-200 -z-0 rounded"
-                    aria-hidden="true">
-                    <div class="h-full bg-jht-gold transition-all duration-700"
-                        :style="activeStep > 3 ? 'width: 100%' : 'width: 0%'"></div>
-                </div>
+                <!-- Connector line (frecuenciómetro / ECG pulse) -->
+                <svg class="hidden md:block absolute top-8 left-[60%] w-[80%] h-6 -z-0 pointer-events-none overflow-visible" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2" />
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2"
+                          class="ecg-line-pulse"
+                          :class="activeStep > 3 ? 'ecg-active' : ''" />
+                </svg>
             </div>
 
             <!-- Paso 5: Entregado -->
             <div class="text-center relative flex flex-col items-center">
-                <div :class="activeStep === 4 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg' : 'bg-gray-200 text-gray-500'"
+                <div :class="activeStep === 4 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : 'bg-gray-200 text-gray-500'"
                     class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
                     5
                 </div>
