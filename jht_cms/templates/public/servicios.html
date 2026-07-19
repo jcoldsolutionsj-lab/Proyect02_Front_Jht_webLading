@@ -156,7 +156,7 @@
                                 setTimeout(() => this.type(), typeSpeed);
                             }
                         }"
-                        x-init="setTimeout(() => type(), 3500)">
+                        x-init="setTimeout(() => $data.type(), 3500)">
                         
                         <p id="servicios-hero-subtitulo"
                             class="animate-hero-desc text-lg text-gray-200 mb-8 font-medium max-w-xl leading-relaxed hover-slide-left-back min-h-[140px] sm:min-h-[110px] md:min-h-[90px]"
@@ -925,7 +925,7 @@
                                 setTimeout(() => this.type(), typeSpeed);
                             }
                         }"
-                        x-init="setTimeout(() => { isDeleting = true; type(); }, 2500)">
+                        x-init="setTimeout(() => { $data.isDeleting = true; $data.type(); }, 2500)">
                         <input type="email" :placeholder="text" required style="box-shadow: none;"
                             class="w-full bg-transparent border-0 text-jht-dark placeholder-gray-400 py-2 outline-none focus:outline-none focus:ring-0 text-lg font-medium transition-all duration-300">
                     </div>
