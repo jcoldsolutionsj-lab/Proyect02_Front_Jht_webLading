@@ -12,34 +12,36 @@
 <!-- ============================================ -->
 <!-- 1. HERO — Diagonal clip con video/imagen     -->
 <!-- ============================================ -->
-<section id="hero-flota" class="relative w-full min-h-[614px] flex items-center justify-center clip-diagonal overflow-hidden mb-16">
-    <!-- Background Video -->
-    <div class="absolute inset-0 z-0">
-        <video autoplay loop muted playsinline class="w-full h-full object-cover" fetchpriority="high" aria-hidden="true">
-            <source src="{% static 'assets/videos/flota/FlotaPesada.mp4' %}" type="video/mp4">
-        </video>
-        <!-- Gradient overlay -->
-        <div class="absolute inset-0 bg-gradient-to-br from-jht-dark/90 via-jht-dark/70 to-jht-dark/30"></div>
-    </div>
-
-    <!-- Hero Content -->
-    <div class="relative z-10 w-full px-4 md:px-10 max-w-7xl mx-auto text-left">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6">
-            <span class="w-1.5 h-1.5 rounded-full bg-jht-gold animate-pulse"></span>
-            FLOTA LOGÍSTICA
+<div class="bg-white w-full">
+    <section id="hero-flota" class="relative w-full flex items-center justify-center clip-diagonal overflow-hidden" style="min-height: 80vh;">
+        <!-- Background Video -->
+        <div class="absolute inset-0 z-0">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover" fetchpriority="high" aria-hidden="true">
+                <source src="{% static 'assets/videos/flota/FlotaPesada.mp4' %}" type="video/mp4">
+            </video>
+            <!-- Gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-br from-jht-dark/90 via-jht-dark/70 to-jht-dark/30"></div>
         </div>
-        <!-- Title -->
-        <h1 class="font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
-            Nuestra <br>
-            <span class="text-jht-gold">Flota</span>
-        </h1>
-        <!-- Subtitle -->
-        <p class="text-lg text-gray-300 max-w-xl opacity-90 drop-shadow-md leading-relaxed">
-            Vehículos modernos equipados con tecnología de rastreo satelital para garantizar la seguridad de su carga en cada kilómetro del recorrido.
-        </p>
-    </div>
-</section>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 w-full px-4 md:px-10 max-w-7xl mx-auto text-left">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-jht-gold animate-pulse"></span>
+                FLOTA LOGÍSTICA
+            </div>
+            <!-- Title -->
+            <h1 class="font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
+                Nuestra <br>
+                <span class="text-jht-gold">Flota</span>
+            </h1>
+            <!-- Subtitle -->
+            <p class="text-lg text-gray-300 max-w-xl opacity-90 drop-shadow-md leading-relaxed">
+                Vehículos modernos equipados con tecnología de rastreo satelital para garantizar la seguridad de su carga en cada kilómetro del recorrido.
+            </p>
+        </div>
+    </section>
+</div>
 
 
 <!-- ============================================ -->
