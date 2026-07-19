@@ -3,14 +3,249 @@
 
 {% block title %}Nuestra Flota - JHT Transport{% endblock %}
 
+{% block extra_css %}
+<link href="{% static 'css/flota.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-<section class="relative w-full min-h-[70vh] flex items-center justify-center bg-jht-dark pt-32">
-            <div class="absolute inset-0 bg-jht-gray/10 mix-blend-overlay"></div>
-            <div class="text-center z-10 px-4">
-                <span class="material-symbols-outlined text-jht-gold text-6xl mb-4 animate-bounce">construction</span>
-                <h1 class="font-title text-5xl font-extrabold text-white mb-4">Flota</h1>
-                <p class="text-gray-300 text-lg">Esta página se encuentra en construcción.</p>
-                <a href="{% url 'website:index' %}" class="inline-block mt-8 btn-primary py-3 px-8 text-lg">Volver al Inicio</a>
+
+<!-- ============================================ -->
+<!-- 1. HERO — Diagonal clip con video/imagen     -->
+<!-- ============================================ -->
+<section id="hero-flota" class="relative w-full min-h-[614px] flex items-center justify-center clip-diagonal overflow-hidden mb-16">
+    <!-- Background Video -->
+    <div class="absolute inset-0 z-0">
+        <video autoplay loop muted playsinline class="w-full h-full object-cover" fetchpriority="high" aria-hidden="true">
+            <source src="{% static 'assets/videos/flota/FlotaPesada.mp4' %}" type="video/mp4">
+        </video>
+        <!-- Gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-jht-dark/90 via-jht-dark/70 to-jht-dark/30"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 w-full px-4 md:px-10 max-w-7xl mx-auto text-left">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-jht-gold animate-pulse"></span>
+            FLOTA LOGÍSTICA
+        </div>
+        <!-- Title -->
+        <h1 class="font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
+            Nuestra <br>
+            <span class="text-jht-gold">Flota</span>
+        </h1>
+        <!-- Subtitle -->
+        <p class="text-lg text-gray-300 max-w-xl opacity-90 drop-shadow-md leading-relaxed">
+            Vehículos modernos equipados con tecnología de rastreo satelital para garantizar la seguridad de su carga en cada kilómetro del recorrido.
+        </p>
+    </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- 2. CATÁLOGO INTERACTIVO DE FLOTA             -->
+<!-- ============================================ -->
+<section id="catalogo-flota" class="max-w-7xl mx-auto px-4 md:px-10 mb-24 w-full"
+    x-data="{
+        active: 'liviana',
+        fleet: {
+            liviana: {
+                name: 'Furgón / Van de Reparto',
+                capacity: '1 a 5 TM',
+                desc: 'Vehículo multiusos diseñado para operaciones logísticas urbanas y regionales, perfecto para maniobrabilidad y rapidez.',
+                idealFor: ['Paquetería express', 'Mercancía seca', 'Carga refrigerada compacta', 'Courier corporativo'],
+                measures: '6m x 2m x 2m',
+                video: '{% static 'assets/videos/flota/FlotaLiviana.mp4' %}'
+            },
+            mediana: {
+                name: 'Camión de Distribución Regional',
+                capacity: '10 a 15 TM',
+                desc: 'Flota intermedia para distribución a nivel regional. Ideal para rutas de mediana distancia con cargas que requieren espacio y seguridad.',
+                idealFor: ['Distribución B2B', 'Productos industriales', 'Carga paletizada', 'Mudanzas corporativas'],
+                measures: '8m x 2.4m x 2.5m',
+                video: '{% static 'assets/videos/flota/FlotaMedia.mp4' %}'
+            },
+            pesada: {
+                name: 'Tractocamión y Semirremolque',
+                capacity: 'Hasta 30 TM',
+                desc: 'Unidades de alto tonelaje para transporte nacional de gran volumen. Máxima eficiencia en rutas largas con carga pesada e industrial.',
+                idealFor: ['Carga industrial pesada', 'Maquinaria y equipos', 'Materiales de construcción', 'Carga sobredimensionada'],
+                measures: '14.5m x 2.6m x 2.8m',
+                video: '{% static 'assets/videos/flota/FlotaPesada.mp4' %}'
+            }
+        }
+    }">
+
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+        <div class="inline-flex items-center justify-center gap-2 mb-4 text-jht-gold">
+            <span class="w-2 h-2 rounded-full bg-jht-gold"></span>
+            <h2 class="font-bold text-sm uppercase tracking-widest">Conoce Nuestra Flota</h2>
+        </div>
+        <h3 class="font-title text-4xl md:text-5xl font-bold text-jht-dark">
+            Precisión y <span class="text-jht-gold">Capacidad</span>
+        </h3>
+    </div>
+
+    <!-- Category Selector Buttons -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+        <button @click="active = 'liviana'"
+            :class="active === 'liviana' ? 'bg-jht-dark text-white shadow-md' : 'border border-gray-300 text-gray-500 hover:border-jht-dark hover:text-jht-dark'"
+            class="px-8 py-3 rounded-full font-bold text-sm transition-all duration-300">
+            Flota Liviana
+        </button>
+        <button @click="active = 'mediana'"
+            :class="active === 'mediana' ? 'bg-jht-dark text-white shadow-md' : 'border border-gray-300 text-gray-500 hover:border-jht-dark hover:text-jht-dark'"
+            class="px-8 py-3 rounded-full font-bold text-sm transition-all duration-300">
+            Flota Mediana
+        </button>
+        <button @click="active = 'pesada'"
+            :class="active === 'pesada' ? 'bg-jht-dark text-white shadow-md' : 'border border-gray-300 text-gray-500 hover:border-jht-dark hover:text-jht-dark'"
+            class="px-8 py-3 rounded-full font-bold text-sm transition-all duration-300">
+            Flota Pesada
+        </button>
+    </div>
+
+    <!-- Bento Grid: Video + Specs -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-500">
+
+        <!-- Video / Image Area (7 cols) -->
+        <div class="col-span-1 md:col-span-7 relative h-72 md:h-auto bg-gray-50 flex items-center justify-center p-4 md:p-8">
+            <video :src="fleet[active].video" autoplay loop muted playsinline
+                class="w-full h-full object-cover rounded-lg shadow-md max-h-[420px]"
+                :key="active">
+            </video>
+            <!-- Capacity pill -->
+            <div class="absolute top-6 left-6 bg-jht-dark text-jht-gold px-4 py-2 rounded-full font-bold text-sm shadow-sm"
+                x-text="fleet[active].capacity">
             </div>
-        </section>
+        </div>
+
+        <!-- Specs Area (5 cols) -->
+        <div class="col-span-1 md:col-span-5 p-8 md:p-12 flex flex-col justify-center text-left">
+            <!-- Fleet Name -->
+            <h4 class="font-title text-2xl md:text-3xl font-bold text-jht-dark mb-6" x-text="fleet[active].name"></h4>
+
+            <div class="space-y-6">
+                <!-- Description -->
+                <div>
+                    <h5 class="font-bold text-sm text-gray-500 mb-2 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">info</span>
+                        Descripción
+                    </h5>
+                    <p class="text-gray-600 leading-relaxed" x-text="fleet[active].desc"></p>
+                </div>
+
+                <!-- Ideal For -->
+                <div>
+                    <h5 class="font-bold text-sm text-gray-500 mb-2 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">check_circle</span>
+                        Ideal Para
+                    </h5>
+                    <ul class="text-gray-600 list-disc list-inside ml-2 space-y-1">
+                        <template x-for="item in fleet[active].idealFor" :key="item">
+                            <li x-text="item"></li>
+                        </template>
+                    </ul>
+                </div>
+
+                <!-- Measures & Capacity -->
+                <div class="grid grid-cols-2 gap-4 pt-4 border-t border-gray-100">
+                    <div>
+                        <span class="block text-xs text-gray-400 mb-1 font-medium">Medidas (L x A x A)</span>
+                        <span class="font-bold text-sm text-jht-dark" x-text="fleet[active].measures"></span>
+                    </div>
+                    <div>
+                        <span class="block text-xs text-gray-400 mb-1 font-medium">Capacidad de Carga</span>
+                        <span class="font-bold text-sm text-jht-dark" x-text="fleet[active].capacity"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- 3. GALERÍA DE OPCIONES ADICIONALES           -->
+<!-- ============================================ -->
+<section id="galeria-flota" class="bg-gray-50 w-full py-24 mb-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-10">
+        <h3 class="font-title text-3xl font-bold text-jht-dark mb-12 text-center">
+            Opciones <span class="text-jht-gold">Adicionales</span>
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+
+            <!-- Card: Tractocamión Pesado -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col md:flex-row group">
+                <div class="w-full md:w-2/5 h-48 md:h-auto overflow-hidden">
+                    <img src="{% static 'assets/images/flota/banner_noche_3.webp' %}" alt="Flota Pesada"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 md:w-3/5 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-title font-bold text-jht-dark text-lg mb-2">Tractocamión Pesado</h4>
+                        <p class="text-gray-500 text-sm mb-4">Para transporte nacional de gran volumen y peso. Máxima eficiencia en rutas largas.</p>
+                        <ul class="text-sm text-gray-500 space-y-1 mb-4">
+                            <li>• Ideal: Carga industrial, maquinaria</li>
+                            <li>• Capacidad: Hasta 30 TM</li>
+                        </ul>
+                    </div>
+                    <button class="text-jht-gold font-bold text-sm uppercase tracking-wider flex items-center gap-1 hover:gap-2 transition-all w-fit">
+                        Ver Detalles <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card: Van de Distribución -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col md:flex-row group">
+                <div class="w-full md:w-2/5 h-48 md:h-auto overflow-hidden">
+                    <img src="{% static 'assets/images/flota/banner_dia_2.webp' %}" alt="Flota Van"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 md:w-3/5 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-title font-bold text-jht-dark text-lg mb-2">Van de Distribución</h4>
+                        <p class="text-gray-500 text-sm mb-4">Agilidad incomparable para entregas de última milla en zonas de difícil acceso.</p>
+                        <ul class="text-sm text-gray-500 space-y-1 mb-4">
+                            <li>• Ideal: Entregas B2C, paquetería menor</li>
+                            <li>• Capacidad: Hasta 1.5 TM</li>
+                        </ul>
+                    </div>
+                    <button class="text-jht-gold font-bold text-sm uppercase tracking-wider flex items-center gap-1 hover:gap-2 transition-all w-fit">
+                        Ver Detalles <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- 4. CTA — Llamada a la acción final           -->
+<!-- ============================================ -->
+<section id="cta-flota" class="max-w-7xl mx-auto px-4 md:px-10 mb-24 text-center w-full">
+    <div class="bg-jht-dark text-white rounded-2xl p-12 md:p-16 shadow-lg relative overflow-hidden">
+        <!-- Decorative blobs -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-jht-gold opacity-10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-500 opacity-10 rounded-full blur-3xl -ml-32 -mb-32"></div>
+
+        <div class="relative z-10">
+            <h2 class="font-title text-3xl md:text-[40px] md:leading-[48px] font-bold mb-6">
+                ¿Listo para optimizar su logística?
+            </h2>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                Contamos con la flota adecuada para llevar su negocio más lejos. Solicite una cotización personalizada hoy mismo.
+            </p>
+            <a href="{% url 'website:contacto' %}"
+                class="inline-block bg-jht-gold text-jht-dark px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-yellow-400 transition-all shadow-md transform hover:-translate-y-1">
+                Solicitar Cotización
+            </a>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
