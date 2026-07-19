@@ -9,8 +9,7 @@
             style="min-height: 100vh;">
 
             <!-- Background Image Carousel -->
-            <div class="absolute inset-0 z-0 overflow-hidden" x-data="{ active: 0, totalSlides: 7 }"
-                x-init="setInterval(() => { active = (active + 1) % totalSlides }, 3500)">
+            <div class="absolute inset-0 z-0 overflow-hidden" x-data="serviciosCarousel" @mouseenter="stopInterval" @mouseleave="startInterval">
 
                 <!-- Slide 0 -->
                 <div class="hero-slide"
@@ -70,14 +69,14 @@
                 <!-- Indicadores (Puntos) -->
                 <div class="absolute bottom-6 left-0 right-0 flex justify-center gap-3 z-30 pointer-events-none">
                     <template x-for="index in totalSlides">
-                        <button @click="active = index - 1"
+                        <button @click="goTo(index - 1)"
                             class="h-2 rounded-full transition-all duration-500 shadow-md pointer-events-auto"
                             :class="active === (index - 1) ? 'w-8 bg-jht-gold' : 'w-2 bg-white/50 hover:bg-white'"></button>
                     </template>
                 </div>
 
                 <!-- Controles Prev/Next -->
-                <button type="button" @click="active = (active === 0) ? totalSlides - 1 : active - 1"
+                <button type="button" @click="prev()"
                     class="absolute top-0 left-0 md:left-4 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none pointer-events-auto">
                     <span
                         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white/70 transition-all shadow-lg">
@@ -89,7 +88,7 @@
                         <span class="sr-only">Previous</span>
                     </span>
                 </button>
-                <button type="button" @click="active = (active + 1) % totalSlides"
+                <button type="button" @click="next()"
                     class="absolute top-0 right-0 md:right-4 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none pointer-events-auto">
                     <span
                         class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white/70 transition-all shadow-lg">
@@ -945,4 +944,40 @@
                 </form>
             </div>
         </section>
+{% block extra_js %}
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('serviciosCarousel', () => ({
+            active: 0,
+            totalSlides: 7,
+            intervalId: null,
+            init() {
+                this.startInterval();
+            },
+            startInterval() {
+                // Ensure no duplicate intervals
+                this.stopInterval();
+                this.intervalId = setInterval(() => {
+                    this.next();
+                }, 3500);
+            },
+            stopInterval() {
+                if (this.intervalId) {
+                    clearInterval(this.intervalId);
+                    this.intervalId = null;
+                }
+            },
+            next() {
+                this.active = (this.active + 1) % this.totalSlides;
+            },
+            prev() {
+                this.active = (this.active === 0) ? this.totalSlides - 1 : this.active - 1;
+            },
+            goTo(index) {
+                this.active = index;
+            }
+        }));
+    });
+</script>
+{% endblock %}
 {% endblock %}
