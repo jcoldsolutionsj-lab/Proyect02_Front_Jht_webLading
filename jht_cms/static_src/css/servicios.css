@@ -1,19 +1,17 @@
-/* Styles specific to the Servicios page */
-
-/* Global 10% zoom — escalado proporcional adaptable */
-html {
-    font-size: 110%; /* Base 17.6px en vez de 16px → todo 10% más grande */
+/* Escalado proporcional solo del contenido (no afecta al header global) */
+main {
+    zoom: 1.10; /* Base: todo el contenido 10% más grande */
 }
 
 @media (max-width: 640px) {
-    html {
-        font-size: 105%; /* En móviles solo 5% más para no desbordar */
+    main {
+        zoom: 1.05; /* En móviles solo 5% más para no desbordar */
     }
 }
 
 @media (min-width: 1536px) {
-    html {
-        font-size: 115%; /* En pantallas 2xl un poco más de presencia */
+    main {
+        zoom: 1.15; /* En pantallas 2xl un poco más de presencia */
     }
 }
 
@@ -132,7 +130,7 @@ html {
 .hero-slide {
     position: absolute;
     inset: 0;
-    transition: transform 2.5s cubic-bezier(0.25, 1, 0.3, 1), opacity 2.5s cubic-bezier(0.25, 1, 0.3, 1);
+    transition: transform 1.2s cubic-bezier(0.25, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.3, 1);
     will-change: transform, opacity;
 }
 

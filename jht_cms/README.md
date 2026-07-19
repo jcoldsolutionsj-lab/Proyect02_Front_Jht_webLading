@@ -65,4 +65,4 @@ Contraseña: admin
 Pantallas Privadas / Administrativas:
 
 Acceso (Login): http://127.0.0.1:8000/login/
-Panel Administrador (Django Admin): http://127.0.0.1:8000/admin/ (Usuario: admin / Contraseña: admin)
+Panel Administrador (Django Admin): http://127.0.0.1:800/admin/ (Usuario: admin / Contraseña: admin)

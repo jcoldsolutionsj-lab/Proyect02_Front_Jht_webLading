@@ -91,10 +91,13 @@
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     {% block extra_head %}{% endblock %}
 </head>
 
-<body class="bg-jht-gray text-jht-dark font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
+<body class="bg-jht-dark text-white font-sans antialiased overflow-x-hidden flex flex-col min-h-screen">
 
     <!-- Header -->
     {% block header_include %}
@@ -102,7 +105,7 @@
     {% endblock %}
 
     <!-- Contenido principal -->
-    <main class="flex-grow">
+    <main class="flex-grow" style="padding-top: 100px;">
         {% block content %}{% endblock %}
     </main>
 

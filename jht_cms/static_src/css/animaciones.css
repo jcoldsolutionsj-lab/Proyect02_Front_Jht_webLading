@@ -14,7 +14,7 @@
 @keyframes titleBounceRadar {
     0% {
         opacity: 0;
-        transform: translateX(-120px) translateY(-40px) scale(1);
+        transform: translateX(0) translateY(-40px) scale(1);
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
     3% { opacity: 1; transform: translateX(0) translateY(0) scale(1); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
@@ -32,7 +32,7 @@
     33.3% { transform: translateX(0) translateY(0) scale(1.12); }
     41.6% { transform: translateX(0) translateY(0) scale(1); }
     75% { opacity: 1; transform: translateX(0) translateY(0) scale(1); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-    80%, 100% { opacity: 0; transform: translateX(-120px) translateY(-20px) scale(1); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    80%, 100% { opacity: 0; transform: translateX(0) translateY(-20px) scale(1); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
 }
 
 .animate-hero-desc {
