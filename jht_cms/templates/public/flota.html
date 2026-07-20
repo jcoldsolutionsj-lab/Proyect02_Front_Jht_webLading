@@ -14,13 +14,29 @@
 <!-- ============================================ -->
 <div class="bg-white w-full">
     <section id="hero-flota" class="relative w-full flex items-center justify-center clip-diagonal overflow-hidden" style="min-height: 90vh;">
-        <!-- Background Video -->
-        <div class="absolute inset-0 z-0">
-            <video autoplay loop muted playsinline class="w-full h-full object-cover" fetchpriority="high" aria-hidden="true">
-                <source src="{% static 'assets/videos/flota/FlotaPesada.mp4' %}" type="video/mp4">
-            </video>
-            <!-- Gradient overlay -->
-            <div class="absolute inset-0 bg-gradient-to-br from-jht-dark/90 via-jht-dark/70 to-jht-dark/30"></div>
+        <!-- Background Image Carousel -->
+        <div class="absolute inset-0 z-0 overflow-hidden" x-data="flotaCarousel">
+            <!-- Slide 0 -->
+            <div class="hero-slide"
+                :class="active === 0 ? 'slide-active' : (active - 1 === 0 || (active === 0 && 0 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                <img src="{% static 'assets/images/flota/banner_1.webp' %}" alt="Banner Flota" class="w-full h-full object-cover animate-fade-in">
+            </div>
+
+            <!-- Slide 1 -->
+            <div class="hero-slide"
+                :class="active === 1 ? 'slide-active' : (active - 1 === 1 || (active === 0 && 1 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                <img src="{% static 'assets/images/flota/banner_dia_2.webp' %}" alt="Banner Flota" class="w-full h-full object-cover animate-fade-in">
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide"
+                :class="active === 2 ? 'slide-active' : (active - 1 === 2 || (active === 0 && 2 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                <img src="{% static 'assets/images/flota/banner_noche_3.webp' %}" alt="Banner Flota" class="w-full h-full object-cover animate-fade-in">
+            </div>
+
+            <!-- Overlay Gradient for text readability (z-20 to stay above slides) -->
+            <div class="absolute inset-0 bg-jht-dark/65 z-20 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-jht-dark/95 via-jht-dark/50 to-transparent z-20 pointer-events-none"></div>
         </div>
 
         <!-- Hero Content -->
@@ -114,12 +130,12 @@
         </div>
 
         <!-- Fleet Details Card (Flexbox md:flex-row) -->
-        <div class="bg-gray-50 rounded-3xl p-6 md:p-10 shadow-lg border border-gray-100 flex flex-col md:flex-row gap-8 items-stretch transition-all duration-500">
+        <div class="bg-gray-50 rounded-3xl p-6 md:p-10 shadow-lg border border-gray-100 flex flex-col md:flex-row gap-8 items-center transition-all duration-500">
             <!-- Video Container (Left) -->
-            <div class="w-full md:w-1/2 relative rounded-2xl overflow-hidden bg-gray-100 min-h-[300px] flex items-center justify-center shadow-md">
+            <div class="w-full md:w-1/2 relative rounded-2xl overflow-hidden shadow-md">
                 <span class="absolute top-4 left-4 bg-black/75 text-jht-gold font-bold text-xs px-3 py-1.5 rounded-lg z-10" x-text="'Capacidad: ' + fleet[active].capacity"></span>
                 <video :src="fleet[active].video"
-                    class="w-full h-full object-contain bg-jht-dark max-h-[420px]"
+                    class="w-full h-auto block rounded-2xl"
                     autoplay 
                     muted 
                     loop 
@@ -260,5 +276,41 @@
         </div>
     </div>
 </section>
+
+{% block extra_js %}
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('flotaCarousel', () => ({
+            active: 0,
+            totalSlides: 3,
+            intervalId: null,
+            init() {
+                this.startInterval();
+            },
+            startInterval() {
+                this.stopInterval();
+                this.intervalId = setInterval(() => {
+                    this.next();
+                }, 3000);
+            },
+            stopInterval() {
+                if (this.intervalId) {
+                    clearInterval(this.intervalId);
+                    this.intervalId = null;
+                }
+            },
+            next() {
+                this.active = (this.active + 1) % this.totalSlides;
+            },
+            prev() {
+                this.active = (this.active === 0) ? this.totalSlides - 1 : this.active - 1;
+            },
+            goTo(index) {
+                this.active = index;
+            }
+        }));
+    });
+</script>
+{% endblock %}
 
 {% endblock %}
