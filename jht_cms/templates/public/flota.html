@@ -42,19 +42,26 @@
         <!-- Hero Content -->
         <div class="relative z-10 w-full px-4 md:px-10 max-w-7xl mx-auto text-left">
             <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6">
-                <span class="w-1.5 h-1.5 rounded-full bg-jht-gold animate-pulse"></span>
+            <div class="animate-hero-badge inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6">
+                <span class="gps-icon-sm text-jht-gold -ml-1">
+                    <span class="gps-dot"></span>
+                    <span class="gps-ring gps-ring-1"></span>
+                    <span class="gps-ring gps-ring-2"></span>
+                </span>
                 FLOTA LOGÍSTICA
             </div>
             <!-- Title -->
-            <h1 class="font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
+            <h1 class="animate-hero-title font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
                 Nuestra <br>
                 <span class="text-jht-gold">Flota</span>
             </h1>
             <!-- Subtitle -->
-            <p class="text-lg text-gray-300 max-w-xl opacity-90 drop-shadow-md leading-relaxed">
-                Vehículos modernos equipados con tecnología de rastreo satelital para garantizar la seguridad de su carga en cada kilómetro del recorrido.
-            </p>
+            <div x-data="typewriter('Flota moderna de transporte de carga pesada y ligera en Perú, equipada con tecnología de rastreo GPS en tiempo real para garantizar la seguridad de su logística.')">
+                <p class="animate-hero-desc text-lg text-gray-300 max-w-xl opacity-90 drop-shadow-md leading-relaxed min-h-[84px] md:min-h-[90px]"
+                    x-text="text">
+                    Flota moderna de transporte de carga pesada y ligera en Perú, equipada con tecnología de rastreo GPS en tiempo real para garantizar la seguridad de su logística.
+                </p>
+            </div>
         </div>
     </section>
 </div>
@@ -66,6 +73,31 @@
 <section id="catalogo-flota" class="w-full py-24 bg-white"
     x-data="{
         active: 'liviana',
+        timer: null,
+        keys: ['liviana', 'mediana', 'pesada'],
+        isTransitioning: false,
+        startTimer() {
+            this.stopTimer();
+            this.timer = setInterval(() => {
+                this.nextTab();
+            }, 2000);
+        },
+        stopTimer() {
+            if (this.timer) clearInterval(this.timer);
+        },
+        selectTab(key) {
+            if (this.active === key) return;
+            this.isTransitioning = true;
+            setTimeout(() => {
+                this.active = key;
+                this.isTransitioning = false;
+            }, 180);
+            this.startTimer();
+        },
+        nextTab() {
+            const idx = (this.keys.indexOf(this.active) + 1) % this.keys.length;
+            this.selectTab(this.keys[idx]);
+        },
         fleet: {
             liviana: {
                 name: 'Furgón 1 Tonelada',
@@ -92,45 +124,47 @@
                 video: '{% static 'assets/videos/flota/FlotaPesada.mp4' %}'
             }
         }
-    }">
+    }"
+    x-init="startTimer()"
+    @mouseenter="stopTimer()"
+    @mouseleave="startTimer()">
 
     <div class="max-w-7xl mx-auto px-4 md:px-10 w-full">
         <!-- Title Section -->
         <div class="text-center mb-12">
-            <div class="inline-flex items-center justify-center gap-2 mb-4 text-jht-gold">
-                <span class="gps-icon-sm text-jht-gold -ml-1">
+            <h3 class="font-title text-4xl md:text-5xl font-bold text-jht-dark flex items-center justify-center gap-3 animate-title-radar py-2 leading-relaxed">
+                <span class="gps-icon text-jht-gold shrink-0">
                     <span class="gps-dot"></span>
                     <span class="gps-ring gps-ring-1"></span>
                     <span class="gps-ring gps-ring-2"></span>
+                    <span class="gps-ring gps-ring-3"></span>
                 </span>
-                <h2 class="font-bold text-sm uppercase tracking-widest">• Conoce Nuestra Flota</h2>
-            </div>
-            <h3 class="font-title text-4xl md:text-5xl font-bold text-jht-dark">
-                Precisión y <span class="text-jht-gold">Capacidad</span>
+                <span>Precisión y <span class="text-jht-gold">Capacidad</span></span>
             </h3>
         </div>
 
         <!-- Tabs Header -->
         <div class="flex flex-wrap justify-center gap-4 mb-12">
-            <button @click="active = 'liviana'"
-                :class="active === 'liviana' ? 'bg-jht-dark text-white shadow-md' : 'border border-gray-300 text-gray-500 hover:border-jht-dark hover:text-jht-dark'"
-                class="px-8 py-3 rounded-full font-bold text-sm transition-all duration-300">
+            <button @click="selectTab('liviana')"
+                :class="active === 'liviana' ? 'bg-jht-dark text-white shadow-lg scale-105' : 'border border-gray-300 text-gray-500 hover:border-jht-dark hover:text-jht-dark opacity-80'"
+                class="px-8 py-3 rounded-full font-bold text-sm transition-all duration-500 ease-out transform">
                 Flota Liviana
             </button>
-            <button @click="active = 'mediana'"
-                :class="active === 'mediana' ? 'bg-jht-dark text-white shadow-md' : 'border border-gray-300 text-gray-500 hover:border-jht-dark hover:text-jht-dark'"
-                class="px-8 py-3 rounded-full font-bold text-sm transition-all duration-300">
+            <button @click="selectTab('mediana')"
+                :class="active === 'mediana' ? 'bg-jht-dark text-white shadow-lg scale-105' : 'border border-gray-300 text-gray-500 hover:border-jht-dark hover:text-jht-dark opacity-80'"
+                class="px-8 py-3 rounded-full font-bold text-sm transition-all duration-500 ease-out transform">
                 Flota Mediana
             </button>
-            <button @click="active = 'pesada'"
-                :class="active === 'pesada' ? 'bg-jht-dark text-white shadow-md' : 'border border-gray-300 text-gray-500 hover:border-jht-dark hover:text-jht-dark'"
-                class="px-8 py-3 rounded-full font-bold text-sm transition-all duration-300">
+            <button @click="selectTab('pesada')"
+                :class="active === 'pesada' ? 'bg-jht-dark text-white shadow-lg scale-105' : 'border border-gray-300 text-gray-500 hover:border-jht-dark hover:text-jht-dark opacity-80'"
+                class="px-8 py-3 rounded-full font-bold text-sm transition-all duration-500 ease-out transform">
                 Flota Pesada
             </button>
         </div>
 
         <!-- Fleet Details Card (Flexbox md:flex-row) -->
-        <div class="bg-gray-50 rounded-3xl p-6 md:p-10 shadow-lg border border-gray-100 flex flex-col md:flex-row gap-8 items-center transition-all duration-500">
+        <div :class="isTransitioning ? 'opacity-30 scale-[0.995]' : 'opacity-100 scale-100'"
+            class="bg-gray-50 rounded-3xl p-6 md:p-10 shadow-lg border border-gray-100 flex flex-col md:flex-row gap-8 items-center transition-all duration-500 ease-out transform">
             <!-- Video Container (Left) -->
             <div class="w-full md:w-1/2 relative rounded-2xl overflow-hidden shadow-md">
                 <span class="absolute top-4 left-4 bg-black/75 text-jht-gold font-bold text-xs px-3 py-1.5 rounded-lg z-10" x-text="'Capacidad: ' + fleet[active].capacity"></span>
@@ -156,7 +190,7 @@
                             <span class="material-symbols-outlined text-jht-gold text-lg">info</span>
                             <span class="font-bold text-sm uppercase tracking-wide">Descripción</span>
                         </div>
-                        <p class="text-gray-600 leading-relaxed" x-text="fleet[active].desc"></p>
+                        <p class="text-gray-600 leading-relaxed hover-slide-left-back" x-text="fleet[active].desc"></p>
                     </div>
 
                     <!-- Ideal Para Block -->
@@ -167,8 +201,12 @@
                         </div>
                         <ul class="space-y-2 pl-2">
                             <template x-for="item in fleet[active].idealFor" :key="item">
-                                <li class="flex items-center gap-2 text-gray-600 text-sm">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-jht-gold animate-pulse"></span>
+                                <li class="flex items-center gap-2 text-gray-600 text-sm hover:translate-x-1.5 transition-transform duration-300 cursor-default">
+                                    <span class="gps-icon-sm text-jht-gold -ml-1">
+                                        <span class="gps-dot"></span>
+                                        <span class="gps-ring gps-ring-1"></span>
+                                        <span class="gps-ring gps-ring-2"></span>
+                                    </span>
                                     <span x-text="item"></span>
                                 </li>
                             </template>
@@ -179,11 +217,11 @@
                 <!-- Specs Grid -->
                 <div class="border-t border-gray-200 pt-6 mt-auto">
                     <div class="grid grid-cols-2 gap-4">
-                        <div>
+                        <div class="p-2.5 rounded-xl hover:bg-gray-100/80 transition-colors duration-300">
                             <span class="block text-xs text-gray-400 mb-1 font-medium">Medidas (L x A x A)</span>
                             <span class="font-bold text-sm text-jht-dark" x-text="fleet[active].measures"></span>
                         </div>
-                        <div>
+                        <div class="p-2.5 rounded-xl hover:bg-gray-100/80 transition-colors duration-300">
                             <span class="block text-xs text-gray-400 mb-1 font-medium">Capacidad de Carga</span>
                             <span class="font-bold text-sm text-jht-dark" x-text="fleet[active].capacity"></span>
                         </div>
@@ -200,14 +238,20 @@
 <!-- ============================================ -->
 <section id="galeria-flota" class="bg-gray-50 w-full py-24 mb-24">
     <div class="max-w-7xl mx-auto px-4 md:px-10">
-        <h3 class="font-title text-3xl font-bold text-jht-dark mb-12 text-center">
-            Opciones <span class="text-jht-gold">Adicionales</span>
+        <h3 class="font-title text-3xl font-bold text-jht-dark mb-12 text-center flex items-center justify-center gap-3 animate-title-radar">
+            <span class="gps-icon text-jht-gold shrink-0">
+                <span class="gps-dot"></span>
+                <span class="gps-ring gps-ring-1"></span>
+                <span class="gps-ring gps-ring-2"></span>
+                <span class="gps-ring gps-ring-3"></span>
+            </span>
+            <span>Opciones <span class="text-jht-gold">Adicionales</span></span>
         </h3>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
 
             <!-- Card: Tractocamión Pesado -->
-            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col md:flex-row group">
+            <div class="scroll-trigger from-bottom delay-100 bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col md:flex-row group">
                 <div class="w-full md:w-2/5 h-48 md:h-auto overflow-hidden">
                     <img src="{% static 'assets/images/flota/TractocamionPesado.webp' %}" alt="Flota Pesada"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -215,20 +259,20 @@
                 <div class="p-6 md:w-3/5 flex flex-col justify-between">
                     <div>
                         <h4 class="font-title font-bold text-jht-dark text-lg mb-2">Tractocamión Pesado</h4>
-                        <p class="text-gray-500 text-sm mb-4">Para transporte nacional de gran volumen y peso. Máxima eficiencia en rutas largas.</p>
+                        <p class="text-gray-500 text-sm mb-4 hover-slide-left-back">Para transporte nacional de gran volumen y peso. Máxima eficiencia en rutas largas.</p>
                         <ul class="text-sm text-gray-500 space-y-1 mb-4">
-                            <li>• Ideal: Carga industrial, maquinaria</li>
-                            <li>• Capacidad: Hasta 30 TM</li>
+                            <li class="hover:translate-x-1.5 transition-transform duration-300 cursor-default">• Ideal: Carga industrial, maquinaria</li>
+                            <li class="hover:translate-x-1.5 transition-transform duration-300 cursor-default">• Capacidad: Hasta 30 TM</li>
                         </ul>
                     </div>
-                    <button class="text-jht-gold font-bold text-sm uppercase tracking-wider flex items-center gap-1 hover:gap-2 transition-all w-fit">
+                    <button class="text-jht-gold font-bold text-sm uppercase tracking-wider flex items-center gap-1 group-hover:gap-2 transition-all w-fit">
                         Ver Detalles <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
                     </button>
                 </div>
             </div>
 
             <!-- Card: Van de Distribución -->
-            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col md:flex-row group">
+            <div class="scroll-trigger from-bottom delay-200 bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-100 flex flex-col md:flex-row group">
                 <div class="w-full md:w-2/5 h-48 md:h-auto overflow-hidden">
                     <img src="{% static 'assets/images/flota/VandeDistribucion.webp' %}" alt="Flota Van"
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -236,13 +280,13 @@
                 <div class="p-6 md:w-3/5 flex flex-col justify-between">
                     <div>
                         <h4 class="font-title font-bold text-jht-dark text-lg mb-2">Van de Distribución</h4>
-                        <p class="text-gray-500 text-sm mb-4">Agilidad incomparable para entregas de última milla en zonas de difícil acceso.</p>
+                        <p class="text-gray-500 text-sm mb-4 hover-slide-left-back">Agilidad incomparable para entregas de última milla en zonas de difícil acceso.</p>
                         <ul class="text-sm text-gray-500 space-y-1 mb-4">
-                            <li>• Ideal: Entregas B2C, paquetería menor</li>
-                            <li>• Capacidad: Hasta 1.5 TM</li>
+                            <li class="hover:translate-x-1.5 transition-transform duration-300 cursor-default">• Ideal: Entregas B2C, paquetería menor</li>
+                            <li class="hover:translate-x-1.5 transition-transform duration-300 cursor-default">• Capacidad: Hasta 1.5 TM</li>
                         </ul>
                     </div>
-                    <button class="text-jht-gold font-bold text-sm uppercase tracking-wider flex items-center gap-1 hover:gap-2 transition-all w-fit">
+                    <button class="text-jht-gold font-bold text-sm uppercase tracking-wider flex items-center gap-1 group-hover:gap-2 transition-all w-fit">
                         Ver Detalles <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
                     </button>
                 </div>
@@ -256,21 +300,27 @@
 <!-- ============================================ -->
 <!-- 4. CTA — Llamada a la acción final           -->
 <!-- ============================================ -->
-<section id="cta-flota" class="max-w-7xl mx-auto px-4 md:px-10 mb-24 text-center w-full">
+<section id="cta-flota" class="max-w-7xl mx-auto px-4 md:px-10 mb-24 text-center w-full scroll-trigger from-bottom">
     <div class="bg-jht-dark text-white rounded-2xl p-12 md:p-16 shadow-lg relative overflow-hidden">
         <!-- Decorative blobs -->
         <div class="absolute top-0 right-0 w-64 h-64 bg-jht-gold opacity-10 rounded-full blur-3xl -mr-32 -mt-32"></div>
         <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-500 opacity-10 rounded-full blur-3xl -ml-32 -mb-32"></div>
 
         <div class="relative z-10">
-            <h2 class="font-title text-3xl md:text-[40px] md:leading-[48px] font-bold mb-6">
-                ¿Listo para optimizar su logística?
+            <h2 class="font-title text-3xl md:text-[40px] md:leading-[48px] font-bold mb-6 flex items-center justify-center gap-3 animate-title-radar py-1">
+                <span class="gps-icon text-jht-gold shrink-0">
+                    <span class="gps-dot"></span>
+                    <span class="gps-ring gps-ring-1"></span>
+                    <span class="gps-ring gps-ring-2"></span>
+                    <span class="gps-ring gps-ring-3"></span>
+                </span>
+                <span>¿Listo para optimizar su logística?</span>
             </h2>
-            <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed hover-slide-left-back">
                 Contamos con la flota adecuada para llevar su negocio más lejos. Solicite una cotización personalizada hoy mismo.
             </p>
             <a href="{% url 'website:contacto' %}"
-                class="inline-block bg-jht-gold text-jht-dark px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-yellow-400 transition-all shadow-md transform hover:-translate-y-1">
+                class="animate-click-pulse inline-block bg-jht-gold text-jht-dark px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-yellow-400 transition-all shadow-md transform hover:-translate-y-1 hover:shadow-xl">
                 Solicitar Cotización
             </a>
         </div>
