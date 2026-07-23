@@ -1,16 +1,600 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-{% block title %}Contacto - JHT Transport{% endblock %}
+{% block title %}Contacto - JHT Transport & Logística | Asesoría y Cotización{% endblock %}
+{% block meta_description %}Póngase en contacto con JHT Transport Company S.A.C. Solicite cotizaciones de transporte de
+carga, distribución y logística con seguimiento GPS en todo el Perú.{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/flota.css' %}" rel="stylesheet">
+<style>
+    @media (min-width: 1024px) {
+        .cobertura-grid {
+            grid-template-columns: 7fr 5fr !important;
+            gap: 3rem !important;
+            align-items: stretch;
+        }
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<section class="relative w-full min-h-[70vh] flex items-center justify-center bg-jht-dark pt-32">
-            <div class="absolute inset-0 bg-jht-gray/10 mix-blend-overlay"></div>
-            <div class="text-center z-10 px-4">
-                <span class="material-symbols-outlined text-jht-gold text-6xl mb-4 animate-bounce">construction</span>
-                <h1 class="font-title text-5xl font-extrabold text-white mb-4">Contacto</h1>
-                <p class="text-gray-300 text-lg">Esta página se encuentra en construcción.</p>
-                <a href="{% url 'website:index' %}" class="inline-block mt-8 btn-primary py-3 px-8 text-lg">Volver al Inicio</a>
+
+<!-- ============================================ -->
+<!-- 1. HERO — Banner Carrusel Contacto           -->
+<!-- ============================================ -->
+<div class="bg-white w-full">
+    <section id="hero-contacto" class="relative w-full flex items-center justify-center clip-diagonal overflow-hidden"
+        style="min-height: 90vh;">
+        <!-- Background Image Carousel (Auto 3s) -->
+        <div class="absolute inset-0 z-0 overflow-hidden" x-data="contactoCarousel">
+            <!-- Slide 0 -->
+            <div class="hero-slide"
+                :class="active === 0 ? 'slide-active' : (active - 1 === 0 || (active === 0 && 0 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                <img src="{% static 'assets/images/contacto/banner_callcenter_3.webp' %}" alt="Atención al Cliente JHT"
+                    class="w-full h-full object-cover animate-fade-in">
             </div>
-        </section>
+
+            <!-- Slide 1 -->
+            <div class="hero-slide"
+                :class="active === 1 ? 'slide-active' : (active - 1 === 1 || (active === 0 && 1 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                <img src="{% static 'assets/images/contacto/banner_dia_2.webp' %}" alt="Operaciones Logísticas JHT"
+                    class="w-full h-full object-cover animate-fade-in">
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide"
+                :class="active === 2 ? 'slide-active' : (active - 1 === 2 || (active === 0 && 2 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                <img src="{% static 'assets/images/contacto/banner_dia_cola_3.webp' %}" alt="Flota de Transporte JHT"
+                    class="w-full h-full object-cover animate-fade-in">
+            </div>
+
+            <!-- Overlay Gradient for text readability -->
+            <div class="absolute inset-0 bg-jht-dark/65 z-20 pointer-events-none"></div>
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-jht-dark/95 via-jht-dark/50 to-transparent z-20 pointer-events-none">
+            </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 w-full px-4 md:px-10 max-w-7xl mx-auto text-left">
+            <!-- Badge -->
+            <div
+                class="animate-hero-badge inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6">
+                <span class="gps-icon-sm text-jht-gold -ml-1">
+                    <span class="gps-dot"></span>
+                    <span class="gps-ring gps-ring-1"></span>
+                    <span class="gps-ring gps-ring-2"></span>
+                </span>
+                ATENCIÓN Y ASESORÍA LOGÍSTICA 24/7
+            </div>
+            <!-- Title -->
+            <h1
+                class="animate-hero-title font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
+                Centro de <br>
+                <span class="text-jht-gold">Contacto</span>
+            </h1>
+            <!-- Subtitle -->
+            <div
+                x-data="typewriter('Estamos listos para atender sus consultas sobre transporte de carga pesada, distribución y logística empresarial en todo el Perú. Cotice con un asesor en tiempo real.')">
+                <p class="animate-hero-desc text-lg text-gray-300 max-w-xl opacity-90 drop-shadow-md leading-relaxed min-h-[84px] md:min-h-[90px]"
+                    x-text="text">
+                    Estamos listos para atender sus consultas sobre transporte de carga pesada, distribución y logística
+                    empresarial en todo el Perú. Cotice con un asesor en tiempo real.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- ============================================ -->
+<!-- 2. FORMULARIO Y CANALES DE CONTACTO          -->
+<!-- ============================================ -->
+<section id="seccion-contacto" class="w-full py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-10">
+
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2
+                class="font-title text-4xl md:text-5xl font-bold text-jht-dark flex items-center justify-center gap-3 animate-title-radar py-2 leading-relaxed">
+                <span class="gps-icon text-jht-gold shrink-0">
+                    <span class="gps-dot"></span>
+                    <span class="gps-ring gps-ring-1"></span>
+                    <span class="gps-ring gps-ring-2"></span>
+                    <span class="gps-ring gps-ring-3"></span>
+                </span>
+                <span>¿En qué podemos <span class="text-jht-gold">Ayudarte?</span></span>
+            </h2>
+            <p class="text-gray-500 text-lg max-w-2xl mx-auto mt-3 hover-slide-left-back">
+                Déjanos tu mensaje y un asesor especialista en logística se pondrá en contacto contigo a la brevedad.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+            <!-- Left Form (7 Cols) -->
+            <div
+                class="lg:col-span-7 scroll-trigger from-left bg-gray-50 rounded-3xl p-8 md:p-10 shadow-lg border border-gray-100">
+                <h3 class="font-title text-2xl font-bold text-jht-dark mb-6 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-jht-gold">edit_note</span>
+                    Envíanos tu Consulta
+                </h3>
+
+                <form id="form-contacto" class="space-y-5" data-form-type="consulta-general" novalidate>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1">
+                            <label for="con-nombre"
+                                class="text-xs font-bold text-jht-dark uppercase tracking-wider">Nombre y Apellido
+                                *</label>
+                            <input type="text" id="con-nombre" name="nombre" placeholder="Ej. Juan Pérez"
+                                class="jht-input bg-white" required aria-required="true">
+                            <span id="err-con-nombre"
+                                class="text-[11px] text-jht-gold font-semibold px-2 hidden"></span>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label for="con-email"
+                                class="text-xs font-bold text-jht-dark uppercase tracking-wider">Email Corporativo
+                                *</label>
+                            <input type="email" id="con-email" name="email" placeholder="ejemplo@empresa.com"
+                                class="jht-input bg-white" required aria-required="true" list="email-domains-contacto"
+                                autocomplete="off">
+                            <datalist id="email-domains-contacto"></datalist>
+                            <span id="err-con-email" class="text-[11px] text-jht-gold font-semibold px-2 hidden"></span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-1">
+                            <label for="con-telefono"
+                                class="text-xs font-bold text-jht-dark uppercase tracking-wider">Teléfono / WhatsApp
+                                *</label>
+                            <input type="tel" id="con-telefono" name="telefono" placeholder="Ej. 987654321"
+                                class="jht-input bg-white" required aria-required="true">
+                            <span id="err-con-telefono"
+                                class="text-[11px] text-jht-gold font-semibold px-2 hidden"></span>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label for="con-empresa"
+                                class="text-xs font-bold text-jht-dark uppercase tracking-wider">Empresa
+                                (Opcional)</label>
+                            <input type="text" id="con-empresa" name="empresa" placeholder="Razón Social / RUC"
+                                class="jht-input bg-white">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="con-mensaje"
+                            class="text-xs font-bold text-jht-dark uppercase tracking-wider">Mensaje o Requerimiento
+                            *</label>
+                        <textarea id="con-mensaje" name="mensaje"
+                            placeholder="Detalla el servicio que necesitas (origen, destino, peso aproximado, etc.)"
+                            rows="4" class="jht-input bg-white resize-none" required aria-required="true"></textarea>
+                        <div class="flex justify-between items-center px-2">
+                            <span id="err-con-mensaje" class="text-[11px] text-jht-gold font-semibold hidden"></span>
+                            <span id="word-count" class="text-[11px] text-gray-400 ml-auto">0/100 palabras</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit" id="btn-contacto"
+                            class="w-full bg-jht-gold text-jht-dark font-bold text-sm uppercase tracking-wider py-4 px-8 rounded-xl hover:bg-yellow-400 transition-all shadow-md transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group">
+                            <span id="btn-contacto-content" class="flex items-center justify-center gap-2">
+                                Enviar Mensaje
+                                <span
+                                    class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform"
+                                    aria-hidden="true">send</span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right Info & Map Cards (5 Cols) -->
+            <div class="lg:col-span-5 scroll-trigger from-right space-y-6">
+
+                <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100 shadow-sm space-y-6">
+                    <h3
+                        class="font-title text-xl font-bold text-jht-dark border-b border-gray-200 pb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-jht-gold">contact_phone</span>
+                        Información Directa
+                    </h3>
+
+                    <!-- Direccion -->
+                    <div class="flex items-start gap-4 hover:translate-x-1.5 transition-transform duration-300">
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-jht-gold/10 text-jht-gold flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-2xl">location_on</span>
+                        </div>
+                        <div>
+                            <h4 class="font-title font-bold text-jht-dark text-sm">Oficina Principal</h4>
+                            <p class="text-gray-500 text-sm leading-relaxed">
+                                {% if config %}{{ config.direccion }}{% else %}Santa Anita, Lima - Perú{% endif %}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Telefono -->
+                    <div class="flex items-start gap-4 hover:translate-x-1.5 transition-transform duration-300">
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-jht-gold/10 text-jht-gold flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-2xl">call</span>
+                        </div>
+                        <div>
+                            <h4 class="font-title font-bold text-jht-dark text-sm">Central Telefónica / WhatsApp</h4>
+                            <a href="tel:+{% if config %}{{ config.whatsapp }}{% else %}51935833467{% endif %}"
+                                class="text-gray-600 font-semibold text-sm hover:text-jht-gold transition-colors">
+                                {% if config %}{{ config.telefono_principal }}{% else %}(+51) 935 833 467{% endif %}
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="flex items-start gap-4 hover:translate-x-1.5 transition-transform duration-300">
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-jht-gold/10 text-jht-gold flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-2xl">mail</span>
+                        </div>
+                        <div>
+                            <h4 class="font-title font-bold text-jht-dark text-sm">Correo Electrónico</h4>
+                            <a href="mailto:{% if config %}{{ config.correo_contacto }}{% else %}comercial@transportejht.com{% endif %}"
+                                class="text-gray-600 font-semibold text-sm hover:text-jht-gold transition-colors">
+                                {% if config %}{{ config.correo_contacto }}{% else %}comercial@transportejht.com{% endif %}
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Horario -->
+                    <div class="flex items-start gap-4 hover:translate-x-1.5 transition-transform duration-300">
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-jht-gold/10 text-jht-gold flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-2xl">schedule</span>
+                        </div>
+                        <div>
+                            <h4 class="font-title font-bold text-jht-dark text-sm">Horario de Atención</h4>
+                            <p class="text-gray-500 text-sm">
+                                Lun - Vie: 8:00 AM - 6:00 PM <br>
+                                Sábados: 8:00 AM - 1:00 PM
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Google Maps Frame -->
+                <div class="rounded-3xl overflow-hidden shadow-md border border-gray-200 h-60 relative group">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31207.07385289988!2d-76.97!3d-12.04!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c5c75a01e0b7%3A0xa5c5c75a01e0b7!2sSanta%20Anita%2C%20Lima!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" title="Ubicación de JHT Transport en Google Maps">
+                    </iframe>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ============================================ -->
+<!-- 3. COBERTURA NACIONAL — Mapa + Rutas         -->
+<!-- ============================================ -->
+<section id="cobertura-nacional"
+    class="w-full py-24 md:py-32 bg-gradient-to-b from-jht-dark via-slate-950 to-jht-dark text-white overflow-hidden relative">
+
+    <!-- Ambient glow decorators -->
+    <div
+        class="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-jht-gold/5 rounded-full blur-[100px] pointer-events-none">
+    </div>
+    <div class="absolute right-0 top-1/3 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 md:px-10">
+
+        <!-- ── Header ─────────────────────────────────── -->
+        <div class="text-center mb-16 scroll-trigger from-bottom">
+            <h2
+                class="font-title text-4xl md:text-5xl font-bold text-white flex items-center justify-center gap-3 animate-title-radar py-2 leading-relaxed">
+                <span class="gps-icon text-jht-gold shrink-0">
+                    <span class="gps-dot"></span>
+                    <span class="gps-ring gps-ring-1"></span>
+                    <span class="gps-ring gps-ring-2"></span>
+                    <span class="gps-ring gps-ring-3"></span>
+                </span>
+                Cobertura <span class="text-jht-gold ml-3">Nacional 24/7</span>
+            </h2>
+            <p class="text-gray-400 text-base md:text-lg max-w-xl mx-auto mt-4 font-light leading-relaxed">
+                Tres grandes rutas. Todo el Perú. Un solo operador logístico de confianza.
+            </p>
+        </div>
+
+        <!-- ── Main Layout: Left Text | Right Map ──────── -->
+        <div style="display:grid; grid-template-columns: 1fr; gap:2.5rem;" class="cobertura-grid" x-data="{
+                active: 0,
+                timer: null,
+                routes: [
+                    {
+                        id: 0,
+                        accentHex: '#D4AC0D',
+                        label: 'RUTA 01',
+                        name: 'Ruta Costa',
+                        icon: 'route',
+                        tagline: 'Panamericana Norte\u2013Sur',
+                        detail: 'Servicio de alta frecuencia a lo largo de toda la costa peruana. Carga pesada, refrigerada, paquetería express y distribución masiva con seguimiento GPS en tiempo real.',
+                        kpis: [
+                            { label: 'Tránsito', val: '24\u201348 h', icon: 'schedule' },
+                            { label: 'Salidas', val: 'Diarias', icon: 'departure_board' },
+                            { label: 'Flota', val: 'Furgones & Tractos', icon: 'local_shipping' }
+                        ],
+                        destinos: ['Lima','Callao','Trujillo','Chiclayo','Piura','Chimbote','Ica','Tacna']
+                    },
+                    {
+                        id: 1,
+                        accentHex: '#60A5FA',
+                        label: 'RUTA 02',
+                        name: 'Ruta Sierra',
+                        icon: 'terrain',
+                        tagline: 'Vías de Altura & Centros Mineros',
+                        detail: 'Logística especializada en zonas de alta montaña con unidades de frenos auxiliares y conductores certificados para rutas de alta exigencia geográfica.',
+                        kpis: [
+                            { label: 'Tránsito', val: '24\u201372 h', icon: 'schedule' },
+                            { label: 'Salidas', val: 'Interdiarias', icon: 'departure_board' },
+                            { label: 'Flota', val: 'Camiones Pesados', icon: 'local_shipping' }
+                        ],
+                        destinos: ['Arequipa','Cusco','Huancayo','Cajamarca','Ayacucho','Puno','Huaraz']
+                    },
+                    {
+                        id: 2,
+                        accentHex: '#34D399',
+                        label: 'RUTA 03',
+                        name: 'Ruta Selva',
+                        icon: 'forest',
+                        tagline: 'Amazonía & Oriente Peruano',
+                        detail: 'Furgones herméticos e isotérmicos hacia las regiones más remotas del Perú. Cadena de frío garantizada y embalaje especializado para climas tropicales.',
+                        kpis: [
+                            { label: 'Tránsito', val: '48\u201396 h', icon: 'schedule' },
+                            { label: 'Salidas', val: 'Programadas', icon: 'departure_board' },
+                            { label: 'Flota', val: 'Furgones Herméticos', icon: 'local_shipping' }
+                        ],
+                        destinos: ['Tarapoto','Pucallpa','Iquitos','Tingo María','Puerto Maldonado','Moyobamba']
+                    }
+                ],
+                startTimer() {
+                    this.stopTimer();
+                    this.timer = setInterval(() => { this.active = (this.active + 1) % 3; }, 4000);
+                },
+                stopTimer() { if (this.timer) clearInterval(this.timer); },
+                select(idx) { this.active = idx; this.startTimer(); }
+            }" x-init="startTimer()" @mouseenter="stopTimer()" @mouseleave="startTimer()">
+
+            <!-- ═══ LEFT COLUMN: Selector + Details ═══ -->
+            <div class="flex flex-col gap-6 md:gap-8 scroll-trigger from-left">
+
+                <!-- Route Selector Tabs -->
+                <div class="flex gap-3 flex-wrap">
+                    <template x-for="(route, idx) in routes" :key="route.id">
+                        <button @click="select(idx)"
+                            class="flex items-center gap-2.5 px-6 py-3 rounded-2xl text-sm font-bold border transition-all duration-300 transform"
+                            :class="active === idx
+                                ? 'border-transparent text-jht-dark shadow-xl scale-105'
+                                : 'bg-white/5 text-gray-300 border-white/10 hover:bg-white/15 hover:text-white'"
+                            :style="active === idx ? `background: ${route.accentHex}` : ''">
+                            <span class="material-symbols-outlined text-lg" x-text="route.icon"></span>
+                            <span x-text="route.name"></span>
+                            <span class="w-2 h-2 rounded-full bg-jht-dark animate-pulse ml-1"
+                                x-show="active === idx"></span>
+                        </button>
+                    </template>
+                </div>
+
+                <!-- Detail Card (UI/UX Calibrado & Compacto) -->
+                <div class="relative bg-slate-900/70 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-white/20 flex flex-col gap-6 md:gap-7 flex-1 shadow-2xl overflow-hidden transition-all duration-500"
+                    :style="'border-color: ' + routes[active].accentHex + '40'">
+
+                    <!-- Glowing Top Line Accent -->
+                    <div class="absolute top-0 left-0 right-0 h-1 transition-colors duration-500"
+                        :style="'background: linear-gradient(90deg, transparent, ' + routes[active].accentHex + ', transparent)'">
+                    </div>
+
+                    <!-- Route Header -->
+                    <div class="space-y-2">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/15 text-[11px] font-extrabold uppercase tracking-wider"
+                            :style="'color: ' + routes[active].accentHex">
+                            <span class="w-1.5 h-1.5 rounded-full animate-pulse"
+                                :style="'background: ' + routes[active].accentHex"></span>
+                            <span x-text="routes[active].label + ' — ' + routes[active].tagline"></span>
+                        </div>
+                        <h3
+                            class="font-title text-2xl md:text-3xl font-extrabold text-white flex items-center gap-3 pt-1">
+                            <div
+                                class="w-11 h-11 rounded-xl flex items-center justify-center bg-white/10 border border-white/15 shrink-0 shadow-inner">
+                                <span class="material-symbols-outlined text-2xl"
+                                    :style="'color: ' + routes[active].accentHex" x-text="routes[active].icon"></span>
+                            </div>
+                            <span x-text="routes[active].name"></span>
+                        </h3>
+                    </div>
+
+                    <!-- Description -->
+                    <p class="text-gray-200 text-sm md:text-base leading-relaxed font-light"
+                        x-text="routes[active].detail"></p>
+
+                    <!-- Telemetry KPI Chips (Espaciados) -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-5 py-2">
+                        <template x-for="kpi in routes[active].kpis" :key="kpi.label">
+                            <div
+                                class="flex items-center gap-3 bg-white/5 border border-white/15 rounded-2xl p-3.5 hover:border-white/30 transition-all shadow-sm">
+                                <span class="material-symbols-outlined text-xl shrink-0"
+                                    :style="'color: ' + routes[active].accentHex" x-text="kpi.icon"></span>
+                                <div class="min-w-0">
+                                    <span class="block text-[9px] uppercase tracking-wider text-gray-400 font-bold"
+                                        x-text="kpi.label"></span>
+                                    <span class="block text-xs font-bold text-white leading-tight truncate"
+                                        x-text="kpi.val"></span>
+                                </div>
+                            </div>
+                        </template>
+                        <!-- GPS live badge -->
+                        <div
+                            class="flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-3.5 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                            <div class="min-w-0">
+                                <span class="block text-[9px] uppercase tracking-wider text-gray-400 font-bold">GPS
+                                    24/7</span>
+                                <span class="block text-xs font-bold text-emerald-400 leading-tight">En Vivo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Destination Badges (Pills) -->
+                    <div class="border-t border-white/15 pt-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[11px] uppercase tracking-widest font-extrabold flex items-center gap-1.5"
+                                :style="'color: ' + routes[active].accentHex">
+                                <span class="material-symbols-outlined text-sm">map</span>
+                                Destinos Principales
+                            </span>
+                            <span
+                                class="text-[10px] text-gray-400 bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full"
+                                x-text="routes[active].destinos.length + ' Ciudades'"></span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <template x-for="ciudad in routes[active].destinos" :key="ciudad">
+                                <span
+                                    class="px-3.5 py-1.5 bg-white/10 rounded-full text-xs font-medium text-white hover:bg-white/20 transition-all duration-200 cursor-default"
+                                    x-text="ciudad"></span>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="pt-4 border-t border-white/10 mt-auto">
+                        <a href="tel:+{% if config %}{{ config.whatsapp }}{% else %}51935833467{% endif %}"
+                            class="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-2xl text-xs md:text-sm font-extrabold uppercase tracking-wider transition-all duration-300 shadow-xl hover:scale-[1.01] transform border border-white/10"
+                            :style="'background: ' + routes[active].accentHex + '; color: ' + (routes[active].id === 0 ? '#0f172a' : '#ffffff')">
+                            Solicitar esta Ruta
+                            <span class="material-symbols-outlined text-base">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ RIGHT COLUMN: Map Image (Toma todo el alto) ═══ -->
+            <div class="flex flex-col h-full scroll-trigger from-right">
+
+                <!-- Map Display Card -->
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl flex-1 bg-slate-900 h-full min-h-[550px]"
+                    style="border: 1px solid rgba(255,255,255,0.15);"
+                    :style="'border-color: ' + routes[active].accentHex + '30'">
+
+                    <!-- Map image fader (3 static Django images) -->
+                    <img src="{% static 'assets/images/contacto/ConberturaNacional1.webp' %}"
+                        alt="Mapa Cobertura Nacional JHT - Costa"
+                        class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ease-in-out p-4"
+                        :class="active === 0 ? 'opacity-100' : 'opacity-0'">
+                    <img src="{% static 'assets/images/contacto/ConberturaNacional2.webp' %}"
+                        alt="Mapa Cobertura Nacional JHT - Sierra"
+                        class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ease-in-out p-4"
+                        :class="active === 1 ? 'opacity-100' : 'opacity-0'">
+                    <img src="{% static 'assets/images/contacto/ConberturaNacional3.webp' %}"
+                        alt="Mapa Cobertura Nacional JHT - Selva"
+                        class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ease-in-out p-4"
+                        :class="active === 2 ? 'opacity-100' : 'opacity-0'">
+
+                    <!-- Subtle bottom gradient for legibility -->
+                    <div
+                        class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-slate-950/60 to-transparent pointer-events-none z-10">
+                    </div>
+
+                    <!-- Image indicator dots -->
+                    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2.5 z-20">
+                        <template x-for="(route, idx) in routes" :key="route.id">
+                            <button @click="select(idx)" class="w-2.5 h-2.5 rounded-full transition-all duration-300"
+                                :class="active === idx ? 'scale-125' : 'bg-white/30'"
+                                :style="active === idx ? `background: ${route.accentHex}; transform: scale(1.4)` : ''">
+                            </button>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- ============================================ -->
+<!-- 4. CTA — Llamada a la Acción Final           -->
+<!-- ============================================ -->
+<section id="cta-contacto" class="w-full py-24 bg-white text-center scroll-trigger from-bottom">
+    <div class="max-w-7xl mx-auto px-4 md:px-10">
+        <div
+            class="bg-gray-50 text-jht-dark rounded-3xl p-12 md:p-16 shadow-md border border-gray-100 relative overflow-hidden">
+            <!-- Decorative blobs -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-jht-gold/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
+
+            <div class="relative z-10">
+                <h2
+                    class="font-title text-3xl md:text-[40px] md:leading-[48px] font-bold mb-6 flex items-center justify-center gap-3 animate-title-radar py-1 text-jht-dark">
+                    <span class="gps-icon text-jht-gold shrink-0">
+                        <span class="gps-dot"></span>
+                        <span class="gps-ring gps-ring-1"></span>
+                        <span class="gps-ring gps-ring-2"></span>
+                        <span class="gps-ring gps-ring-3"></span>
+                    </span>
+                    <span>¿Necesitas una Cotización Inmediata?</span>
+                </h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto mb-10 leading-relaxed hover-slide-left-back">
+                    Nuestro equipo comercial responderá a tu solicitud con una propuesta personalizada adaptada a tu
+                    empresa.
+                </p>
+                <a href="tel:+{% if config %}{{ config.whatsapp }}{% else %}51935833467{% endif %}"
+                    class="animate-click-pulse inline-block bg-jht-gold text-jht-dark px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-yellow-400 transition-all shadow-md transform hover:-translate-y-1 hover:shadow-xl">
+                    Llamar a un Asesor
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% block extra_js %}
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('contactoCarousel', () => ({
+            active: 0,
+            totalSlides: 3,
+            intervalId: null,
+            init() {
+                this.startInterval();
+            },
+            startInterval() {
+                this.stopInterval();
+                this.intervalId = setInterval(() => {
+                    this.next();
+                }, 3000);
+            },
+            stopInterval() {
+                if (this.intervalId) {
+                    clearInterval(this.intervalId);
+                    this.intervalId = null;
+                }
+            },
+            next() {
+                this.active = (this.active + 1) % this.totalSlides;
+            },
+            prev() {
+                this.active = (this.active === 0) ? this.totalSlides - 1 : this.active - 1;
+            },
+            goTo(index) {
+                this.active = index;
+            }
+        }));
+    });
+</script>
+{% endblock %}
+
 {% endblock %}
