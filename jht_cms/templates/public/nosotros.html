@@ -1,16 +1,471 @@
 {% extends "base/base.html" %}
 {% load static %}
 
-{% block title %}Nosotros - JHT Transport{% endblock %}
+{% block title %}Sobre Nosotros - JHT Transport & Logística | Empresa Peruana de Carga{% endblock %}
+{% block meta_description %}Conozca a JHT Transport Company S.A.C., empresa peruana líder en transporte de carga pesada, ligera y logística integral con seguimiento GPS en tiempo real en todo el Perú.{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/flota.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
-<section class="relative w-full min-h-[70vh] flex items-center justify-center bg-jht-dark pt-32">
-            <div class="absolute inset-0 bg-jht-gray/10 mix-blend-overlay"></div>
-            <div class="text-center z-10 px-4">
-                <span class="material-symbols-outlined text-jht-gold text-6xl mb-4 animate-bounce">construction</span>
-                <h1 class="font-title text-5xl font-extrabold text-white mb-4">Nosotros</h1>
-                <p class="text-gray-300 text-lg">Esta página se encuentra en construcción.</p>
-                <a href="{% url 'website:index' %}" class="inline-block mt-8 btn-primary py-3 px-8 text-lg">Volver al Inicio</a>
+
+<!-- ============================================ -->
+<!-- 1. HERO — Banner Carrusel Diagonal           -->
+<!-- ============================================ -->
+<div class="bg-white w-full">
+    <section id="hero-nosotros" class="relative w-full flex items-center justify-center clip-diagonal overflow-hidden" style="min-height: 90vh;">
+        <!-- Background Image Carousel (Auto 3s) -->
+        <div class="absolute inset-0 z-0 overflow-hidden" x-data="nosotrosCarousel">
+            <!-- Slide 0 -->
+            <div class="hero-slide"
+                :class="active === 0 ? 'slide-active' : (active - 1 === 0 || (active === 0 && 0 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                <img src="{% static 'assets/images/nosotros/banner_1.webp' %}" alt="Nosotros JHT Banner 1" class="w-full h-full object-cover animate-fade-in">
             </div>
-        </section>
+
+            <!-- Slide 1 -->
+            <div class="hero-slide"
+                :class="active === 1 ? 'slide-active' : (active - 1 === 1 || (active === 0 && 1 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                <img src="{% static 'assets/images/nosotros/banner_2.webp' %}" alt="Nosotros JHT Banner 2" class="w-full h-full object-cover animate-fade-in">
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="hero-slide"
+                :class="active === 2 ? 'slide-active' : (active - 1 === 2 || (active === 0 && 2 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                <img src="{% static 'assets/images/nosotros/banner_3.webp' %}" alt="Nosotros JHT Banner 3" class="w-full h-full object-cover animate-fade-in">
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="hero-slide"
+                :class="active === 3 ? 'slide-active' : (active - 1 === 3 || (active === 0 && 3 === totalSlides - 1) ? 'slide-prev' : 'slide-next')">
+                <img src="{% static 'assets/images/nosotros/banner_4.webp' %}" alt="Nosotros JHT Banner 4" class="w-full h-full object-cover animate-fade-in">
+            </div>
+
+            <!-- Overlay Gradient for text readability (z-20 to stay above slides) -->
+            <div class="absolute inset-0 bg-jht-dark/65 z-20 pointer-events-none"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-jht-dark/95 via-jht-dark/50 to-transparent z-20 pointer-events-none"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 w-full px-4 md:px-10 max-w-7xl mx-auto text-left">
+            <!-- Badge -->
+            <div class="animate-hero-badge inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6">
+                <span class="gps-icon-sm text-jht-gold -ml-1">
+                    <span class="gps-dot"></span>
+                    <span class="gps-ring gps-ring-1"></span>
+                    <span class="gps-ring gps-ring-2"></span>
+                </span>
+                EMPRESA PERUANA DE LOGÍSTICA
+            </div>
+            <!-- Title -->
+            <h1 class="animate-hero-title font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
+                Sobre <br>
+                <span class="text-jht-gold">Nosotros</span>
+            </h1>
+            <!-- Subtitle -->
+            <div x-data="typewriter('Líderes en transporte de carga y logística empresarial en Perú con seguimiento GPS en tiempo real. Más de 10 años garantizando puntualidad, seguridad y trazabilidad total.')">
+                <p class="animate-hero-desc text-lg text-gray-300 max-w-xl opacity-90 drop-shadow-md leading-relaxed min-h-[84px] md:min-h-[90px]"
+                    x-text="text">
+                    Líderes en transporte de carga y logística empresarial en Perú con seguimiento GPS en tiempo real. Más de 10 años garantizando puntualidad, seguridad y trazabilidad total.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- ============================================ -->
+<!-- 2. ¿QUIÉNES SOMOS? (2 Imágenes Fader 2s)      -->
+<!-- ============================================ -->
+<section id="quienes-somos" class="w-full py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Left Text Content -->
+            <div class="scroll-trigger from-left">
+                <h2 class="font-title text-4xl md:text-5xl font-bold text-jht-dark flex items-center justify-start gap-3 animate-title-radar py-2 leading-relaxed mb-6">
+                    <span class="gps-icon text-jht-gold shrink-0">
+                        <span class="gps-dot"></span>
+                        <span class="gps-ring gps-ring-1"></span>
+                        <span class="gps-ring gps-ring-2"></span>
+                        <span class="gps-ring gps-ring-3"></span>
+                    </span>
+                    <span>¿Quiénes <span class="text-jht-gold">Somos?</span></span>
+                </h2>
+
+                <p class="text-gray-600 text-lg leading-relaxed mb-6 hover-slide-left-back font-light">
+                    Somos una empresa peruana especializada en <strong class="text-jht-dark font-semibold">transporte de carga terrestre y logística empresarial integral</strong>. Contamos con amplia experiencia en la distribución de mercancías en Lima y a nivel nacional.
+                </p>
+                <p class="text-gray-600 text-base leading-relaxed mb-8 hover-slide-left-back">
+                    Nuestra infraestructura moderna, unida a una flota diversificada y a la integración de sistemas de rastreo satelital GPS en tiempo real, nos permite ofrecer a nuestros clientes un control absoluto de su cadena de suministro.
+                </p>
+
+                <!-- Statistics Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-gray-100">
+                    <div class="p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                        <span class="block text-3xl font-extrabold text-jht-gold font-title">+10</span>
+                        <span class="text-xs text-gray-500 font-medium uppercase tracking-wider">Años de Exp.</span>
+                    </div>
+                    <div class="p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                        <span class="block text-3xl font-extrabold text-jht-gold font-title">100%</span>
+                        <span class="text-xs text-gray-500 font-medium uppercase tracking-wider">Cobertura</span>
+                    </div>
+                    <div class="p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                        <span class="block text-3xl font-extrabold text-jht-gold font-title">24/7</span>
+                        <span class="text-xs text-gray-500 font-medium uppercase tracking-wider">Monitoreo GPS</span>
+                    </div>
+                    <div class="p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                        <span class="block text-3xl font-extrabold text-jht-gold font-title">99.8%</span>
+                        <span class="text-xs text-gray-500 font-medium uppercase tracking-wider">Puntualidad</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Interactive 2-Image Fader (2s) -->
+            <div class="scroll-trigger from-right relative">
+                <div x-data="{
+                    active: 0,
+                    timer: null,
+                    startTimer() {
+                        this.stopTimer();
+                        this.timer = setInterval(() => {
+                            this.active = (this.active + 1) % 2;
+                        }, 2000);
+                    },
+                    stopTimer() {
+                        if (this.timer) clearInterval(this.timer);
+                    }
+                }" 
+                x-init="startTimer()" 
+                @mouseenter="stopTimer()" 
+                @mouseleave="startTimer()" 
+                class="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 h-96 md:h-[460px] group">
+                    
+                    <!-- Image 1 -->
+                    <img src="{% static 'assets/images/nosotros/quienesSomos1.webp' %}" alt="Quiénes Somos JHT Operaciones"
+                        class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-105"
+                        :class="active === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'">
+                    
+                    <!-- Image 2 -->
+                    <img src="{% static 'assets/images/nosotros/quienesSomos2.webp' %}" alt="Quiénes Somos JHT Flota"
+                        class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-105"
+                        :class="active === 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'">
+
+                    <!-- Decorative Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-jht-dark/80 via-transparent to-transparent pointer-events-none"></div>
+
+                    <!-- Live Indicator Badge -->
+                    <div class="absolute bottom-6 left-6 right-6 bg-jht-dark/85 backdrop-blur-md p-4 rounded-2xl text-white border border-white/10 flex items-center justify-between shadow-lg">
+                        <div class="flex items-center gap-2">
+                            <span class="gps-icon-sm text-jht-gold">
+                                <span class="gps-dot"></span>
+                                <span class="gps-ring gps-ring-1"></span>
+                                <span class="gps-ring gps-ring-2"></span>
+                            </span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-jht-gold">Operaciones en Todo el Perú</span>
+                        </div>
+                        <span class="text-xs text-gray-300 font-medium">GPS Activo 24h</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- 3. MISIÓN Y VISIÓN (2 Imágenes Fader c/u)    -->
+<!-- ============================================ -->
+<section id="mision-vision" class="bg-gray-50 w-full py-24">
+    <div class="max-w-7xl mx-auto px-4 md:px-10">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="font-title text-4xl md:text-5xl font-bold text-jht-dark flex items-center justify-center gap-3 animate-title-radar py-2 leading-relaxed">
+                <span class="gps-icon text-jht-gold shrink-0">
+                    <span class="gps-dot"></span>
+                    <span class="gps-ring gps-ring-1"></span>
+                    <span class="gps-ring gps-ring-2"></span>
+                    <span class="gps-ring gps-ring-3"></span>
+                </span>
+                <span>Nuestro <span class="text-jht-gold">Propósito</span></span>
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+            <!-- Card 1: MISIÓN -->
+            <div class="scroll-trigger from-left bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col group hover:shadow-2xl transition-all duration-500">
+                <!-- Fader Slider 2s (Mision) -->
+                <div x-data="{
+                    active: 0,
+                    timer: null,
+                    startTimer() {
+                        this.stopTimer();
+                        this.timer = setInterval(() => {
+                            this.active = (this.active + 1) % 3;
+                        }, 2000);
+                    },
+                    stopTimer() {
+                        if (this.timer) clearInterval(this.timer);
+                    }
+                }"
+                x-init="startTimer()"
+                @mouseenter="stopTimer()"
+                @mouseleave="startTimer()"
+                class="relative h-64 sm:h-72 overflow-hidden">
+                    <img src="{% static 'assets/images/nosotros/Misiondelivering.webp' %}" alt="Misión JHT Entrega"
+                        class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-105"
+                        :class="active === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'">
+                    <img src="{% static 'assets/images/nosotros/MisiontruckloadingPort.webp' %}" alt="Misión JHT Logística Puerto"
+                        class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-105"
+                        :class="active === 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'">
+                    <img src="{% static 'assets/images/nosotros/MisioPackage.webp' %}" alt="Misión JHT Paquetería"
+                        class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-105"
+                        :class="active === 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'">
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-jht-dark/70 via-transparent to-transparent"></div>
+                    
+                    <div class="absolute top-4 left-4 bg-jht-gold text-jht-dark px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wider shadow">
+                        Misión Corporativa
+                    </div>
+                </div>
+
+                <!-- Text Side -->
+                <div class="p-8 flex flex-col justify-between flex-1">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-jht-gold text-3xl">target</span>
+                            <h3 class="font-title text-2xl font-bold text-jht-dark">Nuestra Misión</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed mb-6 hover-slide-left-back">
+                            Brindar soluciones de transporte de carga y logística integral altamente eficientes, seguras y confiables, utilizando tecnología de rastreo GPS en tiempo real y personal capacitado para maximizar el valor de la cadena de suministro de nuestros clientes.
+                        </p>
+                        <ul class="space-y-3 border-t border-gray-100 pt-4">
+                            <li class="flex items-center gap-2 text-gray-600 text-sm hover:translate-x-1.5 transition-transform duration-300 cursor-default">
+                                <span class="gps-icon-sm text-jht-gold -ml-1">
+                                    <span class="gps-dot"></span>
+                                    <span class="gps-ring gps-ring-1"></span>
+                                    <span class="gps-ring gps-ring-2"></span>
+                                </span>
+                                <span>Puntualidad y seguridad garantizada en cada entrega.</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-gray-600 text-sm hover:translate-x-1.5 transition-transform duration-300 cursor-default">
+                                <span class="gps-icon-sm text-jht-gold -ml-1">
+                                    <span class="gps-dot"></span>
+                                    <span class="gps-ring gps-ring-1"></span>
+                                    <span class="gps-ring gps-ring-2"></span>
+                                </span>
+                                <span>Protocolos estrictos para carga pesada y distribución.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: VISIÓN -->
+            <div class="scroll-trigger from-right bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col group hover:shadow-2xl transition-all duration-500">
+                <!-- Fader Slider 2s (Vision) -->
+                <div x-data="{
+                    active: 0,
+                    timer: null,
+                    startTimer() {
+                        this.stopTimer();
+                        this.timer = setInterval(() => {
+                            this.active = (this.active + 1) % 2;
+                        }, 2000);
+                    },
+                    stopTimer() {
+                        if (this.timer) clearInterval(this.timer);
+                    }
+                }"
+                x-init="startTimer()"
+                @mouseenter="stopTimer()"
+                @mouseleave="startTimer()"
+                class="relative h-64 sm:h-72 overflow-hidden">
+                    <img src="{% static 'assets/images/nosotros/VisionFleet.webp' %}" alt="Visión JHT Flota"
+                        class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-105"
+                        :class="active === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'">
+                    <img src="{% static 'assets/images/nosotros/VisionTruck.webp' %}" alt="Visión JHT Transporte"
+                        class="absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-105"
+                        :class="active === 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'">
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-jht-dark/70 via-transparent to-transparent"></div>
+
+                    <div class="absolute top-4 left-4 bg-jht-gold text-jht-dark px-3 py-1 rounded-full font-bold text-xs uppercase tracking-wider shadow">
+                        Visión Estratégica
+                    </div>
+                </div>
+
+                <!-- Text Side -->
+                <div class="p-8 flex flex-col justify-between flex-1">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-jht-gold text-3xl">visibility</span>
+                            <h3 class="font-title text-2xl font-bold text-jht-dark">Nuestra Visión</h3>
+                        </div>
+                        <p class="text-gray-600 leading-relaxed mb-6 hover-slide-left-back">
+                            Consolidarnos para el 2030 como la empresa líder y referente en transporte terrestre y servicios logísticos integrales en el Perú, reconocida por la innovación tecnológica, la excelencia operativa y el compromiso constante con la satisfacción del cliente.
+                        </p>
+                        <ul class="space-y-3 border-t border-gray-100 pt-4">
+                            <li class="flex items-center gap-2 text-gray-600 text-sm hover:translate-x-1.5 transition-transform duration-300 cursor-default">
+                                <span class="gps-icon-sm text-jht-gold -ml-1">
+                                    <span class="gps-dot"></span>
+                                    <span class="gps-ring gps-ring-1"></span>
+                                    <span class="gps-ring gps-ring-2"></span>
+                                </span>
+                                <span>Innovación digital y trazabilidad GPS avanzada.</span>
+                            </li>
+                            <li class="flex items-center gap-2 text-gray-600 text-sm hover:translate-x-1.5 transition-transform duration-300 cursor-default">
+                                <span class="gps-icon-sm text-jht-gold -ml-1">
+                                    <span class="gps-dot"></span>
+                                    <span class="gps-ring gps-ring-1"></span>
+                                    <span class="gps-ring gps-ring-2"></span>
+                                </span>
+                                <span>Expansión continua de flota multi-tonelaje moderna.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- 4. VALORES CORPORATIVOS                      -->
+<!-- ============================================ -->
+<section id="valores" class="w-full py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-10">
+        <div class="text-center mb-16">
+            <h2 class="font-title text-4xl md:text-5xl font-bold text-jht-dark flex items-center justify-center gap-3 animate-title-radar py-2 leading-relaxed">
+                <span class="gps-icon text-jht-gold shrink-0">
+                    <span class="gps-dot"></span>
+                    <span class="gps-ring gps-ring-1"></span>
+                    <span class="gps-ring gps-ring-2"></span>
+                    <span class="gps-ring gps-ring-3"></span>
+                </span>
+                <span>Valores <span class="text-jht-gold">Corporativos</span></span>
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Valor 1 -->
+            <div class="scroll-trigger from-bottom delay-100 bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-jht-gold/40 hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                <div class="w-14 h-14 bg-jht-gold/10 rounded-2xl flex items-center justify-center text-jht-gold mb-6 group-hover:bg-jht-gold group-hover:text-jht-dark transition-colors duration-300">
+                    <span class="material-symbols-outlined text-3xl">verified_user</span>
+                </div>
+                <h3 class="font-title text-xl font-bold text-jht-dark mb-3">Seguridad y Garantía</h3>
+                <p class="text-gray-500 text-sm leading-relaxed hover-slide-left-back">
+                    Protocolos estrictos de resguardo y monitoreo GPS activo las 24 horas para salvaguardar cada envío.
+                </p>
+            </div>
+
+            <!-- Valor 2 -->
+            <div class="scroll-trigger from-bottom delay-200 bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-jht-gold/40 hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                <div class="w-14 h-14 bg-jht-gold/10 rounded-2xl flex items-center justify-center text-jht-gold mb-6 group-hover:bg-jht-gold group-hover:text-jht-dark transition-colors duration-300">
+                    <span class="material-symbols-outlined text-3xl">schedule</span>
+                </div>
+                <h3 class="font-title text-xl font-bold text-jht-dark mb-3">Puntualidad Absoluta</h3>
+                <p class="text-gray-500 text-sm leading-relaxed hover-slide-left-back">
+                    Compromiso riguroso con las ventanas horarias de despacho y recepción acordadas.
+                </p>
+            </div>
+
+            <!-- Valor 3 -->
+            <div class="scroll-trigger from-bottom delay-300 bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-jht-gold/40 hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                <div class="w-14 h-14 bg-jht-gold/10 rounded-2xl flex items-center justify-center text-jht-gold mb-6 group-hover:bg-jht-gold group-hover:text-jht-dark transition-colors duration-300">
+                    <span class="material-symbols-outlined text-3xl">handshake</span>
+                </div>
+                <h3 class="font-title text-xl font-bold text-jht-dark mb-3">Transparencia</h3>
+                <p class="text-gray-500 text-sm leading-relaxed hover-slide-left-back">
+                    Comunicación constante, honesta y trazabilidad abierta durante todo el trayecto de la carga.
+                </p>
+            </div>
+
+            <!-- Valor 4 -->
+            <div class="scroll-trigger from-bottom delay-400 bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:border-jht-gold/40 hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+                <div class="w-14 h-14 bg-jht-gold/10 rounded-2xl flex items-center justify-center text-jht-gold mb-6 group-hover:bg-jht-gold group-hover:text-jht-dark transition-colors duration-300">
+                    <span class="material-symbols-outlined text-3xl">cell_tower</span>
+                </div>
+                <h3 class="font-title text-xl font-bold text-jht-dark mb-3">Innovación Logística</h3>
+                <p class="text-gray-500 text-sm leading-relaxed hover-slide-left-back">
+                    Incorporación permanente de tecnología satelital y optimización de rutas inteligentes.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- 5. CTA — Llamada a la Acción Final           -->
+<!-- ============================================ -->
+<section id="cta-nosotros" class="max-w-7xl mx-auto px-4 md:px-10 mb-24 text-center w-full scroll-trigger from-bottom">
+    <div class="bg-jht-dark text-white rounded-2xl p-12 md:p-16 shadow-lg relative overflow-hidden">
+        <!-- Decorative blobs -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-jht-gold opacity-10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-500 opacity-10 rounded-full blur-3xl -ml-32 -mb-32"></div>
+
+        <div class="relative z-10">
+            <h2 class="font-title text-3xl md:text-[40px] md:leading-[48px] font-bold mb-6 flex items-center justify-center gap-3 animate-title-radar py-1">
+                <span class="gps-icon text-jht-gold shrink-0">
+                    <span class="gps-dot"></span>
+                    <span class="gps-ring gps-ring-1"></span>
+                    <span class="gps-ring gps-ring-2"></span>
+                    <span class="gps-ring gps-ring-3"></span>
+                </span>
+                <span>¿Listo para impulsar su cadena logística?</span>
+            </h2>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed hover-slide-left-back">
+                Trabaje con un socio estratégico con cobertura nacional y monitoreo GPS activo. Contáctenos hoy mismo.
+            </p>
+            <a href="{% url 'website:contacto' %}"
+                class="animate-click-pulse inline-block bg-jht-gold text-jht-dark px-8 py-4 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-yellow-400 transition-all shadow-md transform hover:-translate-y-1 hover:shadow-xl">
+                Solicitar Cotización
+            </a>
+        </div>
+    </div>
+</section>
+
+{% block extra_js %}
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('nosotrosCarousel', () => ({
+            active: 0,
+            totalSlides: 4,
+            intervalId: null,
+            init() {
+                this.startInterval();
+            },
+            startInterval() {
+                this.stopInterval();
+                this.intervalId = setInterval(() => {
+                    this.next();
+                }, 3000);
+            },
+            stopInterval() {
+                if (this.intervalId) {
+                    clearInterval(this.intervalId);
+                    this.intervalId = null;
+                }
+            },
+            next() {
+                this.active = (this.active + 1) % this.totalSlides;
+            },
+            prev() {
+                this.active = (this.active === 0) ? this.totalSlides - 1 : this.active - 1;
+            },
+            goTo(index) {
+                this.active = index;
+            }
+        }));
+    });
+</script>
+{% endblock %}
+
 {% endblock %}

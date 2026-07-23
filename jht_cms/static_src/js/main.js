@@ -12,19 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
-    // 3. Scroll-Triggered Animations (Intersection Observer)
+    // 3. Scroll-Triggered Animations (Intersection Observer - Repeatable)
     const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.15 // 15% of the element must be visible
     };
 
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
+    const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                // Stop observing once animated so it only animates once
-                observer.unobserve(entry.target); 
+            } else {
+                entry.target.classList.remove('is-visible');
             }
         });
     }, observerOptions);
