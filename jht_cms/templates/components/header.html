@@ -26,7 +26,7 @@
         <nav class="hidden lg:flex items-center justify-end gap-6 xl:gap-10 flex-1 pr-4" role="navigation" aria-label="Menú principal">
 
             {% if is_landing %}
-            <!-- Menú Landing: anclas internas (#sección) con iconos rotatorios (Inicio removido) -->
+            <!-- Menú Landing: anclas internas (#sección) -->
             <a href="#servicios"
                 class="group relative font-title font-semibold text-[17px] xl:text-[19px] text-jht-dark hover:text-jht-gold flex items-center gap-1.5 transition-all duration-300">
                 <span class="material-symbols-outlined text-jht-gold text-[22px] group-hover:rotate-[360deg] transition-all duration-700">category</span>
@@ -49,38 +49,32 @@
             </a>
 
             {% else %}
-            <!-- Menú Páginas Internas: links reales con ocultación inteligente de pestaña activa (Inicio removido) -->
-            {% if request.path != '/servicios/' %}
+            <!-- Menú Páginas Internas: todos los links visibles con resalte de página activa -->
+            <a href="{% url 'website:index' %}"
+                class="group relative font-title font-semibold text-[17px] xl:text-[19px] {% if request.path == '/' %}text-jht-gold{% else %}text-jht-dark hover:text-jht-gold{% endif %} flex items-center gap-1.5 transition-all duration-300">
+                <span class="material-symbols-outlined text-jht-gold text-[22px] group-hover:rotate-[360deg] transition-all duration-700">home</span>
+                <span class="relative inline-block">Inicio<span class="absolute left-0 -bottom-1.5 {% if request.path == '/' %}w-full{% else %}w-0 group-hover:w-full{% endif %} h-[3px] bg-jht-gold transition-all duration-300"></span></span>
+            </a>
             <a href="{% url 'website:servicios' %}"
-                class="group relative font-title font-semibold text-[17px] xl:text-[19px] text-jht-dark hover:text-jht-gold flex items-center gap-1.5 transition-all duration-300">
+                class="group relative font-title font-semibold text-[17px] xl:text-[19px] {% if request.path == '/servicios/' %}text-jht-gold{% else %}text-jht-dark hover:text-jht-gold{% endif %} flex items-center gap-1.5 transition-all duration-300">
                 <span class="material-symbols-outlined text-jht-gold text-[22px] group-hover:rotate-[360deg] transition-all duration-700">category</span>
-                <span class="relative inline-block">Servicios<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <span class="relative inline-block">Servicios<span class="absolute left-0 -bottom-1.5 {% if request.path == '/servicios/' %}w-full{% else %}w-0 group-hover:w-full{% endif %} h-[3px] bg-jht-gold transition-all duration-300"></span></span>
             </a>
-            {% endif %}
-
-            {% if request.path != '/flota/' %}
             <a href="{% url 'website:flota' %}"
-                class="group relative font-title font-semibold text-[17px] xl:text-[19px] text-jht-dark hover:text-jht-gold flex items-center gap-1.5 transition-all duration-300">
+                class="group relative font-title font-semibold text-[17px] xl:text-[19px] {% if request.path == '/flota/' %}text-jht-gold{% else %}text-jht-dark hover:text-jht-gold{% endif %} flex items-center gap-1.5 transition-all duration-300">
                 <span class="material-symbols-outlined text-jht-gold text-[22px] group-hover:rotate-[360deg] transition-all duration-700">route</span>
-                <span class="relative inline-block">Flota<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <span class="relative inline-block">Flota<span class="absolute left-0 -bottom-1.5 {% if request.path == '/flota/' %}w-full{% else %}w-0 group-hover:w-full{% endif %} h-[3px] bg-jht-gold transition-all duration-300"></span></span>
             </a>
-            {% endif %}
-
-            {% if request.path != '/nosotros/' %}
             <a href="{% url 'website:nosotros' %}"
-                class="group relative font-title font-semibold text-[17px] xl:text-[19px] text-jht-dark hover:text-jht-gold flex items-center gap-1.5 transition-all duration-300">
+                class="group relative font-title font-semibold text-[17px] xl:text-[19px] {% if request.path == '/nosotros/' %}text-jht-gold{% else %}text-jht-dark hover:text-jht-gold{% endif %} flex items-center gap-1.5 transition-all duration-300">
                 <span class="material-symbols-outlined text-jht-gold text-[22px] group-hover:rotate-[360deg] transition-all duration-700">handshake</span>
-                <span class="relative inline-block">Nosotros<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <span class="relative inline-block">Nosotros<span class="absolute left-0 -bottom-1.5 {% if request.path == '/nosotros/' %}w-full{% else %}w-0 group-hover:w-full{% endif %} h-[3px] bg-jht-gold transition-all duration-300"></span></span>
             </a>
-            {% endif %}
-
-            {% if request.path != '/contacto/' %}
             <a href="{% url 'website:contacto' %}"
-                class="group relative font-title font-semibold text-[17px] xl:text-[19px] text-jht-dark hover:text-jht-gold flex items-center gap-1.5 transition-all duration-300">
+                class="group relative font-title font-semibold text-[17px] xl:text-[19px] {% if request.path == '/contacto/' %}text-jht-gold{% else %}text-jht-dark hover:text-jht-gold{% endif %} flex items-center gap-1.5 transition-all duration-300">
                 <span class="material-symbols-outlined text-jht-gold text-[22px] group-hover:rotate-[360deg] transition-all duration-700">support_agent</span>
-                <span class="relative inline-block">Contacto<span class="absolute left-0 -bottom-1.5 w-0 h-[3px] bg-jht-gold transition-all duration-300 group-hover:w-full"></span></span>
+                <span class="relative inline-block">Contacto<span class="absolute left-0 -bottom-1.5 {% if request.path == '/contacto/' %}w-full{% else %}w-0 group-hover:w-full{% endif %} h-[3px] bg-jht-gold transition-all duration-300"></span></span>
             </a>
-            {% endif %}
             {% endif %}
         </nav>
 
@@ -108,45 +102,41 @@
         {% if is_landing %}
         <a href="#servicios" @click="mobileMenuOpen = false"
             class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold text-jht-dark transition-colors duration-300 hover:text-jht-gold hover:bg-gray-50">
-            <span class="material-symbols-outlined text-jht-gold text-[18px]">category</span>Servicios
+            <span class="material-symbols-outlined text-jht-gold text-[20px]">category</span>Servicios
         </a>
         <a href="#flota" @click="mobileMenuOpen = false"
             class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold text-jht-dark transition-colors duration-300 hover:text-jht-gold hover:bg-gray-50">
-            <span class="material-symbols-outlined text-jht-gold text-[18px]">route</span>Flota
+            <span class="material-symbols-outlined text-jht-gold text-[20px]">route</span>Flota
         </a>
         <a href="#nosotros" @click="mobileMenuOpen = false"
             class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold text-jht-dark transition-colors duration-300 hover:text-jht-gold hover:bg-gray-50">
-            <span class="material-symbols-outlined text-jht-gold text-[18px]">handshake</span>Nosotros
+            <span class="material-symbols-outlined text-jht-gold text-[20px]">handshake</span>Nosotros
         </a>
         <a href="#contacto" @click="mobileMenuOpen = false"
             class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold text-jht-dark transition-colors duration-300 hover:text-jht-gold hover:bg-gray-50">
-            <span class="material-symbols-outlined text-jht-gold text-[18px]">support_agent</span>Contacto
+            <span class="material-symbols-outlined text-jht-gold text-[20px]">support_agent</span>Contacto
         </a>
         {% else %}
-        {% if request.path != '/servicios/' %}
+        <a href="{% url 'website:index' %}" @click="mobileMenuOpen = false"
+            class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold {% if request.path == '/' %}text-jht-gold bg-gray-50{% else %}text-jht-dark hover:text-jht-gold hover:bg-gray-50{% endif %} transition-colors duration-300">
+            <span class="material-symbols-outlined text-jht-gold text-[20px]">home</span>Inicio
+        </a>
         <a href="{% url 'website:servicios' %}" @click="mobileMenuOpen = false"
-            class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold text-jht-dark transition-colors duration-300 hover:text-jht-gold hover:bg-gray-50">
-            <span class="material-symbols-outlined text-jht-gold text-[18px]">inventory_2</span>Servicios
+            class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold {% if request.path == '/servicios/' %}text-jht-gold bg-gray-50{% else %}text-jht-dark hover:text-jht-gold hover:bg-gray-50{% endif %} transition-colors duration-300">
+            <span class="material-symbols-outlined text-jht-gold text-[20px]">category</span>Servicios
         </a>
-        {% endif %}
-        {% if request.path != '/flota/' %}
         <a href="{% url 'website:flota' %}" @click="mobileMenuOpen = false"
-            class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold text-jht-dark transition-colors duration-300 hover:text-jht-gold hover:bg-gray-50">
-            <span class="material-symbols-outlined text-jht-gold text-[18px]">local_shipping</span>Flota
+            class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold {% if request.path == '/flota/' %}text-jht-gold bg-gray-50{% else %}text-jht-dark hover:text-jht-gold hover:bg-gray-50{% endif %} transition-colors duration-300">
+            <span class="material-symbols-outlined text-jht-gold text-[20px]">route</span>Flota
         </a>
-        {% endif %}
-        {% if request.path != '/nosotros/' %}
         <a href="{% url 'website:nosotros' %}" @click="mobileMenuOpen = false"
-            class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold text-jht-dark transition-colors duration-300 hover:text-jht-gold hover:bg-gray-50">
-            <span class="material-symbols-outlined text-jht-gold text-[18px]">groups</span>Nosotros
+            class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold {% if request.path == '/nosotros/' %}text-jht-gold bg-gray-50{% else %}text-jht-dark hover:text-jht-gold hover:bg-gray-50{% endif %} transition-colors duration-300">
+            <span class="material-symbols-outlined text-jht-gold text-[20px]">handshake</span>Nosotros
         </a>
-        {% endif %}
-        {% if request.path != '/contacto/' %}
         <a href="{% url 'website:contacto' %}" @click="mobileMenuOpen = false"
-            class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold text-jht-dark transition-colors duration-300 hover:text-jht-gold hover:bg-gray-50">
-            <span class="material-symbols-outlined text-jht-gold text-[18px]">headset_mic</span>Contacto
+            class="flex items-center gap-3 border-b border-gray-100 px-6 py-4 text-base font-semibold {% if request.path == '/contacto/' %}text-jht-gold bg-gray-50{% else %}text-jht-dark hover:text-jht-gold hover:bg-gray-50{% endif %} transition-colors duration-300">
+            <span class="material-symbols-outlined text-jht-gold text-[20px]">support_agent</span>Contacto
         </a>
-        {% endif %}
         {% endif %}
     </div>
 </header>
