@@ -37,103 +37,208 @@
                     </div>
                 </div>
 
-                <!-- Tracking & Quick Services Card (SEO-Optimized & High Attraction - Luminous Slate Glass Design) -->
+                <!-- Tracking & Quick Services Card (SEO-Optimized & High Attraction - Luminous High-Contrast Design) -->
                 <div class="w-full md:w-1/2 flex justify-center md:justify-end scroll-trigger from-right" style="transition-delay: 0.8s;">
-                    <div class="bg-[#0e1d35]/90 backdrop-blur-2xl rounded-3xl border border-jht-gold/50 shadow-[0_20px_50px_rgba(0,0,0,0.6)] shadow-jht-gold/15 hover:border-jht-gold transition-all duration-500 overflow-hidden w-full max-w-md flex flex-col group/card">
+                    <div class="bg-[#132746]/95 backdrop-blur-2xl rounded-3xl border-2 border-jht-gold/60 shadow-[0_25px_60px_rgba(0,0,0,0.85)] shadow-jht-gold/20 hover:border-jht-gold transition-all duration-500 overflow-hidden w-full max-w-md flex flex-col group/card">
                         
-                        <!-- Header Banner con Marca y Badge Dorado Lumninoso -->
-                        <div class="bg-gradient-to-r from-[#142642] via-[#0e1d35] to-[#142642] py-4 px-6 flex justify-between items-center border-b border-jht-gold/30">
+                        <!-- Header Banner con Marca y Badge Dorado Luminoso -->
+                        <div class="bg-gradient-to-r from-[#1c365d] via-[#142845] to-[#1c365d] py-4 px-6 flex justify-between items-center border-b border-jht-gold/40">
                             <div class="flex items-center gap-2.5">
                                 <span class="gps-icon-sm text-jht-gold">
                                     <span class="gps-dot"></span>
                                     <span class="gps-ring gps-ring-1"></span>
                                     <span class="gps-ring gps-ring-2"></span>
                                 </span>
-                                <span class="font-bold tracking-wider text-xs font-title text-white uppercase drop-shadow">Trazabilidad Satelital JHT</span>
+                                <span class="font-extrabold tracking-wider text-xs font-title text-white uppercase drop-shadow-md">Trazabilidad Satelital JHT</span>
                             </div>
-                            <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-jht-gold/25 text-jht-gold border border-jht-gold/40 shadow-sm">GPS 24/7</span>
-                        </div>
+                            <span class="text-[11px] font-mono font-extrabold px-2.5 py-0.5 rounded-full bg-jht-gold/30 text-jht-gold border border-jht-gold/60 shadow-sm">GPS 24/7</span>
+                        </div>                        <!-- Visualizador Interactivo de los 5 Estados Operativos (Dinámico con Alpine.js) -->
+                        <div class="p-6 bg-gradient-to-b from-[#142747] to-[#1a355d] border-b border-white/20"
+                            x-data="{
+                                activeStep: 3,
+                                timer: null,
+                                steps: [
+                                    { id: 1, label: 'Recepción', title: 'Carga Recibida en Almacén Base', icon: 'inventory_2' },
+                                    { id: 2, label: 'Almacén', title: 'Despacho y Preparación', icon: 'warehouse' },
+                                    { id: 3, label: 'En Ruta', title: 'En Tránsito Nacional Satelital', icon: 'local_shipping' },
+                                    { id: 4, label: 'Destino', title: 'Llegada a Sede de Destino', icon: 'location_on' },
+                                    { id: 5, label: 'Entrega', title: 'Entregado Conformado', icon: 'check_circle' }
+                                ],
+                                startAutoCycle() {
+                                    this.stopAutoCycle();
+                                    this.timer = setInterval(() => {
+                                        this.activeStep = (this.activeStep % 5) + 1;
+                                    }, 2400);
+                                },
+                                stopAutoCycle() {
+                                    if (this.timer) clearInterval(this.timer);
+                                },
+                                selectStep(id) {
+                                    this.activeStep = id;
+                                    this.startAutoCycle();
+                                }
+                            }"
+                            x-init="startAutoCycle()"
+                            @mouseenter="stopAutoCycle()"
+                            @mouseleave="startAutoCycle()">
 
-                        <!-- Visualizador Interactivo de los 5 Estados Operativos (Claro y Luminoso) -->
-                        <div class="p-6 bg-gradient-to-b from-[#0b172a] to-[#0e1d35] border-b border-white/15">
-                            <p class="text-xs font-bold text-gray-300 uppercase tracking-widest text-center mb-4 font-title">Estados de Rastreo de Carga</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <p class="text-xs font-extrabold text-white uppercase tracking-widest font-title drop-shadow-sm">Estados de Rastreo de Carga</p>
+                                <span class="text-[10px] font-bold text-jht-gold bg-jht-gold/20 border border-jht-gold/40 px-2 py-0.5 rounded-full transition-all duration-300" x-text="steps[activeStep - 1].title"></span>
+                            </div>
                             
-                            <!-- Timeline de 5 Puntos con Conexión Dorada Animada -->
+                            <!-- Timeline de 5 Puntos con Conexión Dorada Dinámica -->
                             <div class="relative flex items-center justify-between px-2 mb-2 py-1">
                                 <!-- Línea de Conexión de Fondo -->
-                                <div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-1 bg-white/20 z-0 rounded-full"></div>
+                                <div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-1.5 bg-white/30 z-0 rounded-full"></div>
                                 
-                                <!-- Línea de Progreso Dorado -->
-                                <div class="absolute left-6 w-3/4 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-r from-jht-gold via-[#ffd700] to-jht-gold/90 z-0 rounded-full shadow-[0_0_10px_rgba(255,204,0,0.8)]"></div>
+                                <!-- Línea de Progreso Dorado Dinámica -->
+                                <div class="absolute left-6 top-1/2 -translate-y-1/2 h-1.5 bg-gradient-to-r from-jht-gold via-[#ffe033] to-jht-gold z-0 rounded-full shadow-[0_0_12px_rgba(255,204,0,0.9)] transition-all duration-700 ease-out"
+                                    :style="'width: calc(' + (activeStep - 1) * 25 + '% * 0.88)'"></div>
                                 
                                 <!-- Destello Viajero sobre la Línea (Shimmer Effect) -->
-                                <div class="absolute left-6 w-3/4 top-1/2 -translate-y-1/2 h-1 overflow-hidden z-0 rounded-full pointer-events-none">
+                                <div class="absolute left-6 top-1/2 -translate-y-1/2 h-1.5 overflow-hidden z-0 rounded-full pointer-events-none transition-all duration-700 ease-out"
+                                    :style="'width: calc(' + (activeStep - 1) * 25 + '% * 0.88)'">
                                     <div class="w-1/2 h-full bg-gradient-to-r from-transparent via-white to-transparent animate-line-shimmer opacity-100"></div>
                                 </div>
 
                                 <!-- Punto 1: Recepción -->
-                                <div class="relative z-10 flex flex-col items-center group/step cursor-pointer transition-all duration-300 hover:scale-125" title="Carga Recibida">
-                                    <div class="w-7 h-7 rounded-full bg-jht-gold text-jht-dark flex items-center justify-center font-bold text-xs shadow-md shadow-jht-gold/50 group-hover/step:shadow-jht-gold transition-shadow">
-                                        <span class="material-symbols-outlined text-sm">inventory_2</span>
-                                    </div>
+                                <div @click="selectStep(1)" class="relative z-10 flex flex-col items-center group/step cursor-pointer transition-all duration-300 hover:scale-125" title="Carga Recibida">
+                                    <template x-if="1 < activeStep">
+                                        <div class="w-7.5 h-7.5 rounded-full bg-jht-gold text-jht-dark flex items-center justify-center font-extrabold text-xs shadow-lg shadow-jht-gold/60">
+                                            <span class="material-symbols-outlined text-sm font-bold">inventory_2</span>
+                                        </div>
+                                    </template>
+                                    <template x-if="1 === activeStep">
+                                        <div class="relative flex items-center justify-center">
+                                            <span class="absolute -inset-2 rounded-full bg-jht-gold/60 animate-ping"></span>
+                                            <div class="relative w-8.5 h-8.5 rounded-full bg-gradient-to-br from-jht-gold via-[#ffe033] to-jht-gold text-jht-dark flex items-center justify-center font-extrabold text-xs animate-gold-pulse shadow-[0_0_15px_rgba(255,204,0,0.9)]">
+                                                <span class="material-symbols-outlined text-base font-bold">inventory_2</span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template x-if="1 > activeStep">
+                                        <div class="w-7.5 h-7.5 rounded-full bg-[#224270] border-2 border-white/40 text-white flex items-center justify-center font-extrabold text-xs shadow-md">
+                                            <span class="material-symbols-outlined text-sm font-bold">inventory_2</span>
+                                        </div>
+                                    </template>
                                 </div>
 
                                 <!-- Punto 2: Despacho -->
-                                <div class="relative z-10 flex flex-col items-center group/step cursor-pointer transition-all duration-300 hover:scale-125" title="Despacho en Almacén">
-                                    <div class="w-7 h-7 rounded-full bg-jht-gold text-jht-dark flex items-center justify-center font-bold text-xs shadow-md shadow-jht-gold/50 group-hover/step:shadow-jht-gold transition-shadow">
-                                        <span class="material-symbols-outlined text-sm">warehouse</span>
-                                    </div>
+                                <div @click="selectStep(2)" class="relative z-10 flex flex-col items-center group/step cursor-pointer transition-all duration-300 hover:scale-125" title="Despacho en Almacén">
+                                    <template x-if="2 < activeStep">
+                                        <div class="w-7.5 h-7.5 rounded-full bg-jht-gold text-jht-dark flex items-center justify-center font-extrabold text-xs shadow-lg shadow-jht-gold/60">
+                                            <span class="material-symbols-outlined text-sm font-bold">warehouse</span>
+                                        </div>
+                                    </template>
+                                    <template x-if="2 === activeStep">
+                                        <div class="relative flex items-center justify-center">
+                                            <span class="absolute -inset-2 rounded-full bg-jht-gold/60 animate-ping"></span>
+                                            <div class="relative w-8.5 h-8.5 rounded-full bg-gradient-to-br from-jht-gold via-[#ffe033] to-jht-gold text-jht-dark flex items-center justify-center font-extrabold text-xs animate-gold-pulse shadow-[0_0_15px_rgba(255,204,0,0.9)]">
+                                                <span class="material-symbols-outlined text-base font-bold">warehouse</span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template x-if="2 > activeStep">
+                                        <div class="w-7.5 h-7.5 rounded-full bg-[#224270] border-2 border-white/40 text-white flex items-center justify-center font-extrabold text-xs shadow-md">
+                                            <span class="material-symbols-outlined text-sm font-bold">warehouse</span>
+                                        </div>
+                                    </template>
                                 </div>
 
-                                <!-- Punto 3: En Tránsito (Activo con Aura Pulsante Dorada) -->
-                                <div class="relative z-10 flex flex-col items-center group/step cursor-pointer transition-all duration-300 hover:scale-125" title="En Ruta Nacional">
-                                    <span class="absolute -inset-1.5 rounded-full bg-jht-gold/50 animate-ping"></span>
-                                    <div class="relative w-8 h-8 rounded-full bg-gradient-to-br from-jht-gold via-[#ffd700] to-jht-gold text-jht-dark flex items-center justify-center font-bold text-xs animate-gold-pulse">
-                                        <span class="material-symbols-outlined text-base">local_shipping</span>
-                                    </div>
+                                <!-- Punto 3: En Tránsito -->
+                                <div @click="selectStep(3)" class="relative z-10 flex flex-col items-center group/step cursor-pointer transition-all duration-300 hover:scale-125" title="En Ruta Nacional">
+                                    <template x-if="3 < activeStep">
+                                        <div class="w-7.5 h-7.5 rounded-full bg-jht-gold text-jht-dark flex items-center justify-center font-extrabold text-xs shadow-lg shadow-jht-gold/60">
+                                            <span class="material-symbols-outlined text-sm font-bold">local_shipping</span>
+                                        </div>
+                                    </template>
+                                    <template x-if="3 === activeStep">
+                                        <div class="relative flex items-center justify-center">
+                                            <span class="absolute -inset-2 rounded-full bg-jht-gold/60 animate-ping"></span>
+                                            <div class="relative w-8.5 h-8.5 rounded-full bg-gradient-to-br from-jht-gold via-[#ffe033] to-jht-gold text-jht-dark flex items-center justify-center font-extrabold text-xs animate-gold-pulse shadow-[0_0_15px_rgba(255,204,0,0.9)]">
+                                                <span class="material-symbols-outlined text-base font-bold">local_shipping</span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template x-if="3 > activeStep">
+                                        <div class="w-7.5 h-7.5 rounded-full bg-[#224270] border-2 border-white/40 text-white flex items-center justify-center font-extrabold text-xs shadow-md">
+                                            <span class="material-symbols-outlined text-sm font-bold">local_shipping</span>
+                                        </div>
+                                    </template>
                                 </div>
 
                                 <!-- Punto 4: Destino -->
-                                <div class="relative z-10 flex flex-col items-center group/step cursor-pointer transition-all duration-300 hover:scale-125" title="En Sede de Destino">
-                                    <div class="w-7 h-7 rounded-full bg-[#182a47] border-2 border-jht-gold/70 text-jht-gold flex items-center justify-center font-bold text-xs group-hover/step:border-jht-gold group-hover/step:bg-jht-gold group-hover/step:text-jht-dark transition-all">
-                                        <span class="material-symbols-outlined text-sm">location_on</span>
-                                    </div>
+                                <div @click="selectStep(4)" class="relative z-10 flex flex-col items-center group/step cursor-pointer transition-all duration-300 hover:scale-125" title="En Sede de Destino">
+                                    <template x-if="4 < activeStep">
+                                        <div class="w-7.5 h-7.5 rounded-full bg-jht-gold text-jht-dark flex items-center justify-center font-extrabold text-xs shadow-lg shadow-jht-gold/60">
+                                            <span class="material-symbols-outlined text-sm font-bold">location_on</span>
+                                        </div>
+                                    </template>
+                                    <template x-if="4 === activeStep">
+                                        <div class="relative flex items-center justify-center">
+                                            <span class="absolute -inset-2 rounded-full bg-jht-gold/60 animate-ping"></span>
+                                            <div class="relative w-8.5 h-8.5 rounded-full bg-gradient-to-br from-jht-gold via-[#ffe033] to-jht-gold text-jht-dark flex items-center justify-center font-extrabold text-xs animate-gold-pulse shadow-[0_0_15px_rgba(255,204,0,0.9)]">
+                                                <span class="material-symbols-outlined text-base font-bold">location_on</span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template x-if="4 > activeStep">
+                                        <div class="w-7.5 h-7.5 rounded-full bg-[#224270] border-2 border-white/40 text-white flex items-center justify-center font-extrabold text-xs shadow-md">
+                                            <span class="material-symbols-outlined text-sm font-bold">location_on</span>
+                                        </div>
+                                    </template>
                                 </div>
 
                                 <!-- Punto 5: Entregado -->
-                                <div class="relative z-10 flex flex-col items-center group/step cursor-pointer transition-all duration-300 hover:scale-125" title="Entregado Conformado">
-                                    <div class="w-7 h-7 rounded-full bg-[#182a47] border border-white/30 text-gray-300 flex items-center justify-center font-bold text-xs group-hover/step:border-jht-gold group-hover/step:text-jht-gold transition-all">
-                                        <span class="material-symbols-outlined text-sm">check_circle</span>
-                                    </div>
+                                <div @click="selectStep(5)" class="relative z-10 flex flex-col items-center group/step cursor-pointer transition-all duration-300 hover:scale-125" title="Entregado Conformado">
+                                    <template x-if="5 < activeStep">
+                                        <div class="w-7.5 h-7.5 rounded-full bg-jht-gold text-jht-dark flex items-center justify-center font-extrabold text-xs shadow-lg shadow-jht-gold/60">
+                                            <span class="material-symbols-outlined text-sm font-bold">check_circle</span>
+                                        </div>
+                                    </template>
+                                    <template x-if="5 === activeStep">
+                                        <div class="relative flex items-center justify-center">
+                                            <span class="absolute -inset-2 rounded-full bg-jht-gold/60 animate-ping"></span>
+                                            <div class="relative w-8.5 h-8.5 rounded-full bg-gradient-to-br from-jht-gold via-[#ffe033] to-jht-gold text-jht-dark flex items-center justify-center font-extrabold text-xs animate-gold-pulse shadow-[0_0_15px_rgba(255,204,0,0.9)]">
+                                                <span class="material-symbols-outlined text-base font-bold">check_circle</span>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <template x-if="5 > activeStep">
+                                        <div class="w-7.5 h-7.5 rounded-full bg-[#224270] border-2 border-white/40 text-white flex items-center justify-center font-extrabold text-xs shadow-md">
+                                            <span class="material-symbols-outlined text-sm font-bold">check_circle</span>
+                                        </div>
+                                    </template>
                                 </div>
                             </div>
 
-                            <!-- Etiquetas Breves de Estado -->
-                            <div class="flex justify-between text-[11px] font-semibold text-gray-300 px-1 mt-2">
-                                <span class="text-white font-bold">Recepción</span>
-                                <span class="text-white font-bold">Almacén</span>
-                                <span class="text-jht-gold font-extrabold tracking-wide">En Ruta</span>
-                                <span class="text-gray-300">Destino</span>
-                                <span class="text-gray-300">Entrega</span>
+                            <!-- Etiquetas Breves de Estado Dinámicas -->
+                            <div class="flex justify-between text-[11px] font-extrabold text-white px-1 mt-2">
+                                <span :class="1 === activeStep ? 'text-jht-gold font-extrabold scale-110' : (1 < activeStep ? 'text-white' : 'text-gray-300')" class="transition-all duration-300 cursor-pointer" @click="selectStep(1)">Recepción</span>
+                                <span :class="2 === activeStep ? 'text-jht-gold font-extrabold scale-110' : (2 < activeStep ? 'text-white' : 'text-gray-300')" class="transition-all duration-300 cursor-pointer" @click="selectStep(2)">Almacén</span>
+                                <span :class="3 === activeStep ? 'text-jht-gold font-extrabold scale-110' : (3 < activeStep ? 'text-white' : 'text-gray-300')" class="transition-all duration-300 cursor-pointer" @click="selectStep(3)">En Ruta</span>
+                                <span :class="4 === activeStep ? 'text-jht-gold font-extrabold scale-110' : (4 < activeStep ? 'text-white' : 'text-gray-300')" class="transition-all duration-300 cursor-pointer" @click="selectStep(4)">Destino</span>
+                                <span :class="5 === activeStep ? 'text-jht-gold font-extrabold scale-110' : (5 < activeStep ? 'text-white' : 'text-gray-300')" class="transition-all duration-300 cursor-pointer" @click="selectStep(5)">Entrega</span>
                             </div>
                         </div>
 
-                        <!-- Formulario Principal de Consulta Directa (Claro y Elegante) -->
-                        <div class="p-6 bg-gradient-to-b from-[#0e1d35] to-[#081220] flex flex-col gap-4">
+                        <!-- Formulario Principal de Consulta Directa (Claro, Nítido y de Alto Impacto) -->
+                        <div class="p-6 bg-gradient-to-b from-[#1a355d] to-[#0f213d] flex flex-col gap-4">
                             <div>
-                                <h3 class="font-title text-xl font-extrabold text-white text-center mb-1 drop-shadow">Rastrea tu Envío Nacional</h3>
-                                <p class="text-center text-xs text-gray-300">Ingresa tu número de guía o comprobante para verificar su estado en vivo</p>
+                                <h3 class="font-title text-xl font-extrabold text-white text-center mb-1 drop-shadow-md">Rastrea tu Envío Nacional</h3>
+                                <p class="text-center text-xs text-gray-100 font-medium">Ingresa tu número de guía o comprobante para verificar su estado en vivo</p>
                             </div>
 
                             <form action="{% url 'service_status:consulta' %}" method="GET" class="flex flex-col gap-3.5" aria-label="Formulario de rastreo de carga">
                                 <div class="relative flex items-center">
-                                    <span class="material-symbols-outlined absolute left-3.5 text-jht-gold text-lg pointer-events-none">tag</span>
-                                    <input type="text" name="guia" placeholder="Ej. V001-20000" class="w-full bg-[#142642] border border-white/25 focus:border-jht-gold text-white placeholder-gray-400 text-sm rounded-xl pl-10 pr-4 py-3.5 font-mono tracking-wider focus:outline-none focus:ring-2 focus:ring-jht-gold/40 transition-all duration-300 shadow-inner" aria-label="Número de guía" required>
+                                    <span class="material-symbols-outlined absolute left-3.5 text-jht-gold text-lg pointer-events-none font-bold">tag</span>
+                                    <input type="text" name="guia" placeholder="Ej. V001-20000" class="w-full bg-[#224270] border-2 border-white/35 focus:border-jht-gold text-white placeholder-gray-200 text-sm font-mono font-bold tracking-wider rounded-xl pl-10 pr-4 py-3.5 focus:outline-none focus:ring-2 focus:ring-jht-gold/50 transition-all duration-300 shadow-md" aria-label="Número de guía" required>
                                 </div>
                                 
                                 <div class="relative group/btn">
-                                    <button type="submit" class="w-full bg-gradient-to-r from-jht-gold via-[#ffd700] to-jht-gold text-jht-dark font-extrabold text-sm py-3.5 px-6 rounded-xl shadow-lg shadow-jht-gold/25 hover:shadow-jht-gold/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 tracking-wider font-title uppercase">
-                                        <span class="material-symbols-outlined text-xl">search</span>
+                                    <button type="submit" class="w-full bg-gradient-to-r from-jht-gold via-[#ffe033] to-jht-gold text-jht-dark font-extrabold text-sm py-3.5 px-6 rounded-xl shadow-xl shadow-jht-gold/30 hover:shadow-jht-gold/60 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 tracking-wider font-title uppercase">
+                                        <span class="material-symbols-outlined text-xl font-bold">search</span>
                                         RASTREAR AHORA
                                     </button>
                                     <span class="btn-animated-cursor pointer-events-none" aria-hidden="true">
@@ -144,10 +249,11 @@
                                 </div>
                             </form>
 
-                        <!-- Sellos de Confianza y Garantía SEO -->
-                        <div class="pt-3 flex items-center justify-around border-t border-white/15 text-[11px] text-gray-200 font-medium">
-                            <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-jht-gold text-sm">verified</span> Garantía de Tiempo</span>
-                            <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-jht-gold text-sm">security</span> Trazabilidad 100%</span>
+                            <!-- Sellos de Confianza y Garantía SEO -->
+                            <div class="pt-3 flex items-center justify-around border-t border-white/20 text-[11px] text-white font-bold">
+                                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-jht-gold text-sm font-bold">verified</span> Garantía de Tiempo</span>
+                                <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-jht-gold text-sm font-bold">security</span> Trazabilidad 100%</span>
+                            </div>
                         </div>
                     </div>
                 </div>

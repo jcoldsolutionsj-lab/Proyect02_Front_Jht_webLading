@@ -12,8 +12,8 @@
 <!-- ============================================ -->
 <!-- 1. HERO — Diagonal clip con video/imagen     -->
 <!-- ============================================ -->
-<div class="bg-white w-full">
-    <section id="hero-flota" class="relative w-full overflow-hidden pt-28 md:pt-36 pb-16 md:pb-24 flex items-center justify-center clip-diagonal bg-jht-dark" style="min-height: calc(100vh - 80px);">
+<div class="bg-white w-full border-none">
+    <section id="hero-flota" class="relative w-full overflow-hidden pt-28 md:pt-36 pb-16 md:pb-24 flex items-center justify-center clip-diagonal bg-jht-dark border-none" style="min-height: calc(100vh - 80px);">
         <!-- Background Image Carousel -->
         <div class="absolute inset-0 z-0 overflow-hidden" x-data="flotaCarousel">
             <!-- Slide 0 -->
@@ -71,7 +71,7 @@
 <!-- ============================================ -->
 <!-- 2. CATÁLOGO INTERACTIVO DE FLOTA             -->
 <!-- ============================================ -->
-<section id="catalogo-flota" class="w-full py-24 bg-white"
+<section id="catalogo-flota" class="w-full py-24 bg-white border-t-2 border-white"
     x-data="{
         active: 'liviana',
         timer: null,
@@ -144,28 +144,28 @@
             </h3>
         </div>
 
-        <!-- Tabs Header -->
+        <!-- Tabs Header (White borders) -->
         <div class="flex flex-wrap justify-center gap-4 mb-12">
             <button @click="selectTab('liviana')"
-                :class="active === 'liviana' ? 'bg-jht-dark text-white shadow-lg scale-105' : 'border border-gray-300 text-gray-500 hover:border-jht-dark hover:text-jht-dark opacity-80'"
-                class="px-8 py-3 rounded-full font-bold text-sm transition-all duration-500 ease-out transform">
+                :class="active === 'liviana' ? 'bg-jht-gold text-jht-dark font-extrabold shadow-lg scale-105 border-2 border-white' : 'bg-white border-2 border-white text-gray-700 shadow-sm hover:border-jht-gold hover:text-jht-dark opacity-90'"
+                class="px-8 py-3.5 rounded-full font-bold text-sm transition-all duration-500 ease-out transform">
                 Flota Liviana
             </button>
             <button @click="selectTab('mediana')"
-                :class="active === 'mediana' ? 'bg-jht-dark text-white shadow-lg scale-105' : 'border border-gray-300 text-gray-500 hover:border-jht-dark hover:text-jht-dark opacity-80'"
-                class="px-8 py-3 rounded-full font-bold text-sm transition-all duration-500 ease-out transform">
+                :class="active === 'mediana' ? 'bg-jht-gold text-jht-dark font-extrabold shadow-lg scale-105 border-2 border-white' : 'bg-white border-2 border-white text-gray-700 shadow-sm hover:border-jht-gold hover:text-jht-dark opacity-90'"
+                class="px-8 py-3.5 rounded-full font-bold text-sm transition-all duration-500 ease-out transform">
                 Flota Mediana
             </button>
             <button @click="selectTab('pesada')"
-                :class="active === 'pesada' ? 'bg-jht-dark text-white shadow-lg scale-105' : 'border border-gray-300 text-gray-500 hover:border-jht-dark hover:text-jht-dark opacity-80'"
-                class="px-8 py-3 rounded-full font-bold text-sm transition-all duration-500 ease-out transform">
+                :class="active === 'pesada' ? 'bg-jht-gold text-jht-dark font-extrabold shadow-lg scale-105 border-2 border-white' : 'bg-white border-2 border-white text-gray-700 shadow-sm hover:border-jht-gold hover:text-jht-dark opacity-90'"
+                class="px-8 py-3.5 rounded-full font-bold text-sm transition-all duration-500 ease-out transform">
                 Flota Pesada
             </button>
         </div>
 
-        <!-- Fleet Details Card (Flexbox md:flex-row) -->
+        <!-- Fleet Details Card (White border & background) -->
         <div :class="isTransitioning ? 'opacity-30 scale-[0.995]' : 'opacity-100 scale-100'"
-            class="bg-gray-50 rounded-3xl p-6 md:p-10 shadow-lg border border-gray-100 flex flex-col md:flex-row gap-8 items-center transition-all duration-500 ease-out transform">
+            class="bg-white rounded-3xl p-6 md:p-10 shadow-xl border-2 border-white flex flex-col md:flex-row gap-8 items-center transition-all duration-500 ease-out transform">
             <!-- Video Container (Left) -->
             <div class="w-full md:w-1/2 relative rounded-2xl overflow-hidden shadow-md">
                 <span class="absolute top-4 left-4 bg-black/75 text-jht-gold font-bold text-xs px-3 py-1.5 rounded-lg z-10" x-text="'Capacidad: ' + fleet[active].capacity"></span>
