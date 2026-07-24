@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev:css": "tailwindcss -i ./jht_cms/static_src/css/tailwind.css -o ./jht_cms/static_src/css/style.css --watch",
-    "build:css": "tailwindcss -i ./jht_cms/static_src/css/tailwind.css -o ./jht_cms/static_src/css/style.css --minify"
+    "build:css": "tailwindcss -i ./jht_cms/static_src/css/tailwind.css -o ./jht_cms/static_src/css/style.css --minify && tailwindcss -i ./jht_cms/static_src/css/tailwind.css -o ./jht_cms/static/css/style.css --minify"
   },
   "keywords": [],
   "author": "JHT Transport",

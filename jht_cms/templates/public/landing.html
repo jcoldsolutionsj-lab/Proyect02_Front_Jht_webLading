@@ -1220,8 +1220,7 @@
             }
         }
     </style>
-    <div class="container mx-auto px-6" x-data="{ activeStep: 0 }"
-        x-init="setInterval(() => { activeStep = (activeStep + 1) % {{ pasos|length|default:5 }} }, 3000)">
+    <div class="container mx-auto px-6" x-data="{ activeStep: 0 }" x-init="setInterval(() => { activeStep = (activeStep + 1) % 5 }, 3000)">
         <div class="text-center mb-14 scroll-trigger">
             <h2 id="proceso-titulo" class="section-title flex items-center justify-center gap-3 animate-title-radar">
                 <span class="gps-icon text-jht-gold shrink-0">
@@ -1230,124 +1229,83 @@
                     <span class="gps-ring gps-ring-2"></span>
                     <span class="gps-ring gps-ring-3"></span>
                 </span>
-                <span>{{ secciones.PROCESO.titulo|default:"Cómo Trabajamos" }}</span>
+                <span>Cómo Trabajamos</span>
             </h2>
-            <p class="section-subtitle hover-slide-left-back">{{ secciones.PROCESO.subtitulo|default:"Trazabilidad total de tu carga en cinco estados operativos." }}</p>
+            <p class="section-subtitle hover-slide-left-back">Trazabilidad total de tu carga en cinco estados operativos.</p>
         </div>
 
-        <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-{{ pasos|length|default:5 }} gap-8 max-w-6xl mx-auto scroll-trigger relative">
-            {% if pasos %}
-            {% for paso in pasos %}
-            <div class="text-center relative flex flex-col items-center">
-                <div :class="activeStep === {{ forloop.counter0 }} ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > {{ forloop.counter0 }} ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
-                    class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
-                    {{ paso.numero }}
-                </div>
-                <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500"
-                    :class="activeStep === {{ forloop.counter0 }} ? 'text-jht-gold' : 'text-jht-dark'">{{ paso.titulo }}
-                </h3>
-                <p class="text-sm text-jht-blue-support max-w-[200px]">{{ paso.descripcion }}</p>
-                <!-- Connector line (frecuenciómetro / ECG pulse) -->
-                {% if not forloop.last %}
-                <svg class="hidden md:block absolute top-8 left-[60%] w-[80%] h-6 -z-0 pointer-events-none overflow-visible" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2" />
-                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2"
-                          class="ecg-line-pulse"
-                          :class="activeStep > {{ forloop.counter0 }} ? 'ecg-active' : ''" />
-                </svg>
-                {% endif %}
-            </div>
-            {% endfor %}
-            {% else %}
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 proceso-grid-5 gap-8 max-w-6xl mx-auto scroll-trigger relative">
+            
             <!-- Paso 1: Programado -->
             <div class="text-center relative flex flex-col items-center">
-                <div :class="activeStep === 0 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > 0 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
-                    class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
+                <div :class="activeStep === 0 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > 0 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')" class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
                     1
                 </div>
-                <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500"
-                    :class="activeStep === 0 ? 'text-jht-gold' : 'text-jht-dark'">Programado</h3>
+                <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500" :class="activeStep === 0 ? 'text-jht-gold' : 'text-jht-dark'">Programado</h3>
                 <p class="text-sm text-jht-blue-support max-w-[200px]">Tu envío es planificado y registrado en nuestro
                     sistema.</p>
                 <!-- Connector line (frecuenciómetro / ECG pulse) -->
                 <svg class="hidden md:block absolute top-8 left-[60%] w-[80%] h-6 -z-0 pointer-events-none overflow-visible" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2" />
-                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2"
-                          class="ecg-line-pulse"
-                          :class="activeStep > 0 ? 'ecg-active' : ''" />
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2"></path>
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2" class="ecg-line-pulse" :class="activeStep > 0 ? 'ecg-active' : ''"></path>
                 </svg>
             </div>
 
             <!-- Paso 2: En Ruta -->
             <div class="text-center relative flex flex-col items-center">
-                <div :class="activeStep === 1 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > 1 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
-                    class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
+                <div :class="activeStep === 1 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > 1 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')" class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
                     2
                 </div>
-                <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500"
-                    :class="activeStep === 1 ? 'text-jht-gold' : 'text-jht-dark'">En Ruta</h3>
+                <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500" :class="activeStep === 1 ? 'text-jht-gold' : 'text-jht-dark'">En Ruta</h3>
                 <p class="text-sm text-jht-blue-support max-w-[200px]">La unidad de transporte inicia el recorrido hacia
                     el destino.</p>
                 <!-- Connector line (frecuenciómetro / ECG pulse) -->
                 <svg class="hidden md:block absolute top-8 left-[60%] w-[80%] h-6 -z-0 pointer-events-none overflow-visible" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2" />
-                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2"
-                          class="ecg-line-pulse"
-                          :class="activeStep > 1 ? 'ecg-active' : ''" />
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2"></path>
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2" class="ecg-line-pulse" :class="activeStep > 1 ? 'ecg-active' : ''"></path>
                 </svg>
             </div>
 
             <!-- Paso 3: Recepcionado -->
             <div class="text-center relative flex flex-col items-center">
-                <div :class="activeStep === 2 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > 2 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
-                    class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
+                <div :class="activeStep === 2 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > 2 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')" class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
                     3
                 </div>
-                <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500"
-                    :class="activeStep === 2 ? 'text-jht-gold' : 'text-jht-dark'">Recepcionado</h3>
+                <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500" :class="activeStep === 2 ? 'text-jht-gold' : 'text-jht-dark'">Recepcionado</h3>
                 <p class="text-sm text-jht-blue-support max-w-[200px]">La carga es recibida y controlada en nuestro
                     centro logístico.</p>
                 <!-- Connector line (frecuenciómetro / ECG pulse) -->
                 <svg class="hidden md:block absolute top-8 left-[60%] w-[80%] h-6 -z-0 pointer-events-none overflow-visible" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2" />
-                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2"
-                          class="ecg-line-pulse"
-                          :class="activeStep > 2 ? 'ecg-active' : ''" />
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2"></path>
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2" class="ecg-line-pulse" :class="activeStep > 2 ? 'ecg-active' : ''"></path>
                 </svg>
             </div>
 
             <!-- Paso 4: En Reparto -->
             <div class="text-center relative flex flex-col items-center">
-                <div :class="activeStep === 3 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > 3 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')"
-                    class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
+                <div :class="activeStep === 3 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : (activeStep > 3 ? 'bg-jht-dark text-jht-gold' : 'bg-gray-200 text-gray-500')" class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
                     4
                 </div>
-                <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500"
-                    :class="activeStep === 3 ? 'text-jht-gold' : 'text-jht-dark'">En Reparto</h3>
+                <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500" :class="activeStep === 3 ? 'text-jht-gold' : 'text-jht-dark'">En Reparto</h3>
                 <p class="text-sm text-jht-blue-support max-w-[200px]">Nuestra unidad realiza el tramo final para la
                     entrega capilar.</p>
                 <!-- Connector line (frecuenciómetro / ECG pulse) -->
                 <svg class="hidden md:block absolute top-8 left-[60%] w-[80%] h-6 -z-0 pointer-events-none overflow-visible" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
-                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2" />
-                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2"
-                          class="ecg-line-pulse"
-                          :class="activeStep > 3 ? 'ecg-active' : ''" />
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#e5e7eb" stroke-width="2"></path>
+                    <path d="M 0 5 L 35 5 L 40 1 L 45 9 L 50 5 L 100 5" fill="none" stroke="#d4af37" stroke-width="2" class="ecg-line-pulse" :class="activeStep > 3 ? 'ecg-active' : ''"></path>
                 </svg>
             </div>
 
             <!-- Paso 5: Entregado -->
             <div class="text-center relative flex flex-col items-center">
-                <div :class="activeStep === 4 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : 'bg-gray-200 text-gray-500'"
-                    class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
+                <div :class="activeStep === 4 ? 'bg-jht-gold text-jht-dark ring-4 ring-jht-gold/30 scale-110 shadow-lg active-step-pulse' : 'bg-gray-200 text-gray-500'" class="w-16 h-16 rounded-full flex items-center justify-center mb-5 font-title text-2xl font-bold transition-all duration-500 relative z-10">
                     5
                 </div>
-                <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500"
-                    :class="activeStep === 4 ? 'text-jht-gold' : 'text-jht-dark'">Entregado</h3>
+                <h3 class="font-title text-lg font-bold text-jht-dark mb-2 transition-colors duration-500" :class="activeStep === 4 ? 'text-jht-gold' : 'text-jht-dark'">Entregado</h3>
                 <p class="text-sm text-jht-blue-support max-w-[200px]">La mercadería es entregada conforme al
                     destinatario final.</p>
             </div>
-            {% endif %}
+            
         </div>
     </div>
 </section>
@@ -1494,9 +1452,9 @@
         <div x-data="{
                         current: 0,
                         testimonials: [
-                            { id: 'testimonio-1', name: 'Carlos Mendoza', role: 'Gerente de Logística', company: 'Empresa Industrial SAC', text: 'JHT Transport ha sido clave para optimizar nuestra cadena de suministro. Su puntualidad y seguimiento GPS nos dan total tranquilidad.', stars: 5 },
-                            { id: 'testimonio-2', name: 'María Fernández', role: 'Directora de Operaciones', company: 'Distribuciones Nacionales', text: 'El servicio de distribución regional de JHT nos ha permitido expandir nuestra cobertura a todo el Perú con total confianza.', stars: 5 },
-                            { id: 'testimonio-3', name: 'Roberto Silva', role: 'Jefe de Almacén', company: 'Grupo Comercial del Sur', text: 'Excelente servicio de almacenaje y personal de estiba. Profesionales comprometidos con la seguridad de nuestra mercancía.', stars: 5 }
+                            { id: 'testimonio-1', name: 'Carlos Mendoza', role: 'Gerente de Logística', company: 'Empresa Industrial SAC', text: 'JHT Transport ha sido clave para optimizar nuestra cadena de suministro. Su puntualidad y seguimiento GPS nos dan total tranquilidad.', stars: 5, image: '{% static "assets/images/landing/NuestrosClientes1.webp" %}' },
+                            { id: 'testimonio-2', name: 'María Fernández', role: 'Directora de Operaciones', company: 'Distribuciones Nacionales', text: 'El servicio de distribución regional de JHT nos ha permitido expandir nuestra cobertura a todo el Perú con total confianza.', stars: 5, image: '{% static "assets/images/landing/NuestrosClientes2.webp" %}' },
+                            { id: 'testimonio-3', name: 'Roberto Silva', role: 'Jefe de Almacén', company: 'Grupo Comercial del Sur', text: 'Excelente servicio de almacenaje y personal de estiba. Profesionales comprometidos con la seguridad de nuestra mercancía.', stars: 5, image: '{% static "assets/images/landing/NuestrosClientes3.webp" %}' }
                         ],
                         next() { this.current = (this.current + 1) % this.testimonials.length },
                         prev() { this.current = (this.current - 1 + this.testimonials.length) % this.testimonials.length }
@@ -1509,8 +1467,8 @@
                     class="grid gap-8 items-center text-center lg:grid-cols-[240px_1fr] p-8 md:p-12 bg-jht-gray/50 rounded-2xl">
 
                     <div
-                        class="relative mx-auto w-full max-w-[240px] overflow-hidden rounded-[30px] border border-white/10 shadow-2xl bg-black/5">
-                        <img src="{% static 'assets/images/nosotros/banner_1.webp' %}"
+                        class="relative mx-auto w-full max-w-[240px] aspect-square overflow-hidden rounded-[30px] border border-white/10 shadow-2xl bg-black/5">
+                        <img :src="t.image"
                             alt="Cliente satisfecho usando JHT Transport"
                             class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
                         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-jht-dark/85 to-transparent p-4">

@@ -219,6 +219,13 @@
   }
 }
 
+@media (min-width: 768px) {
+  .proceso-grid-5 {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+}
+
 /* KEYFRAMES */
 @keyframes marquee {
   0% { transform: translateX(0%); }
