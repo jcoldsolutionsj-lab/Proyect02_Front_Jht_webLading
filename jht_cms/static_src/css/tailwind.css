@@ -226,6 +226,17 @@
   }
 }
 
+*, html, body, ::-webkit-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+*::-webkit-scrollbar, html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
 /* KEYFRAMES */
 @keyframes marquee {
   0% { transform: translateX(0%); }
