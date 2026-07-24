@@ -14,7 +14,7 @@
 <!-- 1. HERO — Banner Carrusel Diagonal           -->
 <!-- ============================================ -->
 <div class="bg-white w-full">
-    <section id="hero-nosotros" class="relative w-full flex items-center justify-center clip-diagonal overflow-hidden" style="min-height: 90vh;">
+    <section id="hero-nosotros" class="relative w-full overflow-hidden pt-28 md:pt-36 pb-16 md:pb-24 flex items-center justify-center clip-diagonal bg-jht-dark" style="min-height: calc(100vh - 80px);">
         <!-- Background Image Carousel (Auto 3s) -->
         <div class="absolute inset-0 z-0 overflow-hidden" x-data="nosotrosCarousel">
             <!-- Slide 0 -->
@@ -47,27 +47,28 @@
         </div>
 
         <!-- Hero Content -->
-        <div class="relative z-10 w-full px-4 md:px-10 max-w-7xl mx-auto text-left">
-            <!-- Badge -->
-            <div class="animate-hero-badge inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6">
-                <span class="gps-icon-sm text-jht-gold -ml-1">
-                    <span class="gps-dot"></span>
-                    <span class="gps-ring gps-ring-1"></span>
-                    <span class="gps-ring gps-ring-2"></span>
-                </span>
-                EMPRESA PERUANA DE LOGÍSTICA
-            </div>
-            <!-- Title -->
-            <h1 class="animate-hero-title font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
-                Sobre <br>
-                <span class="text-jht-gold">Nosotros</span>
-            </h1>
-            <!-- Subtitle -->
-            <div x-data="typewriter('Líderes en transporte de carga y logística empresarial en Perú con seguimiento GPS en tiempo real. Más de 10 años garantizando puntualidad, seguridad y trazabilidad total.')">
-                <p class="animate-hero-desc text-lg text-gray-300 max-w-xl opacity-90 drop-shadow-md leading-relaxed min-h-[84px] md:min-h-[90px]"
-                    x-text="text">
-                    Líderes en transporte de carga y logística empresarial en Perú con seguimiento GPS en tiempo real. Más de 10 años garantizando puntualidad, seguridad y trazabilidad total.
-                </p>
+        <div class="relative z-30 max-w-7xl mx-auto px-4 md:px-10 w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+            <div class="w-full lg:w-3/5 text-left">
+                <!-- Badge -->
+                <div class="animate-hero-badge inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6">
+                    <span class="gps-icon-sm text-jht-gold -ml-1">
+                        <span class="gps-dot"></span>
+                        <span class="gps-ring gps-ring-1"></span>
+                        <span class="gps-ring gps-ring-2"></span>
+                    </span>
+                    EMPRESA PERUANA DE LOGÍSTICA
+                </div>
+                <!-- Title -->
+                <h1 id="nosotros-hero-titulo" class="animate-hero-title font-title text-5xl md:text-[64px] md:leading-[72px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
+                    Conoce Más Sobre <br><span class="text-jht-gold">Nosotros</span>
+                </h1>
+                <!-- Subtitle -->
+                <div x-data="typewriter('Líderes en transporte de carga y logística empresarial en Perú con seguimiento GPS en tiempo real. Más de 10 años garantizando puntualidad, seguridad y trazabilidad total.')">
+                    <p id="nosotros-hero-subtitulo" class="animate-hero-desc text-base sm:text-lg text-gray-200 mb-8 font-medium max-w-xl leading-relaxed hover-slide-left-back min-h-[84px] sm:min-h-[70px]"
+                        x-text="text">
+                        Líderes en transporte de carga y logística empresarial en Perú con seguimiento GPS en tiempo real. Más de 10 años garantizando puntualidad, seguridad y trazabilidad total.
+                    </p>
+                </div>
             </div>
         </div>
     </section>

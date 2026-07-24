@@ -24,106 +24,102 @@
         aria-hidden="true"></div>
 
     <!-- Contenido del Hero -->
-    <div class="relative z-10 container mx-auto px-3 pt-6 pb-6 lg:pt-10 lg:pb-40">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch mt-1">
+    <div class="relative z-30 max-w-7xl mx-auto px-4 md:px-10 w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 pt-28 md:pt-36 pb-16 md:pb-24">
 
-            <!-- Columna Izquierda: Texto + Indicadores -->
-            <div class="text-left mt-4 md:mt-8">
-                <div class="scroll-trigger from-top inline-flex items-center gap-1.5 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6 is-visible"
-                    style="transition-delay: 0.2s;">
-                    <span class="gps-icon-sm text-jht-gold -ml-1">
-                        <span class="gps-dot"></span>
-                        <span class="gps-ring gps-ring-1"></span>
-                        <span class="gps-ring gps-ring-2"></span>
-                        <span class="gps-ring gps-ring-3"></span>
-                    </span>
-                    SOLUCIONES INTEGRALES
-                </div>
-                <h1 id="hero-titulo"
-                    class="animate-hero-title font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-lg leading-tight">
-                    {% if secciones.HERO.titulo %}
-                    {{ secciones.HERO.titulo|safe }}
+        <!-- Columna Izquierda: Texto + Indicadores -->
+        <div class="w-full lg:w-3/5 text-left">
+            <div class="animate-hero-badge inline-flex items-center gap-2 px-3 py-1 bg-transparent border border-jht-gold/30 rounded text-jht-gold text-xs font-bold uppercase tracking-widest mb-6">
+                <span class="gps-icon-sm text-jht-gold -ml-1">
+                    <span class="gps-dot"></span>
+                    <span class="gps-ring gps-ring-1"></span>
+                    <span class="gps-ring gps-ring-2"></span>
+                </span>
+                SOLUCIONES INTEGRALES
+            </div>
+            <h1 id="hero-titulo"
+                class="animate-hero-title font-title text-4xl sm:text-5xl md:text-[60px] md:leading-[68px] font-extrabold text-white mb-6 tracking-tight drop-shadow-lg">
+                {% if secciones.HERO.titulo %}
+                {{ secciones.HERO.titulo|safe }}
+                {% else %}
+                Transporte y<br>Servicio Logístico<br>
+                <span class="text-jht-gold">para empresas en todo el país</span>
+                {% endif %}
+            </h1>
+            <div
+                x-data="typewriter('{% if secciones.HERO.subtitulo %}{{ secciones.HERO.subtitulo|escapejs }}{% else %}Soluciones integrales de transporte de carga, distribución y almacenaje para empresas que exigen precisión, seguridad y velocidad.{% endif %}')">
+                <p id="hero-subtitulo"
+                    class="animate-hero-desc text-base sm:text-lg text-gray-200 mb-8 font-medium max-w-xl leading-relaxed hover-slide-left-back min-h-[84px] sm:min-h-[70px]"
+                    x-text="text">
+                    {% if secciones.HERO.subtitulo %}
+                    {{ secciones.HERO.subtitulo }}
                     {% else %}
-                    Transporte y<br>Servicio Logístico<br>
-                    <span class="text-jht-gold">para empresas en<br>todo el país</span>
+                    Soluciones integrales de transporte de carga, distribución y almacenaje para empresas que exigen
+                    precisión, seguridad y velocidad.
                     {% endif %}
-                </h1>
-                <div
-                    x-data="typewriter('{% if secciones.HERO.subtitulo %}{{ secciones.HERO.subtitulo|escapejs }}{% else %}Soluciones integrales de transporte de carga, distribución y almacenaje para empresas que exigen precisión, seguridad y velocidad.{% endif %}')">
-                    <p id="hero-subtitulo"
-                        class="animate-hero-desc text-base sm:text-lg text-gray-300 mb-10 max-w-lg leading-relaxed hover-slide-left-back min-h-[84px]"
-                        x-text="text">
-                        {% if secciones.HERO.subtitulo %}
-                        {{ secciones.HERO.subtitulo }}
-                        {% else %}
-                        Soluciones integrales de transporte de carga, distribución y almacenaje para empresas que exigen
-                        precisión, seguridad y velocidad.
-                        {% endif %}
-                    </p>
-                </div>
-
-                <!-- Indicadores numéricos -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6" aria-label="Cifras destacadas">
-
-                    <!-- Indicador 1: Años -->
-                    <div
-                        class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default">
-                        <div class="flex items-baseline justify-center sm:justify-start">
-                            <span
-                                class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title drop-shadow-md group-hover/metric:text-[#ffd700] transition-colors"
-                                data-counter="10">0</span>
-                            <span class="text-xl sm:text-2xl font-bold text-jht-gold font-title ml-0.5">+</span>
-                        </div>
-                        <span
-                            class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Años
-                            de Exp.</span>
-                    </div>
-
-                    <!-- Indicador 2: Clientes -->
-                    <div
-                        class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default delay-75">
-                        <div class="flex items-baseline justify-center sm:justify-start">
-                            <span
-                                class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title drop-shadow-md group-hover/metric:text-[#ffd700] transition-colors"
-                                data-counter="93">0</span>
-                            <span class="text-xl sm:text-2xl font-bold text-jht-gold font-title ml-0.5">+</span>
-                        </div>
-                        <span
-                            class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Clientes
-                            B2B</span>
-                    </div>
-
-                    <!-- Indicador 3: Cobertura -->
-                    <div
-                        class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default delay-150">
-                        <span
-                            class="block text-2xl sm:text-3xl font-bold text-white font-title drop-shadow-md group-hover/metric:text-gray-100 transition-colors"
-                            data-counter="13">0</span>
-                        <span
-                            class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Departamentos</span>
-                    </div>
-
-                    <!-- Indicador 4: GPS -->
-                    <div
-                        class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default delay-200 flex flex-col justify-center">
-                        <div class="flex items-center justify-center sm:justify-start gap-1">
-                            <span
-                                class="material-symbols-outlined text-green-400 text-xl group-hover/metric:animate-pulse"
-                                aria-hidden="true">gps_fixed</span>
-                            <span class="text-sm sm:text-base font-bold text-green-400 font-title">100%</span>
-                        </div>
-                        <span
-                            class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Flota
-                            Monitorizada</span>
-                    </div>
-
-                </div>
+                </p>
             </div>
 
-            <!-- Columna Derecha: Formulario de Cotización (Lead Comercial) -->
-            <div class="w-full max-w-md mx-auto lg:ml-auto mt-12">
+            <!-- Indicadores numéricos -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6" aria-label="Cifras destacadas">
+
+                <!-- Indicador 1: Años -->
                 <div
-                    class="bg-black/20 backdrop-blur-xl rounded-[40px] p-5 sm:p-8 shadow-2xl border border-white/20 flex flex-col">
+                    class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default">
+                    <div class="flex items-baseline justify-center sm:justify-start">
+                        <span
+                            class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title drop-shadow-md group-hover/metric:text-[#ffd700] transition-colors"
+                            data-counter="10">0</span>
+                        <span class="text-xl sm:text-2xl font-bold text-jht-gold font-title ml-0.5">+</span>
+                    </div>
+                    <span
+                        class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Años
+                        de Exp.</span>
+                </div>
+
+                <!-- Indicador 2: Clientes -->
+                <div
+                    class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default delay-75">
+                    <div class="flex items-baseline justify-center sm:justify-start">
+                        <span
+                            class="block text-2xl sm:text-3xl font-bold text-jht-gold font-title drop-shadow-md group-hover/metric:text-[#ffd700] transition-colors"
+                            data-counter="93">0</span>
+                        <span class="text-xl sm:text-2xl font-bold text-jht-gold font-title ml-0.5">+</span>
+                    </div>
+                    <span
+                        class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Clientes
+                        B2B</span>
+                </div>
+
+                <!-- Indicador 3: Cobertura -->
+                <div
+                    class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default delay-150">
+                    <span
+                        class="block text-2xl sm:text-3xl font-bold text-white font-title drop-shadow-md group-hover/metric:text-gray-100 transition-colors"
+                        data-counter="13">0</span>
+                    <span
+                        class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Departamentos</span>
+                </div>
+
+                <!-- Indicador 4: GPS -->
+                <div
+                    class="text-center sm:text-left group/metric transition-transform duration-500 hover:-translate-y-1.5 cursor-default delay-200 flex flex-col justify-center">
+                    <div class="flex items-center justify-center sm:justify-start gap-1">
+                        <span
+                            class="material-symbols-outlined text-green-400 text-xl group-hover/metric:animate-pulse"
+                            aria-hidden="true">gps_fixed</span>
+                        <span class="text-sm sm:text-base font-bold text-green-400 font-title">100%</span>
+                    </div>
+                    <span
+                        class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Flota
+                        Monitorizada</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Formulario de Cotización (Lead Comercial) -->
+        <div class="w-full lg:w-2/5 max-w-md mx-auto lg:ml-auto">
+            <div class="bg-black/20 backdrop-blur-xl rounded-[40px] p-5 sm:p-8 shadow-2xl border border-white/20 flex flex-col">
                     <h2 class="font-title text-2xl sm:text-3xl font-bold text-white text-center mb-1">Solicita tu
                         Cotización</h2>
                     <p class="text-sm text-gray-300 text-center mb-8">Respuesta en menos de 24 horas</p>
