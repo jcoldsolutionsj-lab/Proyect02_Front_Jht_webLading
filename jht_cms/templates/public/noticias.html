@@ -1,0 +1,331 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}Noticias y Novedades Logísticas - JHT Transport{% endblock %}
+{% block meta_description %}Descubre las últimas noticias, normativas y tendencias del sector logístico, aduanero y de transporte de carga pesada en Perú.{% endblock %}
+
+{% block content %}
+<!-- 1. HERO Y BUSCADOR -->
+<section id="hero-noticias" class="relative w-full pt-32 pb-20 bg-jht-dark overflow-hidden flex flex-col items-center justify-center text-center">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a1526] to-jht-dark z-0"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 uppercase tracking-wider font-title">
+            Noticias y <span class="text-jht-gold">Novedades Logísticas</span>
+        </h1>
+        <p class="text-gray-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+            Análisis, normativa y actualidad del ecosistema de transporte y comercio global. Mantente informado con nuestros expertos.
+        </p>
+        
+        <!-- Buscador -->
+        <form action="#" method="GET" class="flex items-center justify-center max-w-lg mx-auto">
+            <div class="relative w-full">
+                <input type="text" name="q" placeholder="Buscar artículos, normativas..." 
+                       class="w-full bg-white/10 border border-white/20 text-white rounded-l-full py-4 px-6 focus:outline-none focus:border-jht-gold transition-colors backdrop-blur-md">
+                <button type="submit" class="absolute right-0 top-0 bottom-0 bg-jht-gold text-jht-dark font-bold px-8 rounded-r-full hover:bg-yellow-400 transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- 2. ARTÍCULO DESTACADO -->
+<section id="noticia-destacada" class="w-full py-16 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="flex flex-col lg:flex-row gap-10">
+            <!-- Sidebar Categorías -->
+            <div class="lg:w-1/4 w-full">
+                <h3 class="font-bold text-jht-dark text-xl mb-6 uppercase tracking-wider border-b-2 border-jht-gold inline-block pb-2">Categorías</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-600 hover:text-jht-gold font-medium transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">chevron_right</span> Todos</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-jht-gold font-medium transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">chevron_right</span> Transporte</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-jht-gold font-medium transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">chevron_right</span> Tecnología</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-jht-gold font-medium transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">chevron_right</span> Normativas MTC</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-jht-gold font-medium transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-sm">chevron_right</span> Sostenibilidad</a></li>
+                </ul>
+            </div>
+            
+            <!-- Tarjeta Destacada -->
+            <div class="lg:w-3/4 w-full">
+                <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-shadow group flex flex-col">
+                    <div class="w-full h-[350px] lg:h-[500px] relative">
+                        <!-- Prompt Imagen -->
+                        <div class="w-full h-full bg-jht-dark flex flex-col items-center justify-center p-6 text-center border-2 border-dashed border-jht-gold group-hover:scale-105 transition-transform duration-500 relative">
+                            <span class="material-symbols-outlined text-4xl text-jht-gold mb-2">image_search</span>
+                            <span class="text-white text-sm font-bold uppercase tracking-wider mb-1">Falta Imagen:</span>
+                            <span class="text-gray-400 text-xs italic">"Generar imagen fotorrealista de un tractocamión corporativo moderno pasando por una garita de peaje MTC en Perú, colores azul marino y dorado, atardecer dramático"</span>
+                            <span class="absolute bottom-2 right-2 text-[10px] text-gray-500 font-mono bg-black/50 px-2 py-1 rounded">Ruta: assets/images/noticias/destacada.webp</span>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-jht-gold text-jht-dark text-xs font-bold px-3 py-1 rounded-full uppercase z-10">Destacado</div>
+                    </div>
+                    <div class="w-full p-8 flex flex-col justify-center">
+                        <div class="flex items-center gap-3 text-sm text-gray-500 mb-3">
+                            <span class="font-bold text-jht-blue-support uppercase">Normativas</span>
+                            <span>•</span>
+                            <span>15 Oct 2026</span>
+                            <span>•</span>
+                            <span class="font-bold">4 min read</span>
+                        </div>
+                        <h2 class="text-3xl font-bold text-jht-dark mb-4 group-hover:text-jht-blue-support transition-colors">La Nueva Regulación de Carga Pesada Redefine las Rutas en Perú</h2>
+                        <p class="text-gray-600 mb-6">El diseño masivo de nuevos corredores logísticos y los tiempos de entrega globales están obligando a las empresas a adaptarse rápidamente a las nuevas normativas del MTC.</p>
+                        <a href="#" class="inline-flex items-center gap-2 text-jht-blue-support font-bold hover:text-jht-gold transition-colors">
+                            Leer artículo completo <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cuadrícula 2x2 de artículos secundarios (Debajo del destacado) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                    <!-- Tarjeta Secundaria 1 -->
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
+                        <!-- Prompt Imagen -->
+                        <div class="h-40 bg-jht-dark flex flex-col items-center justify-center text-center p-4 border border-dashed border-jht-gold relative">
+                            <span class="text-white text-[10px] font-bold uppercase mb-1">Prompt:</span>
+                            <span class="text-gray-400 text-[9px] italic leading-tight">"Inteligencia artificial analizando contenedores en un puerto, estilo tecnológico"</span>
+                            <span class="absolute bottom-1 right-1 text-[8px] text-gray-500 font-mono">assets/images/noticias/tech-muelle.webp</span>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <span class="bg-gray-100 text-jht-dark px-2 py-0.5 rounded border border-gray-200 font-bold">Tecnología</span>
+                                <span>6 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug">LA INTELIGENCIA ARTIFICIAL LLEGA AL MUELLE</h3>
+                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">Los algoritmos predictivos reducen la congestión portuaria antes de que ocurra.</p>
+                            <a href="#" class="inline-flex items-center gap-1 text-jht-dark text-xs font-bold hover:text-jht-gold transition-colors">
+                                Leer más <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Tarjeta Secundaria 2 -->
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
+                        <!-- Prompt Imagen -->
+                        <div class="h-40 bg-jht-dark flex flex-col items-center justify-center text-center p-4 border border-dashed border-jht-gold relative">
+                            <span class="text-white text-[10px] font-bold uppercase mb-1">Prompt:</span>
+                            <span class="text-gray-400 text-[9px] italic leading-tight">"Documentos aduaneros digitales brillantes sobre un escritorio moderno"</span>
+                            <span class="absolute bottom-1 right-1 text-[8px] text-gray-500 font-mono">assets/images/noticias/reglas-aduaneras.webp</span>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <span class="bg-gray-100 text-jht-dark px-2 py-0.5 rounded border border-gray-200 font-bold">Normativas</span>
+                                <span>3 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug">NUEVAS REGLAS ADUANERAS PARA 2025</h3>
+                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">Lo que el exportador debe saber para no perder la carga en la frontera.</p>
+                            <a href="#" class="inline-flex items-center gap-1 text-jht-dark text-xs font-bold hover:text-jht-gold transition-colors">
+                                Leer más <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Tarjeta Secundaria 3 -->
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
+                        <!-- Prompt Imagen -->
+                        <div class="h-40 bg-jht-dark flex flex-col items-center justify-center text-center p-4 border border-dashed border-jht-gold relative">
+                            <span class="text-white text-[10px] font-bold uppercase mb-1">Prompt:</span>
+                            <span class="text-gray-400 text-[9px] italic leading-tight">"Camión de reparto 100% eléctrico en calles de la ciudad, cero emisiones"</span>
+                            <span class="absolute bottom-1 right-1 text-[8px] text-gray-500 font-mono">assets/images/noticias/camiones-electricos.webp</span>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <span class="bg-gray-100 text-jht-dark px-2 py-0.5 rounded border border-gray-200 font-bold">Sostenibilidad</span>
+                                <span>5 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug">CAMIONES ELÉCTRICOS EN LA ÚLTIMA MILLA</h3>
+                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">La promesa silenciosa que está cambiando el reparto urbano en frío.</p>
+                            <a href="#" class="inline-flex items-center gap-1 text-jht-dark text-xs font-bold hover:text-jht-gold transition-colors">
+                                Leer más <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Tarjeta Secundaria 4 -->
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
+                        <!-- Prompt Imagen -->
+                        <div class="h-40 bg-jht-dark flex flex-col items-center justify-center text-center p-4 border border-dashed border-jht-gold relative">
+                            <span class="text-white text-[10px] font-bold uppercase mb-1">Prompt:</span>
+                            <span class="text-gray-400 text-[9px] italic leading-tight">"Tren de carga moderno cruzando los Andes peruanos, fotorrealista"</span>
+                            <span class="absolute bottom-1 right-1 text-[8px] text-gray-500 font-mono">assets/images/noticias/ferrocarril-carga.webp</span>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                                <span class="bg-gray-100 text-jht-dark px-2 py-0.5 rounded border border-gray-200 font-bold">Transporte</span>
+                                <span>7 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug">EL FERROCARRIL DE CARGA GANA TERRENO</h3>
+                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">Una alternativa firme frente al alza imparable del diésel en carretera.</p>
+                            <a href="#" class="inline-flex items-center gap-1 text-jht-dark text-xs font-bold hover:text-jht-gold transition-colors">
+                                Leer más <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. TODAS LAS PUBLICACIONES (Grid) -->
+<section id="lista-noticias" class="w-full py-16 bg-gray-50 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <h2 class="text-3xl font-bold text-jht-dark mb-2 uppercase font-title">Últimas <span class="text-jht-gold">Publicaciones</span></h2>
+        <p class="text-gray-500 mb-10">Información esencial para los profesionales de la cadena de suministro.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Card 1 -->
+            <article class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center text-gray-400 relative">
+                    <span class="material-symbols-outlined text-5xl">image</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
+                        <span class="font-bold text-jht-blue-support uppercase">Tecnología</span>
+                        <span>•</span>
+                        <span>12 Oct 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Visibilidad en Tiempo Real del Flete Logístico</h3>
+                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Saber dónde está tu mercancía dejó de ser un lujo para convertirse en una necesidad básica en las operaciones.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-jht-blue-support text-sm font-bold group-hover:text-jht-gold transition-colors">
+                        Leer más <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center text-gray-400 relative">
+                    <span class="material-symbols-outlined text-5xl">image</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
+                        <span class="font-bold text-jht-blue-support uppercase">Transporte</span>
+                        <span>•</span>
+                        <span>08 Oct 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Transporte de Materiales Peligrosos: IQBF</h3>
+                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Conoce los estrictos protocolos de seguridad y las certificaciones requeridas para movilizar Insumos Químicos y Bienes Fiscalizados.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-jht-blue-support text-sm font-bold group-hover:text-jht-gold transition-colors">
+                        Leer más <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center text-gray-400 relative">
+                    <span class="material-symbols-outlined text-5xl">image</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
+                        <span class="font-bold text-jht-blue-support uppercase">Sostenibilidad</span>
+                        <span>•</span>
+                        <span>05 Oct 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">El Futuro de la Última Milla en Zonas Urbanas</h3>
+                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">La premisa climática que está cambiando el reparto urbano en Lima y provincias para el próximo año.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-jht-blue-support text-sm font-bold group-hover:text-jht-gold transition-colors">
+                        Leer más <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+        </article>
+
+            <!-- Card 4 -->
+            <article class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center text-gray-400 relative">
+                    <span class="material-symbols-outlined text-5xl">image</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
+                        <span class="font-bold text-jht-blue-support uppercase">Almacenaje</span>
+                        <span>•</span>
+                        <span>02 Oct 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Automatización que no falla en el Almacén</h3>
+                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Robots colaborativos que triplican el picking sin eliminar al operario humano.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-jht-blue-support text-sm font-bold group-hover:text-jht-gold transition-colors">
+                        Leer más <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center text-gray-400 relative">
+                    <span class="material-symbols-outlined text-5xl">image</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
+                        <span class="font-bold text-jht-blue-support uppercase">Comercio</span>
+                        <span>•</span>
+                        <span>28 Sep 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Nearshoring: La Fábrica vuelve a casa</h3>
+                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">El boom de cadenas largas impulsa una nueva geografía de centros logísticos.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-jht-blue-support text-sm font-bold group-hover:text-jht-gold transition-colors">
+                        Leer más <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center text-gray-400 relative">
+                    <span class="material-symbols-outlined text-5xl">image</span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
+                        <span class="font-bold text-jht-blue-support uppercase">Tecnología</span>
+                        <span>•</span>
+                        <span>25 Sep 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">El Rol del Blockchain en la Aduana Moderna</h3>
+                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Trazabilidad inmutable desde el puerto de origen hasta la puerta del cliente.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-jht-blue-support text-sm font-bold group-hover:text-jht-gold transition-colors">
+                        Leer más <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+        
+        <!-- Paginación SEO Friendly -->
+        <div class="mt-16 flex justify-center">
+            <nav class="flex items-center gap-2">
+                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:bg-jht-gold hover:text-jht-dark hover:border-jht-gold transition-colors opacity-50 cursor-not-allowed">
+                    <span class="material-symbols-outlined text-sm">arrow_back_ios_new</span>
+                </a>
+                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-jht-dark text-white font-bold shadow-md">1</a>
+                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors font-medium">2</a>
+                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors font-medium">3</a>
+                <span class="text-gray-500 mx-1">...</span>
+                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors font-medium">12</a>
+                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:bg-jht-gold hover:text-jht-dark hover:border-jht-gold transition-colors">
+                    <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<!-- 4. CTA BANNER -->
+<section class="w-full py-20 bg-jht-dark relative overflow-hidden">
+    <!-- Fondo decorativo -->
+    <div class="absolute inset-0 opacity-20 bg-[url('{% static 'assets/images/branding/texture.png' %}')] bg-cover bg-center"></div>
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-jht-gold/20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-jht-blue-support/20 rounded-full blur-3xl"></div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wider font-title">
+            ¿Necesitas un <span class="text-jht-gold">Socio Logístico</span>?
+        </h2>
+        <p class="text-gray-300 text-lg mb-10">
+            Hablemos sin rodeos. Descubre cómo nuestra flota y experiencia pueden optimizar tu cadena de suministro hoy mismo.
+        </p>
+        <a href="{% url 'website:contacto' %}" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-xl bg-jht-gold text-jht-dark shadow-xl shadow-jht-gold/25 hover:shadow-jht-gold/50 hover:scale-105 transition-all duration-300 font-title font-bold text-lg group">
+            <span class="material-symbols-outlined transition-transform duration-300 group-hover:-translate-y-1">rocket_launch</span>
+            Solicitar Cotización Ahora
+        </a>
+    </div>
+</section>
+{% endblock %}

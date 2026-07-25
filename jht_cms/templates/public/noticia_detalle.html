@@ -1,0 +1,193 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %}Detalle de la Noticia - JHT Transport{% endblock %}
+{% block meta_description %}Lee el artículo completo sobre las últimas novedades del sector logístico en JHT Transport.{% endblock %}
+
+{% block content %}
+<!-- 1. HEADER DEL ARTÍCULO (Hero) -->
+<section class="w-full pt-32 pb-12 bg-jht-dark relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a1526] to-jht-dark z-0"></div>
+    <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+        <!-- Badge Categoría -->
+        <div class="mb-6 inline-block">
+            <span class="bg-jht-gold text-jht-dark text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-wide shadow-md shadow-jht-gold/20">Normativas MTC</span>
+        </div>
+        
+        <!-- Título -->
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 uppercase tracking-wider font-title leading-tight">
+            La Nueva Regulación de Carga Pesada Redefine las Rutas en Perú
+        </h1>
+        
+        <!-- Meta Info (Autor, Fecha, Lectura) -->
+        <div class="flex flex-wrap items-center justify-center gap-4 text-gray-400 text-sm font-medium">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-lg text-jht-gold">person</span>
+                <span>Por <span class="text-white">Equipo JHT</span></span>
+            </div>
+            <span>•</span>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-lg text-jht-gold">calendar_month</span>
+                <span>15 Octubre, 2026</span>
+            </div>
+            <span>•</span>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-lg text-jht-gold">timer</span>
+                <span>4 min de lectura</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2. IMAGEN DESTACADA -->
+<section class="w-full bg-jht-dark -mt-1 relative z-20 pb-16">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 -mb-32 relative z-30">
+        <div class="w-full h-80 md:h-[500px] bg-jht-dark rounded-3xl overflow-hidden shadow-2xl border-4 border-white flex flex-col items-center justify-center p-8 text-center relative border-dashed !border-jht-gold">
+            <!-- Placeholder para la imagen de portada de la noticia -->
+            <span class="material-symbols-outlined text-6xl text-jht-gold mb-4">add_photo_alternate</span>
+            <span class="text-white text-xl font-bold uppercase tracking-wider mb-2">Falta Imagen de Portada</span>
+            <span class="text-gray-300 text-sm italic max-w-2xl">"Generar imagen: Un centro de control logístico moderno (torre de control) con pantallas mostrando mapas de Perú, personal trabajando de fondo, iluminación azul oscuro y detalles dorados."</span>
+            <div class="absolute bottom-4 right-4 bg-black/60 px-3 py-1.5 rounded-lg text-xs text-gray-400 font-mono border border-white/10">
+                Guardar en: <span class="text-white">assets/images/noticias/post-regulacion-rutas.webp</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. CUERPO DEL ARTÍCULO Y SIDEBAR -->
+<section class="w-full bg-white pt-40 pb-20">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="flex flex-col lg:flex-row gap-12">
+            
+            <!-- Columna Izquierda: Contenido Principal (70%) -->
+            <div class="lg:w-2/3 w-full">
+                <!-- Zona WYSIWYG (Rich Text) -->
+                <article class="prose prose-lg max-w-none text-gray-700
+                                prose-headings:font-title prose-headings:uppercase prose-headings:text-jht-dark
+                                prose-h2:text-3xl prose-h2:border-b prose-h2:pb-2 prose-h2:border-gray-200
+                                prose-a:text-jht-blue-support prose-a:font-bold hover:prose-a:text-jht-gold
+                                prose-img:rounded-2xl prose-img:shadow-md
+                                prose-blockquote:border-l-4 prose-blockquote:border-jht-gold prose-blockquote:bg-gray-50 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:text-jht-dark prose-blockquote:italic">
+                    
+                    <p class="lead text-xl text-gray-500 font-medium">El diseño masivo de nuevos corredores logísticos y los tiempos de entrega globales están obligando a las empresas a adaptarse rápidamente a las nuevas normativas del Ministerio de Transportes y Comunicaciones (MTC).</p>
+                    
+                    <h2>1. El impacto en las rutas troncales</h2>
+                    <p>La nueva regulación establece horarios de tránsito restringidos para vehículos de configuración T3S3 y mayores en las principales vías de acceso a la capital. Esto significa que la planificación logística debe ser aún más precisa. <a href="#">Ver anexo del MTC</a>.</p>
+                    
+                    <blockquote>
+                        "La adaptabilidad operativa ya no es una ventaja competitiva, es un requisito de supervivencia en el mercado actual de transporte de carga." - CEO, JHT Transport
+                    </blockquote>
+                    
+                    <h2>2. Medidas de mitigación para flotas</h2>
+                    <p>Para no perder la carga en la frontera ni retrasar las entregas B2B, sugerimos las siguientes acciones inmediatas:</p>
+                    <ul>
+                        <li><strong>Auditoría de Permisos:</strong> Revisar las bonificaciones de peso por eje.</li>
+                        <li><strong>Monitoreo GPS Constante:</strong> Utilizar torres de control 24/7.</li>
+                        <li><strong>Renovación Vehicular:</strong> Apostar por tractocamiones más ligeros pero potentes.</li>
+                    </ul>
+                    
+                    <p>Si tu empresa necesita asesoría sobre cómo estas rutas afectarán tus costos de distribución, ponte en contacto con nuestro equipo comercial.</p>
+                </article>
+
+                <!-- Botones de Compartir -->
+                <div class="mt-12 pt-8 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <span class="font-bold text-jht-dark uppercase tracking-wider text-sm">Compartir Artículo:</span>
+                    <div class="flex items-center gap-3">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 hover:-translate-y-1 transition-all shadow-md" title="Compartir en LinkedIn">
+                            <span class="material-symbols-outlined text-sm">share</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:bg-green-600 hover:-translate-y-1 transition-all shadow-md" title="Compartir en WhatsApp">
+                            <span class="material-symbols-outlined text-sm">chat</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-400 text-white flex items-center justify-center hover:bg-blue-500 hover:-translate-y-1 transition-all shadow-md" title="Compartir en Twitter/X">
+                            <span class="material-symbols-outlined text-sm">public</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Columna Derecha: Sidebar (30%) -->
+            <aside class="lg:w-1/3 w-full space-y-10">
+                
+                <!-- CTA: Banner Sticky Cotización -->
+                <div class="bg-gradient-to-br from-jht-dark to-[#0a1526] rounded-2xl p-8 shadow-xl text-center border-t-4 border-jht-gold sticky top-28">
+                    <span class="material-symbols-outlined text-jht-gold text-5xl mb-4">local_shipping</span>
+                    <h3 class="text-white text-2xl font-bold font-title uppercase mb-3">¿Buscas Transporte Confiable?</h3>
+                    <p class="text-gray-300 text-sm mb-6">Operamos a nivel nacional con monitoreo 24/7 y los más altos estándares BASC.</p>
+                    <a href="{% url 'website:contacto' %}" class="block w-full py-3 bg-jht-gold text-jht-dark font-bold rounded-lg hover:bg-yellow-400 transition-colors uppercase tracking-wider text-sm shadow-lg shadow-jht-gold/20">
+                        Cotizar mi carga
+                    </a>
+                </div>
+                
+                <!-- Últimas Noticias Widget -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                    <h3 class="font-bold text-jht-dark text-lg mb-4 uppercase tracking-wider border-b-2 border-jht-gold inline-block pb-1">Noticias Recientes</h3>
+                    <div class="space-y-4 mt-2">
+                        <!-- Widget Item -->
+                        <a href="#" class="group flex gap-4 items-center">
+                            <div class="w-20 h-16 bg-gray-200 rounded-lg flex-shrink-0"></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-jht-blue-support transition-colors line-clamp-2">Transporte de Materiales Peligrosos: IQBF</h4>
+                                <span class="text-xs text-gray-500">08 Oct 2026</span>
+                            </div>
+                        </a>
+                        <!-- Widget Item -->
+                        <a href="#" class="group flex gap-4 items-center">
+                            <div class="w-20 h-16 bg-gray-200 rounded-lg flex-shrink-0"></div>
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-800 group-hover:text-jht-blue-support transition-colors line-clamp-2">Visibilidad en Tiempo Real del Flete Logístico</h4>
+                                <span class="text-xs text-gray-500">12 Oct 2026</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Etiquetas Widget -->
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                    <h3 class="font-bold text-jht-dark text-lg mb-4 uppercase tracking-wider border-b-2 border-jht-gold inline-block pb-1">Etiquetas Populares</h3>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <a href="#" class="px-3 py-1 bg-white border border-gray-200 text-gray-600 text-xs rounded-full hover:border-jht-gold hover:text-jht-dark transition-colors">#Aduanas</a>
+                        <a href="#" class="px-3 py-1 bg-white border border-gray-200 text-gray-600 text-xs rounded-full hover:border-jht-gold hover:text-jht-dark transition-colors">#FlotaPesada</a>
+                        <a href="#" class="px-3 py-1 bg-white border border-gray-200 text-gray-600 text-xs rounded-full hover:border-jht-gold hover:text-jht-dark transition-colors">#MTC</a>
+                        <a href="#" class="px-3 py-1 bg-white border border-gray-200 text-gray-600 text-xs rounded-full hover:border-jht-gold hover:text-jht-dark transition-colors">#Cianuro</a>
+                    </div>
+                </div>
+                
+            </aside>
+            
+        </div>
+    </div>
+</section>
+
+<!-- 4. ARTÍCULOS RELACIONADOS -->
+<section class="w-full py-16 bg-gray-50 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <h2 class="text-2xl font-bold text-jht-dark mb-8 uppercase font-title">Artículos <span class="text-jht-gold">Relacionados</span></h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- (Copiar 3 cards básicas similares a las de noticias.html pero sin tanto texto) -->
+            <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group border border-gray-100">
+                <div class="h-40 bg-gray-200"></div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support line-clamp-2">El Futuro de la Última Milla en Zonas Urbanas</h3>
+                    <a href="#" class="text-jht-gold text-sm font-bold uppercase tracking-wider">Leer artículo &rarr;</a>
+                </div>
+            </article>
+            <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group border border-gray-100">
+                <div class="h-40 bg-gray-200"></div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support line-clamp-2">Mantenimiento Preventivo de Flotas 2026</h3>
+                    <a href="#" class="text-jht-gold text-sm font-bold uppercase tracking-wider">Leer artículo &rarr;</a>
+                </div>
+            </article>
+            <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group border border-gray-100">
+                <div class="h-40 bg-gray-200"></div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support line-clamp-2">Optimización de Rutas en la Costa Sur</h3>
+                    <a href="#" class="text-jht-gold text-sm font-bold uppercase tracking-wider">Leer artículo &rarr;</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+{% endblock %}
