@@ -17,10 +17,10 @@
         </p>
         
         <!-- Buscador -->
-        <form action="#" method="GET" class="flex items-center justify-center max-w-lg mx-auto">
+        <form id="form-busqueda" action="#" method="GET" class="flex items-center justify-center max-w-lg mx-auto">
             <div class="relative w-full">
-                <input type="text" name="q" placeholder="Buscar artículos, normativas..." 
-                       class="w-full bg-white/10 border border-white/20 text-white rounded-l-full py-4 px-6 focus:outline-none focus:border-jht-gold transition-colors backdrop-blur-md">
+                <input type="text" id="input-busqueda" name="q" placeholder="Buscar artículos, normativas..." 
+                       class="w-full bg-white/10 border border-white/20 text-white rounded-l-full py-4 px-6 focus:outline-none focus:border-jht-gold transition-colors backdrop-blur-md placeholder-gray-400">
                 <button type="submit" class="absolute right-0 top-0 bottom-0 bg-jht-gold text-jht-dark font-bold px-8 rounded-r-full hover:bg-yellow-400 transition-colors flex items-center justify-center">
                     <span class="material-symbols-outlined">search</span>
                 </button>
@@ -367,8 +367,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const estadoVacio = document.getElementById('estado-vacio');
     const gridPublicaciones = document.getElementById('grid-publicaciones');
 
-    function aplicarFiltro(cat, label) {
-        // Actualizar estado activo del enlace
+    const inputBusqueda = document.getElementById('input-busqueda');
+    const formBusqueda = document.getElementById('form-busqueda');
+
+    function aplicarFiltro(cat, label, query = '') {
+        query = query.toLowerCase().trim();
+
+        // Actualizar estado activo del enlace de categoría
         catLinks.forEach(function (l) {
             l.classList.remove('active-cat', 'text-jht-gold', 'font-bold');
             l.classList.add('text-gray-600', 'font-medium');
@@ -379,10 +384,14 @@ document.addEventListener('DOMContentLoaded', function () {
             linkActivo.classList.remove('text-gray-600', 'font-medium');
         }
 
-        // Filtrar tarjetas del grid y contar visibles
+        // Filtrar tarjetas del grid
         let visibles = 0;
         cards.forEach(function (card) {
-            if (cat === 'todos' || card.dataset.category === cat) {
+            const matchCat = (cat === 'todos' || card.dataset.category === cat);
+            const textContent = card.textContent.toLowerCase();
+            const matchQuery = (query === '' || textContent.includes(query));
+
+            if (matchCat && matchQuery) {
                 card.style.display = '';
                 card.style.animation = 'fadeInUp 0.3s ease forwards';
                 visibles++;
@@ -391,30 +400,34 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Controlar visibilidad de zona-destacada:
-        // Ocultar si ni la tarjeta principal ni ninguna secundaria coinciden con la categoría
+        // Visibilidad de tarjeta destacada
         const zonaDestacada = document.getElementById('zona-destacada');
         const cardsPrincipal = cardDestacada.dataset.category;
+        const textDestacada = cardDestacada.textContent.toLowerCase();
+        const matchDestacadaQuery = (query === '' || textDestacada.includes(query));
         const cardsSecundarias = zonaDestacada.querySelectorAll('.filterable-card');
         let haySecundariasVisibles = false;
         cardsSecundarias.forEach(function(c) {
             if (c.style.display !== 'none') haySecundariasVisibles = true;
         });
 
-        if (cat === 'todos') {
+        if (cat === 'todos' && matchDestacadaQuery) {
             zonaDestacada.style.display = '';
             cardDestacada.style.display = '';
-        } else if (cardsPrincipal === cat || haySecundariasVisibles) {
-            // Hay algo que mostrar en la zona superior
+        } else if ((cardsPrincipal === cat && matchDestacadaQuery) || haySecundariasVisibles) {
             zonaDestacada.style.display = '';
-            cardDestacada.style.display = (cardsPrincipal === cat) ? '' : 'none';
+            cardDestacada.style.display = (cardsPrincipal === cat && matchDestacadaQuery) ? '' : 'none';
         } else {
-            // Nada coincide en la zona superior → ocultarla completa (sin espacio vacío)
             zonaDestacada.style.display = 'none';
         }
 
-        // Chip de filtro activo (usar data-label para texto limpio)
-        if (cat === 'todos') {
+        // Chip de filtro activo
+        let textoChip = label;
+        if (query !== '') {
+            textoChip = (cat !== 'todos' ? label + ' + ' : '') + '“' + query + '”';
+        }
+
+        if (cat === 'todos' && query === '') {
             chip.classList.add('hidden');
             chipNombre.textContent = '';
             resultadosHeader.classList.add('hidden');
@@ -422,9 +435,9 @@ document.addEventListener('DOMContentLoaded', function () {
             gridPublicaciones.style.display = '';
         } else {
             chip.classList.remove('hidden');
-            chipNombre.textContent = label;
-            // Contador y estado vacío
-            if (visibles === 0) {
+            chipNombre.textContent = textoChip;
+
+            if (visibles === 0 && !haySecundariasVisibles) {
                 estadoVacio.classList.remove('hidden');
                 gridPublicaciones.style.display = 'none';
                 resultadosHeader.classList.add('hidden');
@@ -432,7 +445,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 estadoVacio.classList.add('hidden');
                 gridPublicaciones.style.display = '';
                 resultadosHeader.classList.remove('hidden');
-                contadorEl.textContent = visibles + ' artículo' + (visibles !== 1 ? 's' : '') + ' encontrado' + (visibles !== 1 ? 's' : '') + ' en “' + label + '”';
+                contadorEl.textContent = visibles + ' artículo' + (visibles !== 1 ? 's' : '') + ' encontrado' + (visibles !== 1 ? 's' : '');
             }
         }
     }
@@ -441,13 +454,34 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', function (e) {
             e.preventDefault();
             const cat = this.dataset.cat;
-            const label = this.dataset.label;  // Texto limpio desde data-label
-            aplicarFiltro(cat, label);
+            const label = this.dataset.label;
+            aplicarFiltro(cat, label, inputBusqueda.value);
         });
     });
 
+    // Búsqueda interactiva en tiempo real al escribir
+    if (inputBusqueda) {
+        inputBusqueda.addEventListener('input', function () {
+            const activeLink = document.querySelector('.cat-link.active-cat');
+            const cat = activeLink ? activeLink.dataset.cat : 'todos';
+            const label = activeLink ? activeLink.dataset.label : 'Todos';
+            aplicarFiltro(cat, label, this.value);
+        });
+    }
+
+    if (formBusqueda) {
+        formBusqueda.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const activeLink = document.querySelector('.cat-link.active-cat');
+            const cat = activeLink ? activeLink.dataset.cat : 'todos';
+            const label = activeLink ? activeLink.dataset.label : 'Todos';
+            aplicarFiltro(cat, label, inputBusqueda.value);
+        });
+    }
+
     // Botón limpiar filtro (chip X)
     btnLimpiar.addEventListener('click', function () {
+        if (inputBusqueda) inputBusqueda.value = '';
         aplicarFiltro('todos', '');
     });
 });
