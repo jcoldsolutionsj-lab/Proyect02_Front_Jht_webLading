@@ -5,24 +5,27 @@
 {% block meta_description %}Descubre las últimas noticias, normativas y tendencias del sector logístico, aduanero y de transporte de carga pesada en Perú.{% endblock %}
 
 {% block content %}
-<!-- 1. HERO Y BUSCADOR -->
-<section id="hero-noticias" class="relative w-full pt-32 pb-20 bg-jht-dark overflow-hidden flex flex-col items-center justify-center text-center">
+<!-- 1. HERO Y BUSCADOR COMPACTO (Optimizado para UX / Above the fold) -->
+<section id="hero-noticias" class="relative w-full pt-28 pb-8 md:pt-32 md:pb-10 bg-jht-dark overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-[#0a1526] to-jht-dark z-0"></div>
-    <div class="relative z-10 max-w-4xl mx-auto px-4">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 uppercase tracking-wider font-title">
-            Noticias y <span class="text-jht-gold">Novedades Logísticas</span>
-        </h1>
-        <p class="text-gray-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-            Análisis, normativa y actualidad del ecosistema de transporte y comercio global. Mantente informado con nuestros expertos.
-        </p>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <!-- Título y Bajada -->
+        <div class="text-left max-w-2xl">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 uppercase tracking-wider font-title leading-snug">
+                Noticias y <span class="text-jht-gold">Novedades Logísticas</span>
+            </h1>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                Análisis, normativa y actualidad del ecosistema de transporte y comercio global.
+            </p>
+        </div>
         
-        <!-- Buscador -->
-        <form id="form-busqueda" action="#" method="GET" class="flex items-center justify-center max-w-lg mx-auto">
-            <div class="relative w-full">
+        <!-- Buscador Integrado Pill Flex (Ancho controlado e indestructible) -->
+        <form id="form-busqueda" action="#" method="GET" style="max-width: 400px; width: 100%;" class="shrink-0">
+            <div style="max-width: 400px; width: 100%;" class="flex items-center bg-white/10 border border-white/20 rounded-full p-1.5 backdrop-blur-md focus-within:border-jht-gold transition-all shadow-inner">
                 <input type="text" id="input-busqueda" name="q" placeholder="Buscar artículos, normativas..." 
-                       class="w-full bg-white/10 border border-white/20 text-white rounded-l-full py-4 px-6 focus:outline-none focus:border-jht-gold transition-colors backdrop-blur-md placeholder-gray-400">
-                <button type="submit" class="absolute right-0 top-0 bottom-0 bg-jht-gold text-jht-dark font-bold px-8 rounded-r-full hover:bg-yellow-400 transition-colors flex items-center justify-center">
-                    <span class="material-symbols-outlined">search</span>
+                       class="bg-transparent text-white px-4 py-2 text-sm flex-1 focus:outline-none placeholder-gray-300 min-w-0 border-none outline-none ring-0">
+                <button type="submit" class="bg-jht-gold text-jht-dark font-bold w-10 h-10 rounded-full hover:bg-yellow-400 transition-colors flex items-center justify-center shrink-0 shadow-md">
+                    <span class="material-symbols-outlined text-xl">search</span>
                 </button>
             </div>
         </form>
@@ -30,7 +33,7 @@
 </section>
 
 <!-- 2. ARTÍCULO DESTACADO -->
-<section id="noticia-destacada" class="w-full py-16 bg-white relative">
+<section id="noticia-destacada" class="w-full py-8 md:py-12 bg-white relative">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
         <div class="flex flex-col lg:flex-row gap-10">
             <!-- Sidebar Categorías -->
