@@ -62,15 +62,9 @@
             <!-- Tarjeta Destacada -->
             <div id="zona-destacada" class="lg:w-3/4 w-full">
                 <div id="card-destacada" data-category="normativas" class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-shadow group flex flex-col">
-                    <div class="w-full h-[350px] lg:h-[500px] relative">
-                        <!-- Prompt Imagen -->
-                        <div class="w-full h-full bg-jht-dark flex flex-col items-center justify-center p-6 text-center border-2 border-dashed border-jht-gold group-hover:scale-105 transition-transform duration-500 relative">
-                            <span class="material-symbols-outlined text-4xl text-jht-gold mb-2">image_search</span>
-                            <span class="text-white text-sm font-bold uppercase tracking-wider mb-1">Falta Imagen:</span>
-                            <span class="text-gray-400 text-xs italic">"Generar imagen fotorrealista de un tractocamión corporativo moderno pasando por una garita de peaje MTC en Perú, colores azul marino y dorado, atardecer dramático"</span>
-                            <span class="absolute bottom-2 right-2 text-[10px] text-gray-500 font-mono bg-black/50 px-2 py-1 rounded">Ruta: assets/images/noticias/destacada.webp</span>
-                        </div>
-                        <div class="absolute top-4 left-4 bg-jht-gold text-jht-dark text-xs font-bold px-3 py-1 rounded-full uppercase z-10">Destacado</div>
+                    <div class="w-full h-[350px] lg:h-[500px] relative overflow-hidden">
+                        <img src="{% static 'assets/images/noticias/destacada.webp' %}" alt="La Nueva Regulación de Carga Pesada Redefine las Rutas en Perú" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 left-4 bg-jht-gold text-jht-dark text-xs font-bold px-3 py-1 rounded-full uppercase z-10 shadow-md">Destacado</div>
                     </div>
                     <div class="w-full p-8 flex flex-col justify-center">
                         <div class="flex items-center gap-3 text-sm text-gray-500 mb-3">
@@ -92,19 +86,16 @@
                 <div id="grid-secundario" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                     <!-- Tarjeta Secundaria 1 -->
                     <article data-category="tecnologia" class="filterable-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
-                        <!-- Prompt Imagen -->
-                        <div class="h-40 bg-jht-dark flex flex-col items-center justify-center text-center p-4 border border-dashed border-jht-gold relative">
-                            <span class="text-white text-[10px] font-bold uppercase mb-1">Prompt:</span>
-                            <span class="text-gray-400 text-[9px] italic leading-tight">"Inteligencia artificial analizando contenedores en un puerto, estilo tecnológico"</span>
-                            <span class="absolute bottom-1 right-1 text-[8px] text-gray-500 font-mono">assets/images/noticias/tech-muelle.webp</span>
+                        <div class="h-44 bg-gray-100 overflow-hidden relative">
+                            <img src="{% static 'assets/images/noticias/telemetria-torre.webp' %}" alt="Telemetría e IoT en Torres de Control 24/7" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-5">
                             <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
                                 <span class="bg-gray-100 text-jht-dark px-2 py-0.5 rounded border border-gray-200 font-bold">Tecnología</span>
-                                <span>6 min read</span>
+                                <span>5 min de lectura</span>
                             </div>
-                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug">LA INTELIGENCIA ARTIFICIAL LLEGA AL MUELLE</h3>
-                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">Los algoritmos predictivos reducen la congestión portuaria antes de que ocurra.</p>
+                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug uppercase">Telemetría e IoT en Torres de Control 24/7</h3>
+                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">Monitoreo satelital activo, sensores de temperatura y prevención de fatiga en ruta.</p>
                             <a href="{% url 'website:noticia_detalle' %}" class="inline-flex items-center gap-1 text-jht-dark text-xs font-bold hover:text-jht-gold transition-colors">
                                 Leer más <span class="material-symbols-outlined text-[14px]">chevron_right</span>
                             </a>
@@ -113,19 +104,16 @@
 
                     <!-- Tarjeta Secundaria 2 -->
                     <article data-category="normativas" class="filterable-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
-                        <!-- Prompt Imagen -->
-                        <div class="h-40 bg-jht-dark flex flex-col items-center justify-center text-center p-4 border border-dashed border-jht-gold relative">
-                            <span class="text-white text-[10px] font-bold uppercase mb-1">Prompt:</span>
-                            <span class="text-gray-400 text-[9px] italic leading-tight">"Documentos aduaneros digitales brillantes sobre un escritorio moderno"</span>
-                            <span class="absolute bottom-1 right-1 text-[8px] text-gray-500 font-mono">assets/images/noticias/reglas-aduaneras.webp</span>
+                        <div class="h-44 bg-gray-100 overflow-hidden relative">
+                            <img src="{% static 'assets/images/noticias/gre-sunat.webp' %}" alt="Guías de Remisión Electrónicas GRE-SUNAT" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-5">
                             <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
                                 <span class="bg-gray-100 text-jht-dark px-2 py-0.5 rounded border border-gray-200 font-bold">Normativas</span>
-                                <span>3 min read</span>
+                                <span>4 min de lectura</span>
                             </div>
-                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug">NUEVAS REGLAS ADUANERAS PARA 2025</h3>
-                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">Lo que el exportador debe saber para no perder la carga en la frontera.</p>
+                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug uppercase">Guías de Remisión Electrónicas GRE-SUNAT</h3>
+                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">Fiscalización digital en ruta: lo que todo generador de carga debe certificar este año.</p>
                             <a href="{% url 'website:noticia_detalle' %}" class="inline-flex items-center gap-1 text-jht-dark text-xs font-bold hover:text-jht-gold transition-colors">
                                 Leer más <span class="material-symbols-outlined text-[14px]">chevron_right</span>
                             </a>
@@ -134,19 +122,16 @@
 
                     <!-- Tarjeta Secundaria 3 -->
                     <article data-category="sostenibilidad" class="filterable-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
-                        <!-- Prompt Imagen -->
-                        <div class="h-40 bg-jht-dark flex flex-col items-center justify-center text-center p-4 border border-dashed border-jht-gold relative">
-                            <span class="text-white text-[10px] font-bold uppercase mb-1">Prompt:</span>
-                            <span class="text-gray-400 text-[9px] italic leading-tight">"Camión de reparto 100% eléctrico en calles de la ciudad, cero emisiones"</span>
-                            <span class="absolute bottom-1 right-1 text-[8px] text-gray-500 font-mono">assets/images/noticias/camiones-electricos.webp</span>
+                        <div class="h-44 bg-gray-100 overflow-hidden relative">
+                            <img src="{% static 'assets/images/noticias/flotas-euro6.webp' %}" alt="Eficiencia Energética y Flotas Euro 6" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-5">
                             <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
                                 <span class="bg-gray-100 text-jht-dark px-2 py-0.5 rounded border border-gray-200 font-bold">Sostenibilidad</span>
-                                <span>5 min read</span>
+                                <span>6 min de lectura</span>
                             </div>
-                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug">CAMIONES ELÉCTRICOS EN LA ÚLTIMA MILLA</h3>
-                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">La promesa silenciosa que está cambiando el reparto urbano en frío.</p>
+                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug uppercase">Eficiencia Energética y Flotas Euro 6</h3>
+                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">Reducción de huella de carbono y optimización del consumo de combustible en largas distancias.</p>
                             <a href="{% url 'website:noticia_detalle' %}" class="inline-flex items-center gap-1 text-jht-dark text-xs font-bold hover:text-jht-gold transition-colors">
                                 Leer más <span class="material-symbols-outlined text-[14px]">chevron_right</span>
                             </a>
@@ -155,19 +140,16 @@
 
                     <!-- Tarjeta Secundaria 4 -->
                     <article data-category="transporte" class="filterable-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
-                        <!-- Prompt Imagen -->
-                        <div class="h-40 bg-jht-dark flex flex-col items-center justify-center text-center p-4 border border-dashed border-jht-gold relative">
-                            <span class="text-white text-[10px] font-bold uppercase mb-1">Prompt:</span>
-                            <span class="text-gray-400 text-[9px] italic leading-tight">"Tren de carga moderno cruzando los Andes peruanos, fotorrealista"</span>
-                            <span class="absolute bottom-1 right-1 text-[8px] text-gray-500 font-mono">assets/images/noticias/ferrocarril-carga.webp</span>
+                        <div class="h-44 bg-gray-100 overflow-hidden relative">
+                            <img src="{% static 'assets/images/noticias/puerto-chancay.webp' %}" alt="El Impacto del Megapuerto de Chancay" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         </div>
                         <div class="p-5">
                             <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
                                 <span class="bg-gray-100 text-jht-dark px-2 py-0.5 rounded border border-gray-200 font-bold">Transporte</span>
-                                <span>7 min read</span>
+                                <span>7 min de lectura</span>
                             </div>
-                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug">EL FERROCARRIL DE CARGA GANA TERRENO</h3>
-                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">Una alternativa firme frente al alza imparable del diésel en carretera.</p>
+                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug uppercase">El Impacto del Megapuerto de Chancay</h3>
+                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">Reorganización de corredores viales y nuevas oportunidades intermodales en Perú.</p>
                             <a href="{% url 'website:noticia_detalle' %}" class="inline-flex items-center gap-1 text-jht-dark text-xs font-bold hover:text-jht-gold transition-colors">
                                 Leer más <span class="material-symbols-outlined text-[14px]">chevron_right</span>
                             </a>
@@ -201,8 +183,8 @@
             
             <!-- Card 1 -->
             <article data-category="tecnologia" class="filterable-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center text-gray-400 relative">
-                    <span class="material-symbols-outlined text-5xl">image</span>
+                <div class="h-48 bg-gray-100 overflow-hidden relative">
+                    <img src="{% static 'assets/images/noticias/telemetria-torre.webp' %}" alt="Visibilidad y Trazabilidad GPS 24/7 en Fletes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="p-6">
                     <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
@@ -210,8 +192,8 @@
                         <span>•</span>
                         <span>12 Oct 2026</span>
                     </div>
-                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Visibilidad en Tiempo Real del Flete Logístico</h3>
-                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Saber dónde está tu mercancía dejó de ser un lujo para convertirse en una necesidad básica en las operaciones.</p>
+                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Visibilidad y Trazabilidad GPS 24/7 en Fletes</h3>
+                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Monitoreo satelital activo, alertas automáticas de desvío y reporte continuo a la central de operaciones.</p>
                     <a href="{% url 'website:noticia_detalle' %}" class="inline-flex items-center gap-2 text-jht-blue-support text-sm font-bold group-hover:text-jht-gold transition-colors">
                         Leer más <span class="material-symbols-outlined text-sm">arrow_forward</span>
                     </a>
@@ -220,8 +202,8 @@
 
             <!-- Card 2 -->
             <article data-category="transporte" class="filterable-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center text-gray-400 relative">
-                    <span class="material-symbols-outlined text-5xl">image</span>
+                <div class="h-48 bg-gray-100 overflow-hidden relative">
+                    <img src="{% static 'assets/images/noticias/materiales-iqbf.webp' %}" alt="Protocolos Avanzados de Seguridad para Transporte de Carga Crítica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="p-6">
                     <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
@@ -229,8 +211,8 @@
                         <span>•</span>
                         <span>08 Oct 2026</span>
                     </div>
-                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Transporte de Materiales Peligrosos: IQBF</h3>
-                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Conoce los estrictos protocolos de seguridad y las certificaciones requeridas para movilizar Insumos Químicos y Bienes Fiscalizados.</p>
+                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Protocolos Avanzados de Seguridad para Transporte de Carga Crítica</h3>
+                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Implementación de certificaciones BASC, cumplimiento normativo SUCAMEC y estándares globales en la gestión de insumos industriales y químicos.</p>
                     <a href="{% url 'website:noticia_detalle' %}" class="inline-flex items-center gap-2 text-jht-blue-support text-sm font-bold group-hover:text-jht-gold transition-colors">
                         Leer más <span class="material-symbols-outlined text-sm">arrow_forward</span>
                     </a>
@@ -239,8 +221,8 @@
 
             <!-- Card 3 -->
             <article data-category="sostenibilidad" class="filterable-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center text-gray-400 relative">
-                    <span class="material-symbols-outlined text-5xl">image</span>
+                <div class="h-48 bg-gray-100 overflow-hidden relative">
+                    <img src="{% static 'assets/images/noticias/cadena-frio.webp' %}" alt="Garantía de Cadena de Frío en Distribución B2B" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="p-6">
                     <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
@@ -248,18 +230,18 @@
                         <span>•</span>
                         <span>05 Oct 2026</span>
                     </div>
-                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">El Futuro de la Última Milla en Zonas Urbanas</h3>
-                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">La premisa climática que está cambiando el reparto urbano en Lima y provincias para el próximo año.</p>
+                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Garantía de Cadena de Frío en Distribución B2B</h3>
+                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Control de temperatura garantizado con sistemas de monitoreo continuo desde la carga en planta hasta la entrega final en almacén destino.</p>
                     <a href="{% url 'website:noticia_detalle' %}" class="inline-flex items-center gap-2 text-jht-blue-support text-sm font-bold group-hover:text-jht-gold transition-colors">
                         Leer más <span class="material-symbols-outlined text-sm">arrow_forward</span>
                     </a>
                 </div>
-        </article>
+            </article>
 
             <!-- Card 4 -->
             <article data-category="almacenaje" class="filterable-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center text-gray-400 relative">
-                    <span class="material-symbols-outlined text-5xl">image</span>
+                <div class="h-48 bg-gray-100 overflow-hidden relative">
+                    <img src="{% static 'assets/images/noticias/almacenaje-wms.webp' %}" alt="Gestión de Inventarios y Almacenaje WMS" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="p-6">
                     <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
@@ -267,8 +249,8 @@
                         <span>•</span>
                         <span>02 Oct 2026</span>
                     </div>
-                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Automatización que no falla en el Almacén</h3>
-                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Robots colaborativos que triplican el picking sin eliminar al operario humano.</p>
+                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Gestión de Inventarios y Almacenaje WMS</h3>
+                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Optimización del flujo de picking, cross-docking y trazabilidad de lotes para operaciones corporativas.</p>
                     <a href="{% url 'website:noticia_detalle' %}" class="inline-flex items-center gap-2 text-jht-blue-support text-sm font-bold group-hover:text-jht-gold transition-colors">
                         Leer más <span class="material-symbols-outlined text-sm">arrow_forward</span>
                     </a>
@@ -277,8 +259,8 @@
 
             <!-- Card 5 -->
             <article data-category="comercio" class="filterable-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center text-gray-400 relative">
-                    <span class="material-symbols-outlined text-5xl">image</span>
+                <div class="h-48 bg-gray-100 overflow-hidden relative">
+                    <img src="{% static 'assets/images/noticias/comercio-exterior.webp' %}" alt="Comercio Exterior y Logística Internacional" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="p-6">
                     <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
@@ -286,8 +268,8 @@
                         <span>•</span>
                         <span>28 Sep 2026</span>
                     </div>
-                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Nearshoring: La Fábrica vuelve a casa</h3>
-                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">El boom de cadenas largas impulsa una nueva geografía de centros logísticos.</p>
+                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Comercio Exterior y Logística Internacional</h3>
+                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Estrategias de agilidad aduanera y fletes terrestres intermodales para importadores y exportadores.</p>
                     <a href="{% url 'website:noticia_detalle' %}" class="inline-flex items-center gap-2 text-jht-blue-support text-sm font-bold group-hover:text-jht-gold transition-colors">
                         Leer más <span class="material-symbols-outlined text-sm">arrow_forward</span>
                     </a>
@@ -296,8 +278,8 @@
 
             <!-- Card 6 -->
             <article data-category="tecnologia" class="filterable-card bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center text-gray-400 relative">
-                    <span class="material-symbols-outlined text-5xl">image</span>
+                <div class="h-48 bg-gray-100 overflow-hidden relative">
+                    <img src="{% static 'assets/images/noticias/telemetria-torre.webp' %}" alt="Seguridad Patrimonial y Ciberseguridad en Fletes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="p-6">
                     <div class="flex items-center gap-3 text-xs text-gray-500 mb-3">
@@ -305,8 +287,8 @@
                         <span>•</span>
                         <span>25 Sep 2026</span>
                     </div>
-                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">El Rol del Blockchain en la Aduana Moderna</h3>
-                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Trazabilidad inmutable desde el puerto de origen hasta la puerta del cliente.</p>
+                    <h3 class="text-xl font-bold text-jht-dark mb-3 group-hover:text-jht-blue-support transition-colors line-clamp-2">Seguridad Patrimonial y Ciberseguridad en Fletes</h3>
+                    <p class="text-gray-600 text-sm mb-5 line-clamp-3">Protección de manifiestos de carga, confidencialidad B2B y prevención de fraudes en ruta.</p>
                     <a href="{% url 'website:noticia_detalle' %}" class="inline-flex items-center gap-2 text-jht-blue-support text-sm font-bold group-hover:text-jht-gold transition-colors">
                         Leer más <span class="material-symbols-outlined text-sm">arrow_forward</span>
                     </a>
