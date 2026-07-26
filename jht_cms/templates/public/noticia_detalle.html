@@ -14,6 +14,19 @@
             <span class="bg-jht-gold text-jht-dark text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-wide shadow-md shadow-jht-gold/20">Normativas MTC</span>
         </div>
         
+        <!-- Migas de Pan (Breadcrumbs) -->
+        <nav class="flex justify-center text-gray-400 text-xs sm:text-sm mb-6 w-full max-w-full overflow-hidden">
+            <ol class="flex items-center space-x-1 sm:space-x-2 whitespace-nowrap">
+                <li><a href="{% url 'website:index' %}" class="hover:text-jht-gold transition-colors">Inicio</a></li>
+                <li><span class="opacity-50">/</span></li>
+                <li><a href="{% url 'website:noticias' %}" class="hover:text-jht-gold transition-colors">Noticias</a></li>
+                <li><span class="opacity-50">/</span></li>
+                <li><a href="#" class="hover:text-jht-gold transition-colors">Normativas MTC</a></li>
+                <li><span class="opacity-50">/</span></li>
+                <li class="text-gray-200 font-bold truncate max-w-[120px] sm:max-w-[200px] md:max-w-xs">La Nueva Regulación de Carga...</li>
+            </ol>
+        </nav>
+        
         <!-- Título -->
         <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 uppercase tracking-wider font-title leading-tight">
             La Nueva Regulación de Carga Pesada Redefine las Rutas en Perú
@@ -85,12 +98,43 @@
                         <li><strong>Monitoreo GPS Constante:</strong> Utilizar torres de control 24/7.</li>
                         <li><strong>Renovación Vehicular:</strong> Apostar por tractocamiones más ligeros pero potentes.</li>
                     </ul>
+                <!-- Sección de Comentarios -->
+                <div class="mt-12 bg-gray-50/70 p-6 sm:p-10 rounded-2xl border border-gray-200">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-2">Deja un comentario</h3>
+                    <p class="text-sm text-blue-800 mb-8">Tu dirección de correo electrónico no será publicada. Los campos obligatorios están marcados con <span class="text-red-600">*</span></p>
                     
-                    <p>Si tu empresa necesita asesoría sobre cómo estas rutas afectarán tus costos de distribución, ponte en contacto con nuestro equipo comercial.</p>
-                </article>
+                    <form action="#" method="POST" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="nombre" class="block text-sm font-medium text-blue-800 mb-2">Nombre <span class="text-red-600">*</span></label>
+                                <input type="text" id="nombre" name="nombre" required class="w-full bg-white border border-blue-300 rounded-none p-3 text-gray-800 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-colors">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-blue-800 mb-2">Correo electrónico <span class="text-red-600">*</span></label>
+                                <input type="email" id="email" name="email" required class="w-full bg-white border border-blue-300 rounded-none p-3 text-gray-800 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-colors">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="comentario" class="block text-sm font-medium text-blue-800 mb-2">Añadir comentario <span class="text-red-600">*</span></label>
+                            <textarea id="comentario" name="comentario" rows="6" required class="w-full bg-white border border-blue-300 rounded-none p-3 text-gray-800 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 resize-y transition-colors"></textarea>
+                        </div>
+                        
+                        <div class="flex items-start gap-3 pt-2">
+                            <input type="checkbox" id="guardar" name="guardar" class="mt-1 w-4 h-4 border-blue-300 rounded-none text-blue-600 focus:ring-blue-500 cursor-pointer">
+                            <label for="guardar" class="text-sm text-blue-800 cursor-pointer leading-snug">Guarda mi nombre, correo electrónico y web en este navegador para la próxima vez que comente.</label>
+                        </div>
+                        
+                        <div class="pt-2">
+                            <button type="submit" class="border-2 border-blue-800 text-blue-800 font-bold py-3 px-8 hover:bg-blue-800 hover:text-white transition-all text-xs sm:text-sm uppercase tracking-wider">
+                                PUBLICAR EL COMENTARIO
+                            </button>
+                        </div>
+                    </form>
+                </div>
 
                 <!-- Botones de Compartir -->
-                <div class="mt-12 pt-8 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="mt-10 pt-8 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <span class="font-bold text-jht-dark uppercase tracking-wider text-sm">Compartir Artículo:</span>
                     <div class="flex items-center gap-3">
                         <a href="#" class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 hover:-translate-y-1 transition-all shadow-md" title="Compartir en LinkedIn">
@@ -166,25 +210,37 @@
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- (Copiar 3 cards básicas similares a las de noticias.html pero sin tanto texto) -->
-            <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group border border-gray-100">
-                <div class="h-40 bg-gray-200"></div>
-                <div class="p-5">
-                    <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support line-clamp-2">El Futuro de la Última Milla en Zonas Urbanas</h3>
-                    <a href="#" class="text-jht-gold text-sm font-bold uppercase tracking-wider">Leer artículo &rarr;</a>
+            <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group border border-gray-100 flex flex-col">
+                <div class="h-40 bg-jht-dark flex items-center justify-center border-b border-jht-gold/20 text-center p-4 relative">
+                    <span class="text-white text-[10px] font-bold uppercase mb-1">Prompt:</span>
+                    <span class="text-gray-400 text-[9px] italic leading-tight">"Furgoneta de reparto eléctrica en Lima urbana"</span>
+                    <span class="absolute bottom-1 right-1 text-[8px] text-gray-500 font-mono">.../ultima-milla.webp</span>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <h3 class="text-lg font-bold text-jht-dark mb-4 group-hover:text-jht-blue-support line-clamp-2">El Futuro de la Última Milla en Zonas Urbanas</h3>
+                    <a href="#" class="text-jht-gold text-sm font-bold uppercase tracking-wider self-start mt-auto">Leer artículo &rarr;</a>
                 </div>
             </article>
-            <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group border border-gray-100">
-                <div class="h-40 bg-gray-200"></div>
-                <div class="p-5">
-                    <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support line-clamp-2">Mantenimiento Preventivo de Flotas 2026</h3>
-                    <a href="#" class="text-jht-gold text-sm font-bold uppercase tracking-wider">Leer artículo &rarr;</a>
+            <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group border border-gray-100 flex flex-col">
+                <div class="h-40 bg-jht-dark flex items-center justify-center border-b border-jht-gold/20 text-center p-4 relative">
+                    <span class="text-white text-[10px] font-bold uppercase mb-1">Prompt:</span>
+                    <span class="text-gray-400 text-[9px] italic leading-tight">"Mecánico revisando motor de camión en taller corporativo"</span>
+                    <span class="absolute bottom-1 right-1 text-[8px] text-gray-500 font-mono">.../mantenimiento.webp</span>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <h3 class="text-lg font-bold text-jht-dark mb-4 group-hover:text-jht-blue-support line-clamp-2">Mantenimiento Preventivo de Flotas 2026</h3>
+                    <a href="#" class="text-jht-gold text-sm font-bold uppercase tracking-wider self-start mt-auto">Leer artículo &rarr;</a>
                 </div>
             </article>
-            <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group border border-gray-100">
-                <div class="h-40 bg-gray-200"></div>
-                <div class="p-5">
-                    <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support line-clamp-2">Optimización de Rutas en la Costa Sur</h3>
-                    <a href="#" class="text-jht-gold text-sm font-bold uppercase tracking-wider">Leer artículo &rarr;</a>
+            <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group border border-gray-100 flex flex-col">
+                <div class="h-40 bg-jht-dark flex items-center justify-center border-b border-jht-gold/20 text-center p-4 relative">
+                    <span class="text-white text-[10px] font-bold uppercase mb-1">Prompt:</span>
+                    <span class="text-gray-400 text-[9px] italic leading-tight">"Mapa digital iluminado de la costa sur peruana"</span>
+                    <span class="absolute bottom-1 right-1 text-[8px] text-gray-500 font-mono">.../rutas-sur.webp</span>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <h3 class="text-lg font-bold text-jht-dark mb-4 group-hover:text-jht-blue-support line-clamp-2">Optimización de Rutas en la Costa Sur</h3>
+                    <a href="#" class="text-jht-gold text-sm font-bold uppercase tracking-wider self-start mt-auto">Leer artículo &rarr;</a>
                 </div>
             </article>
         </div>
