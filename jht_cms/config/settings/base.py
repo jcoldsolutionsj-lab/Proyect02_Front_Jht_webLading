@@ -39,6 +39,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'apps.core',
     'apps.website',
+    'apps.noticias',            # Módulo de Noticias y Novedades JHT
     'apps.service_status',
     'apps.service_management',
     'apps.integrations',
