@@ -34,7 +34,7 @@
 
     {% block extra_css %}{% endblock %}
 
-    <!-- Ocultar scrollbar pero permitir scroll con rueda del ratón -->
+    <!-- Ocultar scrollbar pero permitir scroll con rueda del ratón + Barra de progreso global -->
     <style>
         /* Chrome, Safari, Opera y navegadores basados en WebKit */
         *, html, body, ::-webkit-scrollbar {
@@ -50,6 +50,45 @@
         html, body {
             overflow-x: hidden !important;
             max-width: 100vw !important;
+        }
+        #reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ffb703 0%, #1e3a8a 100%);
+            z-index: 9999;
+            width: 0%;
+            transition: width 0.1s ease-out;
+        }
+
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            20% { transform: translateY(-5px); }
+            40% { transform: translateY(0); }
+            60% { transform: translateY(-2.5px); }
+            80% { transform: translateY(0); }
+        }
+
+        .animate-gentle-bounce {
+            animation: gentleBounce 2.5s ease-in-out infinite;
+        }
+
+        @keyframes tonePulse {
+            0%, 100% {
+                background-color: rgba(55, 65, 81, 0.85); /* Tono Oscuro (gray-700) */
+                border-color: rgba(255, 255, 255, 0.2);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                background-color: rgba(156, 163, 175, 0.9); /* Tono Claro (gray-400) */
+                border-color: rgba(255, 183, 3, 0.7); /* Destello Borde Dorado */
+                box-shadow: 0 10px 30px -5px rgba(255, 183, 3, 0.35);
+            }
+        }
+
+        .animate-tone-pulse {
+            animation: tonePulse 2s infinite ease-in-out;
         }
     </style>
 
@@ -102,6 +141,15 @@
 </head>
 
 <body class="bg-jht-dark text-white font-sans antialiased overflow-x-hidden max-w-full flex flex-col min-h-screen">
+
+    <!-- Barra de Progreso de Lectura Global (Header Scroll Line) -->
+    <div id="reading-progress"></div>
+
+    <!-- Botón Flotante Global "Volver Arriba" (Scroll to Top) - Posición Izquierda -->
+    <button id="btn-back-to-top" aria-label="Volver al inicio"
+            class="fixed bottom-6 left-6 md:bottom-8 md:left-8 z-40 w-12 h-12 rounded-full backdrop-blur-md text-white border border-white/20 shadow-lg flex items-center justify-center transition-all duration-500 opacity-0 pointer-events-none hover:scale-110 hover:border-jht-gold cursor-pointer animate-tone-pulse">
+        <span class="material-symbols-outlined text-2xl animate-gentle-bounce">keyboard_arrow_up</span>
+    </button>
 
     <!-- Header -->
     {% block header_include %}
@@ -216,6 +264,46 @@
     {% endblock %}
 
     {% block extra_js %}{% endblock %}
+
+    <!-- Script Global de Barra de Progreso y Botón Volver Arriba -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnTop = document.getElementById('btn-back-to-top');
+
+            window.addEventListener('scroll', function() {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+                
+                // 1. Barra de progreso header
+                const progressBar = document.getElementById('reading-progress');
+                if (progressBar) {
+                    progressBar.style.width = scrolled + '%';
+                }
+
+                // 2. Botón Volver Arriba (dispara al 40% o más de scroll, alrededor de la mitad)
+                if (btnTop) {
+                    if (scrolled >= 40) {
+                        btnTop.classList.remove('opacity-0', 'pointer-events-none');
+                        btnTop.classList.add('opacity-100', 'pointer-events-auto');
+                    } else {
+                        btnTop.classList.remove('opacity-100', 'pointer-events-auto');
+                        btnTop.classList.add('opacity-0', 'pointer-events-none');
+                    }
+                }
+            });
+
+            if (btnTop) {
+                btnTop.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
 
     <!-- SweetAlert2 para mensajes de Django -->
     {% if messages %}

@@ -4,33 +4,21 @@
 {% block title %}Noticias y Novedades Logísticas - JHT Transport{% endblock %}
 {% block meta_description %}Descubre las últimas noticias, normativas y tendencias del sector logístico, aduanero y de transporte de carga pesada en Perú.{% endblock %}
 
-{% block extra_head %}
-<!-- Reading Progress Bar Style -->
-<style>
-    #reading-progress {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #ffb703 0%, #1e3a8a 100%);
-        z-index: 9999;
-        width: 0%;
-        transition: width 0.1s ease-out;
-    }
-</style>
-{% endblock %}
-
 {% block content %}
-<!-- Barra de Progreso de Lectura -->
-<div id="reading-progress"></div>
 <!-- 1. HERO Y BUSCADOR COMPACTO -->
 <section id="hero-noticias" class="relative w-full pt-28 pb-8 md:pt-32 md:pb-10 bg-jht-dark overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-[#0a1526] to-jht-dark z-0"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
         <!-- Título y Bajada -->
         <div class="text-left max-w-2xl">
-            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 uppercase tracking-wider font-title leading-snug">
-                Noticias y <span class="text-jht-gold">Novedades Logísticas</span>
+            <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 uppercase tracking-wider font-title leading-snug flex items-center gap-3">
+                <span class="gps-icon text-jht-gold shrink-0">
+                    <span class="gps-dot"></span>
+                    <span class="gps-ring gps-ring-1"></span>
+                    <span class="gps-ring gps-ring-2"></span>
+                    <span class="gps-ring gps-ring-3"></span>
+                </span>
+                <span>Noticias y <span class="text-jht-gold">Novedades Logísticas</span></span>
             </h1>
             <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
                 Análisis, normativa y actualidad del ecosistema de transporte y comercio global.
@@ -162,8 +150,14 @@
 <!-- 3. TODAS LAS PUBLICACIONES (Grid) -->
 <section id="lista-noticias" class="w-full py-16 bg-gray-50 border-t border-gray-200">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
-        <h2 class="text-3xl font-bold text-jht-dark mb-2 uppercase font-title">
-            {% if busqueda_q %}Resultados para <span class="text-jht-gold">"{{ busqueda_q }}"</span>{% elif categoria_activa %}Noticias en <span class="text-jht-gold">{{ categoria_activa }}</span>{% else %}Últimas <span class="text-jht-gold">Publicaciones</span>{% endif %}
+        <h2 class="text-3xl font-bold text-jht-dark mb-2 uppercase font-title flex items-center gap-3">
+            <span class="gps-icon text-jht-gold shrink-0">
+                <span class="gps-dot"></span>
+                <span class="gps-ring gps-ring-1"></span>
+                <span class="gps-ring gps-ring-2"></span>
+                <span class="gps-ring gps-ring-3"></span>
+            </span>
+            <span>{% if busqueda_q %}Resultados para <span class="text-jht-gold">"{{ busqueda_q }}"</span>{% elif categoria_activa %}Noticias en <span class="text-jht-gold">{{ categoria_activa }}</span>{% else %}Últimas <span class="text-jht-gold">Publicaciones</span>{% endif %}</span>
         </h2>
         <p class="text-gray-500 mb-10">Información esencial para los profesionales de la cadena de suministro.</p>
         
@@ -251,16 +245,30 @@
     <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-jht-blue-support/20 rounded-full blur-3xl"></div>
     
     <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <h2 class="text-3xl md:text-5xl font-bold text-white mb-6 uppercase tracking-wider font-title">
-            ¿Necesitas un <span class="text-jht-gold">Socio Logístico</span>?
+        <h2 class="font-title text-3xl md:text-[40px] md:leading-[48px] font-bold mb-6 flex items-center justify-center gap-3 py-1 text-white uppercase tracking-wider">
+            <span class="gps-icon text-jht-gold shrink-0">
+                <span class="gps-dot"></span>
+                <span class="gps-ring gps-ring-1"></span>
+                <span class="gps-ring gps-ring-2"></span>
+                <span class="gps-ring gps-ring-3"></span>
+            </span>
+            <span>¿Necesitas un <span class="text-jht-gold">Socio Logístico</span>?</span>
         </h2>
         <p class="text-gray-300 text-lg mb-10">
             Hablemos sin rodeos. Descubre cómo nuestra flota y experiencia pueden optimizar tu cadena de suministro hoy mismo.
         </p>
-        <a href="{% url 'website:contacto' %}" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-xl bg-jht-gold text-jht-dark shadow-xl shadow-jht-gold/25 hover:shadow-jht-gold/50 hover:scale-105 transition-all duration-300 font-title font-bold text-lg group">
-            <span class="material-symbols-outlined transition-transform duration-300 group-hover:-translate-y-1">rocket_launch</span>
-            Solicitar Cotización Ahora
-        </a>
+        <div class="relative inline-block">
+            <a href="{% url 'website:contacto' %}" class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-xl bg-jht-gold text-jht-dark shadow-xl shadow-jht-gold/25 hover:shadow-jht-gold/50 hover:scale-105 transition-all duration-300 font-title font-bold text-lg group animate-click-pulse relative z-10">
+                <span class="material-symbols-outlined transition-transform duration-300 group-hover:-translate-y-1">rocket_launch</span>
+                Solicitar Cotización Ahora
+            </a>
+            <span class="btn-animated-cursor" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                    <path d="M5.5 2 L5.5 18.5 L8.8 14.8 L11.5 21.5 L13.8 20.5 L11.1 13.8 L16.5 13.8 Z"
+                        fill="white" stroke="#1a1a2e" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+                </svg>
+            </span>
+        </div>
     </div>
 </section>
 {% endblock %}
@@ -359,17 +367,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     }
-
-    // Script de Barra de Progreso de Lectura al desplazar el scroll
-    window.addEventListener('scroll', function() {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        const progressBar = document.getElementById('reading-progress');
-        if (progressBar) {
-            progressBar.style.width = scrolled + '%';
-        }
-    });
 });
 </script>
 

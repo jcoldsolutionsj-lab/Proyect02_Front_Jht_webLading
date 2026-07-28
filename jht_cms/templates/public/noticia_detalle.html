@@ -4,25 +4,7 @@
 {% block title %}{{ articulo.titulo }} - JHT Transport{% endblock %}
 {% block meta_description %}{{ articulo.bajada }}{% endblock %}
 
-{% block extra_head %}
-<!-- Reading Progress Bar Style -->
-<style>
-    #reading-progress {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #ffb703 0%, #1e3a8a 100%);
-        z-index: 9999;
-        width: 0%;
-        transition: width 0.1s ease-out;
-    }
-</style>
-{% endblock %}
-
 {% block content %}
-<!-- Barra de Progreso de Lectura -->
-<div id="reading-progress"></div>
 
 <!-- 1. HEADER DEL ARTÍCULO (Hero) -->
 <section class="w-full pt-32 pb-28 md:pb-36 bg-jht-dark relative overflow-hidden">
@@ -351,18 +333,5 @@
 </section>
 {% endblock %}
 
-{% block extra_js %}
-<script>
-    // Script de Barra de Progreso de Lectura
-    window.addEventListener('scroll', function() {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        const progressBar = document.getElementById('reading-progress');
-        if (progressBar) {
-            progressBar.style.width = scrolled + '%';
-        }
-    });
-</script>
 {% endblock %}
 
