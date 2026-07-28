@@ -12,17 +12,26 @@ from .forms import ComentarioForm
 class NoticiasListView(ListView):
     """
     Página principal de Noticias.
-    - Muestra el artículo destacado (hero/featured).
+    - Muestra hasta 3 artículos destacados (1 principal + secundarios).
     - Lista paginada del resto de artículos publicados.
-    - Filtrado opcional por categoría o etiqueta vía query param ?categoria=slug o ?etiqueta=slug.
+    - Filtrado opcional por categoría, etiqueta o búsqueda (?q=, ?categoria=, ?etiqueta=).
     """
     model = Articulo
     template_name = 'public/noticias.html'
     context_object_name = 'articulos'
-    paginate_by = 9  # 9 artículos en grilla de 3 columnas
+    paginate_by = 9  # 9 artículos por página
 
     def get_queryset(self):
         qs = Articulo.objects.filter(estado='publicado').select_related('categoria', 'autor')
+
+        # Filtro por búsqueda ?q=
+        q = self.request.GET.get('q')
+        if q:
+            qs = qs.filter(
+                Q(titulo__icontains=q) |
+                Q(bajada__icontains=q) |
+                Q(contenido_html__icontains=q)
+            )
 
         # Filtro por categoría
         categoria_slug = self.request.GET.get('categoria')
@@ -34,29 +43,35 @@ class NoticiasListView(ListView):
         if etiqueta_slug:
             qs = qs.filter(etiquetas__slug=etiqueta_slug)
 
-        # Excluir el destacado de la lista general (se muestra aparte en el hero)
-        destacado = self._get_destacado()
-        if destacado:
-            qs = qs.exclude(pk=destacado.pk)
+        # Excluir artículos destacados del hero de la grilla general cuando no hay filtros activos
+        if not categoria_slug and not etiqueta_slug and not q:
+            destacados_pks = [a.pk for a in self._get_destacados()]
+            qs = qs.exclude(pk__in=destacados_pks)
 
         return qs
 
-    def _get_destacado(self):
-        """Retorna el artículo marcado como destacado, o el más reciente si no hay ninguno."""
-        destacado = Articulo.objects.filter(
+    def _get_destacados(self):
+        """Retorna hasta 5 artículos marcados como destacados, o los más recientes si no hay ninguno."""
+        destacados = list(Articulo.objects.filter(
             estado='publicado', es_destacado=True
-        ).select_related('categoria', 'autor').first()
-        if not destacado:
-            destacado = Articulo.objects.filter(
+        ).select_related('categoria', 'autor')[:5])
+
+        if not destacados:
+            destacados = list(Articulo.objects.filter(
                 estado='publicado'
-            ).select_related('categoria', 'autor').first()
-        return destacado
+            ).select_related('categoria', 'autor')[:1])
+
+        return destacados
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['articulo_destacado'] = self._get_destacado()
+        destacados = self._get_destacados()
+
+        context['articulos_destacados'] = destacados
+        context['articulo_destacado'] = destacados[0] if destacados else None
         context['categorias'] = Categoria.objects.all()
         context['categoria_activa'] = self.request.GET.get('categoria', '')
+        context['busqueda_q'] = self.request.GET.get('q', '')
         return context
 
 

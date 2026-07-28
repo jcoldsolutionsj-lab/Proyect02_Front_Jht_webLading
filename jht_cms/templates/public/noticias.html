@@ -4,8 +4,26 @@
 {% block title %}Noticias y Novedades Logísticas - JHT Transport{% endblock %}
 {% block meta_description %}Descubre las últimas noticias, normativas y tendencias del sector logístico, aduanero y de transporte de carga pesada en Perú.{% endblock %}
 
+{% block extra_head %}
+<!-- Reading Progress Bar Style -->
+<style>
+    #reading-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #ffb703 0%, #1e3a8a 100%);
+        z-index: 9999;
+        width: 0%;
+        transition: width 0.1s ease-out;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<!-- 1. HERO Y BUSCADOR COMPACTO (Optimizado para UX / Above the fold) -->
+<!-- Barra de Progreso de Lectura -->
+<div id="reading-progress"></div>
+<!-- 1. HERO Y BUSCADOR COMPACTO -->
 <section id="hero-noticias" class="relative w-full pt-28 pb-8 md:pt-32 md:pb-10 bg-jht-dark overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-[#0a1526] to-jht-dark z-0"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -19,10 +37,13 @@
             </p>
         </div>
         
-        <!-- Buscador Integrado Pill Flex (Ancho controlado e indestructible) -->
-        <form id="form-busqueda" action="#" method="GET" style="max-width: 400px; width: 100%;" class="shrink-0">
+        <!-- Buscador Integrado Pill Flex -->
+        <form id="form-busqueda" action="{% url 'website:noticias' %}" method="GET" style="max-width: 400px; width: 100%;" class="shrink-0">
+            {% if categoria_activa %}
+            <input type="hidden" name="categoria" value="{{ categoria_activa }}">
+            {% endif %}
             <div style="max-width: 400px; width: 100%;" class="flex items-center bg-white/10 border border-white/20 rounded-full p-1.5 backdrop-blur-md focus-within:border-jht-gold transition-all shadow-inner">
-                <input type="text" id="input-busqueda" name="q" placeholder="Buscar artículos, normativas..." 
+                <input type="text" id="input-busqueda" name="q" value="{{ busqueda_q }}" placeholder="Buscar artículos, normativas..." 
                        class="bg-transparent text-white px-4 py-2 text-sm flex-1 focus:outline-none placeholder-gray-300 min-w-0 border-none outline-none ring-0">
                 <button type="submit" class="bg-jht-gold text-jht-dark font-bold w-10 h-10 rounded-full hover:bg-yellow-400 transition-colors flex items-center justify-center shrink-0 shadow-md">
                     <span class="material-symbols-outlined text-xl">search</span>
@@ -32,7 +53,7 @@
     </div>
 </section>
 
-<!-- 2. ARTÍCULO DESTACADO -->
+<!-- 2. SECCIÓN DESTACADA (Carousel Rotativo 4s) -->
 <section id="noticia-destacada" class="w-full py-8 md:py-12 bg-white relative">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
         <div class="flex flex-col lg:flex-row gap-10">
@@ -58,71 +79,79 @@
                     {% endfor %}
                 </ul>
 
-                {% if categoria_activa %}
+                {% if categoria_activa or busqueda_q %}
                 <div class="mt-5 pt-4 border-t border-gray-100">
-                    <p class="text-xs text-gray-400 uppercase tracking-wider mb-2">Filtrando por:</p>
-                    <a href="{% url 'website:noticias' %}" class="flex items-center gap-2 bg-jht-gold/10 border border-jht-gold text-jht-dark text-sm font-bold px-3 py-1.5 rounded-full hover:bg-jht-gold hover:text-white transition-all group">
-                        <span class="truncate max-w-[120px]">{{ categoria_activa }}</span>
-                        <span class="material-symbols-outlined text-base group-hover:rotate-90 transition-transform duration-200">close</span>
-                    </a>
+                    <p class="text-xs text-gray-400 uppercase tracking-wider mb-2">Filtros activos:</p>
+                    <div class="flex flex-wrap gap-2">
+                        {% if categoria_activa %}
+                        <a href="{% url 'website:noticias' %}{% if busqueda_q %}?q={{ busqueda_q }}{% endif %}" class="flex items-center gap-2 bg-jht-gold/10 border border-jht-gold text-jht-dark text-xs font-bold px-3 py-1.5 rounded-full hover:bg-jht-gold hover:text-white transition-all group">
+                            <span>Categoría: {{ categoria_activa }}</span>
+                            <span class="material-symbols-outlined text-sm group-hover:rotate-90 transition-transform">close</span>
+                        </a>
+                        {% endif %}
+                        {% if busqueda_q %}
+                        <a href="{% url 'website:noticias' %}{% if categoria_activa %}?categoria={{ categoria_activa }}{% endif %}" class="flex items-center gap-2 bg-jht-blue-support/10 border border-jht-blue-support text-jht-dark text-xs font-bold px-3 py-1.5 rounded-full hover:bg-jht-blue-support hover:text-white transition-all group">
+                            <span>Búsqueda: "{{ busqueda_q }}"</span>
+                            <span class="material-symbols-outlined text-sm group-hover:rotate-90 transition-transform">close</span>
+                        </a>
+                        {% endif %}
+                    </div>
                 </div>
                 {% endif %}
             </div>
             
-            <!-- Tarjeta Destacada -->
+            <!-- Tarjeta Destacada Rotativa -->
             <div class="lg:w-3/4 w-full">
-                {% if articulo_destacado %}
-                <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-shadow group flex flex-col">
-                    <div class="w-full h-[350px] lg:h-[500px] relative overflow-hidden">
-                        {% if articulo_destacado.imagen_portada %}
-                        <img src="{{ articulo_destacado.imagen_portada.url }}" alt="{{ articulo_destacado.titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        {% endif %}
-                        <div class="absolute top-4 left-4 bg-jht-gold text-jht-dark text-xs font-bold px-3 py-1 rounded-full uppercase z-10 shadow-md">Destacado</div>
-                    </div>
-                    <div class="w-full p-8 flex flex-col justify-center">
-                        <div class="flex items-center gap-3 text-sm text-gray-500 mb-3">
-                            <span class="font-bold text-jht-blue-support uppercase">{{ articulo_destacado.categoria.nombre }}</span>
-                            <span>•</span>
-                            <span>{{ articulo_destacado.fecha_publicacion|date:"d M Y" }}</span>
-                            <span>•</span>
-                            <span class="font-bold">{{ articulo_destacado.vistas }} vistas</span>
+                {% if articulos_destacados %}
+                <div id="featured-carousel" class="relative bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 group grid grid-cols-1 grid-rows-1">
+                    {% for articulo in articulos_destacados %}
+                    <div class="featured-slide col-start-1 row-start-1 bg-gray-50 flex flex-col transition-opacity duration-500 ease-in-out {% if forloop.first %}opacity-100 z-10 pointer-events-auto{% else %}opacity-0 z-0 pointer-events-none{% endif %}" data-slide-index="{{ forloop.counter0 }}">
+                        <div class="w-full h-[320px] lg:h-[450px] relative overflow-hidden">
+                            {% if articulo.imagen_portada %}
+                            <img src="{{ articulo.imagen_portada.url }}" alt="{{ articulo.titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            {% endif %}
+                            <div class="absolute top-4 left-4 bg-jht-gold text-jht-dark text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase z-10 shadow-md flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm">star</span> DESTACADO {% if articulos_destacados|length > 1 %}({{ forloop.counter }}/{{ articulos_destacados|length }}){% endif %}
+                            </div>
                         </div>
-                        <h2 class="text-3xl font-bold text-jht-dark mb-4 group-hover:text-jht-blue-support transition-colors">{{ articulo_destacado.titulo }}</h2>
-                        <p class="text-gray-600 mb-6">{{ articulo_destacado.bajada }}</p>
-                        <a href="{% url 'website:noticia_detalle' articulo_destacado.slug %}" class="inline-flex items-center gap-2 text-jht-blue-support font-bold hover:text-jht-gold transition-colors">
-                            Leer artículo completo <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                        </a>
+                        <div class="w-full p-6 md:p-8 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 text-sm text-gray-500 mb-3">
+                                <span class="font-bold text-jht-blue-support uppercase">{{ articulo.categoria.nombre }}</span>
+                                <span>•</span>
+                                <span>{{ articulo.fecha_publicacion|date:"d M Y" }}</span>
+                                <span>•</span>
+                                <span class="font-bold">{{ articulo.vistas }} vistas</span>
+                            </div>
+                            <h2 class="text-2xl md:text-3xl font-bold text-jht-dark mb-4 group-hover:text-jht-blue-support transition-colors">{{ articulo.titulo }}</h2>
+                            <p class="text-gray-600 mb-6 text-sm md:text-base leading-relaxed line-clamp-3">{{ articulo.bajada }}</p>
+                            <a href="{% url 'website:noticia_detalle' articulo.slug %}" class="inline-flex items-center gap-2 text-jht-blue-support font-bold hover:text-jht-gold transition-colors">
+                                Leer artículo completo <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </a>
+                        </div>
                     </div>
+                    {% endfor %}
+
+                    <!-- Controles del Slider si hay más de 1 destacado -->
+                    {% if articulos_destacados|length > 1 %}
+                    <!-- Botones Flechas Izquierda / Derecha -->
+                    <button id="prev-slide" aria-label="Noticia anterior" class="absolute top-1/3 left-4 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-jht-gold hover:text-jht-dark text-white flex items-center justify-center transition-all z-20 backdrop-blur-sm shadow-lg border border-white/20">
+                        <span class="material-symbols-outlined text-xl">chevron_left</span>
+                    </button>
+                    <button id="next-slide" aria-label="Siguiente noticia" class="absolute top-1/3 right-4 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-jht-gold hover:text-jht-dark text-white flex items-center justify-center transition-all z-20 backdrop-blur-sm shadow-lg border border-white/20">
+                        <span class="material-symbols-outlined text-xl">chevron_right</span>
+                    </button>
+
+                    <!-- Indicadores Dots -->
+                    <div class="absolute top-4 right-4 flex items-center gap-1.5 z-20 bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20">
+                        {% for articulo in articulos_destacados %}
+                        <button class="slide-dot h-2.5 rounded-full transition-all duration-300 {% if forloop.first %}bg-jht-gold w-6{% else %}bg-white/60 w-2.5 hover:bg-white{% endif %}" data-dot-index="{{ forloop.counter0 }}" aria-label="Ir a diapositiva {{ forloop.counter }}"></button>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                 </div>
                 {% else %}
                 <div class="flex items-center justify-center h-64 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">
                     <p class="text-gray-400 text-center"><span class="material-symbols-outlined block text-5xl mb-2">newspaper</span>Aún no hay artículos publicados.<br>Crea uno desde el panel de administración.</p>
-                </div>
-                {% endif %}
-
-                <!-- Cuadrícula 2x2: artículos secundarios (los más recientes excluyendo el destacado) -->
-                {% if page_obj %}
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                    {% for articulo in page_obj|slice:":4" %}
-                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group">
-                        <div class="h-44 bg-gray-100 overflow-hidden relative">
-                            {% if articulo.imagen_portada %}
-                            <img src="{{ articulo.imagen_portada.url }}" alt="{{ articulo.titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            {% endif %}
-                        </div>
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                                <span class="bg-gray-100 text-jht-dark px-2 py-0.5 rounded border border-gray-200 font-bold">{{ articulo.categoria.nombre }}</span>
-                                <span>{{ articulo.fecha_publicacion|date:"d M Y" }}</span>
-                            </div>
-                            <h3 class="text-lg font-bold text-jht-dark mb-2 group-hover:text-jht-blue-support transition-colors leading-snug uppercase">{{ articulo.titulo }}</h3>
-                            <p class="text-gray-600 text-xs mb-4 line-clamp-2">{{ articulo.bajada }}</p>
-                            <a href="{% url 'website:noticia_detalle' articulo.slug %}" class="inline-flex items-center gap-1 text-jht-dark text-xs font-bold hover:text-jht-gold transition-colors">
-                                Leer más <span class="material-symbols-outlined text-[14px]">chevron_right</span>
-                            </a>
-                        </div>
-                    </article>
-                    {% endfor %}
                 </div>
                 {% endif %}
             </div>
@@ -133,28 +162,23 @@
 <!-- 3. TODAS LAS PUBLICACIONES (Grid) -->
 <section id="lista-noticias" class="w-full py-16 bg-gray-50 border-t border-gray-200">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
-        <h2 class="text-3xl font-bold text-jht-dark mb-2 uppercase font-title">Últimas <span class="text-jht-gold">Publicaciones</span></h2>
+        <h2 class="text-3xl font-bold text-jht-dark mb-2 uppercase font-title">
+            {% if busqueda_q %}Resultados para <span class="text-jht-gold">"{{ busqueda_q }}"</span>{% elif categoria_activa %}Noticias en <span class="text-jht-gold">{{ categoria_activa }}</span>{% else %}Últimas <span class="text-jht-gold">Publicaciones</span>{% endif %}
+        </h2>
         <p class="text-gray-500 mb-10">Información esencial para los profesionales de la cadena de suministro.</p>
         
-        <!-- Contador de resultados y estado vacío -->
-        <div id="resultados-header" class="hidden mb-6 flex items-center justify-between">
-            <p id="contador-resultados" class="text-sm text-gray-500"></p>
-        </div>
-        <div id="estado-vacio" class="hidden py-20 text-center">
-            <span class="material-symbols-outlined text-6xl text-gray-300 mb-4">search_off</span>
-            <p class="text-xl font-bold text-gray-400 mb-2">No hay artículos en esta categoría</p>
-            <p class="text-gray-400 text-sm mb-6">Prueba otra categoría o revisa más adelante.</p>
-            <button onclick="document.querySelector('[data-cat=todos]').click()" class="px-5 py-2 bg-jht-dark text-white text-sm font-bold rounded-full hover:bg-jht-blue-support transition-colors">
-                Ver todos los artículos
-            </button>
-        </div>
         <!-- Grilla de Publicaciones dinámica -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {% for articulo in page_obj %}
-            <article class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+            <article class="bg-white rounded-2xl overflow-hidden shadow-md border {% if articulo.es_destacado %}border-amber-300 ring-1 ring-amber-300/50{% else %}border-gray-100{% endif %} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
                 <div class="h-48 bg-gray-100 overflow-hidden relative">
                     {% if articulo.imagen_portada %}
                     <img src="{{ articulo.imagen_portada.url }}" alt="{{ articulo.titulo }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    {% endif %}
+                    {% if articulo.es_destacado %}
+                    <div class="absolute top-3 left-3 bg-jht-gold text-jht-dark text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase z-10 shadow-sm flex items-center gap-1">
+                        <span class="material-symbols-outlined text-xs">star</span> DESTACADO
+                    </div>
                     {% endif %}
                 </div>
                 <div class="p-6">
@@ -173,8 +197,8 @@
             {% empty %}
             <div class="col-span-3 py-20 text-center">
                 <span class="material-symbols-outlined text-6xl text-gray-300 block mb-4">search_off</span>
-                <p class="text-xl font-bold text-gray-400 mb-2">No hay artículos en esta categoría</p>
-                <p class="text-gray-400 text-sm mb-6">Prueba otra categoría o revisa más adelante.</p>
+                <p class="text-xl font-bold text-gray-400 mb-2">No se encontraron artículos</p>
+                <p class="text-gray-400 text-sm mb-6">Prueba con otra búsqueda o categoría.</p>
                 <a href="{% url 'website:noticias' %}" class="px-5 py-2 bg-jht-dark text-white text-sm font-bold rounded-full hover:bg-jht-blue-support transition-colors inline-block">Ver todos los artículos</a>
             </div>
             {% endfor %}
@@ -185,7 +209,7 @@
         <div class="mt-16 flex justify-center">
             <nav class="flex items-center gap-2" aria-label="Paginación">
                 {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}{% if categoria_activa %}&categoria={{ categoria_activa }}{% endif %}"
+                <a href="?page={{ page_obj.previous_page_number }}{% if categoria_activa %}&categoria={{ categoria_activa }}{% endif %}{% if busqueda_q %}&q={{ busqueda_q }}{% endif %}"
                    class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:bg-jht-gold hover:text-jht-dark hover:border-jht-gold transition-colors">
                     <span class="material-symbols-outlined text-sm">arrow_back_ios_new</span>
                 </a>
@@ -199,13 +223,13 @@
                     {% if page_obj.number == num %}
                     <span class="w-10 h-10 flex items-center justify-center rounded-full bg-jht-dark text-white font-bold shadow-md">{{ num }}</span>
                     {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                    <a href="?page={{ num }}{% if categoria_activa %}&categoria={{ categoria_activa }}{% endif %}"
+                    <a href="?page={{ num }}{% if categoria_activa %}&categoria={{ categoria_activa }}{% endif %}{% if busqueda_q %}&q={{ busqueda_q }}{% endif %}"
                        class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors font-medium">{{ num }}</a>
                     {% endif %}
                 {% endfor %}
 
                 {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}{% if categoria_activa %}&categoria={{ categoria_activa }}{% endif %}"
+                <a href="?page={{ page_obj.next_page_number }}{% if categoria_activa %}&categoria={{ categoria_activa }}{% endif %}{% if busqueda_q %}&q={{ busqueda_q }}{% endif %}"
                    class="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-500 hover:bg-jht-gold hover:text-jht-dark hover:border-jht-gold transition-colors">
                     <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
                 </a>
@@ -222,7 +246,6 @@
 
 <!-- 4. CTA BANNER -->
 <section class="w-full py-20 bg-jht-dark relative overflow-hidden">
-    <!-- Fondo decorativo -->
     <div class="absolute inset-0 opacity-20 bg-[url('{% static 'assets/images/branding/texture.png' %}')] bg-cover bg-center"></div>
     <div class="absolute -top-40 -right-40 w-96 h-96 bg-jht-gold/20 rounded-full blur-3xl"></div>
     <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-jht-blue-support/20 rounded-full blur-3xl"></div>
@@ -245,133 +268,107 @@
 {% block extra_js %}
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const catLinks = document.querySelectorAll('.cat-link');
-    const cards = document.querySelectorAll('.filterable-card');
-    const cardDestacada = document.getElementById('card-destacada');
-    const chip = document.getElementById('filtro-activo-chip');
-    const chipNombre = document.getElementById('filtro-activo-nombre');
-    const btnLimpiar = document.getElementById('btn-limpiar-filtro');
-    const contadorEl = document.getElementById('contador-resultados');
-    const resultadosHeader = document.getElementById('resultados-header');
-    const estadoVacio = document.getElementById('estado-vacio');
-    const gridPublicaciones = document.getElementById('grid-publicaciones');
+    // -------------------------------------------------------------
+    // CARROUSEL ROTATIVO DE NOTICIAS DESTACADAS (Cada 4 Segundos)
+    // -------------------------------------------------------------
+    const carousel = document.getElementById('featured-carousel');
+    if (carousel) {
+        const slides = carousel.querySelectorAll('.featured-slide');
+        const dots = carousel.querySelectorAll('.slide-dot');
+        const btnPrev = document.getElementById('prev-slide');
+        const btnNext = document.getElementById('next-slide');
+        let currentIndex = 0;
+        let timer = null;
 
-    const inputBusqueda = document.getElementById('input-busqueda');
-    const formBusqueda = document.getElementById('form-busqueda');
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('opacity-0', 'z-0', 'pointer-events-none');
+                    slide.classList.add('opacity-100', 'z-10', 'pointer-events-auto');
+                } else {
+                    slide.classList.remove('opacity-100', 'z-10', 'pointer-events-auto');
+                    slide.classList.add('opacity-0', 'z-0', 'pointer-events-none');
+                }
+            });
 
-    function aplicarFiltro(cat, label, query = '') {
-        query = query.toLowerCase().trim();
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('bg-jht-gold', 'w-6');
+                    dot.classList.remove('bg-white/60', 'w-2.5');
+                } else {
+                    dot.classList.remove('bg-jht-gold', 'w-6');
+                    dot.classList.add('bg-white/60', 'w-2.5');
+                }
+            });
 
-        // Actualizar estado activo del enlace de categoría
-        catLinks.forEach(function (l) {
-            l.classList.remove('active-cat', 'text-jht-gold', 'font-bold');
-            l.classList.add('text-gray-600', 'font-medium');
-        });
-        const linkActivo = document.querySelector('[data-cat="' + cat + '"]');
-        if (linkActivo) {
-            linkActivo.classList.add('active-cat', 'text-jht-gold', 'font-bold');
-            linkActivo.classList.remove('text-gray-600', 'font-medium');
+            currentIndex = index;
         }
 
-        // Filtrar tarjetas del grid
-        let visibles = 0;
-        cards.forEach(function (card) {
-            const matchCat = (cat === 'todos' || card.dataset.category === cat);
-            const textContent = card.textContent.toLowerCase();
-            const matchQuery = (query === '' || textContent.includes(query));
-
-            if (matchCat && matchQuery) {
-                card.style.display = '';
-                card.style.animation = 'fadeInUp 0.3s ease forwards';
-                visibles++;
-            } else {
-                card.style.display = 'none';
-            }
-        });
-
-        // Visibilidad de tarjeta destacada
-        const zonaDestacada = document.getElementById('zona-destacada');
-        const cardsPrincipal = cardDestacada.dataset.category;
-        const textDestacada = cardDestacada.textContent.toLowerCase();
-        const matchDestacadaQuery = (query === '' || textDestacada.includes(query));
-        const cardsSecundarias = zonaDestacada.querySelectorAll('.filterable-card');
-        let haySecundariasVisibles = false;
-        cardsSecundarias.forEach(function(c) {
-            if (c.style.display !== 'none') haySecundariasVisibles = true;
-        });
-
-        if (cat === 'todos' && matchDestacadaQuery) {
-            zonaDestacada.style.display = '';
-            cardDestacada.style.display = '';
-        } else if ((cardsPrincipal === cat && matchDestacadaQuery) || haySecundariasVisibles) {
-            zonaDestacada.style.display = '';
-            cardDestacada.style.display = (cardsPrincipal === cat && matchDestacadaQuery) ? '' : 'none';
-        } else {
-            zonaDestacada.style.display = 'none';
+        function nextSlide() {
+            let nextIndex = (currentIndex + 1) % slides.length;
+            showSlide(nextIndex);
         }
 
-        // Chip de filtro activo
-        let textoChip = label;
-        if (query !== '') {
-            textoChip = (cat !== 'todos' ? label + ' + ' : '') + '“' + query + '”';
+        function prevSlide() {
+            let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(prevIndex);
         }
 
-        if (cat === 'todos' && query === '') {
-            chip.classList.add('hidden');
-            chipNombre.textContent = '';
-            resultadosHeader.classList.add('hidden');
-            estadoVacio.classList.add('hidden');
-            gridPublicaciones.style.display = '';
-        } else {
-            chip.classList.remove('hidden');
-            chipNombre.textContent = textoChip;
-
-            if (visibles === 0 && !haySecundariasVisibles) {
-                estadoVacio.classList.remove('hidden');
-                gridPublicaciones.style.display = 'none';
-                resultadosHeader.classList.add('hidden');
-            } else {
-                estadoVacio.classList.add('hidden');
-                gridPublicaciones.style.display = '';
-                resultadosHeader.classList.remove('hidden');
-                contadorEl.textContent = visibles + ' artículo' + (visibles !== 1 ? 's' : '') + ' encontrado' + (visibles !== 1 ? 's' : '');
+        function startAutoRotate() {
+            if (slides.length > 1) {
+                stopAutoRotate();
+                timer = setInterval(nextSlide, 4000); // 4 segundos
             }
         }
+
+        function stopAutoRotate() {
+            if (timer) {
+                clearInterval(timer);
+                timer = null;
+            }
+        }
+
+        if (slides.length > 1) {
+            startAutoRotate();
+
+            carousel.addEventListener('mouseenter', stopAutoRotate);
+            carousel.addEventListener('mouseleave', startAutoRotate);
+
+            if (btnNext) {
+                btnNext.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    nextSlide();
+                    startAutoRotate();
+                });
+            }
+
+            if (btnPrev) {
+                btnPrev.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    prevSlide();
+                    startAutoRotate();
+                });
+            }
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showSlide(i);
+                    startAutoRotate();
+                });
+            });
+        }
     }
 
-    catLinks.forEach(function (link) {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const cat = this.dataset.cat;
-            const label = this.dataset.label;
-            aplicarFiltro(cat, label, inputBusqueda.value);
-        });
-    });
-
-    // Búsqueda interactiva en tiempo real al escribir
-    if (inputBusqueda) {
-        inputBusqueda.addEventListener('input', function () {
-            const activeLink = document.querySelector('.cat-link.active-cat');
-            const cat = activeLink ? activeLink.dataset.cat : 'todos';
-            const label = activeLink ? activeLink.dataset.label : 'Todos';
-            aplicarFiltro(cat, label, this.value);
-        });
-    }
-
-    if (formBusqueda) {
-        formBusqueda.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const activeLink = document.querySelector('.cat-link.active-cat');
-            const cat = activeLink ? activeLink.dataset.cat : 'todos';
-            const label = activeLink ? activeLink.dataset.label : 'Todos';
-            aplicarFiltro(cat, label, inputBusqueda.value);
-        });
-    }
-
-    // Botón limpiar filtro (chip X)
-    btnLimpiar.addEventListener('click', function () {
-        if (inputBusqueda) inputBusqueda.value = '';
-        aplicarFiltro('todos', '');
+    // Script de Barra de Progreso de Lectura al desplazar el scroll
+    window.addEventListener('scroll', function() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const progressBar = document.getElementById('reading-progress');
+        if (progressBar) {
+            progressBar.style.width = scrolled + '%';
+        }
     });
 });
 </script>
@@ -380,10 +377,6 @@ document.addEventListener('DOMContentLoaded', function () {
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
-}
-.cat-link.active-cat {
-    color: #c9a84c;
-    font-weight: 700;
 }
 </style>
 {% endblock %}
