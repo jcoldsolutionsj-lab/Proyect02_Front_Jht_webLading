@@ -145,6 +145,9 @@ if USE_S3:
     AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME', default='auto') 
     AWS_S3_CUSTOM_DOMAIN = config('AWS_S3_CUSTOM_DOMAIN', default=None)
     
+    # Desactivar URLs firmadas para usar el Custom Domain / Public URL
+    AWS_QUERYSTRING_AUTH = False
+    
     # Evitar sobreescribir archivos con el mismo nombre
     AWS_S3_FILE_OVERWRITE = False
 
