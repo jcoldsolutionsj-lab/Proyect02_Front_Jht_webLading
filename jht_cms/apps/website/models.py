@@ -14,6 +14,7 @@ class Pagina(models.Model):
     activa = models.BooleanField("Activa", default=True)
 
     class Meta:
+        db_table = 'landing_pagina'
         verbose_name = "Página"
         verbose_name_plural = "1. Páginas (Page Builder)"
         ordering = ['titulo']
@@ -31,12 +32,13 @@ class BloqueSeccion(models.Model):
     """Bloques dinámicos que componen una página."""
     TIPOS_BLOQUE = [
         ('HERO', 'Hero Banner Principal'),
-        ('GRID_SERVICIOS', 'Catálogo: Grid de Servicios'),
-        ('GRID_FLOTA', 'Catálogo: Grid de Vehículos'),
-        ('GRID_TARJETAS', 'Sección: Grid de Tarjetas (Beneficios, Pasos)'),
-        ('CARRUSEL_LOGOS', 'Sección: Carrusel de Logos (Clientes)'),
+        ('NOSOTROS', 'Sección: Sobre Nosotros'),
+        ('BENEFICIOS', 'Sección: Beneficios (Por qué elegirnos)'),
+        ('PASOS', 'Sección: Cómo Trabajamos (Pasos)'),
+        ('CARRUSEL_LOGOS', 'Sección: Carrusel de Clientes (Logos)'),
         ('ACORDEON', 'Sección: Acordeón (Preguntas Frecuentes)'),
-        ('TEXTO_IMAGEN', 'Sección: Texto e Imagen Alternada'),
+        ('COBERTURA', 'Sección: Cobertura Nacional'),
+        ('TEXTO_IMAGEN', 'Sección: Texto e Imagen (Genérico)'),
     ]
 
     pagina = models.ForeignKey(Pagina, on_delete=models.CASCADE, related_name='bloques', verbose_name="Página Perteneciente")
@@ -49,6 +51,7 @@ class BloqueSeccion(models.Model):
     activo = models.BooleanField("Mostrar Bloque", default=True)
 
     class Meta:
+        db_table = 'landing_bloqueseccion'
         verbose_name = "Bloque de Sección"
         verbose_name_plural = "2. Bloques de Sección"
         ordering = ['pagina', 'orden']
@@ -68,6 +71,7 @@ class ItemBloque(models.Model):
     activo = models.BooleanField("Activo", default=True)
 
     class Meta:
+        db_table = 'landing_itembloque'
         verbose_name = "Item de Bloque"
         verbose_name_plural = "3. Items de Bloques"
         ordering = ['bloque', 'orden']
@@ -92,6 +96,7 @@ class Servicio(models.Model):
     activo = models.BooleanField("Activo", default=True)
 
     class Meta:
+        db_table = 'landing_servicio'
         verbose_name = "Servicio Logístico"
         verbose_name_plural = "4. Catálogo de Servicios"
         ordering = ['orden', 'titulo']
@@ -122,6 +127,7 @@ class FlotaVehiculo(models.Model):
     activo = models.BooleanField("Activo", default=True)
 
     class Meta:
+        db_table = 'landing_flotavehiculo'
         verbose_name = "Vehículo de Flota"
         verbose_name_plural = "5. Catálogo de Flota"
         ordering = ['categoria', 'orden']
@@ -145,6 +151,7 @@ class ConfiguracionGlobal(models.Model):
     texto_footer = models.TextField("Texto corto Footer", blank=True)
 
     class Meta:
+        db_table = 'landing_configuracionglobal'
         verbose_name = "Configuración Global"
         verbose_name_plural = "6. Configuración Global"
 

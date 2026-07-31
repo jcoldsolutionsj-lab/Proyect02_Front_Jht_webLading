@@ -145,6 +145,10 @@ if USE_S3:
     AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME', default='auto') 
     AWS_S3_CUSTOM_DOMAIN = config('AWS_S3_CUSTOM_DOMAIN', default=None)
     
+    # Configuraciones críticas para Cloudflare R2
+    AWS_S3_SIGNATURE_VERSION = 's3v4'
+    AWS_S3_ADDRESSING_STYLE = 'path' # Evita que boto3 trate de crear subdominios con el nombre del bucket
+    
     # Desactivar URLs firmadas para usar el Custom Domain / Public URL
     AWS_QUERYSTRING_AUTH = False
     
