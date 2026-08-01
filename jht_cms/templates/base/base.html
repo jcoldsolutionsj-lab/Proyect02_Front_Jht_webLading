@@ -4,25 +4,30 @@
 
 <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NDF5GK5F');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NDF5GK5F');</script>
     <!-- End Google Tag Manager -->
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}JHT Transport Company{% endblock %}</title>
 
     <!-- SEO -->
-    <meta name="description" content="{% block meta_description %}Servicios Logísticos JHT - Logística y Trazabilidad en Tiempo Real. Transporte de carga, distribución regional, courier y mudanzas corporativas.{% endblock %}">
+    <meta name="description"
+        content="{% block meta_description %}Servicios Logísticos JHT - Logística y Trazabilidad en Tiempo Real. Transporte de carga, distribución regional, courier y mudanzas corporativas.{% endblock %}">
     <meta name="keywords" content="transporte, logística, carga, envíos, rastreo, JHT Transport">
     <meta name="author" content="JHT Transport Company SAC">
 
     <!-- Open Graph -->
     <meta property="og:title" content="{% block og_title %}JHT Transport Company{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Logística y Trazabilidad en Tiempo Real{% endblock %}">
+    <meta property="og:description"
+        content="{% block og_description %}Logística y Trazabilidad en Tiempo Real{% endblock %}">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
@@ -45,20 +50,31 @@
     <!-- Ocultar scrollbar pero permitir scroll con rueda del ratón + Barra de progreso global -->
     <style>
         /* Chrome, Safari, Opera y navegadores basados en WebKit */
-        *, html, body, ::-webkit-scrollbar {
-            -ms-overflow-style: none !important;  /* IE and Edge */
-            scrollbar-width: none !important;  /* Firefox */
+        *,
+        html,
+        body,
+        ::-webkit-scrollbar {
+            -ms-overflow-style: none !important;
+            /* IE and Edge */
+            scrollbar-width: none !important;
+            /* Firefox */
         }
-        *::-webkit-scrollbar, html::-webkit-scrollbar, body::-webkit-scrollbar {
+
+        *::-webkit-scrollbar,
+        html::-webkit-scrollbar,
+        body::-webkit-scrollbar {
             display: none !important;
             width: 0 !important;
             height: 0 !important;
             background: transparent !important;
         }
-        html, body {
+
+        html,
+        body {
             overflow-x: hidden !important;
             max-width: 100vw !important;
         }
+
         #reading-progress {
             position: fixed;
             top: 0;
@@ -71,11 +87,27 @@
         }
 
         @keyframes gentleBounce {
-            0%, 100% { transform: translateY(0); }
-            20% { transform: translateY(-5px); }
-            40% { transform: translateY(0); }
-            60% { transform: translateY(-2.5px); }
-            80% { transform: translateY(0); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            20% {
+                transform: translateY(-5px);
+            }
+
+            40% {
+                transform: translateY(0);
+            }
+
+            60% {
+                transform: translateY(-2.5px);
+            }
+
+            80% {
+                transform: translateY(0);
+            }
         }
 
         .animate-gentle-bounce {
@@ -83,14 +115,20 @@
         }
 
         @keyframes tonePulse {
-            0%, 100% {
-                background-color: rgba(55, 65, 81, 0.85); /* Tono Oscuro (gray-700) */
+
+            0%,
+            100% {
+                background-color: rgba(55, 65, 81, 0.85);
+                /* Tono Oscuro (gray-700) */
                 border-color: rgba(255, 255, 255, 0.2);
                 box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
             }
+
             50% {
-                background-color: rgba(156, 163, 175, 0.9); /* Tono Claro (gray-400) */
-                border-color: rgba(255, 183, 3, 0.7); /* Destello Borde Dorado */
+                background-color: rgba(156, 163, 175, 0.9);
+                /* Tono Claro (gray-400) */
+                border-color: rgba(255, 183, 3, 0.7);
+                /* Destello Borde Dorado */
                 box-shadow: 0 10px 30px -5px rgba(255, 183, 3, 0.35);
             }
         }
@@ -114,14 +152,14 @@
                 type() {
                     if (this.isDeleting) {
                         this.charIndex -= 2;
-                        if(this.charIndex < 0) this.charIndex = 0;
+                        if (this.charIndex < 0) this.charIndex = 0;
                     } else {
                         this.charIndex++;
                     }
                     this.text = this.fullText.substring(0, this.charIndex) + (this.charIndex < this.fullText.length ? '|' : '');
-                    
+
                     let typeSpeed = this.isDeleting ? 10 : 25;
-                    
+
                     if (!this.isDeleting && this.charIndex >= this.fullText.length) {
                         typeSpeed = 3000;
                         this.isDeleting = true;
@@ -150,8 +188,8 @@
 
 <body class="bg-jht-dark text-white font-sans antialiased overflow-x-hidden max-w-full flex flex-col min-h-screen">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDF5GK5F"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDF5GK5F" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Barra de Progreso de Lectura Global (Header Scroll Line) -->
@@ -159,13 +197,13 @@
 
     <!-- Botón Flotante Global "Volver Arriba" (Scroll to Top) - Posición Izquierda -->
     <button id="btn-back-to-top" aria-label="Volver al inicio"
-            class="fixed bottom-6 left-6 md:bottom-8 md:left-8 z-40 w-12 h-12 rounded-full backdrop-blur-md text-white border border-white/20 shadow-lg flex items-center justify-center transition-all duration-500 opacity-0 pointer-events-none hover:scale-110 hover:border-jht-gold cursor-pointer animate-tone-pulse">
+        class="fixed bottom-6 left-6 md:bottom-8 md:left-8 z-40 w-12 h-12 rounded-full backdrop-blur-md text-white border border-white/20 shadow-lg flex items-center justify-center transition-all duration-500 opacity-0 pointer-events-none hover:scale-110 hover:border-jht-gold cursor-pointer animate-tone-pulse">
         <span class="material-symbols-outlined text-2xl animate-gentle-bounce">keyboard_arrow_up</span>
     </button>
 
     <!-- Header -->
     {% block header_include %}
-        {% include "components/header.html" %}
+    {% include "components/header.html" %}
     {% endblock %}
 
     <!-- Contenido principal -->
@@ -179,7 +217,8 @@
     <!-- WhatsApp flotante (global) -->
     {% block whatsapp %}
     <!-- Grupo de Botones Flotantes (WhatsApp + Teléfono) -->
-    <div class="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[100] flex flex-col items-center gap-3 md:gap-4 max-w-[calc(100vw-1rem)]">
+    <div
+        class="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[100] flex flex-col items-center gap-3 md:gap-4 max-w-[calc(100vw-1rem)]">
 
         <!-- Elementos de Audio -->
         <audio id="sound-phone" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
@@ -212,7 +251,8 @@
                 <!-- Cabecera -->
                 <div class="flex items-center justify-between border-b-2 border-gray-200 pb-3 mb-4">
                     <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-jht-dark animate-pulse text-[22px]">cell_tower</span>
+                        <span
+                            class="material-symbols-outlined text-jht-dark animate-pulse text-[22px]">cell_tower</span>
                         <h4 class="font-title font-bold text-jht-dark text-lg">Central JHT</h4>
                     </div>
                     <button @click="openContact = false" class="text-gray-400 hover:text-red-500 transition-colors">
@@ -223,55 +263,206 @@
                 <!-- Info de Contacto -->
                 <ul class="flex flex-col gap-4">
                     <li class="flex items-start gap-3">
-                        <span class="material-symbols-outlined text-jht-gold text-[20px] mt-0.5 shrink-0">location_on</span>
-                        <p class="text-jht-blue-support text-sm leading-tight font-medium">Coop Miguel Grau Mz g lt 13<br>Santa Anita, Lima - Perú</p>
+                        <span
+                            class="material-symbols-outlined text-jht-gold text-[20px] mt-0.5 shrink-0">location_on</span>
+                        <p class="text-jht-blue-support text-sm leading-tight font-medium">Coop Miguel Grau Mz g lt
+                            13<br>Santa Anita, Lima - Perú</p>
                     </li>
                     <li class="group/item flex items-center gap-3 cursor-pointer">
-                        <span class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">smartphone</span>
-                        <a href="tel:+51935833467" class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">(+51) 935 833 467</a>
+                        <span
+                            class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">smartphone</span>
+                        <a href="tel:+51935833467"
+                            class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">(+51)
+                            935 833 467</a>
                     </li>
                     <li class="group/item flex items-center gap-3 cursor-pointer">
-                        <span class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">smartphone</span>
-                        <a href="tel:+51951194143" class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">(+51) 951 194 143</a>
+                        <span
+                            class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">smartphone</span>
+                        <a href="tel:+51951194143"
+                            class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">(+51)
+                            951 194 143</a>
                     </li>
                     <li class="group/item flex items-center gap-3 cursor-pointer">
-                        <span class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">call</span>
-                        <a href="tel:016475336" class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">01 6475336</a>
+                        <span
+                            class="material-symbols-outlined text-jht-gold text-[20px] shrink-0 origin-center group-hover/item:animate-vibrate-double">call</span>
+                        <a href="tel:016475336"
+                            class="text-jht-dark text-sm font-bold hover:text-jht-gold transition-colors inline-block group-hover/item:animate-slide-rl group-hover/item:text-jht-gold">01
+                            6475336</a>
                     </li>
                 </ul>
                 <!-- Colita del globo de chat -->
-                <div class="absolute -bottom-2 right-4 w-4 h-4 bg-white rotate-45 border-b border-r border-gray-100"></div>
+                <div class="absolute -bottom-2 right-4 w-4 h-4 bg-white rotate-45 border-b border-r border-gray-100">
+                </div>
             </div>
 
             <!-- Botón circular -->
-            <a href="javascript:void(0)" @click="openContact = !openContact" 
-               class="group relative block z-10">
+            <a href="javascript:void(0)" @click="openContact = !openContact" class="group relative block z-10">
                 <!-- Efecto de pulso detrás -->
-                <div class="absolute inset-1 bg-jht-dark rounded-full animate-slow-ping transition-opacity duration-300 ring-2 ring-jht-gold/50"></div>
+                <div
+                    class="absolute inset-1 bg-jht-dark rounded-full animate-slow-ping transition-opacity duration-300 ring-2 ring-jht-gold/50">
+                </div>
                 <!-- Imagen del Botón -->
                 <img src="{% static 'assets/images/telefono.png' %}" alt="Llamar a JHT Transport"
                     class="relative w-10 h-10 md:w-12 md:h-12 object-contain transition-transform duration-500 group-hover:animate-vibrate-double drop-shadow-xl origin-center" />
             </a>
         </div>
 
-        <!-- Botón Flotante WhatsApp -->
-        <a href="https://api.whatsapp.com/send?phone=51935833467&text=Hola%2C%20vengo%20desde%20la%20web%20de%20JHT%20Transport%20Company"
-            @mouseenter="let a = document.getElementById('sound-whatsapp'); if(a){a.currentTime = 0; a.volume = 0.5; a.play().catch(()=>{})}"
-            target="_blank" rel="noopener noreferrer" class="group relative block z-10">
+        <!-- Botón Flotante WhatsApp (con Modal de Selección de Área) -->
+        <div x-data="{ 
+            openWhatsapp: false,
+            getSaludo() {
+                const hour = new Date().getHours();
+                if (hour >= 5 && hour < 12) return 'buenos días';
+                if (hour >= 12 && hour < 19) return 'buenas tardes';
+                return 'buenas noches';
+            },
+            getLinkComercial() {
+                const saludo = this.getSaludo();
+                const msg = `Hola área comercial, ${saludo}, vengo de la página web https://jhttransportelogistica.com y deseo comunicarme con el Área Comercial para cotizar un servicio.`;
+                return 'https://api.whatsapp.com/send?phone=51935833467&text=' + encodeURIComponent(msg);
+            },
+            getLinkVentas() {
+                const saludo = this.getSaludo();
+                const msg = `Hola Sra. Rosa, ${saludo}, vengo de la página web https://jhttransportelogistica.com y deseo comunicarme con el Área de Ventas.`;
+                return 'https://api.whatsapp.com/send?phone=51935833467&text=' + encodeURIComponent(msg);
+            }
+        }" class="relative group block z-20">
 
-            <!-- Tooltip Animado (Aparece desfasado 4 segundos) -->
-            <div class="hidden sm:block absolute right-full top-1/2 mr-3 md:mr-4 whitespace-nowrap bg-[#25D366] text-white text-xs md:text-sm font-bold py-2.5 px-4 rounded-xl shadow-[0_4px_20px_rgba(37,211,102,0.4)] animate-tooltip-pop pointer-events-none z-0"
-                style="animation-delay: 4s;">
-                ¡Cotiza tu envío aquí!
-                <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-[#25D366] rotate-45"></div>
+            <!-- Chat Popup de WhatsApp -->
+            <div x-show="openWhatsapp" @click.away="openWhatsapp = false"
+                x-transition:enter="transition-all ease-[cubic-bezier(0.34,1.56,0.64,1)] duration-500 origin-bottom-right"
+                x-transition:enter-start="opacity-0 scale-75 translate-y-10"
+                x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                x-transition:leave="transition-all ease-in duration-300 origin-bottom-right"
+                x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                x-transition:leave-end="opacity-0 scale-75 translate-y-10" style="display: none;"
+                class="absolute bottom-full right-0 mb-4 w-80 max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.35)] overflow-hidden border border-emerald-200/80 cursor-default z-50">
+
+                <!-- Header estilo WhatsApp -->
+                <div style="background: linear-gradient(135deg, #075E54 0%, #128C7E 100%);"
+                    class="p-4 text-white flex items-center justify-between shadow-md select-none">
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <!-- Avatar 3D Asistente Operador -->
+                            <img src="{% static 'assets/images/avatar_operator.png' %}" alt="Asistente Operador"
+                                class="w-11 h-11 rounded-full object-cover border-2 border-white/80 shadow-md" />
+                            <span class="absolute bottom-0 right-0 flex h-3.5 w-3.5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 border-2 border-[#075E54]"></span>
+                            </span>
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-bold text-sm leading-tight text-white m-0 flex items-center gap-1.5">
+                                Asistente Operador
+                                <span class="text-base inline-block animate-bounce">👋</span>
+                            </h4>
+                            <p class="text-[11px] text-emerald-100 opacity-90 flex items-center gap-1.5 m-0 mt-0.5 font-medium">
+                                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+                                En línea • Respuesta inmediata
+                            </p>
+                        </div>
+                    </div>
+                    <button @click="openWhatsapp = false" aria-label="Cerrar chat"
+                        class="text-white/80 hover:text-white hover:rotate-90 hover:bg-white/20 transition-all duration-300 p-1.5 rounded-full cursor-pointer flex items-center justify-center">
+                        <span class="material-symbols-outlined text-lg">close</span>
+                    </button>
+                </div>
+
+                <!-- Cuerpo del Chat / Mensaje de Bienvenida -->
+                <div style="background-color: #efeae2;" class="p-4 space-y-3">
+                    <!-- Mensaje de bienvenida tipo WhatsApp -->
+                    <div
+                        class="bg-white p-3.5 rounded-2xl rounded-tl-xs shadow-sm max-w-[92%] border border-gray-200/80 transform transition-transform hover:scale-[1.01]">
+                        <p class="text-gray-800 text-xs leading-relaxed font-medium m-0">
+                            ¡Hola! 👋 Bienvenido a <strong class="text-emerald-950 font-bold">JHT Transport</strong>.
+                        </p>
+                        <p class="text-gray-600 text-xs leading-relaxed mt-1.5 m-0">
+                            Soy el <strong>Asistente Operador</strong>. ¿Con qué área deseas comunicarte?
+                        </p>
+                        <span class="text-[9px] text-gray-400 float-right mt-1.5 font-mono">Ahora</span>
+                    </div>
+
+                    <!-- Opciones de Contacto / Áreas -->
+                    <div class="pt-1 space-y-2.5">
+                        <a :href="getLinkComercial()" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center justify-between p-3.5 bg-white hover:bg-emerald-50/90 rounded-xl border border-emerald-200 shadow-sm hover:shadow-md hover:border-emerald-400 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group/opt cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div style="background-color: #dcfce7; color: #075E54;"
+                                    class="w-9 h-9 rounded-xl flex items-center justify-center font-bold shrink-0 transition-transform duration-300 group-hover/opt:scale-110 shadow-sm">
+                                    <span class="material-symbols-outlined text-xl">storefront</span>
+                                </div>
+                                <div class="text-left">
+                                    <span
+                                        class="block text-xs font-bold text-gray-800 group-hover/opt:text-[#075E54] transition-colors">Área Comercial</span>
+                                    <span class="block text-[11px] text-gray-500 font-mono mt-0.5">+51 935 833 467</span>
+                                </div>
+                            </div>
+                            <span
+                                class="material-symbols-outlined text-emerald-600 group-hover/opt:translate-x-1.5 transition-transform duration-300 text-lg">send</span>
+                        </a>
+
+                        <a :href="getLinkVentas()" target="_blank" rel="noopener noreferrer"
+                            class="flex items-center justify-between p-3.5 bg-white hover:bg-emerald-50/90 rounded-xl border border-emerald-200 shadow-sm hover:shadow-md hover:border-emerald-400 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 group/opt cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div style="background-color: #dcfce7; color: #075E54;"
+                                    class="w-9 h-9 rounded-xl flex items-center justify-center font-bold shrink-0 transition-transform duration-300 group-hover/opt:scale-110 shadow-sm">
+                                    <span class="material-symbols-outlined text-xl">payments</span>
+                                </div>
+                                <div class="text-left">
+                                    <span
+                                        class="block text-xs font-bold text-gray-800 group-hover/opt:text-[#075E54] transition-colors">Área Ventas</span>
+                                    <span class="block text-[11px] text-gray-500 font-mono mt-0.5">+51 935 833 467</span>
+                                </div>
+                            </div>
+                            <span
+                                class="material-symbols-outlined text-emerald-600 group-hover/opt:translate-x-1.5 transition-transform duration-300 text-lg">send</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Footer del Popup -->
+                <div class="bg-white px-4 py-2.5 text-center border-t border-gray-100 select-none">
+                    <p class="text-[10px] text-gray-400 flex items-center justify-center gap-1 font-medium m-0">
+                        <span class="material-symbols-outlined text-xs text-emerald-600">lock</span> Atención directa y personalizada
+                    </p>
+                </div>
+
+                <!-- Colita del globo de chat -->
+                <div style="background-color: #ffffff;"
+                    class="absolute -bottom-2 right-8 w-4 h-4 rotate-45 border-b border-r border-gray-200"></div>
             </div>
 
-            <!-- Efecto de pulso detrás -->
-            <div class="absolute inset-2 bg-[#25D366] rounded-full animate-slow-ping transition-opacity duration-300"></div>
-            <!-- Imagen del Botón -->
-            <img src="{% static 'assets/images/whatsapp.png' %}" alt="WhatsApp JHT Transport"
-                class="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain transition-transform duration-500 group-hover:animate-vibrate-double drop-shadow-2xl origin-center z-10" />
-        </a>
+            <!-- Botón Trigger -->
+            <button @click="openWhatsapp = !openWhatsapp"
+                @mouseenter="let a = document.getElementById('sound-whatsapp'); if(a){a.currentTime = 0; a.volume = 0.5; a.play().catch(()=>{})}"
+                type="button" aria-label="WhatsApp Contacto"
+                class="group relative block z-10 focus:outline-none cursor-pointer">
+
+                <!-- Tooltip Animado (Aparece desfasado 4 segundos cuando el popup no está abierto) -->
+                <div x-show="!openWhatsapp"
+                    class="hidden sm:block absolute right-full top-1/2 mr-3 md:mr-4 whitespace-nowrap bg-[#25D366] text-white text-xs md:text-sm font-bold py-2.5 px-4 rounded-xl shadow-[0_4px_20px_rgba(37,211,102,0.4)] animate-tooltip-pop pointer-events-none z-0"
+                    style="animation-delay: 4s;">
+                    ¡Cotiza tu envío aquí!
+                    <div class="absolute top-1/2 -right-1.5 -translate-y-1/2 w-3 h-3 bg-[#25D366] rotate-45"></div>
+                </div>
+
+                <!-- Insignia / Muñequito de Avatar Saludando (Floating Badge) -->
+                <div class="absolute -top-3 -left-3 z-20 flex items-center justify-center">
+                    <div class="relative w-8 h-8 md:w-9 md:h-9 rounded-full ring-2 ring-white shadow-lg overflow-hidden bg-white">
+                        <img src="{% static 'assets/images/avatar_operator.png' %}" alt="Asistente" class="w-full h-full object-cover">
+                    </div>
+                    <span class="absolute -top-1 -right-1 text-sm animate-bounce select-none">👋</span>
+                </div>
+
+                <!-- Efecto de pulso detrás -->
+                <div
+                    class="absolute inset-2 bg-[#25D366] rounded-full animate-slow-ping transition-opacity duration-300">
+                </div>
+                <!-- Imagen del Botón -->
+                <img src="{% static 'assets/images/whatsapp.png' %}" alt="WhatsApp JHT Transport"
+                    class="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain transition-transform duration-500 group-hover:animate-vibrate-double drop-shadow-2xl origin-center z-10" />
+            </button>
+        </div>
     </div>
     {% endblock %}
 
@@ -279,14 +470,14 @@
 
     <!-- Script Global de Barra de Progreso y Botón Volver Arriba -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const btnTop = document.getElementById('btn-back-to-top');
 
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-                
+
                 // 1. Barra de progreso header
                 const progressBar = document.getElementById('reading-progress');
                 if (progressBar) {
@@ -306,7 +497,7 @@
             });
 
             if (btnTop) {
-                btnTop.addEventListener('click', function(e) {
+                btnTop.addEventListener('click', function (e) {
                     e.preventDefault();
                     window.scrollTo({
                         top: 0,
@@ -320,48 +511,48 @@
     <!-- SweetAlert2 para mensajes de Django -->
     {% if messages %}
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             {% for message in messages %}
-                Swal.fire({
-                    icon: '{% if message.tags == "error" %}error{% elif message.tags == "success" %}success{% elif message.tags == "warning" %}warning{% else %}info{% endif %}',
-                    title: '{% if message.tags == "error" %}Error{% elif message.tags == "success" %}¡Éxito!{% elif message.tags == "warning" %}Atención{% else %}Información{% endif %}',
-                    text: '{{ message|escapejs }}',
-                    confirmButtonColor: '#1e3a8a', // Color jht-blue-support aprox
-                    confirmButtonText: 'Aceptar'
-                });
+            Swal.fire({
+                icon: '{% if message.tags == "error" %}error{% elif message.tags == "success" %}success{% elif message.tags == "warning" %}warning{% else %}info{% endif %}',
+                title: '{% if message.tags == "error" %}Error{% elif message.tags == "success" %}¡Éxito!{% elif message.tags == "warning" %}Atención{% else %}Información{% endif %}',
+                text: '{{ message|escapejs }}',
+                confirmButtonColor: '#1e3a8a', // Color jht-blue-support aprox
+                confirmButtonText: 'Aceptar'
+            });
             {% endfor %}
         });
     </script>
     {% endif %}
     <!-- Cookie Consent Banner -->
-    <div x-data="{ showCookieBanner: false }" 
-         x-init="if(!localStorage.getItem('jht_cookies_accepted')) { setTimeout(() => showCookieBanner = true, 1500) }"
-         x-show="showCookieBanner"
-         x-transition:enter="transition ease-out duration-500"
-         x-transition:enter-start="opacity-0 translate-y-10"
-         x-transition:enter-end="opacity-100 translate-y-0"
-         x-transition:leave="transition ease-in duration-300"
-         x-transition:leave-start="opacity-100 translate-y-0"
-         x-transition:leave-end="opacity-0 translate-y-10"
-         class="fixed bottom-0 left-0 w-full z-50 p-4 md:p-6 pointer-events-none"
-         style="display: none;">
-        
-        <div class="max-w-6xl mx-auto bg-jht-dark/95 backdrop-blur-md border border-white/10 rounded-2xl p-5 md:p-6 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 pointer-events-auto">
+    <div x-data="{ showCookieBanner: false }"
+        x-init="if(!localStorage.getItem('jht_cookies_accepted')) { setTimeout(() => showCookieBanner = true, 1500) }"
+        x-show="showCookieBanner" x-transition:enter="transition ease-out duration-500"
+        x-transition:enter-start="opacity-0 translate-y-10" x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 translate-y-10"
+        class="fixed bottom-0 left-0 w-full z-50 p-4 md:p-6 pointer-events-none" style="display: none;">
+
+        <div
+            class="max-w-6xl mx-auto bg-jht-dark/95 backdrop-blur-md border border-white/10 rounded-2xl p-5 md:p-6 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 pointer-events-auto">
             <div class="flex-1 text-center md:text-left">
-                <h4 class="text-gray-300 font-title font-bold text-lg mb-2 flex items-center justify-center md:justify-start gap-2">
+                <h4
+                    class="text-gray-300 font-title font-bold text-lg mb-2 flex items-center justify-center md:justify-start gap-2">
                     <span class="material-symbols-outlined text-jht-gold">cookie</span>
                     Aviso de Privacidad y Cookies
                 </h4>
                 <p class="text-gray-400 text-sm leading-relaxed">
-                    Utilizamos cookies propias y analíticas para analizar sus hábitos de navegación y ofrecerle la mejor experiencia. Al hacer clic en "Aceptar todas", acepta su uso para estos fines.
+                    Utilizamos cookies propias y analíticas para analizar sus hábitos de navegación y ofrecerle la mejor
+                    experiencia. Al hacer clic en "Aceptar todas", acepta su uso para estos fines.
                 </p>
             </div>
             <div class="flex items-center gap-3 w-full md:w-auto flex-col sm:flex-row">
-                <button @click="showCookieBanner = false" class="w-full sm:w-auto px-5 py-2.5 rounded-lg border border-gray-500 text-gray-300 hover:bg-gray-800 transition-colors text-sm font-semibold">
+                <button @click="showCookieBanner = false"
+                    class="w-full sm:w-auto px-5 py-2.5 rounded-lg border border-gray-500 text-gray-300 hover:bg-gray-800 transition-colors text-sm font-semibold">
                     Solo Esenciales
                 </button>
-                <button @click="localStorage.setItem('jht_cookies_accepted', 'true'); showCookieBanner = false;" 
-                        class="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-jht-gold text-jht-dark hover:bg-yellow-400 hover:scale-105 transition-all duration-300 text-sm font-bold shadow-lg shadow-jht-gold/20">
+                <button @click="localStorage.setItem('jht_cookies_accepted', 'true'); showCookieBanner = false;"
+                    class="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-jht-gold text-jht-dark hover:bg-yellow-400 hover:scale-105 transition-all duration-300 text-sm font-bold shadow-lg shadow-jht-gold/20">
                     Aceptar todas
                 </button>
             </div>
