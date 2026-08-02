@@ -122,9 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('opacity-80', 'cursor-not-allowed');
             btn.classList.remove('hover:bg-[#d4af37]', 'hover:shadow-xl');
 
-            // Simular un pequeño retardo amigable de 1s para que el usuario perciba que "algo está procesando" (opcional pero pedido: "un spring profesional de demora amigable")
-            await new Promise(resolve => setTimeout(resolve, 800));
-
             // 4. Enviar API
             try {
                 await ApiClient.post('/clientes/', payload);
