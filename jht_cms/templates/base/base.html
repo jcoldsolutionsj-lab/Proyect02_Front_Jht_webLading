@@ -16,18 +16,18 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}JHT Transport Company{% endblock %}</title>
+    <title>{% block title %}Servicios Logísticos JHT | Transporte de Carga y Courier{% endblock %}</title>
 
     <!-- SEO -->
     <meta name="description"
-        content="{% block meta_description %}Servicios Logísticos JHT - Logística y Trazabilidad en Tiempo Real. Transporte de carga, distribución regional, courier y mudanzas corporativas.{% endblock %}">
-    <meta name="keywords" content="transporte, logística, carga, envíos, rastreo, JHT Transport">
+        content="{% block meta_description %}Logística y trazabilidad en tiempo real. Expertos en transporte de carga, distribución a nivel nacional, courier y mudanzas corporativas. ¡Cotiza tu envío!{% endblock %}">
+    <meta name="keywords" content="transporte de carga, logística, distribución nacional, courier, mudanzas corporativas, rastreo de envíos, JHT Transport, Perú">
     <meta name="author" content="JHT Transport Company SAC">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="{% block og_title %}JHT Transport Company{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}Servicios Logísticos JHT | Transporte y Courier{% endblock %}">
     <meta property="og:description"
-        content="{% block og_description %}Logística y Trazabilidad en Tiempo Real{% endblock %}">
+        content="{% block og_description %}Logística integral y trazabilidad en tiempo real. Transporte de carga, distribución y mudanzas corporativas. ¡Cotiza hoy mismo!{% endblock %}">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
@@ -227,18 +227,8 @@
             preload="auto"></audio>
         <div x-data="{ 
             openContact: false,
-            intervalId: null,
-            init() {
-                this.intervalId = setInterval(() => {
-                    this.openContact = !this.openContact;
-                }, 15000);
-            },
             closeManual() {
                 this.openContact = false;
-                if (this.intervalId) {
-                    clearInterval(this.intervalId);
-                    this.intervalId = null;
-                }
             }
         }" @mouseenter="let a = document.getElementById('sound-phone'); if(a){a.currentTime = 0; a.volume = 0.4; a.play().catch(()=>{})}"
             class="relative group block z-10">
@@ -325,19 +315,9 @@
         <!-- Botón Flotante WhatsApp (con Modal de Selección de Área) -->
         <div x-data="{ 
             openWhatsapp: false,
-            intervalId: null,
             showAsesores: false,
-            init() {
-                this.intervalId = setInterval(() => {
-                    this.openWhatsapp = !this.openWhatsapp;
-                }, 15000);
-            },
             closeManual() {
                 this.openWhatsapp = false;
-                if (this.intervalId) {
-                    clearInterval(this.intervalId);
-                    this.intervalId = null;
-                }
             },
             getSaludo() {
                 const hour = new Date().getHours();
