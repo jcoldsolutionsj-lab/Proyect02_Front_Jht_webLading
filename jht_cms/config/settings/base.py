@@ -35,6 +35,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'tailwind',
     'storages',
+    'rest_framework',
 ]
 
 LOCAL_APPS = [
@@ -44,6 +45,7 @@ LOCAL_APPS = [
     'apps.service_status',
     'apps.service_management',
     'apps.integrations',
+    'apps.crm',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

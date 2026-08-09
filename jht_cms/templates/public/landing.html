@@ -178,8 +178,9 @@
                                     <span class="material-symbols-outlined text-jht-dark" aria-hidden="true">domain</span>
                                 </div>
                                 <label for="cot-empresa" class="sr-only">Empresa</label>
-                                <input type="text" id="cot-empresa" name="empresa" placeholder="Empresa (Opcional)" class="jht-input-glass">
+                                <input type="text" id="cot-empresa" name="empresa" placeholder="Empresa" class="jht-input-glass" required aria-required="true">
                             </div>
+                            <span id="err-cot-empresa" class="text-[11px] text-jht-gold font-semibold px-4 hidden"></span>
                         </div>
 
                         <div class="flex flex-col gap-1">
@@ -1801,7 +1802,8 @@
                         </div>
                         <div class="flex flex-col gap-1">
                             <label for="con-empresa" class="sr-only">Empresa</label>
-                            <input type="text" id="con-empresa" name="empresa" placeholder="Empresa (opcional)" class="jht-input">
+                            <input type="text" id="con-empresa" name="empresa" placeholder="Empresa" class="jht-input" required aria-required="true">
+                            <span id="err-con-empresa" class="text-[11px] text-jht-gold font-semibold px-2 hidden"></span>
                         </div>
                     </div>
                     <div class="flex flex-col gap-1">

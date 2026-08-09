@@ -101,12 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 2. Preparar el Payload
             const payload = {
-                lea_vservicio: servicio,
-                lea_vnombre: nombre,
-                lea_vapellido: apellido,
-                lea_vcorreo: correo,
-                lea_itelefono: parseInt(celular, 10),
-                lea_vempresa: empresa || ""
+                origen: 'cotizacion',
+                servicio_interes: servicio,
+                nombre: nombre,
+                apellido: apellido,
+                correo: correo,
+                telefono: celular,
+                empresa: empresa || ""
             };
 
             // 3. UI de Carga (Spinner)
@@ -124,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 4. Enviar API
             try {
-                await ApiClient.post('/clientes/', payload);
+                await ApiClient.post('/api/crm/lead/', payload);
                 
                 // Success UI
                 Swal.fire({

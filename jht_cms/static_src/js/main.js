@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 [inputServicio, inputNombre, inputApellido, inputCorreo, inputCelular].forEach(input => {
                     input.classList.remove('border-jht-gold', 'focus:ring-jht-gold', 'ring-1', 'ring-jht-gold');
                 });
-                ['err-cot-servicio', 'err-cot-nombre', 'err-cot-apellido', 'err-cot-correo', 'err-cot-celular'].forEach(id => {
+                ['err-cot-servicio', 'err-cot-nombre', 'err-cot-apellido', 'err-cot-correo', 'err-cot-telefono', 'err-cot-celular', 'err-cot-empresa'].forEach(id => {
                     const errSpan = document.getElementById(id);
                     if (errSpan) {
                         errSpan.textContent = '';
@@ -255,23 +255,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     errSpan.textContent = message;
                     errSpan.classList.remove('hidden');
                 }
-                inputEl.classList.add('border-jht-gold', 'focus:ring-jht-gold', 'ring-1', 'ring-jht-gold');
+                if (inputEl) inputEl.classList.add('border-jht-gold', 'focus:ring-jht-gold', 'ring-1', 'ring-jht-gold');
             };
 
             clearErrors();
             let isValid = true;
 
-            // 1. Validaciones
             if (!servicio) {
-                showError(inputServicio, 'err-cot-servicio', 'Por favor selecciona un servicio.');
+                showError(inputServicio, 'err-cot-servicio', 'Selecciona un servicio de tu interés.');
                 isValid = false;
             }
+
             if (!nombre) {
                 showError(inputNombre, 'err-cot-nombre', 'El nombre es obligatorio.');
                 isValid = false;
             }
             if (!apellido) {
                 showError(inputApellido, 'err-cot-apellido', 'El apellido es obligatorio.');
+                isValid = false;
+            }
+            
+            if (!empresa) {
+                showError(inputEmpresa, 'err-cot-empresa', 'El nombre de la empresa es obligatorio.');
                 isValid = false;
             }
             
@@ -301,12 +306,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 2. Preparar el Payload
             const payload = {
-                lea_vservicio: servicio,
-                lea_vnombre: nombre,
-                lea_vapellido: apellido,
-                lea_vcorreo: correo,
-                lea_itelefono: parseInt(celular, 10),
-                lea_vempresa: empresa || ""
+                origen: 'cotizacion',
+                servicio_interes: servicio,
+                nombre: nombre,
+                apellido: apellido,
+                correo: correo,
+                telefono: celular,
+                empresa: empresa || ""
             };
 
             // 3. UI de Carga (Spinner)
@@ -324,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 4. Enviar API
             try {
-                await ApiClient.post('/clientes/', payload);
+                await ApiClient.post('/api/crm/lead/', payload);
                 
                 // Success UI
                 Swal.fire({
@@ -416,7 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 [inputNombre, inputEmail, inputTelefono, inputMensaje].forEach(input => {
                     if (input) input.classList.remove('border-jht-gold', 'focus:ring-jht-gold', 'ring-1', 'ring-jht-gold');
                 });
-                ['err-con-nombre', 'err-con-email', 'err-con-telefono', 'err-con-mensaje'].forEach(id => {
+                ['err-con-nombre', 'err-con-email', 'err-con-telefono', 'err-con-empresa', 'err-con-mensaje'].forEach(id => {
                     const errSpan = document.getElementById(id);
                     if (errSpan) {
                         errSpan.textContent = '';
@@ -464,6 +470,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 isValid = false;
             }
 
+            if (!empresa) {
+                showError(inputEmpresa, 'err-con-empresa', 'El nombre de la empresa es obligatorio.');
+                isValid = false;
+            }
+
             if (!mensaje) {
                 showError(inputMensaje, 'err-con-mensaje', 'Por favor ingresa tu consulta.');
                 isValid = false;
@@ -475,12 +486,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const lastName = nameParts.slice(1).join(' ');
 
             const payload = {
-                lea_vservicio: mensaje, // Guardar el mensaje en el campo de servicio como solicitaste
-                lea_vnombre: firstName,
-                lea_vapellido: lastName,
-                lea_vcorreo: correo,
-                lea_itelefono: parseInt(celular, 10),
-                lea_vempresa: empresa || ""
+                origen: 'contacto_general',
+                mensaje: mensaje,
+                nombre: firstName,
+                apellido: lastName,
+                correo: correo,
+                telefono: celular,
+                empresa: empresa || ""
             };
 
             const originalContent = btnContent.innerHTML;
@@ -497,7 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
             await new Promise(resolve => setTimeout(resolve, 800));
 
             try {
-                await ApiClient.post('/clientes/', payload);
+                await ApiClient.post('/api/crm/lead/', payload);
                 
                 Swal.fire({
                     icon: 'success',
