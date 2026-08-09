@@ -135,14 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 class ApiClient {
     static getBaseUrl() {
-        if (window.BACKEND_API_URL) {
-            return window.BACKEND_API_URL;
-        }
-        const hostname = window.location.hostname;
-        if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname.startsWith('192.168.')) {
-            return `http://${hostname}:8000`;
-        }
-        return 'https://jht-mnt-api.onrender.com'; // Ajusta esta URL con tu dominio real de Render si es diferente
+        // Ahora que usamos un Monolito en Django, la API vive en el mismo dominio que la web
+        return window.location.origin;
     }
 
     static baseUrl = ApiClient.getBaseUrl();
