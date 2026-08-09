@@ -72,7 +72,7 @@
                         <span class="text-xl sm:text-2xl font-bold text-jht-gold font-title ml-0.5">+</span>
                     </div>
                     <span
-                        class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Años
+                        class="inline-block text-xs sm:text-sm text-white font-sans transition-transform duration-300 origin-center sm:origin-left group-hover/metric:scale-110">Años
                         de Exp.</span>
                 </div>
 
@@ -86,7 +86,7 @@
                         <span class="text-xl sm:text-2xl font-bold text-jht-gold font-title ml-0.5">+</span>
                     </div>
                     <span
-                        class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Clientes
+                        class="inline-block text-xs sm:text-sm text-white font-sans transition-transform duration-300 origin-center sm:origin-left group-hover/metric:scale-110">Clientes
                         B2B</span>
                 </div>
 
@@ -97,7 +97,7 @@
                         class="block text-2xl sm:text-3xl font-bold text-white font-title drop-shadow-md group-hover/metric:text-gray-100 transition-colors"
                         data-counter="13">0</span>
                     <span
-                        class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Departamentos</span>
+                        class="inline-block text-xs sm:text-sm text-white font-sans transition-transform duration-300 origin-center sm:origin-left group-hover/metric:scale-110">Departamentos</span>
                 </div>
 
                 <!-- Indicador 4: GPS -->
@@ -110,7 +110,7 @@
                         <span class="text-sm sm:text-base font-bold text-green-400 font-title">100%</span>
                     </div>
                     <span
-                        class="text-xs sm:text-sm text-gray-400 font-sans group-hover/metric:text-gray-200 transition-colors">Flota
+                        class="inline-block text-xs sm:text-sm text-white font-sans transition-transform duration-300 origin-center sm:origin-left group-hover/metric:scale-110">Flota
                         Monitorizada</span>
                 </div>
 
@@ -1637,9 +1637,7 @@
                 </button>
                 <div x-show="open === 3" x-collapse x-cloak class="px-6 pb-5">
                     <p class="text-sm text-jht-blue-support leading-relaxed">Puede solicitar una cotización a través del
-                        formulario en nuestra página web, por WhatsApp al {% if config %}{{ config.telefono_principal
-                        }}{% else %}(+51) 935 833 467{% endif %} o enviando un correo a {% if config %}{{
-                        config.correo_contacto }}{% else %}comercial@transportejht.com{% endif %}.</p>
+                        formulario en nuestra página web, por WhatsApp al {% if config and config.telefono_principal %}{{ config.telefono_principal }}{% else %}(+51) 935 833 467{% endif %} o enviando un correo a {% if config and config.correo_contacto %}{{ config.correo_contacto }}{% else %}comercial@transportejht.com{% endif %}.</p>
                 </div>
             </div>
             <!-- FAQ 4 -->
