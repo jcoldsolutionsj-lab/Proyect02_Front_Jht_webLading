@@ -21,6 +21,9 @@ urlpatterns = [
     path('rastreo/', include('apps.service_status.urls')),
     path('gestion/', include('apps.service_management.urls')),
 
+    # API CRM
+    path('api/crm/', include('apps.crm.urls')),
+
     # Sitio web público (al final, ya que incluye la raíz '/')
     path('', include('apps.website.urls')),
 ]

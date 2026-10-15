@@ -22,7 +22,15 @@ X_FRAME_OPTIONS = 'DENY'
 # STATIC FILES (WhiteNoise)
 # ===========================================
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+try:
+    STORAGES = STORAGES
+except NameError:
+    STORAGES = {
+        "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+        "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"}
+    }
+STORAGES["staticfiles"]["BACKEND"] = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # ===========================================
 # BASE DE DATOS (SSL requerido en Render)

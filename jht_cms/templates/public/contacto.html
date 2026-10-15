@@ -158,9 +158,10 @@ carga, distribución y logística con seguimiento GPS en todo el Perú.{% endblo
                         <div class="flex flex-col gap-1">
                             <label for="con-empresa"
                                 class="text-xs font-bold text-jht-dark uppercase tracking-wider">Empresa
-                                (Opcional)</label>
+                                *</label>
                             <input type="text" id="con-empresa" name="empresa" placeholder="Razón Social / RUC"
-                                class="jht-input bg-white">
+                                class="jht-input bg-white" required aria-required="true">
+                            <span id="err-con-empresa" class="text-[11px] text-jht-gold font-semibold px-2 hidden"></span>
                         </div>
                     </div>
 
